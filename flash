@@ -1,0 +1,5 @@
+#!/bin/sh
+# Simple script for flashing the AVR with the target program.
+
+#avrdude -p atmega1284p -c avrisp2 -e -U lfuse:w:0xc7:m -U hfuse:w:0xd9:m -U efuse:w:0xff:m
+avrdude -p atmega1284p -c avrisp2 -e -U flash:w:rosewater.hex
