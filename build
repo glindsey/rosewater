@@ -1,5 +1,5 @@
 #!/bin/sh
 # Simple and stupid build script.
 
-avr-gcc -mmcu=atmega1284p -xassembler-with-cpp main.S -o rosewater.elf
+avr-gcc -mmcu=atmega644a -xassembler-with-cpp main.S -o rosewater.elf && \
 avr-objcopy -j .text -j .data -O ihex rosewater.elf rosewater.hex
