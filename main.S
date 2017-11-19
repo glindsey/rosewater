@@ -11,6 +11,8 @@
 #define rCTRLBITS       r22
 
 #define STATBIT_DISP                      7   ; Current line is a display line
+#define STATBIT_HSYNC                     6   ; LOW indicates HSYNC active
+#define STATBIT_VSYNC                     5   ; LOW indicates VSYNC active
 #define STATBIT_EVENFRAME                 0   ; Current frame is an even frame
 #define STATBIT_DISP_MASK           (0b10000000)
 #define STATBIT_EVENFRAME_MASK      (0b00000001)
@@ -40,32 +42,31 @@
 #define CTRLBIT_PORT_INIT           (0b11111000)
 
 #define CTRLBIT_MASK                (0b11111111)
-#define SYNCBIT_MASK                (0b11000000)
-#define VSYNCBIT_MASK               (0b10000000)
-#define HSYNCBIT_MASK               (0b01000000)
+#define SYNCBIT_MASK                (0b10000000)
+#define UNUSED0BIT_MASK             (0b01000000)
 #define VIDEOBIT_MASK               (0b00100000)
 #define VBLANKBIT_MASK              (0b00010000)
 #define VDRAWBIT_MASK               (0b00001000)
-#define SIGLENBIT_MASK              (0b00000100)
-#define SIGLATBIT_MASK              (0b00000010)
+#define UNUSED1BIT_MASK             (0b00000100)
+#define UNUSED2BIT_MASK             (0b00000010)
 #define HALBIT_MASK                 (0b00000001)
-#define NOT_VSYNCBIT_MASK           (0b01111111)
-#define NOT_HSYNCBIT_MASK           (0b10111111)
+#define NOT_SYNCBIT_MASK            (0b01111111)
+#define NOT_UNUSED0BIT_MASK         (0b10111111)
 #define NOT_VIDEOBIT_MASK           (0b11011111)
 #define NOT_VBLANKBIT_MASK          (0b11101111)
 #define NOT_VDRAWBIT_MASK           (0b11110111)
-#define NOT_SIGLENBIT_MASK          (0b11111011)
-#define NOT_SIGLATBIT_MASK          (0b11111101)
+#define NOT_UNUSED1BIT_MASK         (0b11111011)
+#define NOT_UNUSED2BIT_MASK         (0b11111101)
 #define NOT_HALBIT_MASK             (0b11111110)
 
-#define VSYNCPIN  7
-#define HSYNCPIN  6
-#define VIDEOPIN  5
-#define VBLANKPIN 4
-#define VDRAWPIN  3
-#define SIGLENPIN 2
-#define SIGLATPIN 1
-#define HALPIN    0
+#define SYNCPIN    7
+#define UNUSED0PIN 6
+#define VIDEOPIN   5
+#define VBLANKPIN  4
+#define VDRAWPIN   3
+#define UNUSED1PIN 2
+#define UNUSED2PIN 1
+#define HALPIN     0
 
 ; === Bitmasks for Control Port 2 ===============
 #define CTL2BIT_DDR_INIT            (0b00001111)
@@ -85,8 +86,9 @@
       sbi CTRLPORT, VIDEOPIN
 .endm
 
-.macro HSYNC_OFF  ; 2 cycles
-      cbi CTRLPORT, HSYNCPIN
+.macro TOGGLE_SYNC_BIT  ; 2 cycles
+      ldi rTEMP, SYNCBIT_MASK ; [1]
+      eor rCTRLBITS, rTEMP    ; [1]
 .endm
 
 .global main
@@ -168,7 +170,12 @@ main:
       eor rSTATBITS, rSTATBITS
 
       ; Set up control bits register.
-      ldi rCTRLBITS, (HSYNCBIT_MASK | VIDEOBIT_MASK)
+      ldi rCTRLBITS, CTRLBIT_PORT_INIT
+
+      ; EOR control bits register with SYNC bit, as the first thing the
+      ; interrupt line should do is pull SYNC low.
+      ldi rTEMP, SYNCBIT_MASK
+      eor rCTRLBITS, rTEMP
 
       ; Enable interrupts.
       sei
@@ -216,15 +223,16 @@ after_start_nondisplay_lines:
 
       ; Finish the H-sync pulse here.
       ; This can be filled in with whatever calculations we care to do.
-.rept 121
-      nop                                       ; 15+[121]+1 cycles --> 4.8uS H-sync
+.rept 119
+      nop                                       ; 15+[119]+3 cycles --> 4.8uS H-sync
 .endr
-      HSYNC_OFF                                 ; [2] -- HSYNC ends in the middle
+      TOGGLE_SYNC_BIT                           ; [2]
+      out CTRLPORT, rCTRLBITS                   ; [1]
+      TOGGLE_SYNC_BIT
+      ; +0 cycles after HSYNC here
 
-      ; +1 cycles after HSYNC here
-
-.rept 135
-      nop                                       ; 1+[135]+1 cycles --> 4.8uS front porch
+.rept 137
+      nop                                       ; 0+[137] cycles --> 4.8uS front porch
 .endr
 
       ; continue rendering here if a display line
@@ -241,12 +249,12 @@ delay_loop_for_testing:
       brne delay_loop_for_testing
 
       sbrs rSTATBITS, STATBIT_EVENFRAME         ; [3] for this and below line
-      VIDEO_ON                                  ; [2] -- video starts in the middle
+      ;VIDEO_ON                                  ; [2] -- video starts in the middle
 
 .rept 200
       nop
 .endr
-      VIDEO_OFF
+      ;VIDEO_OFF
 ; ------------------------------------------------------
 
       rjmp end_line                             ; [2]
@@ -267,24 +275,34 @@ non_display_line:
       adc ZH, rZERO                             ; [1]
       ; TEMPORARY
 
-      ; If this is line 04, set VSYNC for the next line.
+      ; If this is line 04, toggle SYNC for the next line.
       cpi rNONDISPLINE, 4                       ; [1]
       brne skip_set_vsync                       ; [1] if ==, [2] if !=
 set_vsync:
-      ori rCTRLBITS, VSYNCBIT_MASK              ; [1] if ==
+      TOGGLE_SYNC_BIT                           ; [3] if ==
+      rjmp after_set_vsync                      ; [2] if ==
 skip_set_vsync:
+      nop                                       ; [3] to even out timing
+      nop
+      nop
+after_set_vsync:
 
-      ; If this is line 07, clear VSYNC for the next line.
+      ; If this is line 07, toggle SYNC for the next line.
       cpi rNONDISPLINE, 7                       ; [1]
       brne skip_clear_vsync                     ; [1] if ==, [2] if !=
 clear_vsync:
-      andi rCTRLBITS, NOT_VSYNCBIT_MASK         ; [1] if ==
+      TOGGLE_SYNC_BIT                           ; [3] if ==
+      rjmp after_clear_vsync                    ; [2] if ==
 skip_clear_vsync:
+      nop                                       ; [3] to even out timing
+      nop
+      nop
+after_clear_vsync:
 
       ; Increment rNONDISPLINE by one.
       inc rNONDISPLINE                          ; [1]
 
-      ; +15 cycles into HSYNC here
+      ; +23 cycles into HSYNC here
 
       ; If result is 22:
       ;   - reset to 0
@@ -306,14 +324,16 @@ skip_start_display_lines:
 .endr
 after_start_display_lines:
 
-      ; +23 cycles into HSYNC here
+      ; +31 cycles into HSYNC here
 
       ; Finish the H-sync pulse here.
       ; This can be filled in with whatever calculations we care to do.
-.rept 123
-      nop                                 ; 23+[123]+1 cycles --> 4.8uS H-sync
+.rept 113
+      nop                                 ; 31+[113]+3 cycles --> 4.8uS H-sync
 .endr
-      HSYNC_OFF                           ; [2] -- HSYNC ends in the middle
+      TOGGLE_SYNC_BIT                           ; [2]
+      out CTRLPORT, rCTRLBITS                   ; [1]
+      TOGGLE_SYNC_BIT                           ; [2]
 
       ; continue here if not a display line
       rjmp end_line ; -- TEMPORARY
@@ -346,7 +366,7 @@ non_display_line_table:                         ; [2] for one of below jumps
       rjmp post_render_blanking_line      ; 20
       rjmp post_render_blanking_line      ; 21
 
-      ; +5 cycles after HSYNC here (for whichever branch is taken)
+      ; +4 cycles after HSYNC here (for whichever branch is taken)
 bottom_border_line:
 pre_render_blanking_line:
 vsync_line:
