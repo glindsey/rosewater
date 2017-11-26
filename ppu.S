@@ -25,8 +25,6 @@
 #define rCTRLBITS       r21
 #define rADDRDDR        r22
 #define rDATADDR        r23
-#define rCTL2DDR        r24
-#define rCTL2BITS       r25
 
 #define STATBIT_DISP                      7   ; Current line is a display line
 #define STATBIT_HSYNC                     6   ; LOW indicates HSYNC active
@@ -190,32 +188,33 @@
       ori rCTRLBITS, VDRAWBIT_MASK
 .endm
 
-.macro OE_ON  ; 1 cycle
-      andi rCTL2BITS, NOT_OEBIT_MASK
-.endm
-
-.macro OE_OFF  ; 1 cycle
-      ori rCTL2BITS, OEBIT_MASK
-.endm
-
 .macro DEBUG_ON  ; 1 cycle
-      andi rCTL2BITS, NOT_DEBUGBIT_MASK
+      cbi CTL2PORT, DEBUGPIN
 .endm
 
 .macro DEBUG_OFF  ; 1 cycle
-      ori rCTL2BITS, DEBUGBIT_MASK
+      sbi CTL2PORT, DEBUGPIN
+.endm
+
+.macro OE_ON  ; 1 cycle
+      cbi CTL2PORT, OEPIN
+.endm
+
+.macro OE_OFF  ; 1 cycle
+      sbi CTL2PORT, OEPIN
 .endm
 
 .macro WE_ON  ; 1 cycle
-      andi rCTL2BITS, NOT_WEBIT_MASK
+      cbi CTL2PORT, WEPIN
 .endm
 
 .macro WE_OFF  ; 1 cycle
-      ori rCTL2BITS, WEBIT_MASK
+      sbi CTL2PORT, WEPIN
 .endm
 
-.macro OE_AND_WE_OFF  ; 1 cycle
-      ori rCTL2BITS, ENABLEBIT_MASK
+.macro OE_AND_WE_OFF  ; 2 cycles
+      sbi CTL2PORT, OEPIN
+      sbi CTL2PORT, WEPIN
 .endm
 
 .macro TOGGLE_SYNC_BIT  ; 2 cycles
@@ -283,12 +282,10 @@ debug_wiggle:
       ldi rTEMP, 32
 debug_loop:
       DEBUG_ON
-      out CTL2PORT, rCTL2BITS
       nop
       nop
       nop
       DEBUG_OFF
-      out CTL2PORT, rCTL2BITS
       nop
       nop
       nop
@@ -300,7 +297,6 @@ setup_palette:
       rcall debug_wiggle
       ; Turn on debug pin so I can figure out what's going on.
       DEBUG_ON
-      out CTL2PORT, rCTL2BITS
 
       ; Right now palette RAM high address is forced to 00.
 
@@ -324,13 +320,11 @@ palette_set_loop_low:
       mov rTEMP2, rTEMP
       out DATAPORT, rTEMP2
       WE_ON
-      out CTL2PORT, rCTL2BITS
       nop
       nop
       nop
       nop
       WE_OFF
-      out CTL2PORT, rCTL2BITS
       cpi rTEMP, 0
       brne palette_set_loop_low
 
@@ -346,13 +340,11 @@ palette_set_loop_high:
       mov rTEMP2, rTEMP
       out DATAPORT, rTEMP2
       WE_ON
-      out CTL2PORT, rCTL2BITS
       nop
       nop
       nop
       nop
       WE_OFF
-      out CTL2PORT, rCTL2BITS
       cpi rTEMP, 0
       brne palette_set_loop_high
 
@@ -366,7 +358,6 @@ palette_set_loop_high:
 
       ; Turn off debug pin.
       DEBUG_OFF
-      out CTL2PORT, rCTL2BITS
 
       ret
 
@@ -400,12 +391,10 @@ test_vram_set_loop_x:
       lsr rTEMP2
       out DATAPORT, rTEMP2
       WE_ON
-      out CTL2PORT, rCTL2BITS
 .rept 4
       nop
 .endr
       WE_OFF
-      out CTL2PORT, rCTL2BITS
       _CPI rXPOS, 0
       brne test_vram_set_loop_x
 
@@ -448,12 +437,10 @@ fbram_clear_loop_x:
       ldi rTEMP2, 0
       out DATAPORT, rTEMP2
       WE_ON
-      out CTL2PORT, rCTL2BITS
 .rept 4
       nop
 .endr
       WE_OFF
-      out CTL2PORT, rCTL2BITS
       _CPI rXPOS, 0
       brne fbram_clear_loop_x
 
@@ -500,12 +487,10 @@ fbram_set_loop_x:
       lsr rTEMP2
       out DATAPORT, rTEMP2
       WE_ON
-      out CTL2PORT, rCTL2BITS
 .rept 4
       nop
 .endr
       WE_OFF
-      out CTL2PORT, rCTL2BITS
       _CPI rXPOS, 0
       brne fbram_set_loop_x
 
@@ -557,10 +542,10 @@ main:
       out CTRLPORT, rTEMP
 
       ; Set up control port 2 pins.
-      ldi rCTL2DDR, CTL2BIT_DDR_INIT
-      out CTL2DDR, rCTL2DDR
-      ldi rCTL2BITS, CTL2BIT_PORT_INIT
-      out CTL2PORT, rCTL2BITS
+      ldi rTEMP, CTL2BIT_DDR_INIT
+      out CTL2DDR, rTEMP
+      ldi rTEMP, CTL2BIT_PORT_INIT
+      out CTL2PORT, rTEMP
 
       ; === Timers ===========================================================
 
@@ -642,8 +627,6 @@ TIMER1_COMPA_vect:
       out CTRLPORT, rCTRLBITS                   ; [1] -- start of HSYNC
       out ADDRDDR, rADDRDDR                     ; [1]
       out DATADDR, rDATADDR                     ; [1]
-      out CTL2DDR, rCTL2DDR                     ; [1]
-      out CTL2PORT, rCTL2BITS                   ; [1]
 
       ; +5 cycles into HSYNC here
       sbrs rSTATBITS, STATBIT_DISP              ; [3] for this and below line
@@ -749,7 +732,6 @@ output_frame:
       nop
       nop
       OE_ON
-      out CTL2PORT, rCTL2BITS
 
 pixel_loop:
 .rept 256
@@ -762,7 +744,6 @@ pixel_loop:
       ;brne pixel_loop
 
       OE_OFF
-      out CTL2PORT, rCTL2BITS
       ADDRESS_VDU
 
 ; ------------------------------------------------------
@@ -797,25 +778,19 @@ copy_loop:
       ldi rTEMP, DATABIT_DDR_INPUT
       out DATADDR, rTEMP
       OE_ON
-      out CTL2PORT, rCTL2BITS
       in rTEMP2, DATAPORT
       OE_OFF
-      out CTL2PORT, rCTL2BITS
       ADDRESS_FBRAM
       ldi rTEMP, DATABIT_DDR_OUTPUT
       out DATADDR, rTEMP
       out DATAPORT, rTEMP2
       WE_ON
-      out CTL2PORT, rCTL2BITS
       nop
       WE_OFF
-      out CTL2PORT, rCTL2BITS
 
       _CPI rXPOS, 0
       brne copy_loop
 
-      OE_OFF
-      out CTL2PORT, rCTL2BITS
       ADDRESS_VDU
 
 ; =============================================================================
@@ -897,7 +872,6 @@ start_display_lines:
       ori rCTRLBITS, VBLANKBIT_MASK             ; [1] if ==
       ldi rADDRDDR, ADDRBIT_DDR_OUTPUT          ; [1] if ==
       ldi rDATADDR, DATABIT_DDR_INPUT           ; [1] if ==
-      ldi rCTL2DDR, CTL2BIT_DDR_OUTPUT          ; [1] if ==
       OE_AND_WE_OFF                             ; [1] if ==
       sbrs rSTATBITS, STATBIT_EVENFRAME         ; [2] for this and below
       andi rCTRLBITS, NOT_VDRAWBIT_MASK
