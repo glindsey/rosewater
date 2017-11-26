@@ -125,22 +125,6 @@
 ;88  88  88 88   88 Y8b  d8 88 `88. `8b  d8' db   8D
 ;YP  YP  YP YP   YP  `Y88P' 88   YD  `Y88P'  `8888Y'
 
-; Uses rTEMP to load an immediate into a low (r0-r15) register.
-; Cycles: 2
-;
-.macro _LDI reg:req, val:req
-      ldi rTEMP, \val
-      mov \reg, rTEMP
-.endm
-
-; Users rTEMP to compare a low (r0-r15) register with an immediate.
-; Cycles: 2
-;
-.macro _CPI reg:req, val:req
-      mov rTEMP, \reg
-      cpi rTEMP, \val
-.endm
-
 .macro ADDRESS_VDU
       cbi CTRLPORT, A18PIN
       cbi CTRLPORT, A17PIN
@@ -171,6 +155,15 @@
       sbi CTRLPORT, A16PIN
 .endm
 
+.macro SET_DATA_INPUT
+      ldi rTEMP, DATABIT_DDR_INPUT
+      out DATADDR, rTEMP
+.endm
+
+.macro SET_DATA_OUTPUT
+      ldi rTEMP, DATABIT_DDR_OUTPUT
+      out DATADDR, rTEMP
+.endm
 
 .macro VBLANK_ON ; 1 cycle
       andi rCTRLBITS, NOT_VBLANKBIT_MASK
@@ -235,6 +228,46 @@ is_set:
 done:
 .endm
 
+; Uses rTEMP to load an immediate into a low (r0-r15) register.
+; Cycles: 2
+;
+.macro _LDI reg:req, val:req
+      ldi rTEMP, \val
+      mov \reg, rTEMP
+.endm
+
+; Uses rTEMP to compare a low (r0-r15) register with an immediate.
+; Cycles: 2
+;
+.macro _CPI reg:req, val:req
+      mov rTEMP, \reg
+      cpi rTEMP, \val
+.endm
+
+; Inserts a variable number of NOP statements.
+.macro _NOP val:req
+.rept val
+      nop
+.endr
+.endm
+
+; Reads from the data port into a high (r16-r31) register.
+.macro READ_DATA_INTO reg:req
+      SET_DATA_INPUT
+      OE_ON
+      in \reg, DATAPORT
+      OE_OFF
+.endm
+
+; Writes to the data port from a high (r16-r31) register.
+.macro WRITE_DATA_FROM reg:req
+      SET_DATA_OUTPUT
+      out DATAPORT, \reg
+      WE_ON
+      nop
+      WE_OFF
+.endm
+
 ;.d8888. db    db d8888b. d8888b.  .d88b.  db    db d888888b d888888b d8b   db d88888b .d8888.
 ;88'  YP 88    88 88  `8D 88  `8D .8P  Y8. 88    88 `~~88~~'   `88'   888o  88 88'     88'  YP
 ;`8bo.   88    88 88oooY' 88oobY' 88    88 88    88    88       88    88V8o 88 88ooooo `8bo.
@@ -282,13 +315,9 @@ debug_wiggle:
       ldi rTEMP, 32
 debug_loop:
       DEBUG_ON
-      nop
-      nop
-      nop
+      _NOP 3
       DEBUG_OFF
-      nop
-      nop
-      nop
+      _NOP 3
       dec rTEMP
       brne debug_loop
       ret
@@ -320,10 +349,7 @@ palette_set_loop_low:
       mov rTEMP2, rTEMP
       out DATAPORT, rTEMP2
       WE_ON
-      nop
-      nop
-      nop
-      nop
+      _NOP 4
       WE_OFF
       cpi rTEMP, 0
       brne palette_set_loop_low
@@ -340,10 +366,7 @@ palette_set_loop_high:
       mov rTEMP2, rTEMP
       out DATAPORT, rTEMP2
       WE_ON
-      nop
-      nop
-      nop
-      nop
+      _NOP 4
       WE_OFF
       cpi rTEMP, 0
       brne palette_set_loop_high
@@ -391,9 +414,7 @@ test_vram_set_loop_x:
       lsr rTEMP2
       out DATAPORT, rTEMP2
       WE_ON
-.rept 4
-      nop
-.endr
+      _NOP 4
       WE_OFF
       _CPI rXPOS, 0
       brne test_vram_set_loop_x
@@ -437,9 +458,7 @@ fbram_clear_loop_x:
       ldi rTEMP2, 0
       out DATAPORT, rTEMP2
       WE_ON
-.rept 4
-      nop
-.endr
+      _NOP 4
       WE_OFF
       _CPI rXPOS, 0
       brne fbram_clear_loop_x
@@ -487,9 +506,7 @@ fbram_set_loop_x:
       lsr rTEMP2
       out DATAPORT, rTEMP2
       WE_ON
-.rept 4
-      nop
-.endr
+      _NOP 4
       WE_OFF
       _CPI rXPOS, 0
       brne fbram_set_loop_x
@@ -668,27 +685,22 @@ setup_blanking_period:
       rjmp after_setup_blanking_period          ; [2] if ==
 
 skip_setup_blanking_period:
-.rept 8
-      nop                                       ; [8] if != (timing match)
-.endr
+      _NOP 8                                    ; [8] if != (timing match)
+
 after_setup_blanking_period:
 
       ; +22 cycles into HSYNC HERE
 
       ; Finish the H-sync pulse here.
       ; This can be filled in with whatever calculations we care to do.
-.rept 112
-      nop                                       ; 22+[112]+3 cycles --> 4.8uS H-sync
-.endr
+      _NOP 112                                  ; 22+[112]+3 cycles --> 4.8uS H-sync
       IMMED_TOGGLE_SYNC_PIN                     ; [5]
       ;TOGGLE_SYNC_BIT                           ; [2]
       ;out CTRLPORT, rCTRLBITS                   ; [1]
       ;TOGGLE_SYNC_BIT
       ; +0 cycles after HSYNC here
 
-.rept 137
-      nop                                       ; 0+[137] cycles --> 4.8uS front porch
-.endr
+      _NOP 137                                  ; 0+[137] cycles --> 4.8uS front porch
 
       ; continue rendering here if a display line
 
@@ -709,15 +721,12 @@ after_setup_blanking_period:
 output_frame:
 
 ; Wait a little while
-.rept 70
-      nop
-.endr
+      _NOP 80
 
       ; Clear X position.
       eor rXPOS, rXPOS
 
       ; Set high address latch to Y position.
-      ;_LDI r1, 1
       mov r1, rYPOS
       rcall set_hi_addr_latch
 
@@ -726,20 +735,13 @@ output_frame:
 
       ; Set FBRAM address enable.
       ADDRESS_FBRAM
-
-      nop
-      nop
-      nop
-      nop
       OE_ON
 
 pixel_loop:
 .rept 256
       out ADDRPORT, rXPOS
       inc rXPOS
-      nop
-      nop
-      nop
+      _NOP 3
 .endr
       ;brne pixel_loop
 
@@ -761,7 +763,8 @@ compose_frame:
 ; === Test Code ===============================================================
 
       ; Clear X position.
-      eor rXPOS, rXPOS
+      _LDI rXPOS, 32
+     ;eor rXPOS, rXPOS
 
       ; Set high address latch to Y position.
       mov r1, rYPOS
@@ -775,18 +778,9 @@ copy_loop:
 
       ; Copy VRAM value into FBRAM.
       ADDRESS_VRAM
-      ldi rTEMP, DATABIT_DDR_INPUT
-      out DATADDR, rTEMP
-      OE_ON
-      in rTEMP2, DATAPORT
-      OE_OFF
+      READ_DATA_INTO rTEMP
       ADDRESS_FBRAM
-      ldi rTEMP, DATABIT_DDR_OUTPUT
-      out DATADDR, rTEMP
-      out DATAPORT, rTEMP2
-      WE_ON
-      nop
-      WE_OFF
+      WRITE_DATA_FROM rTEMP
 
       _CPI rXPOS, 0
       brne copy_loop
@@ -794,6 +788,7 @@ copy_loop:
       ADDRESS_VDU
 
 ; =============================================================================
+      SET_DATA_INPUT
       rjmp end_line                             ; [2]
 
 ;d8888b. db       .d8b.  d8b   db db   dD d888888b d8b   db  d888b
@@ -826,9 +821,7 @@ set_vsync:
       TOGGLE_SYNC_BIT                           ; [3] if ==
       rjmp after_set_vsync                      ; [2] if ==
 skip_set_vsync:
-      nop                                       ; [3] to even out timing
-      nop
-      nop
+      _NOP 3                                    ; [3] to even out timing
 after_set_vsync:
 
       ; If this is line 07, toggle SYNC for the next line.
@@ -838,9 +831,7 @@ clear_vsync:
       TOGGLE_SYNC_BIT                           ; [3] if ==
       rjmp after_clear_vsync                    ; [2] if ==
 skip_clear_vsync:
-      nop                                       ; [3] to even out timing
-      nop
-      nop
+      _NOP 3                                    ; [3] to even out timing
 after_clear_vsync:
 
       ; Increment rLINECOUNTER by one.
@@ -877,18 +868,14 @@ start_display_lines:
       andi rCTRLBITS, NOT_VDRAWBIT_MASK
       rjmp after_start_display_lines            ; [2] if ==
 skip_start_display_lines:
-.rept 8
-      nop                                       ; [8] if != (timing match)
-.endr
+      _NOP 8                                    ; [8] if != (timing match)
 after_start_display_lines:
 
       ; +35 cycles into HSYNC here
 
       ; Finish the H-sync pulse here.
       ; This can be filled in with whatever calculations we care to do.
-.rept 109
-      nop                                 ; 34+[109]+3 cycles --> 4.8uS H-sync
-.endr
+      _NOP 109                                  ; 34+[109]+3 cycles --> 4.8uS
       IMMED_TOGGLE_SYNC_PIN                     ; [5]
       ;TOGGLE_SYNC_BIT                           ; [2]
       ;out CTRLPORT, rCTRLBITS                   ; [1]
