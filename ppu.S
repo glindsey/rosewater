@@ -47,38 +47,40 @@
 #define CTL2PORT  _SFR_IO_ADDR(PORTB)
 
 ; === Bitmasks for Address Port =================
-#define ADDRBIT_DDR_INIT            (0b11111111)
+#define ADDRBIT_PORT_INIT           (0b11111111) ; testing, normally (0b00000000)
 #define ADDRBIT_DDR_INPUT           (0b00000000)
 #define ADDRBIT_DDR_OUTPUT          (0b11111111)
-#define ADDRBIT_PORT_INIT           (0b11111111) ; testing, normally (0b00000000)
+#define ADDRBIT_DDR_INIT            ADDRBIT_DDR_OUTPUT
 
 ; === Bitmasks for Data/High Address Port =======
-#define DATABIT_DDR_INIT            (0b00000000)
 #define DATABIT_PORT_INIT           (0b11111111)
 #define DATABIT_DDR_INPUT           (0b00000000)
 #define DATABIT_DDR_OUTPUT          (0b11111111)
+#define DATABIT_DDR_INIT            DATABIT_DDR_INPUT
 
 ; === Bitmasks for Control Port =================
-#define CTRLBIT_DDR_INIT            (0b11111111)
-#define CTRLBIT_PORT_INIT           (0b11011000)
+#define CTRLBIT_PORT_INIT           (0b10011000)
+#define CTRLBIT_DDR_INPUT           (0b00000000)
+#define CTRLBIT_DDR_OUTPUT          (0b11111111)
+#define CTRLBIT_DDR_INIT            CTRLBIT_DDR_OUTPUT
 
 #define CTRLBIT_MASK                (0b11111111)
 #define SYNCBIT_MASK                (0b10000000)
 #define HALLATBIT_MASK              (0b01000000)
-#define HALENBIT_MASK               (0b00100000)
+#define CPUENBIT_MASK               (0b00100000)
 #define VBLANKBIT_MASK              (0b00010000)
 #define VDRAWBIT_MASK               (0b00001000)
 #define EXTRAADDR_MASK              (0b00000111)
 #define NOT_SYNCBIT_MASK            (0b01111111)
 #define NOT_HALLATBIT_MASK          (0b10111111)
-#define NOT_HALENBIT_MASK           (0b11011111)
+#define NOT_CPUENBIT_MASK           (0b11011111)
 #define NOT_VBLANKBIT_MASK          (0b11101111)
 #define NOT_VDRAWBIT_MASK           (0b11110111)
 #define NOT_EXTRAADDR_MASK          (0b11111000)
 
 #define SYNCPIN    7
 #define HALLATPIN  6
-#define HALENPIN   5
+#define CPUENPIN   5
 #define VBLANKPIN  4
 #define VDRAWPIN   3
 #define A18PIN     2
@@ -86,22 +88,36 @@
 #define A16PIN     0
 
 ; === Bitmasks for Control Port 2 ===============
-#define CTL2BIT_DDR_INIT            (0b00001111)
 #define CTL2BIT_PORT_INIT           (0b11111111)
-#define CTL2BIT_DDR_INPUT           (0b00001000)
+#define CTL2BIT_DDR_INPUT           (0b00000000)
 #define CTL2BIT_DDR_OUTPUT          (0b00001110)
+#define CTL2BIT_DDR_INIT            CTL2BIT_DDR_OUTPUT
 
 #define CTL2BIT_MASK                (0b00001111)
 #define ENABLEBIT_MASK              (0b00000110)
+#define DEBUGBIT_MASK               (0b00001000)
 #define OEBIT_MASK                  (0b00000100)
 #define WEBIT_MASK                  (0b00000010)
 
 #define NOT_ENABLEBIT_MASK          (0b11111001)
+#define NOT_DEBUGBIT_MASK           (0b11110111)
 #define NOT_OEBIT_MASK              (0b11111011)
 #define NOT_WEBIT_MASK              (0b11111101)
 
+#define DEBUGPIN                    3
 #define OEPIN                       2
 #define WEPIN                       1
+
+; === Timing Values =============================
+      ; At 20MHz:
+      ; clkIO with OC=0x04F6 gives us 15.7356412 kHz
+      ; At 21.47727MHz:
+      ; clkIO with OC=0x0554 gives us 15.7342637 kHz
+      ; (NTSC color line rate is 15.734 kHz).
+      ; At 28.63636MHz:
+      ; clkIO with OC=0x071B gives us 15.7342637 kHz
+#define HSYNC_VALUE_HI        0x07
+#define HSYNC_VALUE_LO        0x1B
 
 ;.88b  d88.  .d8b.   .o88b. d8888b.  .d88b.  .d8888.
 ;88'YbdP`88 d8' `8b d8P  Y8 88  `8D .8P  Y8. 88'  YP
@@ -134,6 +150,14 @@
       ori rCTL2BITS, OEBIT_MASK
 .endm
 
+.macro DEBUG_ON  ; 1 cycle
+      andi rCTL2BITS, NOT_DEBUGBIT_MASK
+.endm
+
+.macro DEBUG_OFF  ; 1 cycle
+      ori rCTL2BITS, DEBUGBIT_MASK
+.endm
+
 .macro WE_ON  ; 1 cycle
       andi rCTL2BITS, NOT_WEBIT_MASK
 .endm
@@ -163,6 +187,176 @@ is_set:
       cbi CTRLPORT, SYNCPIN         ; [1] if set
 done:
 .endm
+
+;.d8888. db    db d8888b. d8888b.  .d88b.  db    db d888888b d888888b d8b   db d88888b .d8888.
+;88'  YP 88    88 88  `8D 88  `8D .8P  Y8. 88    88 `~~88~~'   `88'   888o  88 88'     88'  YP
+;`8bo.   88    88 88oooY' 88oobY' 88    88 88    88    88       88    88V8o 88 88ooooo `8bo.
+;  `Y8b. 88    88 88~~~b. 88`8b   88    88 88    88    88       88    88 V8o88 88~~~~~   `Y8b.
+;db   8D 88b  d88 88   8D 88 `88. `8b  d8' 88b  d88    88      .88.   88  V888 88.     db   8D
+;`8888Y' ~Y8888P' Y8888P' 88   YD  `Y88P'  ~Y8888P'    YP    Y888888P VP   V8P Y88888P `8888Y'
+
+boot_wait:
+      ; A simple wait for RAM to stabilize before attempting writes.
+      ldi rTEMP, 1
+boot_wait_outer_loop:
+      ldi rTEMP2, 8
+boot_wait_inner_loop:
+      dec rTEMP2
+      brne boot_wait_inner_loop
+      dec rTEMP
+      brne boot_wait_outer_loop
+      ret
+
+debug_wiggle:
+      ; Wiggle the debug pin a bit so I can see it on the scope.
+      ldi rTEMP, 32
+debug_loop:
+      DEBUG_ON
+      out CTL2PORT, rCTL2BITS
+      nop
+      nop
+      nop
+      DEBUG_OFF
+      out CTL2PORT, rCTL2BITS
+      nop
+      nop
+      nop
+      dec rTEMP
+      brne debug_loop
+      ret
+
+setup_palette:
+      rcall debug_wiggle
+      ; Turn on debug pin so I can figure out what's going on.
+      DEBUG_ON
+      out CTL2PORT, rCTL2BITS
+
+      ; Right now palette RAM high address is forced to 00.
+
+      ; Set data lines to outputs.
+      ldi rTEMP, DATABIT_DDR_OUTPUT
+      out DATADDR, rTEMP
+
+      ; Turn VDRAW off (by setting it high).
+      ; It probably already is, but let's do it anyway.
+      sbi CTRLPORT, VDRAWPIN
+
+      ; Set A18/A17/A16 to 110 to indicate PALRAM LOW enable.
+      sbi CTRLPORT, A18PIN
+      sbi CTRLPORT, A17PIN
+      cbi CTRLPORT, A16PIN
+
+      ; Loop through low addresses and set data = address for now.
+      ldi rTEMP, 0
+      ;ldi rTEMP2, 255
+
+palette_set_loop_low:
+      dec rTEMP
+      out ADDRPORT, rTEMP
+      mov rTEMP2, rTEMP
+      out DATAPORT, rTEMP2
+      WE_ON
+      out CTL2PORT, rCTL2BITS
+      nop
+      nop
+      nop
+      nop
+      WE_OFF
+      out CTL2PORT, rCTL2BITS
+      cpi rTEMP, 0
+      brne palette_set_loop_low
+
+      ; Set A18/A17/A16 to 111 to indicate PALRAM HIGH enable.
+      sbi CTRLPORT, A18PIN
+      sbi CTRLPORT, A17PIN
+      sbi CTRLPORT, A16PIN
+
+      ; Loop through low addresses and set data = address for now.
+      ldi rTEMP, 0
+      ;ldi rTEMP2, 255
+
+palette_set_loop_high:
+      dec rTEMP
+      out ADDRPORT, rTEMP
+      mov rTEMP2, rTEMP
+      out DATAPORT, rTEMP2
+      WE_ON
+      out CTL2PORT, rCTL2BITS
+      nop
+      nop
+      nop
+      nop
+      WE_OFF
+      out CTL2PORT, rCTL2BITS
+      cpi rTEMP, 0
+      brne palette_set_loop_high
+
+      ; Reset data lines back to inputs with pullups enabled.
+      ldi rTEMP, DATABIT_DDR_INPUT
+      out DATADDR, rTEMP
+      ldi rTEMP, DATABIT_PORT_INIT
+      out DATAPORT, rTEMP
+
+      ; Reset A18/A17/A16 back to VDU addressing.
+      cbi CTRLPORT, A18PIN
+      cbi CTRLPORT, A17PIN
+      cbi CTRLPORT, A16PIN
+
+      ; Turn off debug pin.
+      DEBUG_OFF
+      out CTL2PORT, rCTL2BITS
+
+      ret
+
+setup_fbram:
+      ; Set data lines to outputs.
+      ldi rTEMP, DATABIT_DDR_OUTPUT
+      out DATADDR, rTEMP
+
+      ; Set A18/A17 to 10 to indicate FBRAM enable.
+      sbi CTRLPORT, A18PIN
+      cbi CTRLPORT, A17PIN
+      cbi CTRLPORT, A16PIN
+
+      ; Loop through low addresses and set data = address for now.
+      ldi rTEMP, 0
+      ldi rTEMP2, 255
+
+fbram_set_loop:
+      dec rTEMP
+      out ADDRPORT, rTEMP
+      mov rTEMP2, rTEMP
+      lsr rTEMP2
+      lsr rTEMP2
+      lsr rTEMP2
+      out DATAPORT, rTEMP2
+      WE_ON
+      out CTL2PORT, rCTL2BITS
+.rept 1
+      nop
+      nop
+      nop
+      nop
+.endr
+      WE_OFF
+      out CTL2PORT, rCTL2BITS
+      cpi rTEMP, 0
+      brne fbram_set_loop
+
+      ; Reset data lines back to inputs with pullups enabled.
+      ldi rTEMP, DATABIT_DDR_INPUT
+      out DATADDR, rTEMP
+      ldi rTEMP, DATABIT_PORT_INIT
+      out DATAPORT, rTEMP
+
+      ; Reset A18/A17/A16 back to VDU addressing.
+      cbi CTRLPORT, A18PIN
+      cbi CTRLPORT, A17PIN
+      cbi CTRLPORT, A16PIN
+
+      ret
+
+
 
 .global main
 main:
@@ -206,24 +400,25 @@ main:
       ; === Timers ===========================================================
 
       ; Set Timer 0 to toggle OC0A and clear on compare match.
-      ldi rTEMP, (1 << COM0A0) | (1 << WGM01)
-      sts _SFR_MEM_ADDR(TCCR0A), rTEMP
+      ;ldi rTEMP, (1 << COM0A0) | (1 << WGM01)
+      ;sts _SFR_MEM_ADDR(TCCR0A), rTEMP
 
       ; Set OC1A to toggle on each output compare.
       ;ldi rTEMP, (1 << COM1A0)
       ;sts _SFR_MEM_ADDR(TCCR1A), rTEMP
 
       ; Set Timer 0 clock source to clkIO.
-      ldi rTEMP, (1 << CS00)
-      sts _SFR_MEM_ADDR(TCCR0B), rTEMP
+      ;ldi rTEMP, (1 << CS00)
+      ;sts _SFR_MEM_ADDR(TCCR0B), rTEMP
 
       ; Set Timer 1 to clkIO and to clear on timer match.
       ldi rTEMP, (1 << WGM02) | (1 << CS10)
       sts _SFR_MEM_ADDR(TCCR1B), rTEMP
 
       ; Set output compare value for OC0A
-      ldi rTEMP, 0x00
-      sts _SFR_MEM_ADDR(OCR0A), rTEMP
+      ; 0x00 outputs a clock at half the AVR's frequency
+      ;ldi rTEMP, 0x00
+      ;sts _SFR_MEM_ADDR(OCR0A), rTEMP
 
       ; Set output compare value for OC1A
 
@@ -234,14 +429,20 @@ main:
       ; (NTSC color line rate is 15.734 kHz).
       ; At 28.63636MHz:
       ; clkIO with OC=0x071B gives us 15.7342637 kHz
-      ldi rTEMP, 0x07
+      ldi rTEMP, HSYNC_VALUE_HI
       sts _SFR_MEM_ADDR(OCR1AH), rTEMP
-      ldi rTEMP, 0x1B
+      ldi rTEMP, HSYNC_VALUE_LO
       sts _SFR_MEM_ADDR(OCR1AL), rTEMP
 
       ; Set interrupt on OC1A compare
       ldi rTEMP, (1 << OCIE1A)
       sts _SFR_MEM_ADDR(TIMSK1), rTEMP
+
+      ; === RAM configuration ================================================
+
+      rcall boot_wait
+      rcall setup_palette
+      rcall setup_fbram
 
       ; === Registers ========================================================
       ; Set up registers for line tracking.
@@ -358,13 +559,20 @@ after_setup_blanking_period:
 output_frame:
 
 ; Wait a little while
-.rept 240
+.rept 92
       nop
 .endr
 
       eor rXPOS, rXPOS
       out DATAPORT, rYPOS
       out ADDRPORT, rXPOS
+      sbi CTRLPORT, A18PIN
+      cbi CTRLPORT, A17PIN
+      cbi CTRLPORT, A16PIN
+      nop
+      nop
+      nop
+      nop
       OE_ON
       out CTL2PORT, rCTL2BITS
 
@@ -374,10 +582,14 @@ pixel_loop:
       inc rXPOS
       nop
       nop
+      nop
 .endr
       ;brne pixel_loop
 
       OE_OFF
+      cbi CTRLPORT, A18PIN
+      cbi CTRLPORT, A17PIN
+      cbi CTRLPORT, A16PIN
       out CTL2PORT, rCTL2BITS
 
 ; ------------------------------------------------------
@@ -449,7 +661,8 @@ after_clear_vsync:
       ;   - reset to 0
       ;   - set rSTATBITS:DISP for next line
       ;   - set ~VBLANK control line
-      ;   - set ADDR/DATA/CTL2 lines to outputs
+      ;   - set DATA lines to input (we ONLY do output when writing)
+      ;   - set ADDR/CTL2 lines to outputs
       ;   - clear ~OE, ~WE bits
       ;   - clear ~VDRAW control line if rSTATBITS:EVENFRAME is clear
       cpi rLINECOUNTER, 22                      ; [1]
@@ -467,7 +680,7 @@ start_display_lines:
       ori rSTATBITS, STATBIT_DISP_MASK          ; [1] if ==
       ori rCTRLBITS, VBLANKBIT_MASK             ; [1] if ==
       ldi rADDRDDR, ADDRBIT_DDR_OUTPUT          ; [1] if ==
-      ldi rDATADDR, DATABIT_DDR_OUTPUT          ; [1] if ==
+      ldi rDATADDR, DATABIT_DDR_INPUT           ; [1] if ==
       ldi rCTL2DDR, CTL2BIT_DDR_OUTPUT          ; [1] if ==
       OE_AND_WE_OFF                             ; [1] if ==
       sbrs rSTATBITS, STATBIT_EVENFRAME         ; [2] for this and below
