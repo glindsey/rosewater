@@ -13,11 +13,12 @@
 ; =========================================================
 #define rZERO           r0
 
-#define rYPOS           r1
-#define rXPOS           r2
+#define rYPOS           r14
+#define rXPOS           r15
 
 #define rTEMP           r16
 #define rTEMP2          r17
+#define rTEMP3          r18
 
 #define rLINECOUNTER    r19
 #define rSTATBITS       r20
@@ -59,7 +60,7 @@
 #define DATABIT_DDR_INIT            DATABIT_DDR_INPUT
 
 ; === Bitmasks for Control Port =================
-#define CTRLBIT_PORT_INIT           (0b10011000)
+#define CTRLBIT_PORT_INIT           (0b10111000)
 #define CTRLBIT_DDR_INPUT           (0b00000000)
 #define CTRLBIT_DDR_OUTPUT          (0b11111111)
 #define CTRLBIT_DDR_INIT            CTRLBIT_DDR_OUTPUT
@@ -125,6 +126,53 @@
 ;88  88  88 88~~~88 8b      88`8b   88    88   `Y8b.
 ;88  88  88 88   88 Y8b  d8 88 `88. `8b  d8' db   8D
 ;YP  YP  YP YP   YP  `Y88P' 88   YD  `Y88P'  `8888Y'
+
+; Uses rTEMP to load an immediate into a low (r0-r15) register.
+; Cycles: 2
+;
+.macro _LDI reg:req, val:req
+      ldi rTEMP, \val
+      mov \reg, rTEMP
+.endm
+
+; Users rTEMP to compare a low (r0-r15) register with an immediate.
+; Cycles: 2
+;
+.macro _CPI reg:req, val:req
+      mov rTEMP, \reg
+      cpi rTEMP, \val
+.endm
+
+.macro ADDRESS_VDU
+      cbi CTRLPORT, A18PIN
+      cbi CTRLPORT, A17PIN
+      cbi CTRLPORT, A16PIN
+.endm
+
+.macro ADDRESS_VRAM
+      cbi CTRLPORT, A18PIN
+      sbi CTRLPORT, A17PIN
+      cbi CTRLPORT, A16PIN
+.endm
+
+.macro ADDRESS_FBRAM
+      sbi CTRLPORT, A18PIN
+      cbi CTRLPORT, A17PIN
+      cbi CTRLPORT, A16PIN
+.endm
+
+.macro ADDRESS_PALRAML
+      sbi CTRLPORT, A18PIN
+      sbi CTRLPORT, A17PIN
+      cbi CTRLPORT, A16PIN
+.endm
+
+.macro ADDRESS_PALRAMH
+      sbi CTRLPORT, A18PIN
+      sbi CTRLPORT, A17PIN
+      sbi CTRLPORT, A16PIN
+.endm
+
 
 .macro VBLANK_ON ; 1 cycle
       andi rCTRLBITS, NOT_VBLANKBIT_MASK
@@ -195,6 +243,29 @@ done:
 ;db   8D 88b  d88 88   8D 88 `88. `8b  d8' 88b  d88    88      .88.   88  V888 88.     db   8D
 ;`8888Y' ~Y8888P' Y8888P' 88   YD  `Y88P'  ~Y8888P'    YP    Y888888P VP   V8P Y88888P `8888Y'
 
+; set_hi_addr_latch
+; ---------------------------------------------------------
+; Inputs:
+;     r1 - Value to set high address latch to
+; Outputs:
+;     none
+; Clobbers:
+;     rTEMP, rTEMP2, rTEMP3
+;
+set_hi_addr_latch:
+      in rTEMP, DATADDR
+      in rTEMP2, DATAPORT
+      ldi rTEMP3, DATABIT_DDR_OUTPUT
+      out DATADDR, rTEMP3
+      out DATAPORT, r1
+      sbi CTRLPORT, HALLATPIN
+      nop
+      nop
+      cbi CTRLPORT, HALLATPIN
+      out DATAPORT, rTEMP2
+      out DATADDR, rTEMP
+      ret
+
 boot_wait:
       ; A simple wait for RAM to stabilize before attempting writes.
       ldi rTEMP, 1
@@ -241,10 +312,7 @@ setup_palette:
       ; It probably already is, but let's do it anyway.
       sbi CTRLPORT, VDRAWPIN
 
-      ; Set A18/A17/A16 to 110 to indicate PALRAM LOW enable.
-      sbi CTRLPORT, A18PIN
-      sbi CTRLPORT, A17PIN
-      cbi CTRLPORT, A16PIN
+      ADDRESS_PALRAML
 
       ; Loop through low addresses and set data = address for now.
       ldi rTEMP, 0
@@ -266,10 +334,7 @@ palette_set_loop_low:
       cpi rTEMP, 0
       brne palette_set_loop_low
 
-      ; Set A18/A17/A16 to 111 to indicate PALRAM HIGH enable.
-      sbi CTRLPORT, A18PIN
-      sbi CTRLPORT, A17PIN
-      sbi CTRLPORT, A16PIN
+      ADDRESS_PALRAMH
 
       ; Loop through low addresses and set data = address for now.
       ldi rTEMP, 0
@@ -297,14 +362,111 @@ palette_set_loop_high:
       ldi rTEMP, DATABIT_PORT_INIT
       out DATAPORT, rTEMP
 
-      ; Reset A18/A17/A16 back to VDU addressing.
-      cbi CTRLPORT, A18PIN
-      cbi CTRLPORT, A17PIN
-      cbi CTRLPORT, A16PIN
+      ADDRESS_VDU
 
       ; Turn off debug pin.
       DEBUG_OFF
       out CTL2PORT, rCTL2BITS
+
+      ret
+
+test_setup_vram:
+      ; Set data lines to outputs.
+      ldi rTEMP, DATABIT_DDR_OUTPUT
+      out DATADDR, rTEMP
+
+      ADDRESS_VRAM
+
+      ; Loop through high addresses, 255 to 0.
+      _LDI rYPOS, 0
+
+test_vram_set_loop_y:
+      dec rYPOS
+
+      ; Set high address latch to Y position.
+      mov r1, rYPOS
+      rcall set_hi_addr_latch
+
+      ; Loop through low addresses and set data = (xpos + ypos) >> 3 for now.
+      _LDI rXPOS, 0
+
+test_vram_set_loop_x:
+      dec rXPOS
+      out ADDRPORT, rXPOS
+      mov rTEMP2, rXPOS
+      add rTEMP2, rYPOS
+      lsr rTEMP2
+      lsr rTEMP2
+      lsr rTEMP2
+      out DATAPORT, rTEMP2
+      WE_ON
+      out CTL2PORT, rCTL2BITS
+.rept 4
+      nop
+.endr
+      WE_OFF
+      out CTL2PORT, rCTL2BITS
+      _CPI rXPOS, 0
+      brne test_vram_set_loop_x
+
+      _CPI rYPOS, 0
+      brne test_vram_set_loop_y
+
+      ; Reset data lines back to inputs with pullups enabled.
+      ldi rTEMP, DATABIT_DDR_INPUT
+      out DATADDR, rTEMP
+      ldi rTEMP, DATABIT_PORT_INIT
+      out DATAPORT, rTEMP
+
+      ADDRESS_VDU
+
+      ret
+
+clear_fbram:
+      ; Set data lines to outputs.
+      ldi rTEMP, DATABIT_DDR_OUTPUT
+      out DATADDR, rTEMP
+
+      ADDRESS_FBRAM
+
+      ; Loop through high addresses, 255 to 0.
+      _LDI rYPOS, 0
+
+fbram_clear_loop_y:
+      dec rYPOS
+
+      ; Set high address latch to Y position.
+      mov r1, rYPOS
+      rcall set_hi_addr_latch
+
+      ; Loop through low addresses and set data = (xpos + ypos) >> 3 for now.
+      _LDI rXPOS, 0
+
+fbram_clear_loop_x:
+      dec rXPOS
+      out ADDRPORT, rXPOS
+      ldi rTEMP2, 0
+      out DATAPORT, rTEMP2
+      WE_ON
+      out CTL2PORT, rCTL2BITS
+.rept 4
+      nop
+.endr
+      WE_OFF
+      out CTL2PORT, rCTL2BITS
+      _CPI rXPOS, 0
+      brne fbram_clear_loop_x
+
+      _CPI rYPOS, 0
+      brne fbram_clear_loop_y
+
+      ; Reset data lines back to inputs with pullups enabled.
+      ldi rTEMP, DATABIT_DDR_INPUT
+      out DATADDR, rTEMP
+      ldi rTEMP, DATABIT_PORT_INIT
+      out DATAPORT, rTEMP
+
+      ADDRESS_VDU
 
       ret
 
@@ -313,35 +475,42 @@ setup_fbram:
       ldi rTEMP, DATABIT_DDR_OUTPUT
       out DATADDR, rTEMP
 
-      ; Set A18/A17 to 10 to indicate FBRAM enable.
-      sbi CTRLPORT, A18PIN
-      cbi CTRLPORT, A17PIN
-      cbi CTRLPORT, A16PIN
+      ADDRESS_FBRAM
 
-      ; Loop through low addresses and set data = address for now.
-      ldi rTEMP, 0
-      ldi rTEMP2, 255
+      ; Loop through high addresses, 255 to 0.
+      _LDI rYPOS, 0
 
-fbram_set_loop:
-      dec rTEMP
-      out ADDRPORT, rTEMP
-      mov rTEMP2, rTEMP
+fbram_set_loop_y:
+      dec rYPOS
+
+      ; Set high address latch to Y position.
+      mov r1, rYPOS
+      rcall set_hi_addr_latch
+
+      ; Loop through low addresses and set data = (xpos + ypos) >> 3 for now.
+      _LDI rXPOS, 0
+
+fbram_set_loop_x:
+      dec rXPOS
+      out ADDRPORT, rXPOS
+      mov rTEMP2, rXPOS
+      add rTEMP2, rYPOS
       lsr rTEMP2
       lsr rTEMP2
       lsr rTEMP2
       out DATAPORT, rTEMP2
       WE_ON
       out CTL2PORT, rCTL2BITS
-.rept 1
-      nop
-      nop
-      nop
+.rept 4
       nop
 .endr
       WE_OFF
       out CTL2PORT, rCTL2BITS
-      cpi rTEMP, 0
-      brne fbram_set_loop
+      _CPI rXPOS, 0
+      brne fbram_set_loop_x
+
+      _CPI rYPOS, 0
+      brne fbram_set_loop_y
 
       ; Reset data lines back to inputs with pullups enabled.
       ldi rTEMP, DATABIT_DDR_INPUT
@@ -349,13 +518,9 @@ fbram_set_loop:
       ldi rTEMP, DATABIT_PORT_INIT
       out DATAPORT, rTEMP
 
-      ; Reset A18/A17/A16 back to VDU addressing.
-      cbi CTRLPORT, A18PIN
-      cbi CTRLPORT, A17PIN
-      cbi CTRLPORT, A16PIN
+      ADDRESS_VDU
 
       ret
-
 
 
 .global main
@@ -441,7 +606,9 @@ main:
       ; === RAM configuration ================================================
 
       rcall boot_wait
+      rcall test_setup_vram
       rcall setup_palette
+      ;rcall clear_fbram
       rcall setup_fbram
 
       ; === Registers ========================================================
@@ -559,16 +726,24 @@ after_setup_blanking_period:
 output_frame:
 
 ; Wait a little while
-.rept 92
+.rept 70
       nop
 .endr
 
+      ; Clear X position.
       eor rXPOS, rXPOS
-      out DATAPORT, rYPOS
+
+      ; Set high address latch to Y position.
+      ;_LDI r1, 1
+      mov r1, rYPOS
+      rcall set_hi_addr_latch
+
+      ; Set address port to X position.
       out ADDRPORT, rXPOS
-      sbi CTRLPORT, A18PIN
-      cbi CTRLPORT, A17PIN
-      cbi CTRLPORT, A16PIN
+
+      ; Set FBRAM address enable.
+      ADDRESS_FBRAM
+
       nop
       nop
       nop
@@ -587,10 +762,8 @@ pixel_loop:
       ;brne pixel_loop
 
       OE_OFF
-      cbi CTRLPORT, A18PIN
-      cbi CTRLPORT, A17PIN
-      cbi CTRLPORT, A16PIN
       out CTL2PORT, rCTL2BITS
+      ADDRESS_VDU
 
 ; ------------------------------------------------------
       rjmp end_line                             ; [2]
@@ -603,6 +776,49 @@ pixel_loop:
 ;88   YD Y88888P VP   V8P Y8888D' Y88888P 88   YD Y888888P VP   V8P  Y888P
 
 compose_frame:
+      rjmp end_line                             ; [2]
+; === Test Code ===============================================================
+
+      ; Clear X position.
+      eor rXPOS, rXPOS
+
+      ; Set high address latch to Y position.
+      mov r1, rYPOS
+      rcall set_hi_addr_latch
+
+copy_loop:
+      dec rXPOS
+
+      ; Set address port to X position.
+      out ADDRPORT, rXPOS
+
+      ; Copy VRAM value into FBRAM.
+      ADDRESS_VRAM
+      ldi rTEMP, DATABIT_DDR_INPUT
+      out DATADDR, rTEMP
+      OE_ON
+      out CTL2PORT, rCTL2BITS
+      in rTEMP2, DATAPORT
+      OE_OFF
+      out CTL2PORT, rCTL2BITS
+      ADDRESS_FBRAM
+      ldi rTEMP, DATABIT_DDR_OUTPUT
+      out DATADDR, rTEMP
+      out DATAPORT, rTEMP2
+      WE_ON
+      out CTL2PORT, rCTL2BITS
+      nop
+      WE_OFF
+      out CTL2PORT, rCTL2BITS
+
+      _CPI rXPOS, 0
+      brne copy_loop
+
+      OE_OFF
+      out CTL2PORT, rCTL2BITS
+      ADDRESS_VDU
+
+; =============================================================================
       rjmp end_line                             ; [2]
 
 ;d8888b. db       .d8b.  d8b   db db   dD d888888b d8b   db  d888b
