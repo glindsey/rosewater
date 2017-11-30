@@ -58,7 +58,7 @@
 #define DATABIT_DDR_INIT            DATABIT_DDR_INPUT
 
 ; === Bitmasks for Control Port =================
-#define CTRLBIT_PORT_INIT           (0b10111000)
+#define CTRLBIT_PORT_INIT           (0b00111000)
 #define CTRLBIT_DDR_INPUT           (0b00000000)
 #define CTRLBIT_DDR_OUTPUT          (0b11111111)
 #define CTRLBIT_DDR_INIT            CTRLBIT_DDR_OUTPUT
@@ -88,21 +88,22 @@
 
 ; === Bitmasks for Control Port 2 ===============
 #define CTL2BIT_PORT_INIT           (0b11111111)
-#define CTL2BIT_DDR_INPUT           (0b00000000)
-#define CTL2BIT_DDR_OUTPUT          (0b00001110)
-#define CTL2BIT_DDR_INIT            CTL2BIT_DDR_OUTPUT
+#define CTL2BIT_DDR_INIT            (0b00011110)
 
 #define CTL2BIT_MASK                (0b00001111)
 #define ENABLEBIT_MASK              (0b00000110)
+#define DACENBIT_MASK               (0b00010000)
 #define DEBUGBIT_MASK               (0b00001000)
 #define OEBIT_MASK                  (0b00000100)
 #define WEBIT_MASK                  (0b00000010)
 
 #define NOT_ENABLEBIT_MASK          (0b11111001)
+#define NOT_DACENBIT_MASK           (0b11101111)
 #define NOT_DEBUGBIT_MASK           (0b11110111)
 #define NOT_OEBIT_MASK              (0b11111011)
 #define NOT_WEBIT_MASK              (0b11111101)
 
+#define DACENPIN                    4
 #define DEBUGPIN                    3
 #define OEPIN                       2
 #define WEPIN                       1
@@ -143,16 +144,10 @@
       cbi CTRLPORT, A16PIN
 .endm
 
-.macro ADDRESS_PALRAML
+.macro ADDRESS_PALRAM
       sbi CTRLPORT, A18PIN
       sbi CTRLPORT, A17PIN
       cbi CTRLPORT, A16PIN
-.endm
-
-.macro ADDRESS_PALRAMH
-      sbi CTRLPORT, A18PIN
-      sbi CTRLPORT, A17PIN
-      sbi CTRLPORT, A16PIN
 .endm
 
 .macro SET_DATA_INPUT
@@ -189,6 +184,14 @@
       sbi CTL2PORT, DEBUGPIN
 .endm
 
+.macro DAC_ENABLE  ; 1 cycle
+      cbi CTL2PORT, DACENPIN
+.endm
+
+.macro DAC_DISABLE  ; 1 cycle
+      sbi CTL2PORT, DACENPIN
+.endm
+
 .macro OE_ON  ; 1 cycle
       cbi CTL2PORT, OEPIN
 .endm
@@ -218,7 +221,7 @@
 .macro IMMED_TOGGLE_SYNC_PIN ; 5 cycles
       LOCAL is_set
       LOCAL done
-      mov rTEMP, rCTRLBITS          ; [1]
+      in rTEMP, CTRLPORT            ; [1]
       andi rTEMP, SYNCBIT_MASK      ; [1]
       brne is_set                   ; [1] if clear, [2] if set
       sbi CTRLPORT, SYNCPIN         ; [1] if clear
@@ -255,6 +258,7 @@ done:
 .macro READ_DATA_INTO reg:req
       SET_DATA_INPUT
       OE_ON
+      nop
       in \reg, DATAPORT
       OE_OFF
 .endm
@@ -291,7 +295,6 @@ set_hi_addr_latch:
       out DATADDR, rTEMP3
       out DATAPORT, r1
       sbi CTRLPORT, HALLATPIN
-      nop
       nop
       cbi CTRLPORT, HALLATPIN
       out DATAPORT, rTEMP2
@@ -337,7 +340,11 @@ setup_palette:
       ; It probably already is, but let's do it anyway.
       sbi CTRLPORT, VDRAWPIN
 
-      ADDRESS_PALRAML
+      ADDRESS_PALRAM
+
+      ; Set high address latch to 0x80 (for high bytes).
+      _LDI r1, 0x80
+      rcall set_hi_addr_latch
 
       ; Loop through low addresses and set data = address for now.
       ldi rTEMP, 0
@@ -354,7 +361,9 @@ palette_set_loop_low:
       cpi rTEMP, 0
       brne palette_set_loop_low
 
-      ADDRESS_PALRAMH
+      ; Set high address latch to 0x00 (for low bytes).
+      _LDI r1, 0x00
+      rcall set_hi_addr_latch
 
       ; Loop through low addresses and set data = address for now.
       ldi rTEMP, 0
@@ -501,9 +510,6 @@ fbram_set_loop_x:
       out ADDRPORT, rXPOS
       mov rTEMP2, rXPOS
       add rTEMP2, rYPOS
-      lsr rTEMP2
-      lsr rTEMP2
-      lsr rTEMP2
       out DATAPORT, rTEMP2
       WE_ON
       _NOP 4
@@ -641,24 +647,30 @@ loop:
 
 .global TIMER1_COMPA_vect
 TIMER1_COMPA_vect:
-      out CTRLPORT, rCTRLBITS                   ; [1] -- start of HSYNC
-      out ADDRDDR, rADDRDDR                     ; [1]
-      out DATADDR, rDATADDR                     ; [1]
+      ; Start of front porch - 1.5 uS - 43 cycles
+      ; Set control port lines as appropriate.
+      out CTRLPORT, rCTRLBITS                   ; [043 -01 =042]
 
-      ; +5 cycles into HSYNC here
-      sbrs rSTATBITS, STATBIT_DISP              ; [3] for this and below line
-        rjmp non_display_line                   ;
+      ; Finish up front porch
+      _NOP 37                                   ; [042 -37 =005]
+
+      IMMED_TOGGLE_SYNC_PIN                     ; [005 -05 =000]
+      ; Start of sync tip - 4.7uS - 135 cycles
+
+      sbrs rSTATBITS, STATBIT_DISP              ; [135 -03 =132]
+      rjmp non_display_line                     ;
 
 display_line:
-      ; +8 cycles into HSYNC here
-      mov rYPOS, rLINECOUNTER                   ; [1]
-      mov rTEMP2, rCTRLBITS                     ; [1]
+      ; 132 cycles of HSYNC left
+      mov rYPOS, rLINECOUNTER                   ; [132 -01 =131]
+      mov rTEMP2, rCTRLBITS                     ; [131 -01 =130]
 
       ; Increment rLINECOUNTER by one.
-      inc rLINECOUNTER                          ; [1]
+      inc rLINECOUNTER                          ; [130 -01 =129]
 
-      cpi rLINECOUNTER, 240                     ; [1]
-      brne skip_setup_blanking_period          ; [1] if ==, [2] if !=
+      cpi rLINECOUNTER, 240                     ; [129 -01 =128]
+                                                ; [     ==     ] [     !=     ]
+      brne skip_setup_vblank                    ; [128 -01 =127] [128 -02 =126]
 
 ;d888888b d8b   db d888888b d888888b   d8888b. db       .d8b.  d8b   db db   dD
 ;  `88'   888o  88   `88'   `~~88~~'   88  `8D 88      d8' `8b 888o  88 88 ,8P'
@@ -667,40 +679,37 @@ display_line:
 ;  .88.   88  V888   .88.      88      88   8D 88booo. 88   88 88  V888 88 `88.
 ;Y888888P VP   V8P Y888888P    YP      Y8888P' Y88888P YP   YP VP   V8P YP   YD
 
-setup_blanking_period:
+setup_vblank:
       ; If result is 240:
       ;   - reset rLINECOUNTER to 0
-      eor rLINECOUNTER, rLINECOUNTER            ; [1] if ==
+      eor rLINECOUNTER, rLINECOUNTER            ; [127 -01 =126]
       ;   - clear rSTATBITS:DISP
-      andi rSTATBITS, NOT_STATBIT_DISP_MASK     ; [1] if ==
+      andi rSTATBITS, NOT_STATBIT_DISP_MASK     ; [126 -01 =125]
       ;   - toggle rSTATBITS:EVENFRAME
-      ldi rTEMP, STATBIT_EVENFRAME_MASK         ; [1] if ==
-      eor rSTATBITS, rTEMP                      ; [1] if ==
+      ldi rTEMP, STATBIT_EVENFRAME_MASK         ; [125 -01 =124]
+      eor rSTATBITS, rTEMP                      ; [124 -01 =123]
       ;   - turn on ~VBLANK control line
-      VBLANK_ON                                 ; [1] if ==
+      VBLANK_ON                                 ; [123 -01 =122]
       ;   - turn off ~VDRAW control line
-      VDRAW_OFF                                 ; [1] if ==
+      VDRAW_OFF                                 ; [122 -01 =121]
       ;   - turn off OE/WE lines
-      OE_AND_WE_OFF                             ; [1] if ==
-      rjmp after_setup_blanking_period          ; [2] if ==
+      OE_AND_WE_OFF                             ; [121 -01 =120]
+      rjmp after_setup_vblank                   ; [120 -02 =118]
 
-skip_setup_blanking_period:
-      _NOP 8                                    ; [8] if != (timing match)
+skip_setup_vblank:
+      _NOP 8                                    ;                [126 -08 =118]
 
-after_setup_blanking_period:
+after_setup_vblank:
 
-      ; +22 cycles into HSYNC HERE
+      ; 118 cycles of HSYNC left
 
       ; Finish the H-sync pulse here.
       ; This can be filled in with whatever calculations we care to do.
-      _NOP 112                                  ; 22+[112]+3 cycles --> 4.8uS H-sync
-      IMMED_TOGGLE_SYNC_PIN                     ; [5]
-      ;TOGGLE_SYNC_BIT                           ; [2]
-      ;out CTRLPORT, rCTRLBITS                   ; [1]
-      ;TOGGLE_SYNC_BIT
-      ; +0 cycles after HSYNC here
+      _NOP 113                                  ; [118 -113 =005]
+      IMMED_TOGGLE_SYNC_PIN                     ; [005 -005 =000]
 
-      _NOP 137                                  ; 0+[137] cycles --> 4.8uS front porch
+      ; Start of breezeway/colorburst/back porch = 4.7uS = 135 cycles
+      _NOP 135                                  ; Ah, just do it all here for now
 
       ; continue rendering here if a display line
 
@@ -719,32 +728,46 @@ after_setup_blanking_period:
 ; `Y88P'  ~Y8888P'    YP    88      ~Y8888P'    YP
 
 output_frame:
+      ; Wait a bit longer because...reasons???
+      _NOP 32
 
-; Wait a little while
-      _NOP 80
+      ; Start Left Border
+      ldi rTEMP, 0xFF
+      out DATAPORT, rTEMP
+      SET_DATA_OUTPUT
+      DAC_ENABLE
 
       ; Clear X position.
       eor rXPOS, rXPOS
 
-      ; Set high address latch to Y position.
+      ; Set HAL to Y position.
       mov r1, rYPOS
       rcall set_hi_addr_latch
 
       ; Set address port to X position.
       out ADDRPORT, rXPOS
 
+      ; End Left Border
+      _NOP 10
+      SET_DATA_INPUT
+
       ; Set FBRAM address enable.
       ADDRESS_FBRAM
       OE_ON
 
 pixel_loop:
-.rept 256
+      ; Cyc/Pixel Num/Line
+      ; ========= ========
+      ;         6      230
+      ;         5      270
+      ;         4      340
+.rept 230
       out ADDRPORT, rXPOS
       inc rXPOS
-      _NOP 3
+      _NOP 4
 .endr
-      ;brne pixel_loop
 
+      DAC_DISABLE
       OE_OFF
       ADDRESS_VDU
 
@@ -763,12 +786,12 @@ compose_frame:
 ; === Test Code ===============================================================
 
       ; Clear X position.
-      _LDI rXPOS, 32
+      _LDI rXPOS, 4
      ;eor rXPOS, rXPOS
 
       ; Set high address latch to Y position.
       mov r1, rYPOS
-      rcall set_hi_addr_latch
+      call set_hi_addr_latch
 
 copy_loop:
       dec rXPOS
@@ -799,47 +822,55 @@ copy_loop:
 ;Y8888P' Y88888P YP   YP VP   V8P YP   YD Y888888P VP   V8P  Y888P
 
 non_display_line:
-      ; +8 cycles into HSYNC here
+      ; 132 cycles of HSYNC left
 
-      ; Of the 22 non-display lines:
+      ; Of the 22 OR 23 non-display lines:
       ; 00-01: Bottom border lines
       ; 02-04: Pre-render blanking lines
       ; 05-07: VSYNC lines
       ; 08-21: Post-render blanking lines
+      ; 22: Post-render blanking line on ODD frames only
 
       ; Load the jump address into Z but don't jump just yet
-      ldi ZL, lo8(non_display_line_table)       ; [1]
-      ldi ZH, hi8(non_display_line_table)       ; [1]
-      add ZL, rLINECOUNTER                      ; [1]
-      adc ZH, rZERO                             ; [1]
+      ldi ZL, lo8(non_display_line_table)       ; [132 -01 =131]
+      ldi ZH, hi8(non_display_line_table)       ; [131 -01 =130]
+      add ZL, rLINECOUNTER                      ; [130 -01 =129]
+      adc ZH, rZERO                             ; [129 -01 =128]
       ; TEMPORARY
 
       ; If this is line 04, toggle SYNC for the next line.
-      cpi rLINECOUNTER, 4                       ; [1]
-      brne skip_set_vsync                       ; [1] if ==, [2] if !=
+      cpi rLINECOUNTER, 4                       ; [128 -01 =127]
+                                                ; [     ==     ] [     !=     ]
+      brne skip_set_vsync                       ; [127 -01 =126] [127 -02 =125]
 set_vsync:
-      TOGGLE_SYNC_BIT                           ; [3] if ==
-      rjmp after_set_vsync                      ; [2] if ==
+      TOGGLE_SYNC_BIT                           ; [126 -03 =123]
+      rjmp after_set_vsync                      ; [123 -02 =121]
 skip_set_vsync:
-      _NOP 3                                    ; [3] to even out timing
+      _NOP 4                                    ;                [125 -04 =121]
 after_set_vsync:
 
       ; If this is line 07, toggle SYNC for the next line.
-      cpi rLINECOUNTER, 7                       ; [1]
-      brne skip_clear_vsync                     ; [1] if ==, [2] if !=
+      cpi rLINECOUNTER, 7                       ; [120 -01 =119]
+                                                ; [     ==     ] [     !=     ]
+      brne skip_clear_vsync                     ; [119 -01 =118] [119 -02 =117]
 clear_vsync:
-      TOGGLE_SYNC_BIT                           ; [3] if ==
-      rjmp after_clear_vsync                    ; [2] if ==
+      TOGGLE_SYNC_BIT                           ; [118 -03 =115]
+      rjmp after_clear_vsync                    ; [115 -02 =113]
 skip_clear_vsync:
-      _NOP 3                                    ; [3] to even out timing
+      _NOP 4                                    ;                [117 -04 =113]
 after_clear_vsync:
 
       ; Increment rLINECOUNTER by one.
-      inc rLINECOUNTER                          ; [1]
+      inc rLINECOUNTER                          ; [113 -01 =112]
 
-      ; +27 cycles into HSYNC here
+      ; Load 22 into the temp register.
+      ldi rTEMP, 22                             ; [112 -01 =111]
 
-      ; If result is 22:
+      ; If rSTATBITS:EVENFRAME is clear, add 1 to the temp register.
+      sbrs rSTATBITS, STATBIT_EVENFRAME         ; [111 -02 =109]
+      inc rTEMP
+
+      ; If line counter is equal to temp register:
       ;   - reset to 0
       ;   - set rSTATBITS:DISP for next line
       ;   - set ~VBLANK control line
@@ -847,8 +878,9 @@ after_clear_vsync:
       ;   - set ADDR/CTL2 lines to outputs
       ;   - clear ~OE, ~WE bits
       ;   - clear ~VDRAW control line if rSTATBITS:EVENFRAME is clear
-      cpi rLINECOUNTER, 22                      ; [1]
-      brne skip_start_display_lines             ; [1] if ==, [2] if !=
+      cp rLINECOUNTER, rTEMP                    ; [109 -01 =108]
+                                                ; [     ==     ] [     !=     ]
+      brne skip_setup_display                   ; [108 -01 =107] [108 -02 =106]
 
 ;d888888b d8b   db d888888b d888888b   d8888b. d888888b .d8888. d8888b.
 ;  `88'   888o  88   `88'   `~~88~~'   88  `8D   `88'   88'  YP 88  `8D
@@ -857,29 +889,24 @@ after_clear_vsync:
 ;  .88.   88  V888   .88.      88      88  .8D   .88.   db   8D 88
 ;Y888888P VP   V8P Y888888P    YP      Y8888D' Y888888P `8888Y' 88
 
-start_display_lines:
-      eor rLINECOUNTER, rLINECOUNTER            ; [1] if ==
-      ori rSTATBITS, STATBIT_DISP_MASK          ; [1] if ==
-      ori rCTRLBITS, VBLANKBIT_MASK             ; [1] if ==
-      ldi rADDRDDR, ADDRBIT_DDR_OUTPUT          ; [1] if ==
-      ldi rDATADDR, DATABIT_DDR_INPUT           ; [1] if ==
-      OE_AND_WE_OFF                             ; [1] if ==
-      sbrs rSTATBITS, STATBIT_EVENFRAME         ; [2] for this and below
+setup_display:
+      eor rLINECOUNTER, rLINECOUNTER            ; [107 -01 =106]
+      ori rSTATBITS, STATBIT_DISP_MASK          ; [106 -01 =105]
+      ori rCTRLBITS, VBLANKBIT_MASK             ; [105 -01 =104]
+      ldi rADDRDDR, ADDRBIT_DDR_OUTPUT          ; [104 -01 =103]
+      ldi rDATADDR, DATABIT_DDR_INPUT           ; [103 -01 =102]
+      OE_AND_WE_OFF                             ; [102 -02 =100]
+      sbrs rSTATBITS, STATBIT_EVENFRAME         ; [100 -02 =098]
       andi rCTRLBITS, NOT_VDRAWBIT_MASK
-      rjmp after_start_display_lines            ; [2] if ==
-skip_start_display_lines:
-      _NOP 8                                    ; [8] if != (timing match)
-after_start_display_lines:
-
-      ; +35 cycles into HSYNC here
+      rjmp after_setup_display                  ; [098 -02 =097]
+skip_setup_display:
+      _NOP 9                                    ; [106 -09 =097]
+after_setup_display:
 
       ; Finish the H-sync pulse here.
       ; This can be filled in with whatever calculations we care to do.
-      _NOP 109                                  ; 34+[109]+3 cycles --> 4.8uS
-      IMMED_TOGGLE_SYNC_PIN                     ; [5]
-      ;TOGGLE_SYNC_BIT                           ; [2]
-      ;out CTRLPORT, rCTRLBITS                   ; [1]
-      ;TOGGLE_SYNC_BIT                           ; [2]
+      _NOP 92                                   ; [097 -92 =005]
+      IMMED_TOGGLE_SYNC_PIN                     ; [005 -05 =000]
 
       ; continue here if not a display line
       rjmp end_line ; -- TEMPORARY
@@ -911,6 +938,7 @@ non_display_line_table:                         ; [2] for one of below jumps
       rjmp post_render_blanking_line      ; 19
       rjmp post_render_blanking_line      ; 20
       rjmp post_render_blanking_line      ; 21
+      rjmp post_render_blanking_line      ; 22 (for odd frames)
 
       ; +4 cycles after HSYNC here (for whichever branch is taken)
 bottom_border_line:
