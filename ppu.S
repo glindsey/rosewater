@@ -458,7 +458,6 @@ fbram_clear_loop_y:
       mov r1, rYPOS
       rcall set_hi_addr_latch
 
-      ; Loop through low addresses and set data = (xpos + ypos) >> 3 for now.
       _LDI rXPOS, 0
 
 fbram_clear_loop_x:
@@ -502,14 +501,22 @@ fbram_set_loop_y:
       mov r1, rYPOS
       rcall set_hi_addr_latch
 
-      ; Loop through low addresses and set data = (xpos + ypos) >> 3 for now.
+      ; Loop through low addresses and set data lines to make a tartan.
+      ; = (xpos + ypos) >> 3 for now.
       _LDI rXPOS, 0
 
 fbram_set_loop_x:
       dec rXPOS
       out ADDRPORT, rXPOS
-      mov rTEMP2, rXPOS
-      add rTEMP2, rYPOS
+      mov rTEMP, rXPOS
+      lsl rTEMP
+      andi rTEMP, 0xF8
+      mov rTEMP2, rYPOS
+      lsr rTEMP2
+      lsr rTEMP2
+      lsr rTEMP2
+      andi rTEMP2, 0x07
+      or rTEMP2, rTEMP
       out DATAPORT, rTEMP2
       WE_ON
       _NOP 4

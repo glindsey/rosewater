@@ -1,5 +1,6 @@
 #!/bin/sh
 # Simple and stupid build script.
+# Should really be replaced by a Makefile soon.
 
-avr-gcc -mmcu=atmega644a -xassembler-with-cpp ppu.S -o ppu.elf && \
+avr-gcc -mmcu=atmega644a -xassembler-with-cpp ppu.S ppu_884_tilemap.S -o ppu.elf && \
 avr-objcopy -j .text -j .data -O ihex ppu.elf ppu.hex
