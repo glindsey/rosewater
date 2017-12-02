@@ -1,6 +1,10 @@
-#include "avr/io.h"
-
 .altmacro
+
+#include "avr/io.h"
+#include "./ppu_constants.inc"
+#include "./ppu_registers.inc"
+#include "./ppu_vram.inc"
+#include "./utilities.inc"
 
 ;d8888b. d88888b d88888b d888888b d8b   db d88888b .d8888.
 ;88  `8D 88'     88'       `88'   888o  88 88'     88'  YP
@@ -13,12 +17,6 @@
 ; =========================================================
 #define rZERO           r0
 
-#define rYPOS           r14
-#define rXPOS           r15
-
-#define rTEMP           r16
-#define rTEMP2          r17
-#define rTEMP3          r18
 
 #define rLINECOUNTER    r19
 #define rSTATBITS       r20
@@ -26,87 +24,6 @@
 #define rADDRDDR        r22
 #define rDATADDR        r23
 
-#define STATBIT_DISP                      7   ; Current line is a display line
-#define STATBIT_HSYNC                     6   ; LOW indicates HSYNC active
-#define STATBIT_VSYNC                     5   ; LOW indicates VSYNC active
-#define STATBIT_EVENFRAME                 0   ; Current frame is an even frame
-#define STATBIT_DISP_MASK           (0b10000000)
-#define STATBIT_EVENFRAME_MASK      (0b00000001)
-#define NOT_STATBIT_DISP_MASK       (0b01111111)
-#define NOT_STATBIT_EVENFRAME_MASK  (0b11111110)
-
-
-#define ADDRDDR   _SFR_IO_ADDR(DDRA)
-#define ADDRPORT  _SFR_IO_ADDR(PORTA)
-#define DATADDR   _SFR_IO_ADDR(DDRC)
-#define DATAPORT  _SFR_IO_ADDR(PORTC)
-#define CTRLDDR   _SFR_IO_ADDR(DDRD)
-#define CTRLPORT  _SFR_IO_ADDR(PORTD)
-#define CTL2DDR   _SFR_IO_ADDR(DDRB)
-#define CTL2PORT  _SFR_IO_ADDR(PORTB)
-
-; === Bitmasks for Address Port =================
-#define ADDRBIT_PORT_INIT           (0b11111111) ; testing, normally (0b00000000)
-#define ADDRBIT_DDR_INPUT           (0b00000000)
-#define ADDRBIT_DDR_OUTPUT          (0b11111111)
-#define ADDRBIT_DDR_INIT            ADDRBIT_DDR_OUTPUT
-
-; === Bitmasks for Data/High Address Port =======
-#define DATABIT_PORT_INIT           (0b11111111)
-#define DATABIT_DDR_INPUT           (0b00000000)
-#define DATABIT_DDR_OUTPUT          (0b11111111)
-#define DATABIT_DDR_INIT            DATABIT_DDR_INPUT
-
-; === Bitmasks for Control Port =================
-#define CTRLBIT_PORT_INIT           (0b00111000)
-#define CTRLBIT_DDR_INPUT           (0b00000000)
-#define CTRLBIT_DDR_OUTPUT          (0b11111111)
-#define CTRLBIT_DDR_INIT            CTRLBIT_DDR_OUTPUT
-
-#define CTRLBIT_MASK                (0b11111111)
-#define SYNCBIT_MASK                (0b10000000)
-#define HALLATBIT_MASK              (0b01000000)
-#define CPUENBIT_MASK               (0b00100000)
-#define VBLANKBIT_MASK              (0b00010000)
-#define VDRAWBIT_MASK               (0b00001000)
-#define EXTRAADDR_MASK              (0b00000111)
-#define NOT_SYNCBIT_MASK            (0b01111111)
-#define NOT_HALLATBIT_MASK          (0b10111111)
-#define NOT_CPUENBIT_MASK           (0b11011111)
-#define NOT_VBLANKBIT_MASK          (0b11101111)
-#define NOT_VDRAWBIT_MASK           (0b11110111)
-#define NOT_EXTRAADDR_MASK          (0b11111000)
-
-#define SYNCPIN    7
-#define HALLATPIN  6
-#define CPUENPIN   5
-#define VBLANKPIN  4
-#define VDRAWPIN   3
-#define A18PIN     2
-#define A17PIN     1
-#define A16PIN     0
-
-; === Bitmasks for Control Port 2 ===============
-#define CTL2BIT_PORT_INIT           (0b11111111)
-#define CTL2BIT_DDR_INIT            (0b00011110)
-
-#define CTL2BIT_MASK                (0b00001111)
-#define ENABLEBIT_MASK              (0b00000110)
-#define DACENBIT_MASK               (0b00010000)
-#define DEBUGBIT_MASK               (0b00001000)
-#define OEBIT_MASK                  (0b00000100)
-#define WEBIT_MASK                  (0b00000010)
-
-#define NOT_ENABLEBIT_MASK          (0b11111001)
-#define NOT_DACENBIT_MASK           (0b11101111)
-#define NOT_DEBUGBIT_MASK           (0b11110111)
-#define NOT_OEBIT_MASK              (0b11111011)
-#define NOT_WEBIT_MASK              (0b11111101)
-
-#define DACENPIN                    4
-#define DEBUGPIN                    3
-#define OEPIN                       2
-#define WEPIN                       1
 
 ; === Timing Values =============================
       ; At 20MHz:
@@ -125,40 +42,6 @@
 ;88  88  88 88~~~88 8b      88`8b   88    88   `Y8b.
 ;88  88  88 88   88 Y8b  d8 88 `88. `8b  d8' db   8D
 ;YP  YP  YP YP   YP  `Y88P' 88   YD  `Y88P'  `8888Y'
-
-.macro ADDRESS_VDU
-      cbi CTRLPORT, A18PIN
-      cbi CTRLPORT, A17PIN
-      cbi CTRLPORT, A16PIN
-.endm
-
-.macro ADDRESS_VRAM
-      cbi CTRLPORT, A18PIN
-      sbi CTRLPORT, A17PIN
-      cbi CTRLPORT, A16PIN
-.endm
-
-.macro ADDRESS_FBRAM
-      sbi CTRLPORT, A18PIN
-      cbi CTRLPORT, A17PIN
-      cbi CTRLPORT, A16PIN
-.endm
-
-.macro ADDRESS_PALRAM
-      sbi CTRLPORT, A18PIN
-      sbi CTRLPORT, A17PIN
-      cbi CTRLPORT, A16PIN
-.endm
-
-.macro SET_DATA_INPUT
-      ldi rTEMP, DATABIT_DDR_INPUT
-      out DATADDR, rTEMP
-.endm
-
-.macro SET_DATA_OUTPUT
-      ldi rTEMP, DATABIT_DDR_OUTPUT
-      out DATADDR, rTEMP
-.endm
 
 .macro VBLANK_ON ; 1 cycle
       andi rCTRLBITS, NOT_VBLANKBIT_MASK
@@ -192,27 +75,6 @@
       sbi CTL2PORT, DACENPIN
 .endm
 
-.macro OE_ON  ; 1 cycle
-      cbi CTL2PORT, OEPIN
-.endm
-
-.macro OE_OFF  ; 1 cycle
-      sbi CTL2PORT, OEPIN
-.endm
-
-.macro WE_ON  ; 1 cycle
-      cbi CTL2PORT, WEPIN
-.endm
-
-.macro WE_OFF  ; 1 cycle
-      sbi CTL2PORT, WEPIN
-.endm
-
-.macro OE_AND_WE_OFF  ; 2 cycles
-      sbi CTL2PORT, OEPIN
-      sbi CTL2PORT, WEPIN
-.endm
-
 .macro TOGGLE_SYNC_BIT  ; 2 cycles
       ldi rTEMP, SYNCBIT_MASK ; [1]
       eor rCTRLBITS, rTEMP    ; [1]
@@ -231,75 +93,12 @@ is_set:
 done:
 .endm
 
-; Uses rTEMP to load an immediate into a low (r0-r15) register.
-; Cycles: 2
-;
-.macro _LDI reg:req, val:req
-      ldi rTEMP, \val
-      mov \reg, rTEMP
-.endm
-
-; Uses rTEMP to compare a low (r0-r15) register with an immediate.
-; Cycles: 2
-;
-.macro _CPI reg:req, val:req
-      mov rTEMP, \reg
-      cpi rTEMP, \val
-.endm
-
-; Inserts a variable number of NOP statements.
-.macro _NOP val:req
-.rept val
-      nop
-.endr
-.endm
-
-; Reads from the data port into a high (r16-r31) register.
-.macro READ_DATA_INTO reg:req
-      SET_DATA_INPUT
-      OE_ON
-      nop
-      in \reg, DATAPORT
-      OE_OFF
-.endm
-
-; Writes to the data port from a high (r16-r31) register.
-.macro WRITE_DATA_FROM reg:req
-      SET_DATA_OUTPUT
-      out DATAPORT, \reg
-      WE_ON
-      nop
-      WE_OFF
-.endm
-
 ;.d8888. db    db d8888b. d8888b.  .d88b.  db    db d888888b d888888b d8b   db d88888b .d8888.
 ;88'  YP 88    88 88  `8D 88  `8D .8P  Y8. 88    88 `~~88~~'   `88'   888o  88 88'     88'  YP
 ;`8bo.   88    88 88oooY' 88oobY' 88    88 88    88    88       88    88V8o 88 88ooooo `8bo.
 ;  `Y8b. 88    88 88~~~b. 88`8b   88    88 88    88    88       88    88 V8o88 88~~~~~   `Y8b.
 ;db   8D 88b  d88 88   8D 88 `88. `8b  d8' 88b  d88    88      .88.   88  V888 88.     db   8D
 ;`8888Y' ~Y8888P' Y8888P' 88   YD  `Y88P'  ~Y8888P'    YP    Y888888P VP   V8P Y88888P `8888Y'
-
-; set_hi_addr_latch
-; ---------------------------------------------------------
-; Inputs:
-;     r1 - Value to set high address latch to
-; Outputs:
-;     none
-; Clobbers:
-;     rTEMP, rTEMP2, rTEMP3
-;
-set_hi_addr_latch:
-      in rTEMP, DATADDR
-      in rTEMP2, DATAPORT
-      ldi rTEMP3, DATABIT_DDR_OUTPUT
-      out DATADDR, rTEMP3
-      out DATAPORT, r1
-      sbi CTRLPORT, HALLATPIN
-      nop
-      cbi CTRLPORT, HALLATPIN
-      out DATAPORT, rTEMP2
-      out DATADDR, rTEMP
-      ret
 
 boot_wait:
       ; A simple wait for RAM to stabilize before attempting writes.
@@ -311,230 +110,6 @@ boot_wait_inner_loop:
       brne boot_wait_inner_loop
       dec rTEMP
       brne boot_wait_outer_loop
-      ret
-
-debug_wiggle:
-      ; Wiggle the debug pin a bit so I can see it on the scope.
-      ldi rTEMP, 32
-debug_loop:
-      DEBUG_ON
-      _NOP 3
-      DEBUG_OFF
-      _NOP 3
-      dec rTEMP
-      brne debug_loop
-      ret
-
-setup_palette:
-      rcall debug_wiggle
-      ; Turn on debug pin so I can figure out what's going on.
-      DEBUG_ON
-
-      ; Right now palette RAM high address is forced to 00.
-
-      ; Set data lines to outputs.
-      ldi rTEMP, DATABIT_DDR_OUTPUT
-      out DATADDR, rTEMP
-
-      ; Turn VDRAW off (by setting it high).
-      ; It probably already is, but let's do it anyway.
-      sbi CTRLPORT, VDRAWPIN
-
-      ADDRESS_PALRAM
-
-      ; Set high address latch to 0x80 (for high bytes).
-      _LDI r1, 0x80
-      rcall set_hi_addr_latch
-
-      ; Loop through low addresses and set data = address for now.
-      ldi rTEMP, 0
-      ;ldi rTEMP2, 255
-
-palette_set_loop_low:
-      dec rTEMP
-      out ADDRPORT, rTEMP
-      mov rTEMP2, rTEMP
-      out DATAPORT, rTEMP2
-      WE_ON
-      _NOP 4
-      WE_OFF
-      cpi rTEMP, 0
-      brne palette_set_loop_low
-
-      ; Set high address latch to 0x00 (for low bytes).
-      _LDI r1, 0x00
-      rcall set_hi_addr_latch
-
-      ; Loop through low addresses and set data = address for now.
-      ldi rTEMP, 0
-      ;ldi rTEMP2, 255
-
-palette_set_loop_high:
-      dec rTEMP
-      out ADDRPORT, rTEMP
-      mov rTEMP2, rTEMP
-      out DATAPORT, rTEMP2
-      WE_ON
-      _NOP 4
-      WE_OFF
-      cpi rTEMP, 0
-      brne palette_set_loop_high
-
-      ; Reset data lines back to inputs with pullups enabled.
-      ldi rTEMP, DATABIT_DDR_INPUT
-      out DATADDR, rTEMP
-      ldi rTEMP, DATABIT_PORT_INIT
-      out DATAPORT, rTEMP
-
-      ADDRESS_VDU
-
-      ; Turn off debug pin.
-      DEBUG_OFF
-
-      ret
-
-test_setup_vram:
-      ; Set data lines to outputs.
-      ldi rTEMP, DATABIT_DDR_OUTPUT
-      out DATADDR, rTEMP
-
-      ADDRESS_VRAM
-
-      ; Loop through high addresses, 255 to 0.
-      _LDI rYPOS, 0
-
-test_vram_set_loop_y:
-      dec rYPOS
-
-      ; Set high address latch to Y position.
-      mov r1, rYPOS
-      rcall set_hi_addr_latch
-
-      ; Loop through low addresses and set data = (xpos + ypos) >> 3 for now.
-      _LDI rXPOS, 0
-
-test_vram_set_loop_x:
-      dec rXPOS
-      out ADDRPORT, rXPOS
-      mov rTEMP2, rXPOS
-      add rTEMP2, rYPOS
-      lsr rTEMP2
-      lsr rTEMP2
-      lsr rTEMP2
-      out DATAPORT, rTEMP2
-      WE_ON
-      _NOP 4
-      WE_OFF
-      _CPI rXPOS, 0
-      brne test_vram_set_loop_x
-
-      _CPI rYPOS, 0
-      brne test_vram_set_loop_y
-
-      ; Reset data lines back to inputs with pullups enabled.
-      ldi rTEMP, DATABIT_DDR_INPUT
-      out DATADDR, rTEMP
-      ldi rTEMP, DATABIT_PORT_INIT
-      out DATAPORT, rTEMP
-
-      ADDRESS_VDU
-
-      ret
-
-clear_fbram:
-      ; Set data lines to outputs.
-      ldi rTEMP, DATABIT_DDR_OUTPUT
-      out DATADDR, rTEMP
-
-      ADDRESS_FBRAM
-
-      ; Loop through high addresses, 255 to 0.
-      _LDI rYPOS, 0
-
-fbram_clear_loop_y:
-      dec rYPOS
-
-      ; Set high address latch to Y position.
-      mov r1, rYPOS
-      rcall set_hi_addr_latch
-
-      _LDI rXPOS, 0
-
-fbram_clear_loop_x:
-      dec rXPOS
-      out ADDRPORT, rXPOS
-      ldi rTEMP2, 0
-      out DATAPORT, rTEMP2
-      WE_ON
-      _NOP 4
-      WE_OFF
-      _CPI rXPOS, 0
-      brne fbram_clear_loop_x
-
-      _CPI rYPOS, 0
-      brne fbram_clear_loop_y
-
-      ; Reset data lines back to inputs with pullups enabled.
-      ldi rTEMP, DATABIT_DDR_INPUT
-      out DATADDR, rTEMP
-      ldi rTEMP, DATABIT_PORT_INIT
-      out DATAPORT, rTEMP
-
-      ADDRESS_VDU
-
-      ret
-
-setup_fbram:
-      ; Set data lines to outputs.
-      ldi rTEMP, DATABIT_DDR_OUTPUT
-      out DATADDR, rTEMP
-
-      ADDRESS_FBRAM
-
-      ; Loop through high addresses, 255 to 0.
-      _LDI rYPOS, 0
-
-fbram_set_loop_y:
-      dec rYPOS
-
-      ; Set high address latch to Y position.
-      mov r1, rYPOS
-      rcall set_hi_addr_latch
-
-      ; Loop through low addresses and set data lines to make a tartan.
-      ; = (xpos + ypos) >> 3 for now.
-      _LDI rXPOS, 0
-
-fbram_set_loop_x:
-      dec rXPOS
-      out ADDRPORT, rXPOS
-      mov rTEMP, rXPOS
-      lsl rTEMP
-      andi rTEMP, 0xF8
-      mov rTEMP2, rYPOS
-      lsr rTEMP2
-      lsr rTEMP2
-      lsr rTEMP2
-      andi rTEMP2, 0x07
-      or rTEMP2, rTEMP
-      out DATAPORT, rTEMP2
-      WE_ON
-      _NOP 4
-      WE_OFF
-      _CPI rXPOS, 0
-      brne fbram_set_loop_x
-
-      _CPI rYPOS, 0
-      brne fbram_set_loop_y
-
-      ; Reset data lines back to inputs with pullups enabled.
-      ldi rTEMP, DATABIT_DDR_INPUT
-      out DATADDR, rTEMP
-      ldi rTEMP, DATABIT_PORT_INIT
-      out DATAPORT, rTEMP
-
-      ADDRESS_VDU
-
       ret
 
 
@@ -620,11 +195,9 @@ main:
 
       ; === RAM configuration ================================================
 
-      rcall boot_wait
-      rcall test_setup_vram
+      ;rcall boot_wait
       rcall setup_palette
-      ;rcall clear_fbram
-      rcall setup_fbram
+      rcall setup_vram
 
       ; === Registers ========================================================
       ; Set up registers for line tracking.
@@ -749,7 +322,7 @@ output_frame:
 
       ; Set HAL to Y position.
       mov r1, rYPOS
-      rcall set_hi_addr_latch
+      call set_hi_addr_latch
 
       ; Set address port to X position.
       out ADDRPORT, rXPOS
@@ -758,8 +331,8 @@ output_frame:
       _NOP 10
       SET_DATA_INPUT
 
-      ; Set FBRAM address enable.
-      ADDRESS_FBRAM
+      ; Set VRAM0 address enable.
+      ADDRESS_VRAM0
       OE_ON
 
 pixel_loop:
@@ -794,7 +367,7 @@ compose_frame:
 
       ; Clear X position.
       _LDI rXPOS, 4
-     ;eor rXPOS, rXPOS
+      ;eor rXPOS, rXPOS
 
       ; Set high address latch to Y position.
       mov r1, rYPOS
@@ -807,9 +380,9 @@ copy_loop:
       out ADDRPORT, rXPOS
 
       ; Copy VRAM value into FBRAM.
-      ADDRESS_VRAM
+      ADDRESS_VRAM1
       READ_DATA_INTO rTEMP
-      ADDRESS_FBRAM
+      ADDRESS_VRAM0
       WRITE_DATA_FROM rTEMP
 
       _CPI rXPOS, 0

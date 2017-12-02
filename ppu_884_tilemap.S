@@ -1,7 +1,7 @@
 .balign 0x10
 
-.global default_884_tilemap
-default_884_tilemap:
+.global tilemap_884_default
+tilemap_884_default:
 
 ;           .d88b.  db    db  .d88b.   .d88b.
 ; C8888D   .8P  88. `8b  d8' .8P  88. .8P  88.   C8888D
