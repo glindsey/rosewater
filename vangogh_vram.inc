@@ -1,9 +1,11 @@
 ; PPU VRAM access
 #pragma once
-#include "ppu_constants.inc"
+#include "vangogh_constants.inc"
 #include "utilities.inc"
 
-#define rYPOS           r14
+#define rYPOS           r12
+#define rXMAX           r13
+#define rXPOS2          r14
 #define rXPOS           r15
 
 .text
@@ -83,10 +85,10 @@
       WE_OFF
 .endm
 
-; Sets the high address latch to the value in r1.
+; Sets the high address latch to the value in r0.
 ;
 ; Inputs:
-;     r1     Contains the value to set high address latch to
+;     r0     Contains the value to set high address latch to
 ; Outputs:
 ;     none
 ; Clobbers:
@@ -98,7 +100,7 @@ set_hi_addr_latch:
       in rTEMP2, DATAPORT
       ldi rTEMP3, DATABIT_DDR_OUTPUT
       out DATADDR, rTEMP3
-      out DATAPORT, r1
+      out DATAPORT, r0
       sbi CTRLPORT, HALLATPIN
       nop
       cbi CTRLPORT, HALLATPIN
@@ -121,7 +123,7 @@ setup_palette:
       ADDRESS_PALRAM
 
       ; Set high address latch to 0x80 (for high bytes).
-      _LDI r1, 0x80
+      _LDI r0, 0x80
       call set_hi_addr_latch
 
       ; Loop through low addresses and set data = address for now.
@@ -140,7 +142,7 @@ palette_set_loop_low:
       brne palette_set_loop_low
 
       ; Set high address latch to 0x00 (for low bytes).
-      _LDI r1, 0x00
+      _LDI r0, 0x00
       call set_hi_addr_latch
 
       ; Loop through low addresses and set data = address for now.
@@ -153,7 +155,7 @@ palette_set_loop_high:
       mov rTEMP2, rTEMP
       out DATAPORT, rTEMP2
       WE_ON
-      _NOP 2
+      _NOP 4
       WE_OFF
       cpi rTEMP, 0
       brne palette_set_loop_high
@@ -183,7 +185,7 @@ vram_set_loop_y:
       dec rYPOS
 
       ; Set high address latch to Y position.
-      mov r1, rYPOS
+      mov r0, rYPOS
       call set_hi_addr_latch
 
       ; Loop through low addresses and set data lines to make a tartan.
@@ -247,7 +249,7 @@ clear_loop_y:
       dec rYPOS
 
       ; Set high address latch to Y position.
-      mov r1, rYPOS
+      mov r0, rYPOS
       call set_hi_addr_latch
 
       _LDI rXPOS, 0

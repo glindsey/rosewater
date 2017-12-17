@@ -1,6 +1,13 @@
 ; Utility macros
 #pragma once
-#include "ppu_constants.inc"
+
+; Universal Constant Definitions
+#define rCTEMP          r0
+#define rZERO           r1
+
+#define rTEMP           r16
+#define rTEMP2          r17
+#define rTEMP3          r18
 
 ; Uses rTEMP to load an immediate into a low (r0-r15) register.
 ; Cycles: 2
@@ -23,4 +30,12 @@
 .rept val
       nop
 .endr
+.endm
+
+.macro JUMP_TO table, offset
+ldi ZL, lo8(\table)
+ldi ZH, hi8(\table)
+add ZL, \offset
+adc ZH, rZERO
+ijmp
 .endm

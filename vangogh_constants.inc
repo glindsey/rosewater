@@ -1,6 +1,8 @@
 ; PPU constants
 #pragma once
 
+#define rZERO           r1
+
 #define rTEMP           r16
 #define rTEMP2          r17
 #define rTEMP3          r18
@@ -65,23 +67,26 @@
 #define A16PIN     0
 
 ; === Bitmasks for Control Port 2 ===============
-#define CTL2BIT_PORT_INIT           (0b11111111)
-#define CTL2BIT_DDR_INIT            (0b00011110)
+#define CTL2BIT_PORT_INIT           (0b11110111)
+#define CTL2BIT_DDR_INIT            (0b00011111)
 
 #define CTL2BIT_MASK                (0b00001111)
-#define ENABLEBIT_MASK              (0b00000110)
+#define ENABLEBIT_MASK              (0b00000101)
 #define DACENBIT_MASK               (0b00010000)
 #define DEBUGBIT_MASK               (0b00001000)
 #define OEBIT_MASK                  (0b00000100)
-#define WEBIT_MASK                  (0b00000010)
+#define CLOCKBIT_MASK               (0b00000010)
+#define WEBIT_MASK                  (0b00000001)
 
 #define NOT_ENABLEBIT_MASK          (0b11111001)
 #define NOT_DACENBIT_MASK           (0b11101111)
 #define NOT_DEBUGBIT_MASK           (0b11110111)
 #define NOT_OEBIT_MASK              (0b11111011)
-#define NOT_WEBIT_MASK              (0b11111101)
+#define NOT_CLOCKBIT_MASK           (0b11111101)
+#define NOT_WEBIT_MASK              (0b11111110)
 
 #define DACENPIN                    4
 #define DEBUGPIN                    3
 #define OEPIN                       2
-#define WEPIN                       1
+#define CLOCKPIN                    1
+#define WEPIN                       0
