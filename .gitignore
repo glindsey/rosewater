@@ -6,5 +6,5 @@
 *.lss
 *.map
 
-.vs/*
-Debug/*
+.vs/
+Debug/

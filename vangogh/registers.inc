@@ -6,6 +6,7 @@
 
 .EQU PPUREG_MODE_VRAM_DIRECT_6 = 0
 .EQU PPUREG_MODE_VRAM_DIRECT_5 = 1
+.EQU PPUREG_MODE_LINE_BUFFER   = 2
 
 .CSEG
 
@@ -63,11 +64,11 @@ ldi XH, HIGH(ppu_registers)
 
 ; Initializes the PPU registers to default values.
 init_ppu_registers:
-        SAVE_PPUREG_IMM PPUREG_MODE, PPUREG_MODE_VRAM_DIRECT_5
+        SAVE_PPUREG_IMM PPUREG_MODE, PPUREG_MODE_LINE_BUFFER
         ret
 
 .DSEG
-
+.ORG 0x0100
 ppu_registers:
 .BYTE 256
 

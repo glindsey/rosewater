@@ -87,27 +87,27 @@
       WE_OFF
 .ENDM
 
-; Sets the high address latch to the value in r0.
+; Sets the high address latch to the value in the specified register.
 ;
 ; Inputs:
-;     r0     Contains the value to set high address latch to
+;       @0     Register containing the value to set high address latch to
 ; Outputs:
-;     none
+;       none
 ; Clobbers:
-;     rTEMP, rTEMP2, rTEMP3
-;
-set_hi_addr_latch:
-      in rTEMP, DATADDR
-      in rTEMP2, DATAPORT
-      ldi rTEMP3, DATABIT_DDR_OUTPUT
-      out DATADDR, rTEMP3
-      out DATAPORT, r0
-      sbi CTRLPORT, HALLATPIN
-      nop
-      cbi CTRLPORT, HALLATPIN
-      out DATAPORT, rTEMP2
-      out DATADDR, rTEMP
-      ret
+;       rTEMP, rTEMP2, rTEMP3
+; Timing:
+;       9 cycles
+.MACRO SET_HAL
+    in rTEMP, DATADDR
+    in rTEMP2, DATAPORT
+    ldi rTEMP3, DATABIT_DDR_OUTPUT
+    out DATADDR, rTEMP3
+    out DATAPORT, @0
+    sbi CTRLPORT, HALLATPIN
+    cbi CTRLPORT, HALLATPIN
+    out DATAPORT, rTEMP2
+    out DATADDR, rTEMP
+.ENDM
 
 setup_palette:
       ; Right now palette RAM high address is forced to 00.
@@ -123,8 +123,8 @@ setup_palette:
       ADDRESS_PALRAM
 
       ; Set high address latch to 0x80 (for high bytes).
-      _LDI r0, 0x80
-      call set_hi_addr_latch
+      ldi rTEMP, 0x80
+      SET_HAL rTEMP
 
       ; Loop through low addresses and set data = address for now.
       ldi rTEMP, 0
@@ -142,8 +142,8 @@ palette_set_loop_low:
       brne palette_set_loop_low
 
       ; Set high address latch to 0x00 (for low bytes).
-      _LDI r0, 0x00
-      call set_hi_addr_latch
+      ldi rTEMP, 0x00
+      SET_HAL rTEMP
 
       ; Loop through low addresses and set data = address for now.
       ldi rTEMP, 0
@@ -185,8 +185,7 @@ vram_set_loop_y:
       dec rYPOS
 
       ; Set high address latch to Y position.
-      mov r0, rYPOS
-      call set_hi_addr_latch
+      SET_HAL rYPOS
 
       ; Loop through low addresses and set data lines to make a tartan.
       ; = (xpos + ypos) >> 3 for now.
@@ -248,8 +247,7 @@ clear_loop_y:
       dec rYPOS
 
       ; Set high address latch to Y position.
-      mov r0, rYPOS
-      call set_hi_addr_latch
+      SET_HAL rYPOS
 
       _LDI rXPOS, 0
 
