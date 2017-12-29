@@ -94,6 +94,9 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="882_cgafont.asm">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="vangogh.asm">
       <SubType>Code</SubType>
     </Compile>

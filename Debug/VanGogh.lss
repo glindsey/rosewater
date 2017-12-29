@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.7  C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm Fri Dec 29 11:43:18 2017
+AVRASM ver. 2.2.7  C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm Fri Dec 29 14:25:16 2017
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\Atmel\ATmega_DFP\1.2.203\avrasm\inc\m1284pdef.inc'
 C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(53): Including file 'C:\Users\greg\Documents\GitHub\rosewater\vangogh/constants.inc'
@@ -1252,40 +1252,40 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                  .CSEG
                                  .ORG 0x0000
 000000 940c 0046                     jmp RESET_vect				; 0
-000002 940c 0685                     jmp INT0_vect				; 1
-000004 940c 06a3                     jmp INT1_vect				; 2
-000006 940c 06a5                     jmp INT2_vect				; 3
-000008 940c 06a7                     jmp PCINT0_vect				; 4
-00000a 940c 06a9                     jmp PCINT1_vect				; 5
-00000c 940c 06ab                     jmp PCINT2_vect				; 6
-00000e 940c 06ad                     jmp PCINT3_vect				; 7
-000010 940c 06af                     jmp WDT_vect				; 8
-000012 940c 06b1                     jmp TIMER2_COMPA_vect		; 9
-000014 940c 06b3                     jmp TIMER2_COMPB_vect		; 10
-000016 940c 06b5                     jmp TIMER2_OVF_vect			; 11
-000018 940c 06b7                     jmp TIMER1_CAPT_vect        ; 12
+000002 940c 075d                     jmp INT0_vect				; 1
+000004 940c 077b                     jmp INT1_vect				; 2
+000006 940c 077d                     jmp INT2_vect				; 3
+000008 940c 077f                     jmp PCINT0_vect				; 4
+00000a 940c 0781                     jmp PCINT1_vect				; 5
+00000c 940c 0783                     jmp PCINT2_vect				; 6
+00000e 940c 0785                     jmp PCINT3_vect				; 7
+000010 940c 0787                     jmp WDT_vect				; 8
+000012 940c 0789                     jmp TIMER2_COMPA_vect		; 9
+000014 940c 078b                     jmp TIMER2_COMPB_vect		; 10
+000016 940c 078d                     jmp TIMER2_OVF_vect			; 11
+000018 940c 078f                     jmp TIMER1_CAPT_vect        ; 12
 00001a 940c 0191                     jmp TIMER1_COMPA_vect		; 13
-00001c 940c 06b9                     jmp TIMER1_COMPB_vect		; 14
-00001e 940c 06bb                     jmp TIMER1_OVF_vect			; 15
-000020 940c 06bd                     jmp TIMER0_COMPA_vect		; 16
-000022 940c 06bf                     jmp TIMER0_COMPB_vect		; 17
-000024 940c 06c1                     jmp TIMER0_OVF_vect			; 18
-000026 940c 06c3                     jmp SPI_STC_vect			; 19
-000028 940c 06c5                     jmp USART0_RX_vect			; 20
-00002a 940c 06c7                     jmp USART0_UDRE_vect		; 21
-00002c 940c 06c9                     jmp USART0_TX_vect			; 22
-00002e 940c 06cb                     jmp ANALOG_COMP_vect		; 23
-000030 940c 06cd                     jmp ADC_vect				; 24
-000032 940c 06cf                     jmp EE_READY_vect			; 25
-000034 940c 06d1                     jmp TWI_vect				; 26
-000036 940c 06d3                     jmp SPM_READY_vect			; 27
-000038 940c 06d5                     jmp USART1_RX_vect			; 28
-00003a 940c 06d7                     jmp USART1_UDRE_vect		; 29
-00003c 940c 06d9                     jmp USART1_TX_vect			; 30
-00003e 940c 06db                     jmp TIMER3_CAPT_vect		; 31
-000040 940c 06dd                     jmp TIMER3_COMPA_vect		; 32
-000042 940c 06df                     jmp TIMER3_COMPB_vect		; 33
-000044 940c 06e1                     jmp TIMER3_OVF_vect			; 34
+00001c 940c 0791                     jmp TIMER1_COMPB_vect		; 14
+00001e 940c 0793                     jmp TIMER1_OVF_vect			; 15
+000020 940c 0795                     jmp TIMER0_COMPA_vect		; 16
+000022 940c 0797                     jmp TIMER0_COMPB_vect		; 17
+000024 940c 0799                     jmp TIMER0_OVF_vect			; 18
+000026 940c 079b                     jmp SPI_STC_vect			; 19
+000028 940c 079d                     jmp USART0_RX_vect			; 20
+00002a 940c 079f                     jmp USART0_UDRE_vect		; 21
+00002c 940c 07a1                     jmp USART0_TX_vect			; 22
+00002e 940c 07a3                     jmp ANALOG_COMP_vect		; 23
+000030 940c 07a5                     jmp ADC_vect				; 24
+000032 940c 07a7                     jmp EE_READY_vect			; 25
+000034 940c 07a9                     jmp TWI_vect				; 26
+000036 940c 07ab                     jmp SPM_READY_vect			; 27
+000038 940c 07ad                     jmp USART1_RX_vect			; 28
+00003a 940c 07af                     jmp USART1_UDRE_vect		; 29
+00003c 940c 07b1                     jmp USART1_TX_vect			; 30
+00003e 940c 07b3                     jmp TIMER3_CAPT_vect		; 31
+000040 940c 07b5                     jmp TIMER3_COMPA_vect		; 32
+000042 940c 07b7                     jmp TIMER3_COMPB_vect		; 33
+000044 940c 07b9                     jmp TIMER3_OVF_vect			; 34
                                  
                                  RESET_vect:
 000046 e400                          ldi r16, HIGH(RAMEND)
@@ -1568,9 +1568,7 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                  #endif
                                  
                                  .DEF rYPOS	= r12
-                                 .DEF rXMAX	= r13
-                                 .DEF rXPOS2	= r14
-                                 .DEF rXPOS	= r15
+                                 .DEF rXPOS  = r13
                                  
                                  .CSEG
                                  
@@ -1789,12 +1787,12 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                        ; Loop through low addresses and set data lines to make a tartan.
                                        ; = (xpos + ypos) >> 3 for now.
 0000a2 e000
-0000a3 2ef0                            _LDI rXPOS, 0
+0000a3 2ed0                            _LDI rXPOS, 0
                                  
                                  vram_set_loop_x:
-0000a4 94fa                            dec rXPOS
-0000a5 b8f2                            out ADDRPORT, rXPOS
-0000a6 2d0f                            mov rTEMP, rXPOS
+0000a4 94da                            dec rXPOS
+0000a5 b8d2                            out ADDRPORT, rXPOS
+0000a6 2d0d                            mov rTEMP, rXPOS
 0000a7 0f00                            lsl rTEMP
 0000a8 7f08                            andi rTEMP, 0xF8
 0000a9 2d1c                            mov rTEMP2, rYPOS
@@ -1810,7 +1808,7 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 0000b3 0000
 0000b4 0000                            _NOP4
 0000b5 9a28                            WE_OFF
-0000b6 2d0f
+0000b6 2d0d
 0000b7 3000                            _CPI rXPOS, 0
 0000b8 f759                            brne vram_set_loop_x
                                  
@@ -1870,11 +1868,11 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 0000da b907                            SET_HAL rYPOS
                                  
 0000db e000
-0000dc 2ef0                            _LDI rXPOS, 0
+0000dc 2ed0                            _LDI rXPOS, 0
                                  
                                  clear_loop_x:
-0000dd 94fa                            dec rXPOS
-0000de b8f2                            out ADDRPORT, rXPOS
+0000dd 94da                            dec rXPOS
+0000de b8d2                            out ADDRPORT, rXPOS
 0000df e010                            ldi rTEMP2, 0
 0000e0 b918                            out DATAPORT, rTEMP2
 0000e1 9828                            WE_ON
@@ -1883,7 +1881,7 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 0000e4 0000
 0000e5 0000                            _NOP4
 0000e6 9a28                            WE_OFF
-0000e7 2d0f
+0000e7 2d0d
 0000e8 3000                            _CPI rXPOS, 0
 0000e9 f799                            brne clear_loop_x
                                  
@@ -1918,6 +1916,8 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                  
                                  ; Global macro definitions
                                  ; =========================================================
+                                 .DEF rXMAX          = r14
+                                 
                                  .DEF rLINECOUNTER	= r19
                                  .DEF rSTATBITS		= r20
                                  .DEF rCTRLBITS		= r21
@@ -2228,7 +2228,7 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                  
                                      ;call setup_palette
 000158 2700                          eor rTEMP, rTEMP
-000159 e0b2                          ldi XH, HIGH(line_buffer)
+000159 e2b2                          ldi XH, HIGH(line_buffer)
 00015a e0a0                          ldi XL, LOW(line_buffer)
                                  line_buffer_set_loop:
 00015b 930d                          st X+, rTEMP
@@ -2377,7 +2377,7 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                      ; Start of sync tip - 4.7uS - 94 cycles
                                  
 0001cd ff47                          sbrs rSTATBITS, STATBIT_DISP            ; [094 -03 =091]
-0001ce c44c                          rjmp non_display_line                 
+0001ce c524                          rjmp non_display_line                 
                                  
                                  display_line:
                                      ; 91 cycles of HSYNC left
@@ -2447,29 +2447,51 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 0001ee 2200                          and r0, rTEMP                           ; [069 -01 =068]
                                  
                                      ; Load the jump address into Z but don't jump just yet
-0001ef e3e4                          ldi ZL, LOW(output_mode_jumptable)      ; [068 -01 =067]
-0001f0 e0f2                          ldi ZH, HIGH(output_mode_jumptable)     ; [067 -01 =066]
+0001ef efe4                          ldi ZL, LOW(output_mode_jumptable)      ; [068 -01 =067]
+0001f0 e0f1                          ldi ZH, HIGH(output_mode_jumptable)     ; [067 -01 =066]
 0001f1 0de0                          add ZL, r0                              ; [066 -01 =065]
 0001f2 1df1                          adc ZH, rZERO                           ; [065 -01 =064]
                                  
+                                     ; ============================================================
+                                     ; Start of breezeway/colorburst/back porch = 4.7uS = 94 cycles
+                                     ; ============================================================
+                                 
+                                     ; Jump!
+0001f3 9409                          ijmp                                    ; [094 -02 =092]
+                                 
+                                 output_mode_jumptable:
+0001f4 c00f                          rjmp output_line_vram_direct_6      ; 0
+0001f5 c0cc                          rjmp output_line_vram_direct_5      ; 1
+0001f6 c188                          rjmp output_line_buffer             ; 2
+0001f7 c4ba                          rjmp output_line_dummy              ; 3
+0001f8 c4b9                          rjmp output_line_dummy              ; 4
+0001f9 c4b8                          rjmp output_line_dummy              ; 5
+0001fa c4b7                          rjmp output_line_dummy              ; 6
+0001fb c4b6                          rjmp output_line_dummy              ; 7
+0001fc c4b5                          rjmp output_line_dummy              ; 8
+0001fd c4b4                          rjmp output_line_dummy              ; 9
+0001fe c4b3                          rjmp output_line_dummy              ; A
+0001ff c4b2                          rjmp output_line_dummy              ; B
+000200 c4b1                          rjmp output_line_dummy              ; C
+000201 c4b0                          rjmp output_line_dummy              ; D
+000202 c4af                          rjmp output_line_dummy              ; E
+000203 c4ae                          rjmp output_line_dummy              ; F
+                                 
+                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                 ;                                                                               ;
+                                 ;    #    # #####    ##   #    #         #####  # #####  ######  ####  #####    ;
+                                 ;    #    # #    #  #  #  ##  ##         #    # # #    # #      #    #   #      ;
+                                 ;    #    # #    # #    # # ## #         #    # # #    # #####  #        #      ;
+                                 ;    #    # #####  ###### #    #         #    # # #####  #      #        #      ;
+                                 ;     #  #  #   #  #    # #    #         #    # # #   #  #      #    #   #      ;
+                                 ;      ##   #    # #    # #    #         #####  # #    # ######  ####    #      ;
+                                 ;                                #######                                        ;
+                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                 
+                                 output_line_vram_direct_6:
+                                 
+                                     ; 64 cycles left for sync pulse
                                      ; This can be filled in with whatever additional calculations we care to do.
-0001f3 0000
-0001f4 0000
-0001f5 0000
-0001f6 0000
-0001f7 0000
-0001f8 0000
-0001f9 0000
-0001fa 0000
-0001fb 0000
-0001fc 0000
-0001fd 0000
-0001fe 0000
-0001ff 0000
-000200 0000
-000201 0000
-000202 0000
-000203 0000
 000204 0000
 000205 0000
 000206 0000
@@ -2484,7 +2506,7 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 00020f 0000
 000210 0000
 000211 0000
-000212 0000                          _NOP32                                  ; [064 -32 =032]
+000212 0000
 000213 0000
 000214 0000
 000215 0000
@@ -2500,62 +2522,42 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 00021f 0000
 000220 0000
 000221 0000
-000222 0000                          _NOP16									; [032 -16 =016]
-000223 0000
+000222 0000
+000223 0000                          _NOP32                                  ; [064 -32 =032]
 000224 0000
 000225 0000
 000226 0000
 000227 0000
 000228 0000
 000229 0000
-00022a 0000                          _NOP8									; [016 -08 =008]
+00022a 0000
 00022b 0000
 00022c 0000
 00022d 0000
-00022e 0000                          _NOP4                                   ; [008 -04 =004]
+00022e 0000
+00022f 0000
+000230 0000
+000231 0000
+000232 0000
+000233 0000                          _NOP16									; [032 -16 =016]
+000234 0000
+000235 0000
+000236 0000
+000237 0000
+000238 0000
+000239 0000
+00023a 0000
+00023b 0000                          _NOP8									; [016 -08 =008]
+00023c 0000
+00023d 0000
+00023e 0000
+00023f 0000                          _NOP4                                   ; [008 -04 =004]
                                  
-00022f b10b
-000230 e810
-000231 2701
-000232 b90b                          IMMED_TOGGLE_SYNC_PIN                   ; [004 -04 =000]
+000240 b10b
+000241 e810
+000242 2701
+000243 b90b                          IMMED_TOGGLE_SYNC_PIN                   ; [004 -04 =000]
                                  
-                                     ; ============================================================
-                                     ; Start of breezeway/colorburst/back porch = 4.7uS = 94 cycles
-                                     ; ============================================================
-                                 
-                                     ; Jump!
-000233 9409                          ijmp                                    ; [094 -02 =092]
-                                 
-                                 output_mode_jumptable:
-000234 c00f                          rjmp output_line_vram_direct_6      ; 0
-000235 c08c                          rjmp output_line_vram_direct_5      ; 1
-000236 c108                          rjmp output_line_buffer             ; 2
-000237 c3e2                          rjmp output_line_dummy              ; 3
-000238 c3e1                          rjmp output_line_dummy              ; 4
-000239 c3e0                          rjmp output_line_dummy              ; 5
-00023a c3df                          rjmp output_line_dummy              ; 6
-00023b c3de                          rjmp output_line_dummy              ; 7
-00023c c3dd                          rjmp output_line_dummy              ; 8
-00023d c3dc                          rjmp output_line_dummy              ; 9
-00023e c3db                          rjmp output_line_dummy              ; A
-00023f c3da                          rjmp output_line_dummy              ; B
-000240 c3d9                          rjmp output_line_dummy              ; C
-000241 c3d8                          rjmp output_line_dummy              ; D
-000242 c3d7                          rjmp output_line_dummy              ; E
-000243 c3d6                          rjmp output_line_dummy              ; F
-                                 
-                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                                 ;                                                                               ;
-                                 ;    #    # #####    ##   #    #         #####  # #####  ######  ####  #####    ;
-                                 ;    #    # #    #  #  #  ##  ##         #    # # #    # #      #    #   #      ;
-                                 ;    #    # #    # #    # # ## #         #    # # #    # #####  #        #      ;
-                                 ;    #    # #####  ###### #    #         #    # # #####  #      #        #      ;
-                                 ;     #  #  #   #  #    # #    #         #    # # #   #  #      #    #   #      ;
-                                 ;      ##   #    # #    # #    #         #####  # #    # ######  ####    #      ;
-                                 ;                                #######                                        ;
-                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                                 
-                                 output_line_vram_direct_6:
                                      ; 92 cycles of breezeway
 000244 0000
 000245 0000
@@ -2657,7 +2659,7 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 0002a3 b907                          SET_DATA_OUTPUT
                                  
                                      ; Clear X position.
-0002a4 24ff                          eor rXPOS, rXPOS
+0002a4 24dd                          eor rXPOS, rXPOS
                                  
                                      ; Set HAL to Y position.
 0002a5 b107
@@ -2671,11 +2673,11 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 0002ad b907                          SET_HAL rYPOS
                                  
                                      ; Set address port to X position.
-0002ae b8f2                          out ADDRPORT, rXPOS
+0002ae b8d2                          out ADDRPORT, rXPOS
                                  
                                      ; Set max X position
 0002af eb0c
-0002b0 2ed0                          _LDI rXMAX, 188
+0002b0 2ee0                          _LDI rXMAX, 188
                                  
                                      ; End Left Border
                                      ;_NOP 3
@@ -2694,9 +2696,9 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                      ; ========= ========
                                      ;         5      188
                                      ;         4      236
-0002b8 b8f2                          out ADDRPORT, rXPOS       ; 1
-0002b9 94f3                          inc rXPOS                 ; 1
-0002ba 14fd                          cp rXPOS, rXMAX           ; 1
+0002b8 b8d2                          out ADDRPORT, rXPOS       ; 1
+0002b9 94d3                          inc rXPOS                 ; 1
+0002ba 14de                          cp rXPOS, rXMAX           ; 1
 0002bb f7e1                          brne pixel_loop_6         ; 2
                                  
 0002bc 9a2c                          DAC_DISABLE
@@ -2705,10 +2707,12 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 0002bf 9859
 0002c0 9858                          ADDRESS_VDU
                                  
-0002c1 c3c2                          rjmp end_line
+0002c1 c49a                          rjmp end_line
                                  
                                  output_line_vram_direct_5:
-                                     ; 92 cycles of breezeway
+                                 
+                                     ; 64 cycles left for sync pulse
+                                     ; This can be filled in with whatever additional calculations we care to do.
 0002c2 0000
 0002c3 0000
 0002c4 0000
@@ -2740,7 +2744,7 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 0002de 0000
 0002df 0000
 0002e0 0000
-0002e1 0000
+0002e1 0000                          _NOP32                                  ; [064 -32 =032]
 0002e2 0000
 0002e3 0000
 0002e4 0000
@@ -2756,7 +2760,7 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 0002ee 0000
 0002ef 0000
 0002f0 0000
-0002f1 0000
+0002f1 0000                          _NOP16									; [032 -16 =016]
 0002f2 0000
 0002f3 0000
 0002f4 0000
@@ -2764,15 +2768,18 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 0002f6 0000
 0002f7 0000
 0002f8 0000
-0002f9 0000
+0002f9 0000                          _NOP8									; [016 -08 =008]
 0002fa 0000
 0002fb 0000
 0002fc 0000
-0002fd 0000
-0002fe 0000
-0002ff 0000
-000300 0000
-000301 0000                          _NOP64      ; 92 - 64 = 28
+0002fd 0000                          _NOP4                                   ; [008 -04 =004]
+                                 
+0002fe b10b
+0002ff e810
+000300 2701
+000301 b90b                          IMMED_TOGGLE_SYNC_PIN                   ; [004 -04 =000]
+                                 
+                                     ; 92 cycles of breezeway
 000302 0000
 000303 0000
 000304 0000
@@ -2788,7 +2795,7 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 00030e 0000
 00030f 0000
 000310 0000
-000311 0000                          _NOP16      ; 28 - 16 = 12
+000311 0000
 000312 0000
 000313 0000
 000314 0000
@@ -2796,70 +2803,48 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 000316 0000
 000317 0000
 000318 0000
-000319 0000                          _NOP8       ; 12 -  8 =  4
+000319 0000
 00031a 0000
 00031b 0000
 00031c 0000
-00031d 0000                          _NOP4       ;  4 -  4 =  0
-                                 
-                                     ; Start Left Border
-00031e e000                          ldi rTEMP, 0x00
-00031f b908                          out DATAPORT, rTEMP
-000320 ef0f
-000321 b907                          SET_DATA_OUTPUT
-000322 982c                          DAC_ENABLE
-                                 
-                                     ; Clear X position.
-000323 24ff                          eor rXPOS, rXPOS
-                                 
-                                     ; Set HAL to Y position.
-000324 b107
-000325 b118
-000326 ef2f
-000327 b927
-000328 b8c8
-000329 9a5e
-00032a 985e
-00032b b918
-00032c b907                          SET_HAL rYPOS
-                                 
-                                     ; Set address port to X position.
-00032d b8f2                          out ADDRPORT, rXPOS
-                                 
-                                     ; Set max X position
-00032e ee0c
-00032f 2ef0                          _LDI rXPOS, 236
-                                 
-                                     ; End Left Border
-                                     ;_NOP 40
-000330 e000
-000331 b907                          SET_DATA_INPUT
-                                 
-                                     ; Set VRAM0 address enable.
-000332 985a
-000333 9a59
-000334 9858                          ADDRESS_VRAM0
-000335 982a                          OE_ON
-                                 
-                                 pixel_loop_5:
-000336 94fa                          dec rXPOS
-000337 b8f2                          out ADDRPORT, rXPOS
-000338 f7e9                          brne pixel_loop_5
-                                 
-000339 9a2c                          DAC_DISABLE
-00033a 9a2a                          OE_OFF
-00033b 985a
-00033c 9859
-00033d 9858                          ADDRESS_VDU
-                                 
-00033e c345                          rjmp end_line
-                                 
-                                 output_line_buffer:
-                                     ; 92 cycles of breezeway
-00033f e000                          ldi rTEMP, 0x00     ; 92 -  1 = 91
-000340 b908                          out DATAPORT, rTEMP ; 91 -  1 = 90
-000341 ef0f
-000342 b907                          SET_DATA_OUTPUT     ; 90 -  2 = 88
+00031d 0000
+00031e 0000
+00031f 0000
+000320 0000
+000321 0000
+000322 0000
+000323 0000
+000324 0000
+000325 0000
+000326 0000
+000327 0000
+000328 0000
+000329 0000
+00032a 0000
+00032b 0000
+00032c 0000
+00032d 0000
+00032e 0000
+00032f 0000
+000330 0000
+000331 0000
+000332 0000
+000333 0000
+000334 0000
+000335 0000
+000336 0000
+000337 0000
+000338 0000
+000339 0000
+00033a 0000
+00033b 0000
+00033c 0000
+00033d 0000
+00033e 0000
+00033f 0000
+000340 0000
+000341 0000                          _NOP64      ; 92 - 64 = 28
+000342 0000
 000343 0000
 000344 0000
 000345 0000
@@ -2874,7 +2859,7 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 00034e 0000
 00034f 0000
 000350 0000
-000351 0000
+000351 0000                          _NOP16      ; 28 - 16 = 12
 000352 0000
 000353 0000
 000354 0000
@@ -2882,74 +2867,112 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 000356 0000
 000357 0000
 000358 0000
-000359 0000
+000359 0000                          _NOP8       ; 12 -  8 =  4
 00035a 0000
 00035b 0000
 00035c 0000
-00035d 0000
-00035e 0000
-00035f 0000
-000360 0000
-000361 0000
-000362 0000
-000363 0000
-000364 0000
-000365 0000
-000366 0000
-000367 0000
-000368 0000
-000369 0000
-00036a 0000
-00036b 0000
-00036c 0000
-00036d 0000
-00036e 0000
-00036f 0000
-000370 0000
-000371 0000
-000372 0000
-000373 0000
-000374 0000
-000375 0000
-000376 0000
-000377 0000
-000378 0000
-000379 0000
-00037a 0000
-00037b 0000
-00037c 0000
-00037d 0000
-00037e 0000
-00037f 0000
-000380 0000
-000381 0000
-000382 0000                          _NOP64              ; 88 - 64 = 24
-000383 0000
-000384 0000
-000385 0000
-000386 0000
-000387 0000
-000388 0000
-000389 0000
-00038a 0000
-00038b 0000
-00038c 0000
-00038d 0000
-00038e 0000
-00038f 0000
-000390 0000
-000391 0000
-000392 0000                          _NOP16              ; 24 - 16 =  8
-000393 0000
-000394 0000
-000395 0000
+00035d 0000                          _NOP4       ;  4 -  4 =  0
+                                 
+                                     ; Start Left Border
+00035e e000                          ldi rTEMP, 0x00
+00035f b908                          out DATAPORT, rTEMP
+000360 ef0f
+000361 b907                          SET_DATA_OUTPUT
+000362 982c                          DAC_ENABLE
+                                 
+                                     ; Clear X position.
+000363 24dd                          eor rXPOS, rXPOS
+                                 
+                                     ; Set HAL to Y position.
+000364 b107
+000365 b118
+000366 ef2f
+000367 b927
+000368 b8c8
+000369 9a5e
+00036a 985e
+00036b b918
+00036c b907                          SET_HAL rYPOS
+                                 
+                                     ; Set address port to X position.
+00036d b8d2                          out ADDRPORT, rXPOS
+                                 
+                                     ; Set max X position
+00036e ee0c
+00036f 2ed0                          _LDI rXPOS, 236
+                                 
+                                     ; End Left Border
+                                     ;_NOP 40
+000370 e000
+000371 b907                          SET_DATA_INPUT
+                                 
+                                     ; Set VRAM0 address enable.
+000372 985a
+000373 9a59
+000374 9858                          ADDRESS_VRAM0
+000375 982a                          OE_ON
+                                 
+                                 pixel_loop_5:
+000376 94da                          dec rXPOS
+000377 b8d2                          out ADDRPORT, rXPOS
+000378 f7e9                          brne pixel_loop_5
+                                 
+000379 9a2c                          DAC_DISABLE
+00037a 9a2a                          OE_OFF
+00037b 985a
+00037c 9859
+00037d 9858                          ADDRESS_VDU
+                                 
+00037e c3dd                          rjmp end_line
+                                 
+                                 output_line_buffer:
+                                 
+                                     ; 64 cycles left for sync pulse
+00037f e000                          ldi rTEMP, 0x00                 ; -1 = 63
+000380 b908                          out DATAPORT, rTEMP             ; -1 = 62
+000381 ef0f
+000382 b907                          SET_DATA_OUTPUT                 ; -2 = 60
+                                 
+                                     ; Load tile graphic address into r3:r2 registers.
+                                     .DEF rTILEGRAFL = r2
+                                     .DEF rTILEGRAFH = r3
+000383 e0f2                          ldi ZH, HIGH(tile_graphic_data) ; -1 = 59
+000384 e0e0                          ldi ZL, LOW(tile_graphic_data)  ; -1 = 58
+000385 2e3f                          mov rTILEGRAFH, ZH              ; -1 = 57
+000386 2e2e                          mov rTILEGRAFL, ZL              ; -1 = 56
+                                 
+                                     ; The line won't change during the loop, so add the line number to ZH now.
+000387 2d0c                          mov rTEMP, rYPOS                ; -1 = 55
+000388 7007                          andi rTEMP, 0x07                ; -1 = 54
+000389 0ff0                          add ZH, rTEMP                   ; -1 = 53
+                                 
+                                     ; Load tile grid address into r5:r4 registers.
+                                     .DEF rTILEGRIDL = r4
+                                     .DEF rTILEGRIDH = r5
+00038a e1b2                          ldi XH, HIGH(tile_grid)         ; -1 = 52
+00038b e0a0                          ldi XL, LOW(tile_grid)          ; -1 = 51
+00038c 2e5b                          mov rTILEGRIDH, XH              ; -1 = 50
+00038d 2e4a                          mov rTILEGRIDL, XL              ; -1 = 49
+                                 
+                                     ; Load tile grid offset into Y register.
+00038e e2b3                          ldi XH, HIGH(tile_grid_offset)  ; -1 = 48
+00038f e0a0                          ldi XL, LOW(tile_grid_offset)   ; -1 = 47
+000390 91dd                          ld YH, X+                       ; -2 = 45
+000391 91cd                          ld YL, X+                       ; -2 = 43
+                                 
+                                     ; Add tile grid address to tile grid offset to get actual address.
+000392 0dc4                          add YL, rTILEGRIDL              ; -1 = 42
+000393 1dd5                          adc YH, rTILEGRIDH              ; -1 = 41
+                                 
+                                     ; Load line buffer address into X register.
+000394 e2b2                          ldi XH, HIGH(line_buffer)       ; -1 = 40
+000395 e0a0                          ldi XL, LOW(line_buffer)        ; -1 = 39
+                                 
 000396 0000
 000397 0000
 000398 0000
 000399 0000
-00039a 0000                          _NOP8               ;  8 -  8 =  0
-                                 
-                                     ; 112 cycles of border to center pixels on screen.
+00039a 0000
 00039b 0000
 00039c 0000
 00039d 0000
@@ -2976,14 +2999,62 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 0003b2 0000
 0003b3 0000
 0003b4 0000
-0003b5 0000
+0003b5 0000                          _NOP32                                  ; [039 -32 =007]
 0003b6 0000
-0003b7 0000
-0003b8 0000
-0003b9 0000
-0003ba 0000
-0003bb 0000
-0003bc 0000
+0003b7 0000                          _NOP2 									; [007 -02 =005]
+0003b8 0000                          nop 									; [005 -01 =004]
+                                 
+0003b9 b10b
+0003ba e810
+0003bb 2701
+0003bc b90b                          IMMED_TOGGLE_SYNC_PIN                   ; [004 -04 =000]
+                                 
+                                     ; 92 cycles of breezeway
+                                     
+                                     ; Start at tile 0.
+                                     .DEF rTILEINDEX = r7
+                                     .DEF rTILECOLOR = r8
+                                     .DEF rTILEFG = r9
+                                 
+                                 .MACRO LOAD_8_PIXELS    ; 42 cycles... ouch.
+                                     ; [YH:YL] points to the tile we want.
+                                     ld rTILEINDEX, Y+               ; +2
+                                     ld rTILECOLOR, Y+               ; +2
+                                     ld rTILEFG, Y+                  ; +2
+                                     addiw YH:YL, 1                  ; +1
+                                     ; Graphic data is stored in RAM as: offset + 00000YYY`TTTTTTTT
+                                     ; This makes it faster to access during the loop.
+                                     mov ZL, rTILEGRAFL              ; +1
+                                     add ZL, rTILEINDEX              ; +1
+                                     ; Load 8 pixels of data into rTEMP.
+                                     ld rTEMP, Z                     ; +1
+                                     sbrc rTEMP, 7                   ; +2
+                                     mov rTILECOLOR, rTILEFG         ; ...
+                                     st rTILECOLOR, X+               ; +2
+                                     sbrc rTEMP, 6                   ; +2
+                                     mov rTILECOLOR, rTILEFG         ; ...
+                                     st rTILECOLOR, X+               ; +2
+                                     sbrc rTEMP, 5                   ; +2
+                                     mov rTILECOLOR, rTILEFG         ; ...
+                                     st rTILECOLOR, X+               ; +2
+                                     sbrc rTEMP, 4                   ; +2
+                                     mov rTILECOLOR, rTILEFG         ; ...
+                                     st rTILECOLOR, X+               ; +2
+                                     sbrc rTEMP, 3                   ; +2
+                                     mov rTILECOLOR, rTILEFG         ; ...
+                                     st rTILECOLOR, X+               ; +2
+                                     sbrc rTEMP, 2                   ; +2
+                                     mov rTILECOLOR, rTILEFG         ; ...
+                                     st rTILECOLOR, X+               ; +2
+                                     sbrc rTEMP, 1                   ; +2
+                                     mov rTILECOLOR, rTILEFG         ; ...
+                                     st rTILECOLOR, X+               ; +2
+                                     sbrc rTEMP, 0                   ; +2
+                                     mov rTILECOLOR, rTILEFG         ; ...
+                                     st rTILECOLOR, X+               ; +2
+                                 .ENDM
+                                 
+                                 
 0003bd 0000
 0003be 0000
 0003bf 0000
@@ -3013,7 +3084,7 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 0003d7 0000
 0003d8 0000
 0003d9 0000
-0003da 0000                          _NOP64
+0003da 0000
 0003db 0000
 0003dc 0000
 0003dd 0000
@@ -3045,12 +3116,14 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 0003f7 0000
 0003f8 0000
 0003f9 0000
-0003fa 0000                          _NOP32
+0003fa 0000
 0003fb 0000
-0003fc 0000
+0003fc 0000                          _NOP64              ; 67 - 64 =  3
 0003fd 0000
-0003fe 0000
-0003ff 0000
+0003fe 0000                          _NOP2               ;  3 -  2 =  1
+0003ff 0000                          nop                 ;  1 -  1 =  0
+                                 
+                                     ; 160 cycles of border to center pixels on screen.
 000400 0000
 000401 0000
 000402 0000
@@ -3061,550 +3134,693 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 000407 0000
 000408 0000
 000409 0000
-00040a 0000                          _NOP16
-                                 
-                                     ; Load X register.
-00040b e0b2                          ldi XH, HIGH(line_buffer)
-00040c e0a0                          ldi XL, LOW(line_buffer)
+00040a 0000
+00040b 0000
+00040c 0000
+00040d 0000
+00040e 0000
+00040f 0000
+000410 0000
+000411 0000
+000412 0000
+000413 0000
+000414 0000
+000415 0000
+000416 0000
+000417 0000
+000418 0000
+000419 0000
+00041a 0000
+00041b 0000
+00041c 0000
+00041d 0000
+00041e 0000
+00041f 0000
+000420 0000
+000421 0000
+000422 0000
+000423 0000
+000424 0000
+000425 0000
+000426 0000
+000427 0000
+000428 0000
+000429 0000
+00042a 0000
+00042b 0000
+00042c 0000
+00042d 0000
+00042e 0000
+00042f 0000
+000430 0000
+000431 0000
+000432 0000
+000433 0000
+000434 0000
+000435 0000
+000436 0000
+000437 0000
+000438 0000
+000439 0000
+00043a 0000
+00043b 0000
+00043c 0000
+00043d 0000
+00043e 0000
+00043f 0000
+000440 0000
+000441 0000
+000442 0000
+000443 0000
+000444 0000
+000445 0000
+000446 0000
+000447 0000
+000448 0000
+000449 0000
+00044a 0000
+00044b 0000
+00044c 0000
+00044d 0000
+00044e 0000
+00044f 0000
+000450 0000
+000451 0000
+000452 0000
+000453 0000
+000454 0000
+000455 0000
+000456 0000
+000457 0000
+000458 0000
+000459 0000
+00045a 0000
+00045b 0000
+00045c 0000
+00045d 0000
+00045e 0000
+00045f 0000
+000460 0000
+000461 0000
+000462 0000
+000463 0000
+000464 0000
+000465 0000
+000466 0000
+000467 0000
+000468 0000
+000469 0000
+00046a 0000
+00046b 0000
+00046c 0000
+00046d 0000
+00046e 0000
+00046f 0000
+000470 0000
+000471 0000
+000472 0000
+000473 0000
+000474 0000
+000475 0000
+000476 0000
+000477 0000
+000478 0000
+000479 0000
+00047a 0000
+00047b 0000
+00047c 0000
+00047d 0000
+00047e 0000
+00047f 0000                          _NOP128
+000480 0000
+000481 0000
+000482 0000
+000483 0000
+000484 0000
+000485 0000
+000486 0000
+000487 0000
+000488 0000
+000489 0000
+00048a 0000
+00048b 0000
+00048c 0000
+00048d 0000
+00048e 0000
+00048f 0000
+000490 0000
+000491 0000
+000492 0000
+000493 0000
+000494 0000
+000495 0000
+000496 0000
+000497 0000
+000498 0000
+000499 0000
+00049a 0000
+00049b 0000
+00049c 0000
+00049d 0000
+00049e 0000
+00049f 0000                          _NOP32
                                  
                                      ; Output 256 pixels.
-00040d 982c                          DAC_ENABLE
-00040e 910d
-00040f b908
-000410 910d
-000411 b908
-000412 910d
-000413 b908
-000414 910d
-000415 b908
-000416 910d
-000417 b908
-000418 910d
-000419 b908
-00041a 910d
-00041b b908
-00041c 910d
-00041d b908
-00041e 910d
-00041f b908
-000420 910d
-000421 b908
-000422 910d
-000423 b908
-000424 910d
-000425 b908
-000426 910d
-000427 b908
-000428 910d
-000429 b908
-00042a 910d
-00042b b908
-00042c 910d
-00042d b908
-00042e 910d
-00042f b908
-000430 910d
-000431 b908
-000432 910d
-000433 b908
-000434 910d
-000435 b908
-000436 910d
-000437 b908
-000438 910d
-000439 b908
-00043a 910d
-00043b b908
-00043c 910d
-00043d b908
-00043e 910d
-00043f b908
-000440 910d
-000441 b908
-000442 910d
-000443 b908
-000444 910d
-000445 b908
-000446 910d
-000447 b908
-000448 910d
-000449 b908
-00044a 910d
-00044b b908
-00044c 910d
-00044d b908
-00044e 910d
-00044f b908
-000450 910d
-000451 b908
-000452 910d
-000453 b908
-000454 910d
-000455 b908
-000456 910d
-000457 b908
-000458 910d
-000459 b908
-00045a 910d
-00045b b908
-00045c 910d
-00045d b908
-00045e 910d
-00045f b908
-000460 910d
-000461 b908
-000462 910d
-000463 b908
-000464 910d
-000465 b908
-000466 910d
-000467 b908
-000468 910d
-000469 b908
-00046a 910d
-00046b b908
-00046c 910d
-00046d b908
-00046e 910d
-00046f b908
-000470 910d
-000471 b908
-000472 910d
-000473 b908
-000474 910d
-000475 b908
-000476 910d
-000477 b908
-000478 910d
-000479 b908
-00047a 910d
-00047b b908
-00047c 910d
-00047d b908
-00047e 910d
-00047f b908
-000480 910d
-000481 b908
-000482 910d
-000483 b908
-000484 910d
-000485 b908
-000486 910d
-000487 b908
-000488 910d
-000489 b908
-00048a 910d
-00048b b908
-00048c 910d
-00048d b908
-00048e 910d
-00048f b908
-000490 910d
-000491 b908
-000492 910d
-000493 b908
-000494 910d
-000495 b908
-000496 910d
-000497 b908
-000498 910d
-000499 b908
-00049a 910d
-00049b b908
-00049c 910d
-00049d b908
-00049e 910d
-00049f b908
-0004a0 910d
-0004a1 b908
-0004a2 910d
-0004a3 b908
-0004a4 910d
-0004a5 b908
-0004a6 910d
-0004a7 b908
-0004a8 910d
-0004a9 b908
-0004aa 910d
-0004ab b908
-0004ac 910d
-0004ad b908
-0004ae 910d
-0004af b908
-0004b0 910d
-0004b1 b908
-0004b2 910d
-0004b3 b908
-0004b4 910d
-0004b5 b908
-0004b6 910d
-0004b7 b908
-0004b8 910d
-0004b9 b908
-0004ba 910d
-0004bb b908
-0004bc 910d
-0004bd b908
-0004be 910d
-0004bf b908
-0004c0 910d
-0004c1 b908
-0004c2 910d
-0004c3 b908
-0004c4 910d
-0004c5 b908
-0004c6 910d
-0004c7 b908
-0004c8 910d
-0004c9 b908
-0004ca 910d
-0004cb b908
-0004cc 910d
-0004cd b908
-0004ce 910d
-0004cf b908
-0004d0 910d
-0004d1 b908
-0004d2 910d
-0004d3 b908
-0004d4 910d
-0004d5 b908
-0004d6 910d
-0004d7 b908
-0004d8 910d
-0004d9 b908
-0004da 910d
-0004db b908
-0004dc 910d
-0004dd b908
-0004de 910d
-0004df b908
-0004e0 910d
-0004e1 b908
-0004e2 910d
-0004e3 b908
-0004e4 910d
-0004e5 b908
-0004e6 910d
-0004e7 b908
-0004e8 910d
-0004e9 b908
-0004ea 910d
-0004eb b908
-0004ec 910d
-0004ed b908
-0004ee 910d
-0004ef b908
-0004f0 910d
-0004f1 b908
-0004f2 910d
-0004f3 b908
-0004f4 910d
-0004f5 b908
-0004f6 910d
-0004f7 b908
-0004f8 910d
-0004f9 b908
-0004fa 910d
-0004fb b908
-0004fc 910d
-0004fd b908
-0004fe 910d
-0004ff b908
-000500 910d
-000501 b908
-000502 910d
-000503 b908
-000504 910d
-000505 b908
-000506 910d
-000507 b908
-000508 910d
-000509 b908
-00050a 910d
-00050b b908
-00050c 910d
-00050d b908
-00050e 910d
-00050f b908
-000510 910d
-000511 b908
-000512 910d
-000513 b908
-000514 910d
-000515 b908
-000516 910d
-000517 b908
-000518 910d
-000519 b908
-00051a 910d
-00051b b908
-00051c 910d
-00051d b908
-00051e 910d
-00051f b908
-000520 910d
-000521 b908
-000522 910d
-000523 b908
-000524 910d
-000525 b908
-000526 910d
-000527 b908
-000528 910d
-000529 b908
-00052a 910d
-00052b b908
-00052c 910d
-00052d b908
-00052e 910d
-00052f b908
-000530 910d
-000531 b908
-000532 910d
-000533 b908
-000534 910d
-000535 b908
-000536 910d
-000537 b908
-000538 910d
-000539 b908
-00053a 910d
-00053b b908
-00053c 910d
-00053d b908
-00053e 910d
-00053f b908
-000540 910d
-000541 b908
-000542 910d
-000543 b908
-000544 910d
-000545 b908
-000546 910d
-000547 b908
-000548 910d
-000549 b908
-00054a 910d
-00054b b908
-00054c 910d
-00054d b908
-00054e 910d
-00054f b908
-000550 910d
-000551 b908
-000552 910d
-000553 b908
-000554 910d
-000555 b908
-000556 910d
-000557 b908
-000558 910d
-000559 b908
-00055a 910d
-00055b b908
-00055c 910d
-00055d b908
-00055e 910d
-00055f b908
-000560 910d
-000561 b908
-000562 910d
-000563 b908
-000564 910d
-000565 b908
-000566 910d
-000567 b908
-000568 910d
-000569 b908
-00056a 910d
-00056b b908
-00056c 910d
-00056d b908
-00056e 910d
-00056f b908
-000570 910d
-000571 b908
-000572 910d
-000573 b908
-000574 910d
-000575 b908
-000576 910d
-000577 b908
-000578 910d
-000579 b908
-00057a 910d
-00057b b908
-00057c 910d
-00057d b908
-00057e 910d
-00057f b908
-000580 910d
-000581 b908
-000582 910d
-000583 b908
-000584 910d
-000585 b908
-000586 910d
-000587 b908
-000588 910d
-000589 b908
-00058a 910d
-00058b b908
-00058c 910d
-00058d b908
-00058e 910d
-00058f b908
-000590 910d
-000591 b908
-000592 910d
-000593 b908
-000594 910d
-000595 b908
-000596 910d
-000597 b908
-000598 910d
-000599 b908
-00059a 910d
-00059b b908
-00059c 910d
-00059d b908
-00059e 910d
-00059f b908
-0005a0 910d
-0005a1 b908
-0005a2 910d
-0005a3 b908
-0005a4 910d
-0005a5 b908
-0005a6 910d
-0005a7 b908
-0005a8 910d
-0005a9 b908
-0005aa 910d
-0005ab b908
-0005ac 910d
-0005ad b908
-0005ae 910d
-0005af b908
-0005b0 910d
-0005b1 b908
-0005b2 910d
-0005b3 b908
-0005b4 910d
-0005b5 b908
-0005b6 910d
-0005b7 b908
-0005b8 910d
-0005b9 b908
-0005ba 910d
-0005bb b908
-0005bc 910d
-0005bd b908
-0005be 910d
-0005bf b908
-0005c0 910d
-0005c1 b908
-0005c2 910d
-0005c3 b908
-0005c4 910d
-0005c5 b908
-0005c6 910d
-0005c7 b908
-0005c8 910d
-0005c9 b908
-0005ca 910d
-0005cb b908
-0005cc 910d
-0005cd b908
-0005ce 910d
-0005cf b908
-0005d0 910d
-0005d1 b908
-0005d2 910d
-0005d3 b908
-0005d4 910d
-0005d5 b908
-0005d6 910d
-0005d7 b908
-0005d8 910d
-0005d9 b908
-0005da 910d
-0005db b908
-0005dc 910d
-0005dd b908
-0005de 910d
-0005df b908
-0005e0 910d
-0005e1 b908
-0005e2 910d
-0005e3 b908
-0005e4 910d
-0005e5 b908
-0005e6 910d
-0005e7 b908
-0005e8 910d
-0005e9 b908
-0005ea 910d
-0005eb b908
-0005ec 910d
-0005ed b908
-0005ee 910d
-0005ef b908
-0005f0 910d
-0005f1 b908
-0005f2 910d
-0005f3 b908
-0005f4 910d
-0005f5 b908
-0005f6 910d
-0005f7 b908
-0005f8 910d
-0005f9 b908
-0005fa 910d
-0005fb b908
-0005fc 910d
-0005fd b908
-0005fe 910d
-0005ff b908
-000600 910d
-000601 b908
-000602 910d
-000603 b908
-000604 910d
-000605 b908
-000606 910d
-000607 b908
-000608 910d
-000609 b908
-00060a 910d
-00060b b908
-00060c 910d
-00060d b908                          OUT_PIXEL256
-00060e 9a2c                          DAC_DISABLE
+0004a0 982c                          DAC_ENABLE
+0004a1 910d
+0004a2 b908
+0004a3 910d
+0004a4 b908
+0004a5 910d
+0004a6 b908
+0004a7 910d
+0004a8 b908
+0004a9 910d
+0004aa b908
+0004ab 910d
+0004ac b908
+0004ad 910d
+0004ae b908
+0004af 910d
+0004b0 b908
+0004b1 910d
+0004b2 b908
+0004b3 910d
+0004b4 b908
+0004b5 910d
+0004b6 b908
+0004b7 910d
+0004b8 b908
+0004b9 910d
+0004ba b908
+0004bb 910d
+0004bc b908
+0004bd 910d
+0004be b908
+0004bf 910d
+0004c0 b908
+0004c1 910d
+0004c2 b908
+0004c3 910d
+0004c4 b908
+0004c5 910d
+0004c6 b908
+0004c7 910d
+0004c8 b908
+0004c9 910d
+0004ca b908
+0004cb 910d
+0004cc b908
+0004cd 910d
+0004ce b908
+0004cf 910d
+0004d0 b908
+0004d1 910d
+0004d2 b908
+0004d3 910d
+0004d4 b908
+0004d5 910d
+0004d6 b908
+0004d7 910d
+0004d8 b908
+0004d9 910d
+0004da b908
+0004db 910d
+0004dc b908
+0004dd 910d
+0004de b908
+0004df 910d
+0004e0 b908
+0004e1 910d
+0004e2 b908
+0004e3 910d
+0004e4 b908
+0004e5 910d
+0004e6 b908
+0004e7 910d
+0004e8 b908
+0004e9 910d
+0004ea b908
+0004eb 910d
+0004ec b908
+0004ed 910d
+0004ee b908
+0004ef 910d
+0004f0 b908
+0004f1 910d
+0004f2 b908
+0004f3 910d
+0004f4 b908
+0004f5 910d
+0004f6 b908
+0004f7 910d
+0004f8 b908
+0004f9 910d
+0004fa b908
+0004fb 910d
+0004fc b908
+0004fd 910d
+0004fe b908
+0004ff 910d
+000500 b908
+000501 910d
+000502 b908
+000503 910d
+000504 b908
+000505 910d
+000506 b908
+000507 910d
+000508 b908
+000509 910d
+00050a b908
+00050b 910d
+00050c b908
+00050d 910d
+00050e b908
+00050f 910d
+000510 b908
+000511 910d
+000512 b908
+000513 910d
+000514 b908
+000515 910d
+000516 b908
+000517 910d
+000518 b908
+000519 910d
+00051a b908
+00051b 910d
+00051c b908
+00051d 910d
+00051e b908
+00051f 910d
+000520 b908
+000521 910d
+000522 b908
+000523 910d
+000524 b908
+000525 910d
+000526 b908
+000527 910d
+000528 b908
+000529 910d
+00052a b908
+00052b 910d
+00052c b908
+00052d 910d
+00052e b908
+00052f 910d
+000530 b908
+000531 910d
+000532 b908
+000533 910d
+000534 b908
+000535 910d
+000536 b908
+000537 910d
+000538 b908
+000539 910d
+00053a b908
+00053b 910d
+00053c b908
+00053d 910d
+00053e b908
+00053f 910d
+000540 b908
+000541 910d
+000542 b908
+000543 910d
+000544 b908
+000545 910d
+000546 b908
+000547 910d
+000548 b908
+000549 910d
+00054a b908
+00054b 910d
+00054c b908
+00054d 910d
+00054e b908
+00054f 910d
+000550 b908
+000551 910d
+000552 b908
+000553 910d
+000554 b908
+000555 910d
+000556 b908
+000557 910d
+000558 b908
+000559 910d
+00055a b908
+00055b 910d
+00055c b908
+00055d 910d
+00055e b908
+00055f 910d
+000560 b908
+000561 910d
+000562 b908
+000563 910d
+000564 b908
+000565 910d
+000566 b908
+000567 910d
+000568 b908
+000569 910d
+00056a b908
+00056b 910d
+00056c b908
+00056d 910d
+00056e b908
+00056f 910d
+000570 b908
+000571 910d
+000572 b908
+000573 910d
+000574 b908
+000575 910d
+000576 b908
+000577 910d
+000578 b908
+000579 910d
+00057a b908
+00057b 910d
+00057c b908
+00057d 910d
+00057e b908
+00057f 910d
+000580 b908
+000581 910d
+000582 b908
+000583 910d
+000584 b908
+000585 910d
+000586 b908
+000587 910d
+000588 b908
+000589 910d
+00058a b908
+00058b 910d
+00058c b908
+00058d 910d
+00058e b908
+00058f 910d
+000590 b908
+000591 910d
+000592 b908
+000593 910d
+000594 b908
+000595 910d
+000596 b908
+000597 910d
+000598 b908
+000599 910d
+00059a b908
+00059b 910d
+00059c b908
+00059d 910d
+00059e b908
+00059f 910d
+0005a0 b908
+0005a1 910d
+0005a2 b908
+0005a3 910d
+0005a4 b908
+0005a5 910d
+0005a6 b908
+0005a7 910d
+0005a8 b908
+0005a9 910d
+0005aa b908
+0005ab 910d
+0005ac b908
+0005ad 910d
+0005ae b908
+0005af 910d
+0005b0 b908
+0005b1 910d
+0005b2 b908
+0005b3 910d
+0005b4 b908
+0005b5 910d
+0005b6 b908
+0005b7 910d
+0005b8 b908
+0005b9 910d
+0005ba b908
+0005bb 910d
+0005bc b908
+0005bd 910d
+0005be b908
+0005bf 910d
+0005c0 b908
+0005c1 910d
+0005c2 b908
+0005c3 910d
+0005c4 b908
+0005c5 910d
+0005c6 b908
+0005c7 910d
+0005c8 b908
+0005c9 910d
+0005ca b908
+0005cb 910d
+0005cc b908
+0005cd 910d
+0005ce b908
+0005cf 910d
+0005d0 b908
+0005d1 910d
+0005d2 b908
+0005d3 910d
+0005d4 b908
+0005d5 910d
+0005d6 b908
+0005d7 910d
+0005d8 b908
+0005d9 910d
+0005da b908
+0005db 910d
+0005dc b908
+0005dd 910d
+0005de b908
+0005df 910d
+0005e0 b908
+0005e1 910d
+0005e2 b908
+0005e3 910d
+0005e4 b908
+0005e5 910d
+0005e6 b908
+0005e7 910d
+0005e8 b908
+0005e9 910d
+0005ea b908
+0005eb 910d
+0005ec b908
+0005ed 910d
+0005ee b908
+0005ef 910d
+0005f0 b908
+0005f1 910d
+0005f2 b908
+0005f3 910d
+0005f4 b908
+0005f5 910d
+0005f6 b908
+0005f7 910d
+0005f8 b908
+0005f9 910d
+0005fa b908
+0005fb 910d
+0005fc b908
+0005fd 910d
+0005fe b908
+0005ff 910d
+000600 b908
+000601 910d
+000602 b908
+000603 910d
+000604 b908
+000605 910d
+000606 b908
+000607 910d
+000608 b908
+000609 910d
+00060a b908
+00060b 910d
+00060c b908
+00060d 910d
+00060e b908
+00060f 910d
+000610 b908
+000611 910d
+000612 b908
+000613 910d
+000614 b908
+000615 910d
+000616 b908
+000617 910d
+000618 b908
+000619 910d
+00061a b908
+00061b 910d
+00061c b908
+00061d 910d
+00061e b908
+00061f 910d
+000620 b908
+000621 910d
+000622 b908
+000623 910d
+000624 b908
+000625 910d
+000626 b908
+000627 910d
+000628 b908
+000629 910d
+00062a b908
+00062b 910d
+00062c b908
+00062d 910d
+00062e b908
+00062f 910d
+000630 b908
+000631 910d
+000632 b908
+000633 910d
+000634 b908
+000635 910d
+000636 b908
+000637 910d
+000638 b908
+000639 910d
+00063a b908
+00063b 910d
+00063c b908
+00063d 910d
+00063e b908
+00063f 910d
+000640 b908
+000641 910d
+000642 b908
+000643 910d
+000644 b908
+000645 910d
+000646 b908
+000647 910d
+000648 b908
+000649 910d
+00064a b908
+00064b 910d
+00064c b908
+00064d 910d
+00064e b908
+00064f 910d
+000650 b908
+000651 910d
+000652 b908
+000653 910d
+000654 b908
+000655 910d
+000656 b908
+000657 910d
+000658 b908
+000659 910d
+00065a b908
+00065b 910d
+00065c b908
+00065d 910d
+00065e b908
+00065f 910d
+000660 b908
+000661 910d
+000662 b908
+000663 910d
+000664 b908
+000665 910d
+000666 b908
+000667 910d
+000668 b908
+000669 910d
+00066a b908
+00066b 910d
+00066c b908
+00066d 910d
+00066e b908
+00066f 910d
+000670 b908
+000671 910d
+000672 b908
+000673 910d
+000674 b908
+000675 910d
+000676 b908
+000677 910d
+000678 b908
+000679 910d
+00067a b908
+00067b 910d
+00067c b908
+00067d 910d
+00067e b908
+00067f 910d
+000680 b908
+000681 910d
+000682 b908
+000683 910d
+000684 b908
+000685 910d
+000686 b908
+000687 910d
+000688 b908
+000689 910d
+00068a b908
+00068b 910d
+00068c b908
+00068d 910d
+00068e b908
+00068f 910d
+000690 b908
+000691 910d
+000692 b908
+000693 910d
+000694 b908
+000695 910d
+000696 b908
+000697 910d
+000698 b908
+000699 910d
+00069a b908
+00069b 910d
+00069c b908
+00069d 910d
+00069e b908
+00069f 910d
+0006a0 b908                          OUT_PIXEL256
+0006a1 9a2c                          DAC_DISABLE
                                  
-                                     ; Here we have 112 cycles to prepare the next line.
+                                     ; Here we have 128 cycles to prepare the next line.
                                  
-                                     ; Is the next line divisible by 8? If so we need to read the next tiles from VRAM.
-00060f 2f03                          mov rTEMP, rLINECOUNTER         ; -1 = 111
-000610 7007                          andi rTEMP, 0b111               ; -1 = 110
-000611 f439                          brne skip_tiles_read            ; -1 = 109
+                                     ; Tiles are stored at tile_grid as a 32x32 grid -- so the location of one tile is at offset 000000YY YYYXXXXX.
+0006a2 2fd3                          mov YH, rLINECOUNTER            ; -1 = 127
+0006a3 e0c0                          ldi YL, 0                       ; -1 = 126
+0006a4 95d6                          lsr YH                          ; -1 = 125  ; 0YYYYYYY 00000000
+0006a5 95d6                          lsr YH                          ; -1 = 124  ; 00YYYYYY 00000000
+0006a6 95d6                          lsr YH                          ; -1 = 123  ; 000YYYYY 00000000
+0006a7 95d6                          lsr YH                          ; -1 = 122  
+0006a8 95c7                          ror YL                          ; -1 = 121  ; 0000YYYY Y0000000
+0006a9 95d6                          lsr YH                          ; -1 = 120  
+0006aa 95c7                          ror YL                          ; -1 = 119  ; 00000YYY YY000000
+0006ab 95d6                          lsr YH                          ; -1 = 118  
+0006ac 95c7                          ror YL                          ; -1 = 117  ; 000000YY YYY00000
+0006ad e2b3                          ldi XH, HIGH(tile_grid_offset)  ; -1 = 116
+0006ae e0a0                          ldi XL, LOW(tile_grid_offset)   ; -1 = 115
+0006af 93dd                          st X+, YH                       ; -2 = 113
+0006b0 93cd                          st X+, YL                       ; -2 = 111
                                  
-                                     ; The tiles are in VRAM at 00 00PPPPYY YYYXXXXX where P is page, Y is Y position, and X is X position.
-000612 e0d0                          ldi YH, 0                       ; -1 = 108
-000613 2fc3                          mov YL, rLINECOUNTER            ; -1 = 107
-000614 7fc8                          andi YL, 0b11111000             ; -1 = 106
-000615 0fcc                          lsl YL                          ; -1 = 105
-000616 1fdd                          rol YH                          ; -1 = 104  ; -------Y YYYY0000
-000617 0fcc                          lsl YL                          ; -1 = 103
-000618 1fdd                          rol YH                          ; -1 = 102  ; ------YY YYY00000
-                                 
-                                     ;SET_DATA_INPUT                  ; -2 = 100
-                                     ;; Set HAL to YH.
-                                     ;SET_HAL YH                      ; -9 =  91
-                                 
-                                 skip_tiles_read:
-000619 c06a                          rjmp end_line
+0006b1 c0aa                          rjmp end_line
                                  
                                  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                  ;                                         ;
@@ -3618,7 +3834,76 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                  
                                  output_line_dummy:
-00061a c069                          rjmp end_line
+                                 
+                                     ; 64 cycles left for sync pulse
+                                     ; This can be filled in with whatever additional calculations we care to do.
+0006b2 0000
+0006b3 0000
+0006b4 0000
+0006b5 0000
+0006b6 0000
+0006b7 0000
+0006b8 0000
+0006b9 0000
+0006ba 0000
+0006bb 0000
+0006bc 0000
+0006bd 0000
+0006be 0000
+0006bf 0000
+0006c0 0000
+0006c1 0000
+0006c2 0000
+0006c3 0000
+0006c4 0000
+0006c5 0000
+0006c6 0000
+0006c7 0000
+0006c8 0000
+0006c9 0000
+0006ca 0000
+0006cb 0000
+0006cc 0000
+0006cd 0000
+0006ce 0000
+0006cf 0000
+0006d0 0000
+0006d1 0000                          _NOP32                                  ; [064 -32 =032]
+0006d2 0000
+0006d3 0000
+0006d4 0000
+0006d5 0000
+0006d6 0000
+0006d7 0000
+0006d8 0000
+0006d9 0000
+0006da 0000
+0006db 0000
+0006dc 0000
+0006dd 0000
+0006de 0000
+0006df 0000
+0006e0 0000
+0006e1 0000                          _NOP16									; [032 -16 =016]
+0006e2 0000
+0006e3 0000
+0006e4 0000
+0006e5 0000
+0006e6 0000
+0006e7 0000
+0006e8 0000
+0006e9 0000                          _NOP8									; [016 -08 =008]
+0006ea 0000
+0006eb 0000
+0006ec 0000
+0006ed 0000                          _NOP4                                   ; [008 -04 =004]
+                                 
+0006ee b10b
+0006ef e810
+0006f0 2701
+0006f1 b90b                          IMMED_TOGGLE_SYNC_PIN                   ; [004 -04 =000]
+                                 
+0006f2 c069                          rjmp end_line
                                  
                                  ;d8888b. db       .d8b.  d8b   db db   dD d888888b d8b   db  d888b
                                  ;88  `8D 88      d8' `8b 888o  88 88 ,8P'   `88'   888o  88 88' Y8b
@@ -3642,48 +3927,48 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                  ;    ldi ZH, HIGH(non_display_line_table)      ; [090 -01 =089]
                                  ;    add ZL, rLINECOUNTER                      ; [089 -01 =088]
                                  ;    adc ZH, rZERO                             ; [088 -01 =087]
-00061b 0000
-00061c 0000
-00061d 0000
-00061e 0000                          _NOP4 ; TEMPORARY
+0006f3 0000
+0006f4 0000
+0006f5 0000
+0006f6 0000                          _NOP4 ; TEMPORARY
                                  
                                      ; If this is line 04, toggle SYNC for the next line.
-00061f 3034                          cpi rLINECOUNTER, 4                       ; [087 -01 =086]
+0006f7 3034                          cpi rLINECOUNTER, 4                       ; [087 -01 =086]
                                                                              ; [     ==     ] [     !=     ]
-000620 f419                          brne skip_set_vsync                       ; [086 -01 =085] [086 -02 =084]
+0006f8 f419                          brne skip_set_vsync                       ; [086 -01 =085] [086 -02 =084]
                                  set_vsync:
-000621 e800
-000622 2750                          TOGGLE_SYNC_BIT                           ; [085 -02 =083]
-000623 c003                          rjmp after_set_vsync                      ; [083 -02 =081]
+0006f9 e800
+0006fa 2750                          TOGGLE_SYNC_BIT                           ; [085 -02 =083]
+0006fb c003                          rjmp after_set_vsync                      ; [083 -02 =081]
                                  skip_set_vsync:
-000624 0000
-000625 0000                          _NOP2                                     ;                [084 -02 =082]
-000626 0000                          nop										;				 [082 -01 =081]
+0006fc 0000
+0006fd 0000                          _NOP2                                     ;                [084 -02 =082]
+0006fe 0000                          nop										;				 [082 -01 =081]
                                  after_set_vsync:
                                  
                                      ; If this is line 07, toggle SYNC for the next line.
-000627 3037                          cpi rLINECOUNTER, 7                       ; [081 -01 =080]
+0006ff 3037                          cpi rLINECOUNTER, 7                       ; [081 -01 =080]
                                                                              ; [     ==     ] [     !=     ]
-000628 f419                          brne skip_clear_vsync                     ; [080 -01 =079] [080 -02 =078]
+000700 f419                          brne skip_clear_vsync                     ; [080 -01 =079] [080 -02 =078]
                                  clear_vsync:
-000629 e800
-00062a 2750                          TOGGLE_SYNC_BIT                           ; [079 -02 =077]
-00062b c003                          rjmp after_clear_vsync                    ; [077 -02 =075]
+000701 e800
+000702 2750                          TOGGLE_SYNC_BIT                           ; [079 -02 =077]
+000703 c003                          rjmp after_clear_vsync                    ; [077 -02 =075]
                                  skip_clear_vsync:
-00062c 0000
-00062d 0000                          _NOP2                                     ;                [078 -02 =076]
-00062e 0000                          nop										;				 [076 -01 =075]
+000704 0000
+000705 0000                          _NOP2                                     ;                [078 -02 =076]
+000706 0000                          nop										;				 [076 -01 =075]
                                  after_clear_vsync:
                                  
                                      ; Increment rLINECOUNTER by one.
-00062f 9533                          inc rLINECOUNTER                          ; [075 -01 =074]
+000707 9533                          inc rLINECOUNTER                          ; [075 -01 =074]
                                  
                                      ; Load 22 into the temp register.
-000630 e106                          ldi rTEMP, 22                             ; [074 -01 =073]
+000708 e106                          ldi rTEMP, 22                             ; [074 -01 =073]
                                  
                                      ; If rSTATBITS:EVENFRAME is clear, add 1 to the temp register.
-000631 ff40                          sbrs rSTATBITS, STATBIT_EVENFRAME         ; [073 -02 =071]
-000632 9503                          inc rTEMP
+000709 ff40                          sbrs rSTATBITS, STATBIT_EVENFRAME         ; [073 -02 =071]
+00070a 9503                          inc rTEMP
                                  
                                      ; If line counter is equal to temp register:
                                      ;   - reset to 0
@@ -3693,9 +3978,9 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                      ;   - set ADDR/CTL2 lines to outputs
                                      ;   - clear ~OE, ~WE bits
                                      ;   - clear ~VDRAW control line if rSTATBITS:EVENFRAME is clear
-000633 1730                          cp rLINECOUNTER, rTEMP                    ; [071 -01 =070]
+00070b 1730                          cp rLINECOUNTER, rTEMP                    ; [071 -01 =070]
                                                                              ; [     ==     ] [     !=     ]
-000634 f451                          brne skip_setup_display                   ; [070 -01 =069] [070 -02 =068]
+00070c f451                          brne skip_setup_display                   ; [070 -01 =069] [070 -02 =068]
                                  
                                  ;d888888b d8b   db d888888b d888888b   d8888b. d888888b .d8888. d8888b.
                                  ;  `88'   888o  88   `88'   `~~88~~'   88  `8D   `88'   88'  YP 88  `8D
@@ -3705,92 +3990,92 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                  ;Y888888P VP   V8P Y888888P    YP      Y8888D' Y888888P `8888Y' 88
                                  
                                  setup_display:
-000635 2733                          eor rLINECOUNTER, rLINECOUNTER            ; [069 -01 =068]
-000636 6840                          ori rSTATBITS, STATBIT_DISP_MASK          ; [068 -01 =067]
-000637 6150                          ori rCTRLBITS, VBLANKBIT_MASK             ; [067 -01 =066]
-000638 ef6f                          ldi rADDRDDR, ADDRBIT_DDR_OUTPUT          ; [066 -01 =065]
-000639 e070                          ldi rDATADDR, DATABIT_DDR_INPUT           ; [065 -01 =064]
-00063a 9a2a
-00063b 9a28                          OE_AND_WE_OFF                             ; [064 -02 =062]
-00063c ff40                          sbrs rSTATBITS, STATBIT_EVENFRAME         ; [062 -02 =060]
-00063d 7f57                          andi rCTRLBITS, NOT_VDRAWBIT_MASK
-00063e c00a                          rjmp after_setup_display                  ; [060 -02 =058]
+00070d 2733                          eor rLINECOUNTER, rLINECOUNTER            ; [069 -01 =068]
+00070e 6840                          ori rSTATBITS, STATBIT_DISP_MASK          ; [068 -01 =067]
+00070f 6150                          ori rCTRLBITS, VBLANKBIT_MASK             ; [067 -01 =066]
+000710 ef6f                          ldi rADDRDDR, ADDRBIT_DDR_OUTPUT          ; [066 -01 =065]
+000711 e070                          ldi rDATADDR, DATABIT_DDR_INPUT           ; [065 -01 =064]
+000712 9a2a
+000713 9a28                          OE_AND_WE_OFF                             ; [064 -02 =062]
+000714 ff40                          sbrs rSTATBITS, STATBIT_EVENFRAME         ; [062 -02 =060]
+000715 7f57                          andi rCTRLBITS, NOT_VDRAWBIT_MASK
+000716 c00a                          rjmp after_setup_display                  ; [060 -02 =058]
                                  skip_setup_display:
-00063f 0000
-000640 0000
-000641 0000
-000642 0000
-000643 0000
-000644 0000
-000645 0000
-000646 0000                          _NOP8                                     ;                [068 -08 =060]
-000647 0000
-000648 0000                          _NOP2                                     ;                [060 -02 =058]
+000717 0000
+000718 0000
+000719 0000
+00071a 0000
+00071b 0000
+00071c 0000
+00071d 0000
+00071e 0000                          _NOP8                                     ;                [068 -08 =060]
+00071f 0000
+000720 0000                          _NOP2                                     ;                [060 -02 =058]
                                  after_setup_display:
                                  
                                      ; Finish the H-sync pulse here.
                                      ; This can be filled in with whatever calculations we care to do.
-000649 0000
-00064a 0000
-00064b 0000
-00064c 0000
-00064d 0000
-00064e 0000
-00064f 0000
-000650 0000
-000651 0000
-000652 0000
-000653 0000
-000654 0000
-000655 0000
-000656 0000
-000657 0000
-000658 0000
-000659 0000
-00065a 0000
-00065b 0000
-00065c 0000
-00065d 0000
-00065e 0000
-00065f 0000
-000660 0000
-000661 0000
-000662 0000
-000663 0000
-000664 0000
-000665 0000
-000666 0000
-000667 0000
-000668 0000                          _NOP32									; [058 -32 =026]
-000669 0000
-00066a 0000
-00066b 0000
-00066c 0000
-00066d 0000
-00066e 0000
-00066f 0000
-000670 0000
-000671 0000
-000672 0000
-000673 0000
-000674 0000
-000675 0000
-000676 0000
-000677 0000
-000678 0000                          _NOP16                                    ; [026 -16 =010]
-000679 0000
-00067a 0000
-00067b 0000
-00067c 0000                          _NOP4                                     ; [010 -04 =006]
-00067d 0000
-00067e 0000                          _NOP2                                     ; [006 -02 =004]
-00067f b10b
-000680 e810
-000681 2701
-000682 b90b                          IMMED_TOGGLE_SYNC_PIN                     ; [004 -04 =000]
+000721 0000
+000722 0000
+000723 0000
+000724 0000
+000725 0000
+000726 0000
+000727 0000
+000728 0000
+000729 0000
+00072a 0000
+00072b 0000
+00072c 0000
+00072d 0000
+00072e 0000
+00072f 0000
+000730 0000
+000731 0000
+000732 0000
+000733 0000
+000734 0000
+000735 0000
+000736 0000
+000737 0000
+000738 0000
+000739 0000
+00073a 0000
+00073b 0000
+00073c 0000
+00073d 0000
+00073e 0000
+00073f 0000
+000740 0000                          _NOP32									; [058 -32 =026]
+000741 0000
+000742 0000
+000743 0000
+000744 0000
+000745 0000
+000746 0000
+000747 0000
+000748 0000
+000749 0000
+00074a 0000
+00074b 0000
+00074c 0000
+00074d 0000
+00074e 0000
+00074f 0000
+000750 0000                          _NOP16                                    ; [026 -16 =010]
+000751 0000
+000752 0000
+000753 0000
+000754 0000                          _NOP4                                     ; [010 -04 =006]
+000755 0000
+000756 0000                          _NOP2                                     ; [006 -02 =004]
+000757 b10b
+000758 e810
+000759 2701
+00075a b90b                          IMMED_TOGGLE_SYNC_PIN                     ; [004 -04 =000]
                                  
                                      ; continue here if not a display line
-000683 c000                          rjmp end_line ; -- TEMPORARY
+00075b c000                          rjmp end_line ; -- TEMPORARY
                                  
                                  ;    ; Jump based on exactly which line this is
                                  ;    ijmp                                      ; [2]
@@ -3829,37 +4114,37 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                  ;    rjmp end_line                       ; [2]
                                  
                                  end_line:
-000684 9518                          reti
+00075c 9518                          reti
                                  
                                  INT0_vect:
-000685 6880                            SET_ERROR_DEBUG_BIT
-000686 b108
-000687 930f
-000688 b107
-000689 930f
-00068a ef0f
-00068b b907
-00068c b988
-00068d 9a2b
-00068e 982b
-00068f 910f
-000690 b907
-000691 910f
-000692 b908                            LATCH_DEBUG_LIGHTS
-000693 778f                            CLEAR_ERROR_DEBUG_BIT
-000694 b108
-000695 930f
-000696 b107
-000697 930f
-000698 ef0f
-000699 b907
-00069a b988
-00069b 9a2b
-00069c 982b
-00069d 910f
-00069e b907
-00069f 910f
-0006a0 b908                            LATCH_DEBUG_LIGHTS
+00075d 6880                            SET_ERROR_DEBUG_BIT
+00075e b108
+00075f 930f
+000760 b107
+000761 930f
+000762 ef0f
+000763 b907
+000764 b988
+000765 9a2b
+000766 982b
+000767 910f
+000768 b907
+000769 910f
+00076a b908                            LATCH_DEBUG_LIGHTS
+00076b 778f                            CLEAR_ERROR_DEBUG_BIT
+00076c b108
+00076d 930f
+00076e b107
+00076f 930f
+000770 ef0f
+000771 b907
+000772 b988
+000773 9a2b
+000774 982b
+000775 910f
+000776 b907
+000777 910f
+000778 b908                            LATCH_DEBUG_LIGHTS
                                  ;      push rTEMP
                                  ;      ldi rTEMP, 0
                                  ;      sts EIMSK, rTEMP
@@ -3867,173 +4152,171 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                  ;      jmp RESET_vect
                                  ;      reti
                                  
-0006a1 e081                            ldi rDEBUGBITS, 1
-0006a2 c041                            rjmp finish_interrupt
+000779 e081                            ldi rDEBUGBITS, 1
+00077a c041                            rjmp finish_interrupt
                                  
                                  INT1_vect:
-0006a3 e082                            ldi rDEBUGBITS, 2
-0006a4 c03f                            rjmp finish_interrupt
+00077b e082                            ldi rDEBUGBITS, 2
+00077c c03f                            rjmp finish_interrupt
                                  
                                  INT2_vect:
-0006a5 e083                            ldi rDEBUGBITS, 3
-0006a6 c03d                            rjmp finish_interrupt
+00077d e083                            ldi rDEBUGBITS, 3
+00077e c03d                            rjmp finish_interrupt
                                  
                                  PCINT0_vect:
-0006a7 e084                            ldi rDEBUGBITS, 4
-0006a8 c03b                            rjmp finish_interrupt
+00077f e084                            ldi rDEBUGBITS, 4
+000780 c03b                            rjmp finish_interrupt
                                  
                                  PCINT1_vect:
-0006a9 e085                            ldi rDEBUGBITS, 5
-0006aa c039                            rjmp finish_interrupt
+000781 e085                            ldi rDEBUGBITS, 5
+000782 c039                            rjmp finish_interrupt
                                  
                                  PCINT2_vect:
-0006ab e086                            ldi rDEBUGBITS, 6
-0006ac c037                            rjmp finish_interrupt
+000783 e086                            ldi rDEBUGBITS, 6
+000784 c037                            rjmp finish_interrupt
                                  
                                  PCINT3_vect:
-0006ad e087                            ldi rDEBUGBITS, 7
-0006ae c035                            rjmp finish_interrupt
+000785 e087                            ldi rDEBUGBITS, 7
+000786 c035                            rjmp finish_interrupt
                                  
                                  WDT_vect:
-0006af e088                            ldi rDEBUGBITS, 8
-0006b0 c033                            rjmp finish_interrupt
+000787 e088                            ldi rDEBUGBITS, 8
+000788 c033                            rjmp finish_interrupt
                                  
                                  TIMER2_COMPA_vect:
-0006b1 e089                            ldi rDEBUGBITS, 9
-0006b2 c031                            rjmp finish_interrupt
+000789 e089                            ldi rDEBUGBITS, 9
+00078a c031                            rjmp finish_interrupt
                                  
                                  TIMER2_COMPB_vect:
-0006b3 e08a                            ldi rDEBUGBITS, 10
-0006b4 c02f                            rjmp finish_interrupt
+00078b e08a                            ldi rDEBUGBITS, 10
+00078c c02f                            rjmp finish_interrupt
                                  
                                  TIMER2_OVF_vect:
-0006b5 e08b                            ldi rDEBUGBITS, 11
-0006b6 c02d                            rjmp finish_interrupt
+00078d e08b                            ldi rDEBUGBITS, 11
+00078e c02d                            rjmp finish_interrupt
                                  
                                  TIMER1_CAPT_vect:
-0006b7 e08c                            ldi rDEBUGBITS, 12
-0006b8 c02b                            rjmp finish_interrupt
+00078f e08c                            ldi rDEBUGBITS, 12
+000790 c02b                            rjmp finish_interrupt
                                  
                                  TIMER1_COMPB_vect:
-0006b9 e08e                            ldi rDEBUGBITS, 14
-0006ba c029                            rjmp finish_interrupt
+000791 e08e                            ldi rDEBUGBITS, 14
+000792 c029                            rjmp finish_interrupt
                                  
                                  TIMER1_OVF_vect:
-0006bb e08f                            ldi rDEBUGBITS, 15
-0006bc c027                            rjmp finish_interrupt
+000793 e08f                            ldi rDEBUGBITS, 15
+000794 c027                            rjmp finish_interrupt
                                  
                                  TIMER0_COMPA_vect:
-0006bd e180                            ldi rDEBUGBITS, 16
-0006be c025                            rjmp finish_interrupt
+000795 e180                            ldi rDEBUGBITS, 16
+000796 c025                            rjmp finish_interrupt
                                  
                                  TIMER0_COMPB_vect:
-0006bf e181                            ldi rDEBUGBITS, 17
-0006c0 c023                            rjmp finish_interrupt
+000797 e181                            ldi rDEBUGBITS, 17
+000798 c023                            rjmp finish_interrupt
                                  
                                  TIMER0_OVF_vect:
-0006c1 e182                            ldi rDEBUGBITS, 18
-0006c2 c021                            rjmp finish_interrupt
+000799 e182                            ldi rDEBUGBITS, 18
+00079a c021                            rjmp finish_interrupt
                                  
                                  SPI_STC_vect:
-0006c3 e183                            ldi rDEBUGBITS, 19
-0006c4 c01f                            rjmp finish_interrupt
+00079b e183                            ldi rDEBUGBITS, 19
+00079c c01f                            rjmp finish_interrupt
                                  
                                  USART0_RX_vect:
-0006c5 e184                            ldi rDEBUGBITS, 20
-0006c6 c01d                            rjmp finish_interrupt
+00079d e184                            ldi rDEBUGBITS, 20
+00079e c01d                            rjmp finish_interrupt
                                  
                                  USART0_UDRE_vect:
-0006c7 e185                            ldi rDEBUGBITS, 21
-0006c8 c01b                            rjmp finish_interrupt
+00079f e185                            ldi rDEBUGBITS, 21
+0007a0 c01b                            rjmp finish_interrupt
                                  
                                  USART0_TX_vect:
-0006c9 e186                            ldi rDEBUGBITS, 22
-0006ca c019                            rjmp finish_interrupt
+0007a1 e186                            ldi rDEBUGBITS, 22
+0007a2 c019                            rjmp finish_interrupt
                                  
                                  ANALOG_COMP_vect:
-0006cb e187                            ldi rDEBUGBITS, 23
-0006cc c017                            rjmp finish_interrupt
+0007a3 e187                            ldi rDEBUGBITS, 23
+0007a4 c017                            rjmp finish_interrupt
                                  
                                  ADC_vect:
-0006cd e188                            ldi rDEBUGBITS, 24
-0006ce c015                            rjmp finish_interrupt
+0007a5 e188                            ldi rDEBUGBITS, 24
+0007a6 c015                            rjmp finish_interrupt
                                  
                                  EE_READY_vect:
-0006cf e189                            ldi rDEBUGBITS, 25
-0006d0 c013                            rjmp finish_interrupt
+0007a7 e189                            ldi rDEBUGBITS, 25
+0007a8 c013                            rjmp finish_interrupt
                                  
                                  TWI_vect:
-0006d1 e18a                            ldi rDEBUGBITS, 26
-0006d2 c011                            rjmp finish_interrupt
+0007a9 e18a                            ldi rDEBUGBITS, 26
+0007aa c011                            rjmp finish_interrupt
                                  
                                  SPM_READY_vect:
-0006d3 e18b                            ldi rDEBUGBITS, 27
-0006d4 c00f                            rjmp finish_interrupt
+0007ab e18b                            ldi rDEBUGBITS, 27
+0007ac c00f                            rjmp finish_interrupt
                                  
                                  USART1_RX_vect:
-0006d5 e18c                            ldi rDEBUGBITS, 28
-0006d6 c00d                            rjmp finish_interrupt
+0007ad e18c                            ldi rDEBUGBITS, 28
+0007ae c00d                            rjmp finish_interrupt
                                  
                                  USART1_UDRE_vect:
-0006d7 e18d                            ldi rDEBUGBITS, 29
-0006d8 c00b                            rjmp finish_interrupt
+0007af e18d                            ldi rDEBUGBITS, 29
+0007b0 c00b                            rjmp finish_interrupt
                                  
                                  USART1_TX_vect:
-0006d9 e18e                            ldi rDEBUGBITS, 30
-0006da c009                            rjmp finish_interrupt
+0007b1 e18e                            ldi rDEBUGBITS, 30
+0007b2 c009                            rjmp finish_interrupt
                                  
                                  TIMER3_CAPT_vect:
-0006db e18f                            ldi rDEBUGBITS, 31
-0006dc c007                            rjmp finish_interrupt
+0007b3 e18f                            ldi rDEBUGBITS, 31
+0007b4 c007                            rjmp finish_interrupt
                                  
                                  TIMER3_COMPA_vect:
-0006dd e280                            ldi rDEBUGBITS, 32
-0006de c005                            rjmp finish_interrupt
+0007b5 e280                            ldi rDEBUGBITS, 32
+0007b6 c005                            rjmp finish_interrupt
                                  
                                  TIMER3_COMPB_vect:
-0006df e281                            ldi rDEBUGBITS, 33
-0006e0 c003                            rjmp finish_interrupt
+0007b7 e281                            ldi rDEBUGBITS, 33
+0007b8 c003                            rjmp finish_interrupt
                                  
                                  TIMER3_OVF_vect:
-0006e1 e282                            ldi rDEBUGBITS, 34
-0006e2 c001                            rjmp finish_interrupt
+0007b9 e282                            ldi rDEBUGBITS, 34
+0007ba c001                            rjmp finish_interrupt
                                  
                                  __vector_default:
-0006e3 e080                            ldi rDEBUGBITS, 0
+0007bb e080                            ldi rDEBUGBITS, 0
                                  
                                  finish_interrupt:
-0006e4 6880                            SET_ERROR_DEBUG_BIT
-0006e5 b108
-0006e6 930f
-0006e7 b107
-0006e8 930f
-0006e9 ef0f
-0006ea b907
-0006eb b988
-0006ec 9a2b
-0006ed 982b
-0006ee 910f
-0006ef b907
-0006f0 910f
-0006f1 b908                            LATCH_DEBUG_LIGHTS
+0007bc 6880                            SET_ERROR_DEBUG_BIT
+0007bd b108
+0007be 930f
+0007bf b107
+0007c0 930f
+0007c1 ef0f
+0007c2 b907
+0007c3 b988
+0007c4 9a2b
+0007c5 982b
+0007c6 910f
+0007c7 b907
+0007c8 910f
+0007c9 b908                            LATCH_DEBUG_LIGHTS
                                  ;      reti
                                  
                                  endless:
-0006f2 cfff                            rjmp endless
+0007ca cfff                            rjmp endless
                                  
                                  .DSEG
                                  
-                                 ; Line buffer (0200 to 02FF)
-                                 .ORG 0x0200
-                                 line_buffer:
-000200                           .BYTE 256
-                                 line_buffer_end:
+                                 ; PPU registers are in registers.inc = 256 bytes
                                  
-                                 ; Grid of 64x64 tiles = 4K (0300 to 12FF)
-                                 .ORG 0x0300
-                                 tile_grid:
-000300                           .BYTE 4096
-                                 tile_grid_end:
+000200                           tile_graphic_data:      .BYTE 4096          ; Tile data storage area = 4K (format depends on mode chosen)
+001200                           tile_grid:              .BYTE 4096          ; Grid of 32x32 tiles = 32x32x32 bits = 4K maximum
+                                                                             ; For 2-color mode, the grid is stored as <TileNum> <BGColor> <FGColor> <Dummy>
+                                                                             ; For 4-color mode, the grid is stored as <TileNum> <Color1> <Color2> <Color3>
+002200                           line_buffer:            .BYTE 256           ; Line buffer (0200 to 02FF) = 256 bytes
+                                 
+                                 ; Variables
 
 
 RESOURCE USE INFORMATION
@@ -4051,32 +4334,32 @@ counted separately from r26..r31 here.
 .dseg memory usage only counts static data declared with .byte
 
 "ATmega1284P" register use summary:
-x  : 259 y  :   0 z  :   0 r0 :   3 r1 :   5 r2 :   0 r3 :   0 r4 :   0 
-r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:  12 
-r13:   2 r14:   0 r15:  21 r16: 776 r17:  36 r18:  12 r19:  15 r20:   8 
-r21:  10 r22:   3 r23:   3 r24:  58 r25:   0 r26:   6 r27:   6 r28:   4 
-r29:   3 r30:   2 r31:   2 
-Registers used: 21 out of 35 (60.0%)
+x  : 263 y  :   0 z  :   0 r0 :   3 r1 :   5 r2 :   1 r3 :   1 r4 :   2 
+r5 :   2 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:  13 
+r13:  21 r14:   2 r15:   0 r16: 786 r17:  42 r18:  12 r19:  14 r20:   8 
+r21:  10 r22:   3 r23:   3 r24:  58 r25:   0 r26:  10 r27:  10 r28:   7 
+r29:  10 r30:   4 r31:   5 
+Registers used: 25 out of 35 (71.4%)
 
 "ATmega1284P" instruction use summary:
-.lds  :   0 .sts  :   0 adc   :   3 add   :   3 adiw  :   0 and   :   1 
-andi  :   9 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
+.lds  :   0 .sts  :   0 adc   :   4 add   :   5 adiw  :   0 and   :   1 
+andi  :   8 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   0 break :   0 breq  :   0 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
-brne  :  16 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
+brne  :  15 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
 brvs  :   0 bset  :   0 bst   :   0 call  :   2 cbi   :  53 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   1 cln   :   0 clr   :   0 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   2 cpc   :   0 
-cpi   :   9 cpse  :   0 dec   :   9 elpm  :   0 eor   :  15 fmul  :   0 
-fmuls :   0 fmulsu:   0 icall :   0 ijmp  :   1 in    :  39 inc   :   5 
-jmp   :  36 ld    : 257 ldd   :   0 ldi   : 130 lds   :   0 lpm   :   0 
-lsl   :   3 lsr   :   3 mov   :  18 movw  :   0 mul   :   0 muls  :   0 
-mulsu :   0 neg   :   0 nop   : 571 or    :   1 ori   :   6 out   : 371 
+cpi   :   9 cpse  :   0 dec   :   9 elpm  :   0 eor   :  18 fmul  :   0 
+fmuls :   0 fmulsu:   0 icall :   0 ijmp  :   1 in    :  42 inc   :   5 
+jmp   :  36 ld    : 259 ldd   :   0 ldi   : 141 lds   :   0 lpm   :   0 
+lsl   :   1 lsr   :   9 mov   :  22 movw  :   0 mul   :   0 muls  :   0 
+mulsu :   0 neg   :   0 nop   : 753 or    :   1 ori   :   6 out   : 374 
 pop   :  24 push  :  24 rcall :   4 ret   :   6 reti  :   1 rjmp  :  61 
-rol   :   2 ror   :   0 sbc   :   0 sbci  :   0 sbi   :  39 sbic  :   0 
+rol   :   0 ror   :   3 sbc   :   0 sbci  :   0 sbi   :  39 sbic  :   0 
 sbis  :   0 sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   3 sec   :   0 
 seh   :   0 sei   :   1 sen   :   0 ser   :   0 ses   :   0 set   :   0 
-sev   :   0 sez   :   0 sleep :   0 spm   :   0 st    :   2 std   :   0 
+sev   :   0 sez   :   0 sleep :   0 spm   :   0 st    :   4 std   :   0 
 sts   :   5 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
 
 Instructions used: 37 out of 114 (32.5%)
@@ -4084,8 +4367,8 @@ Instructions used: 37 out of 114 (32.5%)
 "ATmega1284P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000de6   3558      0   3558  131072   2.7%
-[.dseg] 0x000100 0x001300      0   4608   4608   16384  28.1%
+[.cseg] 0x000000 0x000f96   3990      0   3990  131072   3.0%
+[.dseg] 0x000100 0x002302      0   8706   8706   16384  53.1%
 [.eseg] 0x000000 0x000000      0      0      0    4096   0.0%
 
 Assembly complete, 0 errors, 0 warnings

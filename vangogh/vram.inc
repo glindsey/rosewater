@@ -6,9 +6,7 @@
 #include "shared/utilities.inc"
 
 .DEF rYPOS	= r12
-.DEF rXMAX	= r13
-.DEF rXPOS2	= r14
-.DEF rXPOS	= r15
+.DEF rXPOS  = r13
 
 .CSEG
 
