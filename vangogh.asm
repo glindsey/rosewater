@@ -1,14 +1,57 @@
-.altmacro
-
 ; Notes
 ; Large Figlet font is "basic"
 ; Small Figlet font is "banner"
 
-#include "avr/io.h"
-#include "./vangogh_constants.inc"
-#include "./vangogh_registers.inc"
-#include "./vangogh_vram.inc"
-#include "./utilities.inc"
+.DEVICE ATmega1284P
+.ORG 0x0000
+	jmp RESET_vect				; 0
+	jmp INT0_vect				; 1
+	jmp INT1_vect				; 2
+	jmp INT2_vect				; 3
+	jmp PCINT0_vect				; 4
+	jmp PCINT1_vect				; 5
+	jmp PCINT2_vect				; 6
+	jmp PCINT3_vect				; 7
+	jmp WDT_vect				; 8
+	jmp TIMER2_COMPA_vect		; 9
+	jmp TIMER2_COMPB_vect		; 10
+	jmp TIMER2_OVF_vect			; 11
+	jmp TIMER1_CAPT_vect        ; 12
+	jmp TIMER1_COMPA_vect		; 13
+	jmp TIMER1_COMPB_vect		; 14
+	jmp TIMER1_OVF_vect			; 15
+	jmp TIMER0_COMPA_vect		; 16
+	jmp TIMER0_COMPB_vect		; 17
+	jmp TIMER0_OVF_vect			; 18
+	jmp SPI_STC_vect			; 19
+	jmp USART0_RX_vect			; 20
+	jmp USART0_UDRE_vect		; 21
+	jmp USART0_TX_vect			; 22
+	jmp ANALOG_COMP_vect		; 23
+	jmp ADC_vect				; 24
+	jmp EE_READY_vect			; 25
+	jmp TWI_vect				; 26
+	jmp SPM_READY_vect			; 27
+	jmp USART1_RX_vect			; 28
+	jmp USART1_UDRE_vect		; 29
+	jmp USART1_TX_vect			; 30
+	jmp TIMER3_CAPT_vect		; 31
+	jmp TIMER3_COMPA_vect		; 32
+	jmp TIMER3_COMPB_vect		; 33
+	jmp TIMER3_OVF_vect			; 34
+
+RESET_vect:
+	ldi r16, HIGH(RAMEND)
+	out SPH, r16
+	ldi r16, LOW(RAMEND)
+	out SPL, r16
+	sei
+	jmp main 
+
+#include "vangogh/constants.inc"
+#include "vangogh/registers.inc"
+#include "vangogh/vram.inc"
+#include "shared/utilities.inc"
 
 ;d8888b. d88888b d88888b d888888b d8b   db d88888b .d8888.
 ;88  `8D 88'     88'       `88'   888o  88 88'     88'  YP
@@ -19,11 +62,11 @@
 
 ; Global macro definitions
 ; =========================================================
-#define rLINECOUNTER    r19
-#define rSTATBITS       r20
-#define rCTRLBITS       r21
-#define rADDRDDR        r22
-#define rDATADDR        r23
+.DEF rLINECOUNTER	= r19
+.DEF rSTATBITS		= r20
+.DEF rCTRLBITS		= r21
+.DEF rADDRDDR		= r22
+.DEF rDATADDR		= r23
 
 ; === Timing Values =============================
       ; At 20MHz:
@@ -35,8 +78,8 @@
       ; (NTSC color line rate is 15.734 kHz).
       ; At 28.63636MHz:
       ; clkIO with OC=0x071B gives us 15.7342637 kHz
-#define HSYNC_VALUE_HI        0x05
-#define HSYNC_VALUE_LO        0x54
+.SET HSYNC_VALUE_HI		= 0x05
+.SET HSYNC_VALUE_LO		= 0x54
 
 ;.88b  d88.  .d8b.   .o88b. d8888b.  .d88b.  .d8888.
 ;88'YbdP`88 d8' `8b d8P  Y8 88  `8D .8P  Y8. 88'  YP
@@ -45,55 +88,49 @@
 ;88  88  88 88   88 Y8b  d8 88 `88. `8b  d8' db   8D
 ;YP  YP  YP YP   YP  `Y88P' 88   YD  `Y88P'  `8888Y'
 
-.macro VBLANK_ON ; 1 cycle
+.MACRO VBLANK_ON ; 1 cycle
       andi rCTRLBITS, NOT_VBLANKBIT_MASK
-.endm
+.ENDM
 
-.macro VBLANK_OFF ; 1 cycle
+.MACRO VBLANK_OFF ; 1 cycle
       ori rCTRLBITS, VBLANKBIT_MASK
-.endm
+.ENDM
 
-.macro VDRAW_ON ; 1 cycle
+.MACRO VDRAW_ON ; 1 cycle
       andi rCTRLBITS, NOT_VDRAWBIT_MASK
-.endm
+.ENDM
 
-.macro VDRAW_OFF ; 1 cycle
+.MACRO VDRAW_OFF ; 1 cycle
       ori rCTRLBITS, VDRAWBIT_MASK
-.endm
+.ENDM
 
-.macro DEBUG_ON  ; 1 cycle
+.MACRO DEBUG_ON  ; 1 cycle
       sbi CTL2PORT, DEBUGPIN
-.endm
+.ENDM
 
-.macro DEBUG_OFF  ; 1 cycle
+.MACRO DEBUG_OFF  ; 1 cycle
       cbi CTL2PORT, DEBUGPIN
-.endm
+.ENDM
 
-.macro DAC_ENABLE  ; 1 cycle
+.MACRO DAC_ENABLE  ; 1 cycle
       cbi CTL2PORT, DACENPIN
-.endm
+.ENDM
 
-.macro DAC_DISABLE  ; 1 cycle
+.MACRO DAC_DISABLE  ; 1 cycle
       sbi CTL2PORT, DACENPIN
-.endm
+.ENDM
 
-.macro TOGGLE_SYNC_BIT  ; 2 cycles
+.MACRO TOGGLE_SYNC_BIT  ; 2 cycles
       ldi rTEMP, SYNCBIT_MASK ; [1]
       eor rCTRLBITS, rTEMP    ; [1]
-.endm
+.ENDM
 
-.macro IMMED_TOGGLE_SYNC_PIN ; 5 cycles
-      LOCAL is_set
-      LOCAL done
+.MACRO IMMED_TOGGLE_SYNC_PIN ; 4 cycles
       in rTEMP, CTRLPORT            ; [1]
-      andi rTEMP, SYNCBIT_MASK      ; [1]
-      brne is_set                   ; [1] if clear, [2] if set
-      sbi CTRLPORT, SYNCPIN         ; [1] if clear
-      rjmp done                     ; [1] if clear
-is_set:
-      cbi CTRLPORT, SYNCPIN         ; [1] if set
-done:
-.endm
+	  ldi rTEMP2, SYNCBIT_MASK      ; [1]
+	  eor rTEMP, rTEMP2				; [1]
+	  out CTRLPORT, rTEMP			; [1]
+.ENDM
 
 ;.d8888. db    db d8888b. d8888b.  .d88b.  db    db d888888b d888888b d8b   db d88888b .d8888.
 ;88'  YP 88    88 88  `8D 88  `8D .8P  Y8. 88    88 `~~88~~'   `88'   888o  88 88'     88'  YP
@@ -118,8 +155,8 @@ boot_wait_inner_loop:
 get_debug_lights:
       push XH
       push XL
-      ldi XH, hi8(debug_lights)
-      ldi XL, lo8(debug_lights)
+      ldi XH, HIGH(debug_lights)
+      ldi XL, LOW(debug_lights)
       ld r0, X
       pop XL
       pop XH
@@ -129,8 +166,8 @@ get_debug_lights:
 set_debug_lights:
       push XH
       push XL
-      ldi XH, hi8(debug_lights)
-      ldi XL, lo8(debug_lights)
+      ldi XH, HIGH(debug_lights)
+      ldi XL, LOW(debug_lights)
       st X, r0
       pop XL
       pop XH
@@ -140,8 +177,8 @@ set_debug_lights:
 set_interrupt_debug_bit:
       push XH
       push XL
-      ldi XH, hi8(debug_lights)
-      ldi XL, lo8(debug_lights)
+      ldi XH, HIGH(debug_lights)
+      ldi XL, LOW(debug_lights)
       ld rTEMP, X
       ori rTEMP, 0x40
       st X, rTEMP
@@ -153,8 +190,8 @@ set_interrupt_debug_bit:
 clear_interrupt_debug_bit:
       push XH
       push XL
-      ldi XH, hi8(debug_lights)
-      ldi XL, lo8(debug_lights)
+      ldi XH, HIGH(debug_lights)
+      ldi XL, LOW(debug_lights)
       ld rTEMP, X
       andi rTEMP, 0xBF
       st X, rTEMP
@@ -166,8 +203,8 @@ clear_interrupt_debug_bit:
 set_error_debug_bit:
       push XH
       push XL
-      ldi XH, hi8(debug_lights)
-      ldi XL, lo8(debug_lights)
+      ldi XH, HIGH(debug_lights)
+      ldi XL, LOW(debug_lights)
       ld r0, X
       ori rTEMP, 0x80
       st X, rTEMP
@@ -179,8 +216,8 @@ set_error_debug_bit:
 clear_error_debug_bit:
       push XH
       push XL
-      ldi XH, hi8(debug_lights)
-      ldi XL, lo8(debug_lights)
+      ldi XH, HIGH(debug_lights)
+      ldi XL, LOW(debug_lights)
       ld r0, X
       andi rTEMP, 0x7F
       st X, r0
@@ -213,7 +250,6 @@ set_debug_latch:
       rcall latch_debug_lights
       ret
 
-.global main
 main:
 
 ;.d8888. d88888b d888888b db    db d8888b.
@@ -226,8 +262,9 @@ main:
       ; Disable interrupts.
       cli
 
-      ldi rTEMP, 0
-      sts _SFR_MEM_ADDR(EIMSK), rTEMP
+	  ; This should be unneeded but putting it here anyway: disable INT0 interrupt
+      ;ldi rTEMP, 0
+      ;sts EIMSK, rTEMP
 
       _LDI r0, 0x00
       rcall set_debug_latch
@@ -274,7 +311,7 @@ main:
 
       ; Set Timer 1 to clkIO and to clear on timer match.
       ldi rTEMP, (1 << WGM02) | (1 << CS10)
-      sts _SFR_MEM_ADDR(TCCR1B), rTEMP
+      sts TCCR1B, rTEMP
 
       ; Set output compare value for OC0A
       ; 0x00 outputs a clock at half the AVR's frequency
@@ -291,13 +328,13 @@ main:
       ; At 28.63636MHz:
       ; clkIO with OC=0x071B gives us 15.7342637 kHz
       ldi rTEMP, HSYNC_VALUE_HI
-      sts _SFR_MEM_ADDR(OCR1AH), rTEMP
+      sts OCR1AH, rTEMP
       ldi rTEMP, HSYNC_VALUE_LO
-      sts _SFR_MEM_ADDR(OCR1AL), rTEMP
+      sts OCR1AL, rTEMP
 
       ; Set interrupt on OC1A compare
       ldi rTEMP, (1 << OCIE1A)
-      sts _SFR_MEM_ADDR(TIMSK1), rTEMP
+      sts TIMSK1, rTEMP
 
       _LDI r0, 0x01
       rcall set_debug_latch
@@ -350,7 +387,6 @@ loop:
 ;88   88 db   8D    88    88  V888 Y8b  d8     .88.   db   8D 88 `88.
 ;YP   YP `8888Y'    YP    VP   V8P  `Y88P'   Y888888P `8888Y' 88   YD
 
-.global TIMER1_COMPA_vect
 TIMER1_COMPA_vect:
 
       ; Start of front porch - 1.5 uS - 29 cycles
@@ -362,7 +398,10 @@ TIMER1_COMPA_vect:
       rcall latch_debug_lights
 
       ; Finish up front porch
-      _NOP 23                                   ; [028 -23 =005]
+      _NOP16
+	  _NOP4
+	  _NOP2
+	  nop                                       ; [028 -23 =005]
 
       IMMED_TOGGLE_SYNC_PIN                     ; [005 -05 =000]
       ; Start of sync tip - 4.7uS - 90 cycles
@@ -407,7 +446,7 @@ setup_vblank:
       rjmp after_setup_vblank                   ; [075 -02 =073]
 
 skip_setup_vblank:
-      _NOP 8                                    ;                [081 -08 =073]
+      _NOP8                                     ;                [081 -08 =073]
 
 after_setup_vblank:
 
@@ -415,11 +454,15 @@ after_setup_vblank:
 
       ; Finish the H-sync pulse here.
       ; This can be filled in with whatever calculations we care to do.
-      _NOP 68                                   ; [073 -068 =005]
+      _NOP64                                    ; [073 -068 =005]
+	  _NOP4
       IMMED_TOGGLE_SYNC_PIN                     ; [005 -005 =000]
 
       ; Start of breezeway/colorburst/back porch = 4.7uS = 90 cycles
-      _NOP 90                                   ; Ah, just do it all here for now
+      _NOP64
+	  _NOP16
+	  _NOP8
+	  _NOP2
 
       ; continue rendering here if a display line
 
@@ -448,8 +491,8 @@ output_frame:
       ;_LDI r0, 1
 
       ; Load the jump address into Z but don't jump just yet
-      ldi ZL, pm_lo8(output_mode_jumptable)
-      ldi ZH, pm_hi8(output_mode_jumptable)
+      ldi ZL, LOW(output_mode_jumptable)
+      ldi ZH, HIGH(output_mode_jumptable)
       add ZL, r0
       adc ZH, rZERO
 
@@ -462,7 +505,7 @@ output_frame:
 output_mode_jumptable:
       rjmp output_line_vram_direct_6      ; 0
       rjmp output_line_vram_direct_5      ; 1
-      rjmp output_line_vram_direct_4      ; 2
+      rjmp output_line_dummy              ; 2
       rjmp output_line_dummy              ; 3
       rjmp output_line_dummy              ; 4
       rjmp output_line_dummy              ; 5
@@ -573,59 +616,6 @@ pixel_loop_5:
 
       rjmp end_line
 
-output_line_vram_direct_4:
-      ; Start Left Border
-      ldi rTEMP, 0x00
-      out DATAPORT, rTEMP
-      SET_DATA_OUTPUT
-      DAC_ENABLE
-
-      ; Clear X position.
-      eor rXPOS, rXPOS
-
-      ; Set HAL to Y position / 2.
-      mov r0, rYPOS
-      lsr r0
-      call set_hi_addr_latch
-
-      ; Set address port to X position.
-      out ADDRPORT, rXPOS
-
-      ; End Left Border
-      _NOP 10
-      SET_DATA_INPUT
-
-      ; Set VRAM0 address enable.
-      ADDRESS_VRAM0
-      OE_ON
-
-.rept 250
-      out ADDRPORT, rXPOS
-      inc rXPOS
-      nop
-      nop
-.endr
-
-.rept 6
-      out ADDRPORT, rXPOS
-      inc rXPOS
-      nop
-      nop
-.endr
-
-.rept 64
-      out ADDRPORT, rXPOS
-      inc rXPOS
-      nop
-      nop
-.endr
-
-      DAC_DISABLE
-      OE_OFF
-      ADDRESS_VDU
-
-      rjmp end_line
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;                                         ;
 ;    #####  #    # #    # #    # #   #    ;
@@ -698,8 +688,8 @@ non_display_line:
       ; 22: Post-render blanking line on ODD frames only
 
       ; Load the jump address into Z but don't jump just yet
-      ldi ZL, lo8(non_display_line_table)       ; [087 -01 =086]
-      ldi ZH, hi8(non_display_line_table)       ; [086 -01 =085]
+      ldi ZL, LOW(non_display_line_table)       ; [087 -01 =086]
+      ldi ZH, HIGH(non_display_line_table)      ; [086 -01 =085]
       add ZL, rLINECOUNTER                      ; [085 -01 =084]
       adc ZH, rZERO                             ; [084 -01 =083]
       ; TEMPORARY
@@ -712,7 +702,7 @@ set_vsync:
       TOGGLE_SYNC_BIT                           ; [081 -03 =078]
       rjmp after_set_vsync                      ; [078 -02 =076]
 skip_set_vsync:
-      _NOP 4                                    ;                [080 -04 =076]
+      _NOP4                                     ;                [080 -04 =076]
 after_set_vsync:
 
       ; If this is line 07, toggle SYNC for the next line.
@@ -723,7 +713,7 @@ clear_vsync:
       TOGGLE_SYNC_BIT                           ; [074 -03 =071]
       rjmp after_clear_vsync                    ; [071 -02 =069]
 skip_clear_vsync:
-      _NOP 4                                    ;                [073 -04 =069]
+      _NOP4                                     ;                [073 -04 =069]
 after_clear_vsync:
 
       ; Increment rLINECOUNTER by one.
@@ -766,12 +756,17 @@ setup_display:
       andi rCTRLBITS, NOT_VDRAWBIT_MASK
       rjmp after_setup_display                  ; [054 -02 =052]
 skip_setup_display:
-      _NOP 10                                   ; [062 -10 =052]
+      _NOP8                                     ; [062 -10 =052]
+	  _NOP2
 after_setup_display:
 
       ; Finish the H-sync pulse here.
       ; This can be filled in with whatever calculations we care to do.
-      _NOP 47                                   ; [052 -47 =005]
+	  _NOP32									; [052 -47 =005]
+	  _NOP8
+	  _NOP4
+	  _NOP2
+	  nop
       IMMED_TOGGLE_SYNC_PIN                     ; [005 -05 =000]
 
       ; continue here if not a display line
@@ -821,7 +816,6 @@ end_line:
 
       reti
 
-.global INT0_vect
 INT0_vect:
       call set_error_debug_bit
       call latch_debug_lights
@@ -836,167 +830,134 @@ INT0_vect:
       _LDI r0, 1
       rjmp finish_interrupt
 
-.global INT1_vect
 INT1_vect:
       _LDI r0, 2
       rjmp finish_interrupt
 
-.global INT2_vect
 INT2_vect:
       _LDI r0, 3
       rjmp finish_interrupt
 
-.global PCINT0_vect
 PCINT0_vect:
       _LDI r0, 4
       rjmp finish_interrupt
 
-.global PCINT1_vect
 PCINT1_vect:
       _LDI r0, 5
       rjmp finish_interrupt
 
-.global PCINT2_vect
 PCINT2_vect:
       _LDI r0, 6
       rjmp finish_interrupt
 
-.global PCINT3_vect
 PCINT3_vect:
       _LDI r0, 7
       rjmp finish_interrupt
 
-.global WDT_vect
 WDT_vect:
       _LDI r0, 8
       rjmp finish_interrupt
 
-.global TIMER2_COMPA_vect
 TIMER2_COMPA_vect:
       _LDI r0, 9
       rjmp finish_interrupt
 
-.global TIMER2_COMPB_vect
 TIMER2_COMPB_vect:
       _LDI r0, 10
       rjmp finish_interrupt
 
-.global TIMER2_OVF_vect
 TIMER2_OVF_vect:
       _LDI r0, 11
       rjmp finish_interrupt
 
-.global TIMER1_CAPT_vect
 TIMER1_CAPT_vect:
       _LDI r0, 12
       rjmp finish_interrupt
 
-.global TIMER1_COMPB_vect
 TIMER1_COMPB_vect:
       _LDI r0, 14
       rjmp finish_interrupt
 
-.global TIMER1_OVF_vect
 TIMER1_OVF_vect:
       _LDI r0, 15
       rjmp finish_interrupt
 
-.global TIMER0_COMPA_vect
 TIMER0_COMPA_vect:
       _LDI r0, 16
       rjmp finish_interrupt
 
-.global TIMER0_COMPB_vect
 TIMER0_COMPB_vect:
       _LDI r0, 17
       rjmp finish_interrupt
 
-.global TIMER0_OVF_vect
 TIMER0_OVF_vect:
       _LDI r0, 18
       rjmp finish_interrupt
 
-.global SPI_STC_vect
 SPI_STC_vect:
       _LDI r0, 19
       rjmp finish_interrupt
 
-.global USART0_RX_vect
 USART0_RX_vect:
       _LDI r0, 20
       rjmp finish_interrupt
 
-.global USART0_UDRE_vect
 USART0_UDRE_vect:
       _LDI r0, 21
       rjmp finish_interrupt
 
-.global USART0_TX_vect
 USART0_TX_vect:
       _LDI r0, 22
       rjmp finish_interrupt
 
-.global ANALOG_COMP_vect
 ANALOG_COMP_vect:
       _LDI r0, 23
       rjmp finish_interrupt
 
-.global ADC_vect
 ADC_vect:
       _LDI r0, 24
       rjmp finish_interrupt
 
-.global EE_READY_vect
 EE_READY_vect:
       _LDI r0, 25
       rjmp finish_interrupt
 
-.global TWI_vect
 TWI_vect:
       _LDI r0, 26
       rjmp finish_interrupt
 
-.global SPM_READY_vect
 SPM_READY_vect:
       _LDI r0, 27
       rjmp finish_interrupt
 
-.global USART1_RX_vect
 USART1_RX_vect:
       _LDI r0, 28
       rjmp finish_interrupt
 
-.global USART1_UDRE_vect
 USART1_UDRE_vect:
       _LDI r0, 29
       rjmp finish_interrupt
 
-.global USART1_TX_vect
 USART1_TX_vect:
       _LDI r0, 30
       rjmp finish_interrupt
 
-.global TIMER3_CAPT_vect
 TIMER3_CAPT_vect:
       _LDI r0, 31
       rjmp finish_interrupt
 
-.global TIMER3_COMPA_vect
 TIMER3_COMPA_vect:
       _LDI r0, 32
       rjmp finish_interrupt
 
-.global TIMER3_COMPB_vect
 TIMER3_COMPB_vect:
       _LDI r0, 33
       rjmp finish_interrupt
 
-.global TIMER3_OVF_vect
 TIMER3_OVF_vect:
       _LDI r0, 34
       rjmp finish_interrupt
 
-.global __vector_default
 __vector_default:
       _LDI r0, 0
 
@@ -1009,7 +970,7 @@ finish_interrupt:
 endless:
       rjmp endless
 
-.data
+.DSEG
 
 ; Debug byte.
 debug_lights:

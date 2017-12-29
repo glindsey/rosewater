@@ -1,89 +1,91 @@
 ; PPU VRAM access
-#pragma once
-#include "vangogh_constants.inc"
-#include "utilities.inc"
+#ifndef VRAM_INC
+#define VRAM_INC
 
-#define rYPOS           r12
-#define rXMAX           r13
-#define rXPOS2          r14
-#define rXPOS           r15
+#include "constants.inc"
+#include "shared/utilities.inc"
 
-.text
+.DEF rYPOS	= r12
+.DEF rXMAX	= r13
+.DEF rXPOS2	= r14
+.DEF rXPOS	= r15
 
-.macro OE_ON  ; 1 cycle
+.CSEG
+
+.MACRO OE_ON  ; 1 cycle
       cbi CTL2PORT, OEPIN
-.endm
+.ENDM
 
-.macro OE_OFF  ; 1 cycle
+.MACRO OE_OFF  ; 1 cycle
       sbi CTL2PORT, OEPIN
-.endm
+.ENDM
 
-.macro WE_ON  ; 1 cycle
+.MACRO WE_ON  ; 1 cycle
       cbi CTL2PORT, WEPIN
-.endm
+.ENDM
 
-.macro WE_OFF  ; 1 cycle
+.MACRO WE_OFF  ; 1 cycle
       sbi CTL2PORT, WEPIN
-.endm
+.ENDM
 
-.macro OE_AND_WE_OFF  ; 2 cycles
+.MACRO OE_AND_WE_OFF  ; 2 cycles
       sbi CTL2PORT, OEPIN
       sbi CTL2PORT, WEPIN
-.endm
+.ENDM
 
-.macro ADDRESS_VDU
+.MACRO ADDRESS_VDU
       cbi CTRLPORT, A18PIN
       cbi CTRLPORT, A17PIN
       cbi CTRLPORT, A16PIN
-.endm
+.ENDM
 
-.macro ADDRESS_VRAM0
+.MACRO ADDRESS_VRAM0
       cbi CTRLPORT, A18PIN
       sbi CTRLPORT, A17PIN
       cbi CTRLPORT, A16PIN
-.endm
+.ENDM
 
-.macro ADDRESS_VRAM1
+.MACRO ADDRESS_VRAM1
       sbi CTRLPORT, A18PIN
       cbi CTRLPORT, A17PIN
       cbi CTRLPORT, A16PIN
-.endm
+.ENDM
 
-.macro ADDRESS_PALRAM
+.MACRO ADDRESS_PALRAM
       sbi CTRLPORT, A18PIN
       sbi CTRLPORT, A17PIN
       cbi CTRLPORT, A16PIN
-.endm
+.ENDM
 
 ; Sets data port to be an input.
-.macro SET_DATA_INPUT
+.MACRO SET_DATA_INPUT
       ldi rTEMP, DATABIT_DDR_INPUT
       out DATADDR, rTEMP
-.endm
+.ENDM
 
 ; Sets data port to be an output.
-.macro SET_DATA_OUTPUT
+.MACRO SET_DATA_OUTPUT
       ldi rTEMP, DATABIT_DDR_OUTPUT
       out DATADDR, rTEMP
-.endm
+.ENDM
 
 ; Reads from the data port into a high (r16-r31) register.
-.macro READ_DATA_INTO reg:req
+.MACRO READ_DATA_INTO
       SET_DATA_INPUT
       OE_ON
       nop
-      in \reg, DATAPORT
+      in @0, DATAPORT
       OE_OFF
-.endm
+.ENDM
 
 ; Writes to the data port from a high (r16-r31) register.
-.macro WRITE_DATA_FROM reg:req
+.MACRO WRITE_DATA_FROM
       SET_DATA_OUTPUT
-      out DATAPORT, \reg
+      out DATAPORT, @0
       WE_ON
       nop
       WE_OFF
-.endm
+.ENDM
 
 ; Sets the high address latch to the value in r0.
 ;
@@ -94,7 +96,6 @@
 ; Clobbers:
 ;     rTEMP, rTEMP2, rTEMP3
 ;
-.global set_hi_addr_latch
 set_hi_addr_latch:
       in rTEMP, DATADDR
       in rTEMP2, DATAPORT
@@ -108,7 +109,6 @@ set_hi_addr_latch:
       out DATADDR, rTEMP
       ret
 
-.global setup_palette
 setup_palette:
       ; Right now palette RAM high address is forced to 00.
 
@@ -136,7 +136,7 @@ palette_set_loop_low:
       mov rTEMP2, rTEMP
       out DATAPORT, rTEMP2
       WE_ON
-      _NOP 4
+      _NOP4
       WE_OFF
       cpi rTEMP, 0
       brne palette_set_loop_low
@@ -155,7 +155,7 @@ palette_set_loop_high:
       mov rTEMP2, rTEMP
       out DATAPORT, rTEMP2
       WE_ON
-      _NOP 4
+      _NOP4
       WE_OFF
       cpi rTEMP, 0
       brne palette_set_loop_high
@@ -206,7 +206,7 @@ vram_set_loop_x:
       or rTEMP2, rTEMP
       out DATAPORT, rTEMP2
       WE_ON
-      _NOP 4
+      _NOP4
       WE_OFF
       _CPI rXPOS, 0
       brne vram_set_loop_x
@@ -226,7 +226,6 @@ vram_set_loop_x:
 
 
 ; Zeroes out all VRAM -- both chips.
-.global clear_vram
 clear_vram:
       ; Set data lines to outputs.
       ldi rTEMP, DATABIT_DDR_OUTPUT
@@ -260,7 +259,7 @@ clear_loop_x:
       ldi rTEMP2, 0
       out DATAPORT, rTEMP2
       WE_ON
-      _NOP 4
+      _NOP4
       WE_OFF
       _CPI rXPOS, 0
       brne clear_loop_x
@@ -277,3 +276,5 @@ clear_loop_x:
       ADDRESS_VDU
 
       ret
+
+#endif
