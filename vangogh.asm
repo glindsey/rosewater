@@ -4,49 +4,49 @@
 
 .DEVICE ATmega1284P
 .ORG 0x0000
-	jmp RESET_vect				; 0
-	jmp INT0_vect				; 1
-	jmp INT1_vect				; 2
-	jmp INT2_vect				; 3
-	jmp PCINT0_vect				; 4
-	jmp PCINT1_vect				; 5
-	jmp PCINT2_vect				; 6
-	jmp PCINT3_vect				; 7
-	jmp WDT_vect				; 8
-	jmp TIMER2_COMPA_vect		; 9
-	jmp TIMER2_COMPB_vect		; 10
-	jmp TIMER2_OVF_vect			; 11
-	jmp TIMER1_CAPT_vect        ; 12
-	jmp TIMER1_COMPA_vect		; 13
-	jmp TIMER1_COMPB_vect		; 14
-	jmp TIMER1_OVF_vect			; 15
-	jmp TIMER0_COMPA_vect		; 16
-	jmp TIMER0_COMPB_vect		; 17
-	jmp TIMER0_OVF_vect			; 18
-	jmp SPI_STC_vect			; 19
-	jmp USART0_RX_vect			; 20
-	jmp USART0_UDRE_vect		; 21
-	jmp USART0_TX_vect			; 22
-	jmp ANALOG_COMP_vect		; 23
-	jmp ADC_vect				; 24
-	jmp EE_READY_vect			; 25
-	jmp TWI_vect				; 26
-	jmp SPM_READY_vect			; 27
-	jmp USART1_RX_vect			; 28
-	jmp USART1_UDRE_vect		; 29
-	jmp USART1_TX_vect			; 30
-	jmp TIMER3_CAPT_vect		; 31
-	jmp TIMER3_COMPA_vect		; 32
-	jmp TIMER3_COMPB_vect		; 33
-	jmp TIMER3_OVF_vect			; 34
+    jmp RESET_vect				; 0
+    jmp INT0_vect				; 1
+    jmp INT1_vect				; 2
+    jmp INT2_vect				; 3
+    jmp PCINT0_vect				; 4
+    jmp PCINT1_vect				; 5
+    jmp PCINT2_vect				; 6
+    jmp PCINT3_vect				; 7
+    jmp WDT_vect				; 8
+    jmp TIMER2_COMPA_vect		; 9
+    jmp TIMER2_COMPB_vect		; 10
+    jmp TIMER2_OVF_vect			; 11
+    jmp TIMER1_CAPT_vect        ; 12
+    jmp TIMER1_COMPA_vect		; 13
+    jmp TIMER1_COMPB_vect		; 14
+    jmp TIMER1_OVF_vect			; 15
+    jmp TIMER0_COMPA_vect		; 16
+    jmp TIMER0_COMPB_vect		; 17
+    jmp TIMER0_OVF_vect			; 18
+    jmp SPI_STC_vect			; 19
+    jmp USART0_RX_vect			; 20
+    jmp USART0_UDRE_vect		; 21
+    jmp USART0_TX_vect			; 22
+    jmp ANALOG_COMP_vect		; 23
+    jmp ADC_vect				; 24
+    jmp EE_READY_vect			; 25
+    jmp TWI_vect				; 26
+    jmp SPM_READY_vect			; 27
+    jmp USART1_RX_vect			; 28
+    jmp USART1_UDRE_vect		; 29
+    jmp USART1_TX_vect			; 30
+    jmp TIMER3_CAPT_vect		; 31
+    jmp TIMER3_COMPA_vect		; 32
+    jmp TIMER3_COMPB_vect		; 33
+    jmp TIMER3_OVF_vect			; 34
 
 RESET_vect:
-	ldi r16, HIGH(RAMEND)
-	out SPH, r16
-	ldi r16, LOW(RAMEND)
-	out SPL, r16
-	sei
-	jmp main 
+    ldi r16, HIGH(RAMEND)
+    out SPH, r16
+    ldi r16, LOW(RAMEND)
+    out SPL, r16
+    sei
+    jmp main 
 
 #include "vangogh/constants.inc"
 #include "vangogh/registers.inc"
@@ -67,6 +67,7 @@ RESET_vect:
 .DEF rCTRLBITS		= r21
 .DEF rADDRDDR		= r22
 .DEF rDATADDR		= r23
+.DEF rDEBUGBITS     = r24
 
 ; === Timing Values =============================
       ; At 20MHz:
@@ -78,8 +79,8 @@ RESET_vect:
       ; (NTSC color line rate is 15.734 kHz).
       ; At 28.63636MHz:
       ; clkIO with OC=0x071B gives us 15.7342637 kHz
-.SET HSYNC_VALUE_HI		= 0x05
-.SET HSYNC_VALUE_LO		= 0x54
+.SET HSYNC_VALUE_HI		= 0x04
+.SET HSYNC_VALUE_LO		= 0xF6
 
 ;.88b  d88.  .d8b.   .o88b. d8888b.  .d88b.  .d8888.
 ;88'YbdP`88 d8' `8b d8P  Y8 88  `8D .8P  Y8. 88'  YP
@@ -127,9 +128,9 @@ RESET_vect:
 
 .MACRO IMMED_TOGGLE_SYNC_PIN ; 4 cycles
       in rTEMP, CTRLPORT            ; [1]
-	  ldi rTEMP2, SYNCBIT_MASK      ; [1]
-	  eor rTEMP, rTEMP2				; [1]
-	  out CTRLPORT, rTEMP			; [1]
+      ldi rTEMP2, SYNCBIT_MASK      ; [1]
+      eor rTEMP, rTEMP2				; [1]
+      out CTRLPORT, rTEMP			; [1]
 .ENDM
 
 ;.d8888. db    db d8888b. d8888b.  .d88b.  db    db d888888b d888888b d8b   db d88888b .d8888.
@@ -151,104 +152,41 @@ boot_wait_inner_loop:
       brne boot_wait_outer_loop
       ret
 
-; Get debug lights into r0.
-get_debug_lights:
-      push XH
-      push XL
-      ldi XH, HIGH(debug_lights)
-      ldi XL, LOW(debug_lights)
-      ld r0, X
-      pop XL
-      pop XH
-      ret
-
-; Set debug lights from r0.
-set_debug_lights:
-      push XH
-      push XL
-      ldi XH, HIGH(debug_lights)
-      ldi XL, LOW(debug_lights)
-      st X, r0
-      pop XL
-      pop XH
-      ret
-
-; Turn on the "interrupt" debug bit.
-set_interrupt_debug_bit:
-      push XH
-      push XL
-      ldi XH, HIGH(debug_lights)
-      ldi XL, LOW(debug_lights)
-      ld rTEMP, X
-      ori rTEMP, 0x40
-      st X, rTEMP
-      pop XL
-      pop XH
-      ret
-
-; Turn off the "interrupt" debug bit.
-clear_interrupt_debug_bit:
-      push XH
-      push XL
-      ldi XH, HIGH(debug_lights)
-      ldi XL, LOW(debug_lights)
-      ld rTEMP, X
-      andi rTEMP, 0xBF
-      st X, rTEMP
-      pop XL
-      pop XH
-      ret
+; Turn on the "interrupt" debug bit - 1 cycle
+.MACRO SET_INT_DEBUG_BIT
+    ori rDEBUGBITS, 0x40
+.ENDM
+      
+; Turn off the "interrupt" debug bit - 1 cycle
+.MACRO CLEAR_INT_DEBUG_BIT
+    andi rDEBUGBITS, 0xBF
+.ENDM
 
 ; Turn on the "error" debug bit.
-set_error_debug_bit:
-      push XH
-      push XL
-      ldi XH, HIGH(debug_lights)
-      ldi XL, LOW(debug_lights)
-      ld r0, X
-      ori rTEMP, 0x80
-      st X, rTEMP
-      pop XL
-      pop XH
-      ret
+.MACRO SET_ERROR_DEBUG_BIT
+    ori rDEBUGBITS, 0x80
+.ENDM
 
 ; Turn off the "error" debug bit.
-clear_error_debug_bit:
-      push XH
-      push XL
-      ldi XH, HIGH(debug_lights)
-      ldi XL, LOW(debug_lights)
-      ld r0, X
-      andi rTEMP, 0x7F
-      st X, r0
-      pop XL
-      pop XH
-      ret
+.MACRO CLEAR_ERROR_DEBUG_BIT
+    andi rDEBUGBITS, 0x7f
+.ENDM
 
-; Sets the debug output latch to the value in debug_lights.
-latch_debug_lights:
-      push r0
-      rcall get_debug_lights
-      in rTEMP, DATAPORT
-      push rTEMP
-      in rTEMP, DATADDR
-      push rTEMP
-      SET_DATA_OUTPUT
-      out DATAPORT, r0
-      DEBUG_ON
-      DEBUG_OFF
-      pop rTEMP
-      out DATADDR, rTEMP
-      pop rTEMP
-      out DATAPORT, rTEMP
-      pop r0
-      ret
-
-; Sets the debug output latch to a value specified by r0.
-set_debug_latch:
-      rcall set_debug_lights
-      rcall latch_debug_lights
-      ret
+; Sets the debug output latch to the value in rDEBUGBITS - 16 cycles
+.MACRO LATCH_DEBUG_LIGHTS
+    in rTEMP, DATAPORT
+    push rTEMP
+    in rTEMP, DATADDR
+    push rTEMP
+    SET_DATA_OUTPUT
+    out DATAPORT, rDEBUGBITS
+    DEBUG_ON
+    DEBUG_OFF
+    pop rTEMP
+    out DATADDR, rTEMP
+    pop rTEMP
+    out DATAPORT, rTEMP
+.ENDM
 
 main:
 
@@ -259,126 +197,118 @@ main:
 ;db   8D 88.        88    88b  d88 88
 ;`8888Y' Y88888P    YP    ~Y8888P' 88
 
-      ; Disable interrupts.
-      cli
+    ; Disable interrupts.
+    cli
 
-	  ; This should be unneeded but putting it here anyway: disable INT0 interrupt
-      ;ldi rTEMP, 0
-      ;sts EIMSK, rTEMP
+    ; This should be unneeded but putting it here anyway: disable INT0 interrupt
+    ;ldi rTEMP, 0
+    ;sts EIMSK, rTEMP
 
-      _LDI r0, 0x00
-      rcall set_debug_latch
+    ldi rDEBUGBITS, 0x00
+    LATCH_DEBUG_LIGHTS
 
-      ; === I/O Ports ========================================================
+    ; === I/O Ports ========================================================
 
-      ; Set up address port pins.
-      ldi rADDRDDR, ADDRBIT_DDR_INIT
-      out ADDRDDR, rADDRDDR
-      ldi rTEMP, ADDRBIT_PORT_INIT
-      out ADDRPORT, rTEMP
+    ; Set up address port pins.
+    ldi rADDRDDR, ADDRBIT_DDR_INIT
+    out ADDRDDR, rADDRDDR
+    ldi rTEMP, ADDRBIT_PORT_INIT
+    out ADDRPORT, rTEMP
 
-      ; Set up data port pins.
-      ldi rDATADDR, DATABIT_DDR_INIT
-      out DATADDR, rDATADDR
-      ldi rTEMP, DATABIT_PORT_INIT
-      out DATAPORT, rTEMP
+    ; Set up data port pins.
+    ldi rDATADDR, DATABIT_DDR_INIT
+    out DATADDR, rDATADDR
+    ldi rTEMP, DATABIT_PORT_INIT
+    out DATAPORT, rTEMP
 
-      ; Set up control port 1 pins.
-      ldi rTEMP, CTRLBIT_DDR_INIT
-      out CTRLDDR, rTEMP
-      ldi rTEMP, CTRLBIT_PORT_INIT
-      out CTRLPORT, rTEMP
+    ; Set up control port 1 pins.
+    ldi rTEMP, CTRLBIT_DDR_INIT
+    out CTRLDDR, rTEMP
+    ldi rTEMP, CTRLBIT_PORT_INIT
+    out CTRLPORT, rTEMP
 
-      ; Set up control port 2 pins.
-      ldi rTEMP, CTL2BIT_DDR_INIT
-      out CTL2DDR, rTEMP
-      ldi rTEMP, CTL2BIT_PORT_INIT
-      out CTL2PORT, rTEMP
+    ; Set up control port 2 pins.
+    ldi rTEMP, CTL2BIT_DDR_INIT
+    out CTL2DDR, rTEMP
+    ldi rTEMP, CTL2BIT_PORT_INIT
+    out CTL2PORT, rTEMP
 
-      ; === Timers ===========================================================
+    ; === Timers ===========================================================
 
-      ; Set Timer 0 to toggle OC0A and clear on compare match.
-      ;ldi rTEMP, (1 << COM0A0) | (1 << WGM01)
-      ;sts _SFR_MEM_ADDR(TCCR0A), rTEMP
+    ; Set Timer 0 to toggle OC0A and clear on compare match.
+    ;ldi rTEMP, (1 << COM0A0) | (1 << WGM01)
+    ;sts _SFR_MEM_ADDR(TCCR0A), rTEMP
 
-      ; Set OC1A to toggle on each output compare.
-      ;ldi rTEMP, (1 << COM1A0)
-      ;sts _SFR_MEM_ADDR(TCCR1A), rTEMP
+    ; Set OC1A to toggle on each output compare.
+    ;ldi rTEMP, (1 << COM1A0)
+    ;sts _SFR_MEM_ADDR(TCCR1A), rTEMP
 
-      ; Set Timer 0 clock source to clkIO.
-      ;ldi rTEMP, (1 << CS00)
-      ;sts _SFR_MEM_ADDR(TCCR0B), rTEMP
+    ; Set Timer 0 clock source to clkIO.
+    ;ldi rTEMP, (1 << CS00)
+    ;sts _SFR_MEM_ADDR(TCCR0B), rTEMP
 
-      ; Set Timer 1 to clkIO and to clear on timer match.
-      ldi rTEMP, (1 << WGM02) | (1 << CS10)
-      sts TCCR1B, rTEMP
+    ; Set Timer 1 to clkIO and to clear on timer match.
+    ldi rTEMP, (1 << WGM02) | (1 << CS10)
+    sts TCCR1B, rTEMP
 
-      ; Set output compare value for OC0A
-      ; 0x00 outputs a clock at half the AVR's frequency
-      ;ldi rTEMP, 0x00
-      ;sts _SFR_MEM_ADDR(OCR0A), rTEMP
+    ; Set output compare value for OC0A
+    ; 0x00 outputs a clock at half the AVR's frequency
+    ;ldi rTEMP, 0x00
+    ;sts _SFR_MEM_ADDR(OCR0A), rTEMP
 
-      ; Set output compare value for OC1A
+    ; Set output compare value for OC1A
+    ldi rTEMP, HSYNC_VALUE_HI
+    sts OCR1AH, rTEMP
+    ldi rTEMP, HSYNC_VALUE_LO
+    sts OCR1AL, rTEMP
 
-      ; At 20MHz:
-      ; clkIO with OC=0x04F6 gives us 15.7356412 kHz
-      ; At 21.47727MHz:
-      ; clkIO with OC=0x0554 gives us 15.7342637 kHz
-      ; (NTSC color line rate is 15.734 kHz).
-      ; At 28.63636MHz:
-      ; clkIO with OC=0x071B gives us 15.7342637 kHz
-      ldi rTEMP, HSYNC_VALUE_HI
-      sts OCR1AH, rTEMP
-      ldi rTEMP, HSYNC_VALUE_LO
-      sts OCR1AL, rTEMP
+    ; Set interrupt on OC1A compare
+    ldi rTEMP, (1 << OCIE1A)
+    sts TIMSK1, rTEMP
 
-      ; Set interrupt on OC1A compare
-      ldi rTEMP, (1 << OCIE1A)
-      sts TIMSK1, rTEMP
+    ldi rDEBUGBITS, 0x01
+    LATCH_DEBUG_LIGHTS
 
-      _LDI r0, 0x01
-      rcall set_debug_latch
+    ; === RAM configuration ================================================
 
-      ; === RAM configuration ================================================
+    rcall boot_wait
+    ldi rDEBUGBITS, 0x03
+    LATCH_DEBUG_LIGHTS
 
-      rcall boot_wait
-      _LDI r0, 0x03
-      rcall set_debug_latch
+    call init_ppu_registers
+    ldi rDEBUGBITS, 0x07
+    LATCH_DEBUG_LIGHTS
 
-      call init_ppu_registers
-      _LDI r0, 0x07
-      rcall set_debug_latch
+    ;call setup_palette
+    ldi rDEBUGBITS, 0x0F
+    LATCH_DEBUG_LIGHTS
 
-      ;call setup_palette
-      _LDI r0, 0x0F
-      rcall set_debug_latch
+    call setup_vram
+    ldi rDEBUGBITS, 0x1F
+    LATCH_DEBUG_LIGHTS
 
-      call setup_vram
-      _LDI r0, 0x1F
-      rcall set_debug_latch
+    ; === Registers ========================================================
+    ; Set up registers for line tracking.
+    eor rLINECOUNTER, rLINECOUNTER
+    eor rSTATBITS, rSTATBITS
 
-      ; === Registers ========================================================
-      ; Set up registers for line tracking.
-      eor rLINECOUNTER, rLINECOUNTER
-      eor rSTATBITS, rSTATBITS
+    ; Set up control bits register.
+    ldi rCTRLBITS, CTRLBIT_PORT_INIT
 
-      ; Set up control bits register.
-      ldi rCTRLBITS, CTRLBIT_PORT_INIT
+    ; EOR control bits register with SYNC bit, as the first thing the
+    ; interrupt line should do is pull SYNC low.
+    ldi rTEMP, SYNCBIT_MASK
+    eor rCTRLBITS, rTEMP
 
-      ; EOR control bits register with SYNC bit, as the first thing the
-      ; interrupt line should do is pull SYNC low.
-      ldi rTEMP, SYNCBIT_MASK
-      eor rCTRLBITS, rTEMP
+    rcall boot_wait
+    ldi rDEBUGBITS, 0x3F
+    LATCH_DEBUG_LIGHTS
 
-      rcall boot_wait
-      _LDI r0, 0x3F
-      rcall set_debug_latch
-
-      ; Enable interrupts.
-      sei
+    ; Enable interrupts.
+    sei
 
 loop:
-      rjmp loop
+    rjmp loop
 
 ;db   db .d8888. db    db d8b   db  .o88b.   d888888b .d8888. d8888b.
 ;88   88 88'  YP `8b  d8' 888o  88 d8P  Y8     `88'   88'  YP 88  `8D
@@ -389,37 +319,35 @@ loop:
 
 TIMER1_COMPA_vect:
 
-      ; Start of front porch - 1.5 uS - 29 cycles
+      ; Start of front porch - 1.5 uS - 30 cycles
       ; Set control port lines as appropriate.
-      out CTRLPORT, rCTRLBITS                   ; [029 -01 =028]
+      out CTRLPORT, rCTRLBITS                   ; [030 -01 =029]
 
       ; Turn on "interrupt triggered" light.
-      rcall set_interrupt_debug_bit
-      rcall latch_debug_lights
+      SET_INT_DEBUG_BIT							; [029 -01 =028]
+      LATCH_DEBUG_LIGHTS						; [028 -16 =014]
 
       ; Finish up front porch
-      _NOP16
-	  _NOP4
-	  _NOP2
-	  nop                                       ; [028 -23 =005]
+      _NOP8										; [014 -08 =006]
+      _NOP2                                     ; [006 -02 =004]
 
-      IMMED_TOGGLE_SYNC_PIN                     ; [005 -05 =000]
-      ; Start of sync tip - 4.7uS - 90 cycles
+      IMMED_TOGGLE_SYNC_PIN                     ; [004 -04 =000]
+      ; Start of sync tip - 4.7uS - 94 cycles
 
-      sbrs rSTATBITS, STATBIT_DISP              ; [090 -03 =087]
+      sbrs rSTATBITS, STATBIT_DISP              ; [094 -03 =091]
       rjmp non_display_line                     ;
 
 display_line:
-      ; 87 cycles of HSYNC left
-      mov rYPOS, rLINECOUNTER                   ; [087 -01 =086]
-      mov rTEMP2, rCTRLBITS                     ; [086 -01 =085]
+      ; 91 cycles of HSYNC left
+      mov rYPOS, rLINECOUNTER                   ; [091 -01 =090]
+      mov rTEMP2, rCTRLBITS                     ; [090 -01 =089]
 
       ; Increment rLINECOUNTER by one.
-      inc rLINECOUNTER                          ; [085 -01 =084]
+      inc rLINECOUNTER                          ; [089 -01 =088]
 
-      cpi rLINECOUNTER, 240                     ; [084 -01 =083]
+      cpi rLINECOUNTER, 240                     ; [088 -01 =087]
                                                 ; [     ==     ] [     !=     ]
-      brne skip_setup_vblank                    ; [083 -01 =082] [083 -02 =081]
+      brne skip_setup_vblank                    ; [087 -01 =086] [087 -02 =085]
 
 ;d888888b d8b   db d888888b d888888b   d8888b. db       .d8b.  d8b   db db   dD
 ;  `88'   888o  88   `88'   `~~88~~'   88  `8D 88      d8' `8b 888o  88 88 ,8P'
@@ -431,38 +359,41 @@ display_line:
 setup_vblank:
       ; If result is 240:
       ;   - reset rLINECOUNTER to 0
-      eor rLINECOUNTER, rLINECOUNTER            ; [082 -01 =081]
+      eor rLINECOUNTER, rLINECOUNTER            ; [086 -01 =085]
       ;   - clear rSTATBITS:DISP
-      andi rSTATBITS, NOT_STATBIT_DISP_MASK     ; [081 -01 =080]
+      andi rSTATBITS, NOT_STATBIT_DISP_MASK     ; [085 -01 =084]
       ;   - toggle rSTATBITS:EVENFRAME
-      ldi rTEMP, STATBIT_EVENFRAME_MASK         ; [080 -01 =079]
-      eor rSTATBITS, rTEMP                      ; [079 -01 =078]
+      ldi rTEMP, STATBIT_EVENFRAME_MASK         ; [084 -01 =083]
+      eor rSTATBITS, rTEMP                      ; [083 -01 =082]
       ;   - turn on ~VBLANK control line
-      VBLANK_ON                                 ; [078 -01 =077]
+      VBLANK_ON                                 ; [082 -01 =081]
       ;   - turn off ~VDRAW control line
-      VDRAW_OFF                                 ; [077 -01 =076]
+      VDRAW_OFF                                 ; [081 -01 =080]
       ;   - turn off OE/WE lines
-      OE_AND_WE_OFF                             ; [076 -01 =075]
-      rjmp after_setup_vblank                   ; [075 -02 =073]
+      OE_AND_WE_OFF                             ; [080 -01 =079]
+      rjmp after_setup_vblank                   ; [079 -02 =077]
 
 skip_setup_vblank:
-      _NOP8                                     ;                [081 -08 =073]
+      _NOP8                                     ;                [087 -08 =079]
+      _NOP2										;				 [079 -02 =077]
 
 after_setup_vblank:
 
-      ; 73 cycles of HSYNC left
+      ; 77 cycles of HSYNC left
 
       ; Finish the H-sync pulse here.
       ; This can be filled in with whatever calculations we care to do.
-      _NOP64                                    ; [073 -068 =005]
-	  _NOP4
-      IMMED_TOGGLE_SYNC_PIN                     ; [005 -005 =000]
+      _NOP64                                    ; [077 -64 =013]
+      _NOP8										; [013 -08 =005]
+      nop										; [005 -01 =004]
+      IMMED_TOGGLE_SYNC_PIN                     ; [004 -04 =000]
 
-      ; Start of breezeway/colorburst/back porch = 4.7uS = 90 cycles
-      _NOP64
-	  _NOP16
-	  _NOP8
-	  _NOP2
+      ; Start of breezeway/colorburst/back porch = 4.7uS = 94 cycles
+      _NOP64									; [094 -64 =030]
+      _NOP16									; [030 -16 =014]
+      _NOP8										; [014 -08 =006]
+      _NOP4										; [006 -04 =002]
+      _NOP2										; [002 -02 =000]
 
       ; continue rendering here if a display line
 
@@ -470,7 +401,7 @@ after_setup_vblank:
 ; ------------------------------------------------------
 
 ; check if this is a draw frame
-      sbrc rTEMP2, VDRAWPIN
+      sbrc rCTRLBITS, VDRAWPIN
       jmp compose_frame
 
 ; .d88b.  db    db d888888b d8888b. db    db d888888b
@@ -488,16 +419,11 @@ output_frame:
       ldi rTEMP, 0x0F
       and r0, rTEMP
 
-      ;_LDI r0, 1
-
       ; Load the jump address into Z but don't jump just yet
       ldi ZL, LOW(output_mode_jumptable)
       ldi ZH, HIGH(output_mode_jumptable)
       add ZL, r0
       adc ZH, rZERO
-
-      ; Wait a bit longer because...reasons???
-      ;_NOP 18
 
       ; Do the jump!
       ijmp
@@ -548,7 +474,7 @@ output_line_vram_direct_6:
       out ADDRPORT, rXPOS
 
       ; Set max X position
-      _LDI rXMAX, 150
+      _LDI rXMAX, 188
 
       ; End Left Border
       ;_NOP 3
@@ -562,13 +488,13 @@ output_line_vram_direct_6:
 pixel_loop_6:
       ; Cyc/Pixel Num/Line
       ; ========= ========
-      ;         6      232
+      ;         6      188
       ;         5      270
       ;         4      340
-      out ADDRPORT, rXPOS
-      inc rXPOS
-      cp rXPOS, rXMAX
-      brne pixel_loop_6
+      out ADDRPORT, rXPOS       ; 1
+      inc rXPOS                 ; 1
+      cp rXPOS, rXMAX           ; 1
+      brne pixel_loop_6         ; 2
 
       DAC_DISABLE
       OE_OFF
@@ -594,7 +520,7 @@ output_line_vram_direct_5:
       out ADDRPORT, rXPOS
 
       ; Set max X position
-      _LDI rXMAX, 255
+      _LDI rXPOS, 236
 
       ; End Left Border
       ;_NOP 40
@@ -605,9 +531,8 @@ output_line_vram_direct_5:
       OE_ON
 
 pixel_loop_5:
+      dec rXPOS
       out ADDRPORT, rXPOS
-      inc rXPOS
-      cp rXPOS, rXMAX
       brne pixel_loop_5
 
       DAC_DISABLE
@@ -678,7 +603,7 @@ copy_loop:
 ;Y8888P' Y88888P YP   YP VP   V8P YP   YD Y888888P VP   V8P  Y888P
 
 non_display_line:
-      ; 87 cycles of HSYNC left
+      ; 91 cycles of HSYNC left
 
       ; Of the 22 OR 23 non-display lines:
       ; 00-01: Bottom border lines
@@ -688,42 +613,44 @@ non_display_line:
       ; 22: Post-render blanking line on ODD frames only
 
       ; Load the jump address into Z but don't jump just yet
-      ldi ZL, LOW(non_display_line_table)       ; [087 -01 =086]
-      ldi ZH, HIGH(non_display_line_table)      ; [086 -01 =085]
-      add ZL, rLINECOUNTER                      ; [085 -01 =084]
-      adc ZH, rZERO                             ; [084 -01 =083]
+      ldi ZL, LOW(non_display_line_table)       ; [091 -01 =090]
+      ldi ZH, HIGH(non_display_line_table)      ; [090 -01 =089]
+      add ZL, rLINECOUNTER                      ; [089 -01 =088]
+      adc ZH, rZERO                             ; [088 -01 =087]
       ; TEMPORARY
 
       ; If this is line 04, toggle SYNC for the next line.
-      cpi rLINECOUNTER, 4                       ; [083 -01 =082]
+      cpi rLINECOUNTER, 4                       ; [087 -01 =086]
                                                 ; [     ==     ] [     !=     ]
-      brne skip_set_vsync                       ; [082 -01 =081] [082 -02 =080]
+      brne skip_set_vsync                       ; [086 -01 =085] [086 -02 =084]
 set_vsync:
-      TOGGLE_SYNC_BIT                           ; [081 -03 =078]
-      rjmp after_set_vsync                      ; [078 -02 =076]
+      TOGGLE_SYNC_BIT                           ; [085 -02 =083]
+      rjmp after_set_vsync                      ; [083 -02 =081]
 skip_set_vsync:
-      _NOP4                                     ;                [080 -04 =076]
+      _NOP2                                     ;                [084 -02 =082]
+      nop										;				 [082 -01 =081]
 after_set_vsync:
 
       ; If this is line 07, toggle SYNC for the next line.
-      cpi rLINECOUNTER, 7                       ; [076 -01 =075]
+      cpi rLINECOUNTER, 7                       ; [081 -01 =080]
                                                 ; [     ==     ] [     !=     ]
-      brne skip_clear_vsync                     ; [075 -01 =074] [075 -02 =073]
+      brne skip_clear_vsync                     ; [080 -01 =079] [080 -02 =078]
 clear_vsync:
-      TOGGLE_SYNC_BIT                           ; [074 -03 =071]
-      rjmp after_clear_vsync                    ; [071 -02 =069]
+      TOGGLE_SYNC_BIT                           ; [079 -02 =077]
+      rjmp after_clear_vsync                    ; [077 -02 =075]
 skip_clear_vsync:
-      _NOP4                                     ;                [073 -04 =069]
+      _NOP2                                     ;                [078 -02 =076]
+      nop										;				 [076 -01 =075]
 after_clear_vsync:
 
       ; Increment rLINECOUNTER by one.
-      inc rLINECOUNTER                          ; [069 -01 =068]
+      inc rLINECOUNTER                          ; [075 -01 =074]
 
       ; Load 22 into the temp register.
-      ldi rTEMP, 22                             ; [068 -01 =067]
+      ldi rTEMP, 22                             ; [074 -01 =073]
 
       ; If rSTATBITS:EVENFRAME is clear, add 1 to the temp register.
-      sbrs rSTATBITS, STATBIT_EVENFRAME         ; [067 -02 =065]
+      sbrs rSTATBITS, STATBIT_EVENFRAME         ; [073 -02 =071]
       inc rTEMP
 
       ; If line counter is equal to temp register:
@@ -734,9 +661,9 @@ after_clear_vsync:
       ;   - set ADDR/CTL2 lines to outputs
       ;   - clear ~OE, ~WE bits
       ;   - clear ~VDRAW control line if rSTATBITS:EVENFRAME is clear
-      cp rLINECOUNTER, rTEMP                    ; [065 -01 =064]
+      cp rLINECOUNTER, rTEMP                    ; [071 -01 =070]
                                                 ; [     ==     ] [     !=     ]
-      brne skip_setup_display                   ; [064 -01 =063] [064 -02 =062]
+      brne skip_setup_display                   ; [070 -01 =069] [070 -02 =068]
 
 ;d888888b d8b   db d888888b d888888b   d8888b. d888888b .d8888. d8888b.
 ;  `88'   888o  88   `88'   `~~88~~'   88  `8D   `88'   88'  YP 88  `8D
@@ -746,28 +673,27 @@ after_clear_vsync:
 ;Y888888P VP   V8P Y888888P    YP      Y8888D' Y888888P `8888Y' 88
 
 setup_display:
-      eor rLINECOUNTER, rLINECOUNTER            ; [063 -01 =062]
-      ori rSTATBITS, STATBIT_DISP_MASK          ; [062 -01 =061]
-      ori rCTRLBITS, VBLANKBIT_MASK             ; [061 -01 =060]
-      ldi rADDRDDR, ADDRBIT_DDR_OUTPUT          ; [060 -01 =059]
-      ldi rDATADDR, DATABIT_DDR_INPUT           ; [059 -01 =058]
-      OE_AND_WE_OFF                             ; [058 -02 =056]
-      sbrs rSTATBITS, STATBIT_EVENFRAME         ; [056 -02 =054]
+      eor rLINECOUNTER, rLINECOUNTER            ; [069 -01 =068]
+      ori rSTATBITS, STATBIT_DISP_MASK          ; [068 -01 =067]
+      ori rCTRLBITS, VBLANKBIT_MASK             ; [067 -01 =066]
+      ldi rADDRDDR, ADDRBIT_DDR_OUTPUT          ; [066 -01 =065]
+      ldi rDATADDR, DATABIT_DDR_INPUT           ; [065 -01 =064]
+      OE_AND_WE_OFF                             ; [064 -02 =062]
+      sbrs rSTATBITS, STATBIT_EVENFRAME         ; [062 -02 =060]
       andi rCTRLBITS, NOT_VDRAWBIT_MASK
-      rjmp after_setup_display                  ; [054 -02 =052]
+      rjmp after_setup_display                  ; [060 -02 =058]
 skip_setup_display:
-      _NOP8                                     ; [062 -10 =052]
-	  _NOP2
+      _NOP8                                     ;                [068 -08 =060]
+      _NOP2                                     ;                [060 -02 =058]
 after_setup_display:
 
       ; Finish the H-sync pulse here.
       ; This can be filled in with whatever calculations we care to do.
-	  _NOP32									; [052 -47 =005]
-	  _NOP8
-	  _NOP4
-	  _NOP2
-	  nop
-      IMMED_TOGGLE_SYNC_PIN                     ; [005 -05 =000]
+      _NOP32									; [058 -32 =026]
+      _NOP16                                    ; [026 -16 =010]
+      _NOP4                                     ; [010 -04 =006]
+      _NOP2                                     ; [006 -02 =004]
+      IMMED_TOGGLE_SYNC_PIN                     ; [004 -04 =000]
 
       ; continue here if not a display line
       rjmp end_line ; -- TEMPORARY
@@ -811,160 +737,160 @@ post_render_blanking_line:
 
 end_line:
       ; Turn off "interrupt triggered" light.
-      call clear_interrupt_debug_bit
-      call latch_debug_lights
+      CLEAR_INT_DEBUG_BIT
+      LATCH_DEBUG_LIGHTS
 
+      nop
       reti
 
 INT0_vect:
-      call set_error_debug_bit
-      call latch_debug_lights
-      call clear_error_debug_bit
-      call latch_debug_lights
+      SET_ERROR_DEBUG_BIT
+      LATCH_DEBUG_LIGHTS
+      CLEAR_ERROR_DEBUG_BIT
+      LATCH_DEBUG_LIGHTS
       ;push rTEMP
       ;ldi rTEMP, 0
       ;sts _SFR_MEM_ADDR(EIMSK), rTEMP
       ;pop rTEMP
       reti
 
-      _LDI r0, 1
+      ldi rDEBUGBITS, 1
       rjmp finish_interrupt
 
 INT1_vect:
-      _LDI r0, 2
+      ldi rDEBUGBITS, 2
       rjmp finish_interrupt
 
 INT2_vect:
-      _LDI r0, 3
+      ldi rDEBUGBITS, 3
       rjmp finish_interrupt
 
 PCINT0_vect:
-      _LDI r0, 4
+      ldi rDEBUGBITS, 4
       rjmp finish_interrupt
 
 PCINT1_vect:
-      _LDI r0, 5
+      ldi rDEBUGBITS, 5
       rjmp finish_interrupt
 
 PCINT2_vect:
-      _LDI r0, 6
+      ldi rDEBUGBITS, 6
       rjmp finish_interrupt
 
 PCINT3_vect:
-      _LDI r0, 7
+      ldi rDEBUGBITS, 7
       rjmp finish_interrupt
 
 WDT_vect:
-      _LDI r0, 8
+      ldi rDEBUGBITS, 8
       rjmp finish_interrupt
 
 TIMER2_COMPA_vect:
-      _LDI r0, 9
+      ldi rDEBUGBITS, 9
       rjmp finish_interrupt
 
 TIMER2_COMPB_vect:
-      _LDI r0, 10
+      ldi rDEBUGBITS, 10
       rjmp finish_interrupt
 
 TIMER2_OVF_vect:
-      _LDI r0, 11
+      ldi rDEBUGBITS, 11
       rjmp finish_interrupt
 
 TIMER1_CAPT_vect:
-      _LDI r0, 12
+      ldi rDEBUGBITS, 12
       rjmp finish_interrupt
 
 TIMER1_COMPB_vect:
-      _LDI r0, 14
+      ldi rDEBUGBITS, 14
       rjmp finish_interrupt
 
 TIMER1_OVF_vect:
-      _LDI r0, 15
+      ldi rDEBUGBITS, 15
       rjmp finish_interrupt
 
 TIMER0_COMPA_vect:
-      _LDI r0, 16
+      ldi rDEBUGBITS, 16
       rjmp finish_interrupt
 
 TIMER0_COMPB_vect:
-      _LDI r0, 17
+      ldi rDEBUGBITS, 17
       rjmp finish_interrupt
 
 TIMER0_OVF_vect:
-      _LDI r0, 18
+      ldi rDEBUGBITS, 18
       rjmp finish_interrupt
 
 SPI_STC_vect:
-      _LDI r0, 19
+      ldi rDEBUGBITS, 19
       rjmp finish_interrupt
 
 USART0_RX_vect:
-      _LDI r0, 20
+      ldi rDEBUGBITS, 20
       rjmp finish_interrupt
 
 USART0_UDRE_vect:
-      _LDI r0, 21
+      ldi rDEBUGBITS, 21
       rjmp finish_interrupt
 
 USART0_TX_vect:
-      _LDI r0, 22
+      ldi rDEBUGBITS, 22
       rjmp finish_interrupt
 
 ANALOG_COMP_vect:
-      _LDI r0, 23
+      ldi rDEBUGBITS, 23
       rjmp finish_interrupt
 
 ADC_vect:
-      _LDI r0, 24
+      ldi rDEBUGBITS, 24
       rjmp finish_interrupt
 
 EE_READY_vect:
-      _LDI r0, 25
+      ldi rDEBUGBITS, 25
       rjmp finish_interrupt
 
 TWI_vect:
-      _LDI r0, 26
+      ldi rDEBUGBITS, 26
       rjmp finish_interrupt
 
 SPM_READY_vect:
-      _LDI r0, 27
+      ldi rDEBUGBITS, 27
       rjmp finish_interrupt
 
 USART1_RX_vect:
-      _LDI r0, 28
+      ldi rDEBUGBITS, 28
       rjmp finish_interrupt
 
 USART1_UDRE_vect:
-      _LDI r0, 29
+      ldi rDEBUGBITS, 29
       rjmp finish_interrupt
 
 USART1_TX_vect:
-      _LDI r0, 30
+      ldi rDEBUGBITS, 30
       rjmp finish_interrupt
 
 TIMER3_CAPT_vect:
-      _LDI r0, 31
+      ldi rDEBUGBITS, 31
       rjmp finish_interrupt
 
 TIMER3_COMPA_vect:
-      _LDI r0, 32
+      ldi rDEBUGBITS, 32
       rjmp finish_interrupt
 
 TIMER3_COMPB_vect:
-      _LDI r0, 33
+      ldi rDEBUGBITS, 33
       rjmp finish_interrupt
 
 TIMER3_OVF_vect:
-      _LDI r0, 34
+      ldi rDEBUGBITS, 34
       rjmp finish_interrupt
 
 __vector_default:
-      _LDI r0, 0
+      ldi rDEBUGBITS, 0
 
 finish_interrupt:
-      call set_debug_lights
-      call set_error_debug_bit
-      call latch_debug_lights
+      SET_ERROR_DEBUG_BIT
+      LATCH_DEBUG_LIGHTS
 ;      reti
 
 endless:

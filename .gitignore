@@ -1,3 +1,10 @@
 *.o
 *.elf
 *.hex
+*.tmp
+*.obj
+*.lss
+*.map
+
+.vs/*
+Debug/*

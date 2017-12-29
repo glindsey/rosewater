@@ -2,7 +2,7 @@
 #ifndef REGISTERS_INC
 #include "constants.inc"
 
-.SET PPUREG_MODE = 0
+.EQU PPUREG_MODE = 0
 
 .EQU PPUREG_MODE_VRAM_DIRECT_6 = 0
 .EQU PPUREG_MODE_VRAM_DIRECT_5 = 1
@@ -63,7 +63,7 @@ ldi XH, HIGH(ppu_registers)
 
 ; Initializes the PPU registers to default values.
 init_ppu_registers:
-        SAVE_PPUREG_IMM PPUREG_MODE, 0x0
+        SAVE_PPUREG_IMM PPUREG_MODE, PPUREG_MODE_VRAM_DIRECT_5
         ret
 
 .DSEG

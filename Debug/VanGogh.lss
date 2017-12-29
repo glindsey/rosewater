@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.7  C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm Thu Dec 28 19:16:10 2017
+AVRASM ver. 2.2.7  C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm Thu Dec 28 20:07:02 2017
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\Atmel\ATmega_DFP\1.2.203\avrasm\inc\m1284pdef.inc'
 C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(51): Including file 'C:\Users\greg\Documents\GitHub\rosewater\vangogh/constants.inc'
@@ -1250,49 +1250,49 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
                                  
                                  .DEVICE ATmega1284P
                                  .ORG 0x0000
-000000 940c 0046                 	jmp RESET_vect				; 0
-000002 940c 0351                 	jmp INT0_vect				; 1
-000004 940c 035d                 	jmp INT1_vect				; 2
-000006 940c 0360                 	jmp INT2_vect				; 3
-000008 940c 0363                 	jmp PCINT0_vect				; 4
-00000a 940c 0366                 	jmp PCINT1_vect				; 5
-00000c 940c 0369                 	jmp PCINT2_vect				; 6
-00000e 940c 036c                 	jmp PCINT3_vect				; 7
-000010 940c 036f                 	jmp WDT_vect				; 8
-000012 940c 0372                 	jmp TIMER2_COMPA_vect		; 9
-000014 940c 0375                 	jmp TIMER2_COMPB_vect		; 10
-000016 940c 0378                 	jmp TIMER2_OVF_vect			; 11
-000018 940c 037b                 	jmp TIMER1_CAPT_vect        ; 12
-00001a 940c 017a                 	jmp TIMER1_COMPA_vect		; 13
-00001c 940c 037e                 	jmp TIMER1_COMPB_vect		; 14
-00001e 940c 0381                 	jmp TIMER1_OVF_vect			; 15
-000020 940c 0384                 	jmp TIMER0_COMPA_vect		; 16
-000022 940c 0387                 	jmp TIMER0_COMPB_vect		; 17
-000024 940c 038a                 	jmp TIMER0_OVF_vect			; 18
-000026 940c 038d                 	jmp SPI_STC_vect			; 19
-000028 940c 0390                 	jmp USART0_RX_vect			; 20
-00002a 940c 0393                 	jmp USART0_UDRE_vect		; 21
-00002c 940c 0396                 	jmp USART0_TX_vect			; 22
-00002e 940c 0399                 	jmp ANALOG_COMP_vect		; 23
-000030 940c 039c                 	jmp ADC_vect				; 24
-000032 940c 039f                 	jmp EE_READY_vect			; 25
-000034 940c 03a2                 	jmp TWI_vect				; 26
-000036 940c 03a5                 	jmp SPM_READY_vect			; 27
-000038 940c 03a8                 	jmp USART1_RX_vect			; 28
-00003a 940c 03ab                 	jmp USART1_UDRE_vect		; 29
-00003c 940c 03ae                 	jmp USART1_TX_vect			; 30
-00003e 940c 03b1                 	jmp TIMER3_CAPT_vect		; 31
-000040 940c 03b4                 	jmp TIMER3_COMPA_vect		; 32
-000042 940c 03b7                 	jmp TIMER3_COMPB_vect		; 33
-000044 940c 03ba                 	jmp TIMER3_OVF_vect			; 34
+000000 940c 0046                     jmp RESET_vect				; 0
+000002 940c 036b                     jmp INT0_vect				; 1
+000004 940c 038a                     jmp INT1_vect				; 2
+000006 940c 038c                     jmp INT2_vect				; 3
+000008 940c 038e                     jmp PCINT0_vect				; 4
+00000a 940c 0390                     jmp PCINT1_vect				; 5
+00000c 940c 0392                     jmp PCINT2_vect				; 6
+00000e 940c 0394                     jmp PCINT3_vect				; 7
+000010 940c 0396                     jmp WDT_vect				; 8
+000012 940c 0398                     jmp TIMER2_COMPA_vect		; 9
+000014 940c 039a                     jmp TIMER2_COMPB_vect		; 10
+000016 940c 039c                     jmp TIMER2_OVF_vect			; 11
+000018 940c 039e                     jmp TIMER1_CAPT_vect        ; 12
+00001a 940c 017b                     jmp TIMER1_COMPA_vect		; 13
+00001c 940c 03a0                     jmp TIMER1_COMPB_vect		; 14
+00001e 940c 03a2                     jmp TIMER1_OVF_vect			; 15
+000020 940c 03a4                     jmp TIMER0_COMPA_vect		; 16
+000022 940c 03a6                     jmp TIMER0_COMPB_vect		; 17
+000024 940c 03a8                     jmp TIMER0_OVF_vect			; 18
+000026 940c 03aa                     jmp SPI_STC_vect			; 19
+000028 940c 03ac                     jmp USART0_RX_vect			; 20
+00002a 940c 03ae                     jmp USART0_UDRE_vect		; 21
+00002c 940c 03b0                     jmp USART0_TX_vect			; 22
+00002e 940c 03b2                     jmp ANALOG_COMP_vect		; 23
+000030 940c 03b4                     jmp ADC_vect				; 24
+000032 940c 03b6                     jmp EE_READY_vect			; 25
+000034 940c 03b8                     jmp TWI_vect				; 26
+000036 940c 03ba                     jmp SPM_READY_vect			; 27
+000038 940c 03bc                     jmp USART1_RX_vect			; 28
+00003a 940c 03be                     jmp USART1_UDRE_vect		; 29
+00003c 940c 03c0                     jmp USART1_TX_vect			; 30
+00003e 940c 03c2                     jmp TIMER3_CAPT_vect		; 31
+000040 940c 03c4                     jmp TIMER3_COMPA_vect		; 32
+000042 940c 03c6                     jmp TIMER3_COMPB_vect		; 33
+000044 940c 03c8                     jmp TIMER3_OVF_vect			; 34
                                  
                                  RESET_vect:
-000046 e400                      	ldi r16, HIGH(RAMEND)
-000047 bf0e                      	out SPH, r16
-000048 ef0f                      	ldi r16, LOW(RAMEND)
-000049 bf0d                      	out SPL, r16
-00004a 9478                      	sei
-00004b 940c 013b                 	jmp main 
+000046 e400                          ldi r16, HIGH(RAMEND)
+000047 bf0e                          out SPH, r16
+000048 ef0f                          ldi r16, LOW(RAMEND)
+000049 bf0d                          out SPL, r16
+00004a 9478                          sei
+00004b 940c 00ef                     jmp main 
                                  
                                  #include "vangogh/constants.inc"
                                  
@@ -1392,7 +1392,7 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
                                  #ifndef CONSTANTS_INC
                                  #endif
                                  
-                                 .SET PPUREG_MODE = 0
+                                 .EQU PPUREG_MODE = 0
                                  
                                  .EQU PPUREG_MODE_VRAM_DIRECT_6 = 0
                                  .EQU PPUREG_MODE_VRAM_DIRECT_5 = 1
@@ -1456,10 +1456,10 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
 00004d e0a0
 00004e e0b1
 00004f e000
-000050 e010
+000050 e011
 000051 0fa0
 000052 1db1
-000053 931c                              SAVE_PPUREG_IMM PPUREG_MODE, 0x0
+000053 931c                              SAVE_PPUREG_IMM PPUREG_MODE, PPUREG_MODE_VRAM_DIRECT_5
 000054 9508                              ret
                                  
                                  .DSEG
@@ -1892,6 +1892,7 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
                                  .DEF rCTRLBITS		= r21
                                  .DEF rADDRDDR		= r22
                                  .DEF rDATADDR		= r23
+                                 .DEF rDEBUGBITS     = r24
                                  
                                  ; === Timing Values =============================
                                        ; At 20MHz:
@@ -1903,8 +1904,8 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
                                        ; (NTSC color line rate is 15.734 kHz).
                                        ; At 28.63636MHz:
                                        ; clkIO with OC=0x071B gives us 15.7342637 kHz
-                                 .SET HSYNC_VALUE_HI		= 0x05
-                                 .SET HSYNC_VALUE_LO		= 0x54
+                                 .SET HSYNC_VALUE_HI		= 0x04
+                                 .SET HSYNC_VALUE_LO		= 0xF6
                                  
                                  ;.88b  d88.  .d8b.   .o88b. d8888b.  .d88b.  .d8888.
                                  ;88'YbdP`88 d8' `8b d8P  Y8 88  `8D .8P  Y8. 88'  YP
@@ -1952,9 +1953,9 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
                                  
                                  .MACRO IMMED_TOGGLE_SYNC_PIN ; 4 cycles
                                        in rTEMP, CTRLPORT            ; [1]
-                                 	  ldi rTEMP2, SYNCBIT_MASK      ; [1]
-                                 	  eor rTEMP, rTEMP2				; [1]
-                                 	  out CTRLPORT, rTEMP			; [1]
+                                       ldi rTEMP2, SYNCBIT_MASK      ; [1]
+                                       eor rTEMP, rTEMP2				; [1]
+                                       out CTRLPORT, rTEMP			; [1]
                                  .ENDM
                                  
                                  ;.d8888. db    db d8888b. d8888b.  .d88b.  db    db d888888b d888888b d8b   db d88888b .d8888.
@@ -1976,105 +1977,41 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
 0000ed f7d9                            brne boot_wait_outer_loop
 0000ee 9508                            ret
                                  
-                                 ; Get debug lights into r0.
-                                 get_debug_lights:
-0000ef 93bf                            push XH
-0000f0 93af                            push XL
-0000f1 e0b2                            ldi XH, HIGH(debug_lights)
-0000f2 e0a0                            ldi XL, LOW(debug_lights)
-0000f3 900c                            ld r0, X
-0000f4 91af                            pop XL
-0000f5 91bf                            pop XH
-0000f6 9508                            ret
-                                 
-                                 ; Set debug lights from r0.
-                                 set_debug_lights:
-0000f7 93bf                            push XH
-0000f8 93af                            push XL
-0000f9 e0b2                            ldi XH, HIGH(debug_lights)
-0000fa e0a0                            ldi XL, LOW(debug_lights)
-0000fb 920c                            st X, r0
-0000fc 91af                            pop XL
-0000fd 91bf                            pop XH
-0000fe 9508                            ret
-                                 
-                                 ; Turn on the "interrupt" debug bit.
-                                 set_interrupt_debug_bit:
-0000ff 93bf                            push XH
-000100 93af                            push XL
-000101 e0b2                            ldi XH, HIGH(debug_lights)
-000102 e0a0                            ldi XL, LOW(debug_lights)
-000103 910c                            ld rTEMP, X
-000104 6400                            ori rTEMP, 0x40
-000105 930c                            st X, rTEMP
-000106 91af                            pop XL
-000107 91bf                            pop XH
-000108 9508                            ret
-                                 
-                                 ; Turn off the "interrupt" debug bit.
-                                 clear_interrupt_debug_bit:
-000109 93bf                            push XH
-00010a 93af                            push XL
-00010b e0b2                            ldi XH, HIGH(debug_lights)
-00010c e0a0                            ldi XL, LOW(debug_lights)
-00010d 910c                            ld rTEMP, X
-00010e 7b0f                            andi rTEMP, 0xBF
-00010f 930c                            st X, rTEMP
-000110 91af                            pop XL
-000111 91bf                            pop XH
-000112 9508                            ret
+                                 ; Turn on the "interrupt" debug bit - 1 cycle
+                                 .MACRO SET_INT_DEBUG_BIT
+                                     ori rDEBUGBITS, 0x40
+                                 .ENDM
+                                       
+                                 ; Turn off the "interrupt" debug bit - 1 cycle
+                                 .MACRO CLEAR_INT_DEBUG_BIT
+                                     andi rDEBUGBITS, 0xBF
+                                 .ENDM
                                  
                                  ; Turn on the "error" debug bit.
-                                 set_error_debug_bit:
-000113 93bf                            push XH
-000114 93af                            push XL
-000115 e0b2                            ldi XH, HIGH(debug_lights)
-000116 e0a0                            ldi XL, LOW(debug_lights)
-000117 900c                            ld r0, X
-000118 6800                            ori rTEMP, 0x80
-000119 930c                            st X, rTEMP
-00011a 91af                            pop XL
-00011b 91bf                            pop XH
-00011c 9508                            ret
+                                 .MACRO SET_ERROR_DEBUG_BIT
+                                     ori rDEBUGBITS, 0x80
+                                 .ENDM
                                  
                                  ; Turn off the "error" debug bit.
-                                 clear_error_debug_bit:
-00011d 93bf                            push XH
-00011e 93af                            push XL
-00011f e0b2                            ldi XH, HIGH(debug_lights)
-000120 e0a0                            ldi XL, LOW(debug_lights)
-000121 900c                            ld r0, X
-000122 770f                            andi rTEMP, 0x7F
-000123 920c                            st X, r0
-000124 91af                            pop XL
-000125 91bf                            pop XH
-000126 9508                            ret
+                                 .MACRO CLEAR_ERROR_DEBUG_BIT
+                                     andi rDEBUGBITS, 0x7f
+                                 .ENDM
                                  
-                                 ; Sets the debug output latch to the value in debug_lights.
-                                 latch_debug_lights:
-000127 920f                            push r0
-000128 dfc6                            rcall get_debug_lights
-000129 b108                            in rTEMP, DATAPORT
-00012a 930f                            push rTEMP
-00012b b107                            in rTEMP, DATADDR
-00012c 930f                            push rTEMP
-00012d ef0f
-00012e b907                            SET_DATA_OUTPUT
-00012f b808                            out DATAPORT, r0
-000130 9a2b                            DEBUG_ON
-000131 982b                            DEBUG_OFF
-000132 910f                            pop rTEMP
-000133 b907                            out DATADDR, rTEMP
-000134 910f                            pop rTEMP
-000135 b908                            out DATAPORT, rTEMP
-000136 900f                            pop r0
-000137 9508                            ret
-                                 
-                                 ; Sets the debug output latch to a value specified by r0.
-                                 set_debug_latch:
-000138 dfbe                            rcall set_debug_lights
-000139 dfed                            rcall latch_debug_lights
-00013a 9508                            ret
+                                 ; Sets the debug output latch to the value in rDEBUGBITS - 16 cycles
+                                 .MACRO LATCH_DEBUG_LIGHTS
+                                     in rTEMP, DATAPORT
+                                     push rTEMP
+                                     in rTEMP, DATADDR
+                                     push rTEMP
+                                     SET_DATA_OUTPUT
+                                     out DATAPORT, rDEBUGBITS
+                                     DEBUG_ON
+                                     DEBUG_OFF
+                                     pop rTEMP
+                                     out DATADDR, rTEMP
+                                     pop rTEMP
+                                     out DATAPORT, rTEMP
+                                 .ENDM
                                  
                                  main:
                                  
@@ -2085,133 +2022,202 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
                                  ;db   8D 88.        88    88b  d88 88
                                  ;`8888Y' Y88888P    YP    ~Y8888P' 88
                                  
-                                       ; Disable interrupts.
-00013b 94f8                            cli
+                                     ; Disable interrupts.
+0000ef 94f8                          cli
                                  
-                                 	  ; This should be unneeded but putting it here anyway: disable INT0 interrupt
-                                       ;ldi rTEMP, 0
-                                       ;sts EIMSK, rTEMP
+                                     ; This should be unneeded but putting it here anyway: disable INT0 interrupt
+                                     ;ldi rTEMP, 0
+                                     ;sts EIMSK, rTEMP
                                  
-00013c e000
-00013d 2e00                            _LDI r0, 0x00
-00013e dff9                            rcall set_debug_latch
+0000f0 e080                          ldi rDEBUGBITS, 0x00
+0000f1 b108
+0000f2 930f
+0000f3 b107
+0000f4 930f
+0000f5 ef0f
+0000f6 b907
+0000f7 b988
+0000f8 9a2b
+0000f9 982b
+0000fa 910f
+0000fb b907
+0000fc 910f
+0000fd b908                          LATCH_DEBUG_LIGHTS
                                  
-                                       ; === I/O Ports ========================================================
+                                     ; === I/O Ports ========================================================
                                  
-                                       ; Set up address port pins.
-00013f ef6f                            ldi rADDRDDR, ADDRBIT_DDR_INIT
-000140 b961                            out ADDRDDR, rADDRDDR
-000141 ef0f                            ldi rTEMP, ADDRBIT_PORT_INIT
-000142 b902                            out ADDRPORT, rTEMP
+                                     ; Set up address port pins.
+0000fe ef6f                          ldi rADDRDDR, ADDRBIT_DDR_INIT
+0000ff b961                          out ADDRDDR, rADDRDDR
+000100 ef0f                          ldi rTEMP, ADDRBIT_PORT_INIT
+000101 b902                          out ADDRPORT, rTEMP
                                  
-                                       ; Set up data port pins.
-000143 e070                            ldi rDATADDR, DATABIT_DDR_INIT
-000144 b977                            out DATADDR, rDATADDR
-000145 ef0f                            ldi rTEMP, DATABIT_PORT_INIT
-000146 b908                            out DATAPORT, rTEMP
+                                     ; Set up data port pins.
+000102 e070                          ldi rDATADDR, DATABIT_DDR_INIT
+000103 b977                          out DATADDR, rDATADDR
+000104 ef0f                          ldi rTEMP, DATABIT_PORT_INIT
+000105 b908                          out DATAPORT, rTEMP
                                  
-                                       ; Set up control port 1 pins.
-000147 ef0f                            ldi rTEMP, CTRLBIT_DDR_INIT
-000148 b90a                            out CTRLDDR, rTEMP
-000149 e308                            ldi rTEMP, CTRLBIT_PORT_INIT
-00014a b90b                            out CTRLPORT, rTEMP
+                                     ; Set up control port 1 pins.
+000106 ef0f                          ldi rTEMP, CTRLBIT_DDR_INIT
+000107 b90a                          out CTRLDDR, rTEMP
+000108 e308                          ldi rTEMP, CTRLBIT_PORT_INIT
+000109 b90b                          out CTRLPORT, rTEMP
                                  
-                                       ; Set up control port 2 pins.
-00014b e10f                            ldi rTEMP, CTL2BIT_DDR_INIT
-00014c b904                            out CTL2DDR, rTEMP
-00014d ef07                            ldi rTEMP, CTL2BIT_PORT_INIT
-00014e b905                            out CTL2PORT, rTEMP
+                                     ; Set up control port 2 pins.
+00010a e10f                          ldi rTEMP, CTL2BIT_DDR_INIT
+00010b b904                          out CTL2DDR, rTEMP
+00010c ef07                          ldi rTEMP, CTL2BIT_PORT_INIT
+00010d b905                          out CTL2PORT, rTEMP
                                  
-                                       ; === Timers ===========================================================
+                                     ; === Timers ===========================================================
                                  
-                                       ; Set Timer 0 to toggle OC0A and clear on compare match.
-                                       ;ldi rTEMP, (1 << COM0A0) | (1 << WGM01)
-                                       ;sts _SFR_MEM_ADDR(TCCR0A), rTEMP
+                                     ; Set Timer 0 to toggle OC0A and clear on compare match.
+                                     ;ldi rTEMP, (1 << COM0A0) | (1 << WGM01)
+                                     ;sts _SFR_MEM_ADDR(TCCR0A), rTEMP
                                  
-                                       ; Set OC1A to toggle on each output compare.
-                                       ;ldi rTEMP, (1 << COM1A0)
-                                       ;sts _SFR_MEM_ADDR(TCCR1A), rTEMP
+                                     ; Set OC1A to toggle on each output compare.
+                                     ;ldi rTEMP, (1 << COM1A0)
+                                     ;sts _SFR_MEM_ADDR(TCCR1A), rTEMP
                                  
-                                       ; Set Timer 0 clock source to clkIO.
-                                       ;ldi rTEMP, (1 << CS00)
-                                       ;sts _SFR_MEM_ADDR(TCCR0B), rTEMP
+                                     ; Set Timer 0 clock source to clkIO.
+                                     ;ldi rTEMP, (1 << CS00)
+                                     ;sts _SFR_MEM_ADDR(TCCR0B), rTEMP
                                  
-                                       ; Set Timer 1 to clkIO and to clear on timer match.
-00014f e009                            ldi rTEMP, (1 << WGM02) | (1 << CS10)
-000150 9300 0081                       sts TCCR1B, rTEMP
+                                     ; Set Timer 1 to clkIO and to clear on timer match.
+00010e e009                          ldi rTEMP, (1 << WGM02) | (1 << CS10)
+00010f 9300 0081                     sts TCCR1B, rTEMP
                                  
-                                       ; Set output compare value for OC0A
-                                       ; 0x00 outputs a clock at half the AVR's frequency
-                                       ;ldi rTEMP, 0x00
-                                       ;sts _SFR_MEM_ADDR(OCR0A), rTEMP
+                                     ; Set output compare value for OC0A
+                                     ; 0x00 outputs a clock at half the AVR's frequency
+                                     ;ldi rTEMP, 0x00
+                                     ;sts _SFR_MEM_ADDR(OCR0A), rTEMP
                                  
-                                       ; Set output compare value for OC1A
+                                     ; Set output compare value for OC1A
+000111 e004                          ldi rTEMP, HSYNC_VALUE_HI
+000112 9300 0089                     sts OCR1AH, rTEMP
+000114 ef06                          ldi rTEMP, HSYNC_VALUE_LO
+000115 9300 0088                     sts OCR1AL, rTEMP
                                  
-                                       ; At 20MHz:
-                                       ; clkIO with OC=0x04F6 gives us 15.7356412 kHz
-                                       ; At 21.47727MHz:
-                                       ; clkIO with OC=0x0554 gives us 15.7342637 kHz
-                                       ; (NTSC color line rate is 15.734 kHz).
-                                       ; At 28.63636MHz:
-                                       ; clkIO with OC=0x071B gives us 15.7342637 kHz
-000152 e005                            ldi rTEMP, HSYNC_VALUE_HI
-000153 9300 0089                       sts OCR1AH, rTEMP
-000155 e504                            ldi rTEMP, HSYNC_VALUE_LO
-000156 9300 0088                       sts OCR1AL, rTEMP
+                                     ; Set interrupt on OC1A compare
+000117 e002                          ldi rTEMP, (1 << OCIE1A)
+000118 9300 006f                     sts TIMSK1, rTEMP
                                  
-                                       ; Set interrupt on OC1A compare
-000158 e002                            ldi rTEMP, (1 << OCIE1A)
-000159 9300 006f                       sts TIMSK1, rTEMP
+00011a e081                          ldi rDEBUGBITS, 0x01
+00011b b108
+00011c 930f
+00011d b107
+00011e 930f
+00011f ef0f
+000120 b907
+000121 b988
+000122 9a2b
+000123 982b
+000124 910f
+000125 b907
+000126 910f
+000127 b908                          LATCH_DEBUG_LIGHTS
                                  
-00015b e001
-00015c 2e00                            _LDI r0, 0x01
-00015d dfda                            rcall set_debug_latch
+                                     ; === RAM configuration ================================================
                                  
-                                       ; === RAM configuration ================================================
+000128 dfbf                          rcall boot_wait
+000129 e083                          ldi rDEBUGBITS, 0x03
+00012a b108
+00012b 930f
+00012c b107
+00012d 930f
+00012e ef0f
+00012f b907
+000130 b988
+000131 9a2b
+000132 982b
+000133 910f
+000134 b907
+000135 910f
+000136 b908                          LATCH_DEBUG_LIGHTS
                                  
-00015e df89                            rcall boot_wait
-00015f e003
-000160 2e00                            _LDI r0, 0x03
-000161 dfd6                            rcall set_debug_latch
+000137 940e 004d                     call init_ppu_registers
+000139 e087                          ldi rDEBUGBITS, 0x07
+00013a b108
+00013b 930f
+00013c b107
+00013d 930f
+00013e ef0f
+00013f b907
+000140 b988
+000141 9a2b
+000142 982b
+000143 910f
+000144 b907
+000145 910f
+000146 b908                          LATCH_DEBUG_LIGHTS
                                  
-000162 940e 004d                       call init_ppu_registers
-000164 e007
-000165 2e00                            _LDI r0, 0x07
-000166 dfd1                            rcall set_debug_latch
+                                     ;call setup_palette
+000147 e08f                          ldi rDEBUGBITS, 0x0F
+000148 b108
+000149 930f
+00014a b107
+00014b 930f
+00014c ef0f
+00014d b907
+00014e b988
+00014f 9a2b
+000150 982b
+000151 910f
+000152 b907
+000153 910f
+000154 b908                          LATCH_DEBUG_LIGHTS
                                  
-                                       ;call setup_palette
-000167 e00f
-000168 2e00                            _LDI r0, 0x0F
-000169 dfce                            rcall set_debug_latch
+000155 940e 0090                     call setup_vram
+000157 e18f                          ldi rDEBUGBITS, 0x1F
+000158 b108
+000159 930f
+00015a b107
+00015b 930f
+00015c ef0f
+00015d b907
+00015e b988
+00015f 9a2b
+000160 982b
+000161 910f
+000162 b907
+000163 910f
+000164 b908                          LATCH_DEBUG_LIGHTS
                                  
-00016a 940e 0090                       call setup_vram
-00016c e10f
-00016d 2e00                            _LDI r0, 0x1F
-00016e dfc9                            rcall set_debug_latch
+                                     ; === Registers ========================================================
+                                     ; Set up registers for line tracking.
+000165 2733                          eor rLINECOUNTER, rLINECOUNTER
+000166 2744                          eor rSTATBITS, rSTATBITS
                                  
-                                       ; === Registers ========================================================
-                                       ; Set up registers for line tracking.
-00016f 2733                            eor rLINECOUNTER, rLINECOUNTER
-000170 2744                            eor rSTATBITS, rSTATBITS
+                                     ; Set up control bits register.
+000167 e358                          ldi rCTRLBITS, CTRLBIT_PORT_INIT
                                  
-                                       ; Set up control bits register.
-000171 e358                            ldi rCTRLBITS, CTRLBIT_PORT_INIT
+                                     ; EOR control bits register with SYNC bit, as the first thing the
+                                     ; interrupt line should do is pull SYNC low.
+000168 e800                          ldi rTEMP, SYNCBIT_MASK
+000169 2750                          eor rCTRLBITS, rTEMP
                                  
-                                       ; EOR control bits register with SYNC bit, as the first thing the
-                                       ; interrupt line should do is pull SYNC low.
-000172 e800                            ldi rTEMP, SYNCBIT_MASK
-000173 2750                            eor rCTRLBITS, rTEMP
+00016a df7d                          rcall boot_wait
+00016b e38f                          ldi rDEBUGBITS, 0x3F
+00016c b108
+00016d 930f
+00016e b107
+00016f 930f
+000170 ef0f
+000171 b907
+000172 b988
+000173 9a2b
+000174 982b
+000175 910f
+000176 b907
+000177 910f
+000178 b908                          LATCH_DEBUG_LIGHTS
                                  
-000174 df73                            rcall boot_wait
-000175 e30f
-000176 2e00                            _LDI r0, 0x3F
-000177 dfc0                            rcall set_debug_latch
-                                 
-                                       ; Enable interrupts.
-000178 9478                            sei
+                                     ; Enable interrupts.
+000179 9478                          sei
                                  
                                  loop:
-000179 cfff                            rjmp loop
+00017a cfff                          rjmp loop
                                  
                                  ;db   db .d8888. db    db d8b   db  .o88b.   d888888b .d8888. d8888b.
                                  ;88   88 88'  YP `8b  d8' 888o  88 d8P  Y8     `88'   88'  YP 88  `8D
@@ -2222,59 +2228,58 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
                                  
                                  TIMER1_COMPA_vect:
                                  
-                                       ; Start of front porch - 1.5 uS - 29 cycles
+                                       ; Start of front porch - 1.5 uS - 30 cycles
                                        ; Set control port lines as appropriate.
-00017a b95b                            out CTRLPORT, rCTRLBITS                   ; [029 -01 =028]
+00017b b95b                            out CTRLPORT, rCTRLBITS                   ; [030 -01 =029]
                                  
                                        ; Turn on "interrupt triggered" light.
-00017b df83                            rcall set_interrupt_debug_bit
-00017c dfaa                            rcall latch_debug_lights
+00017c 6480                            SET_INT_DEBUG_BIT							; [029 -01 =028]
+00017d b108
+00017e 930f
+00017f b107
+000180 930f
+000181 ef0f
+000182 b907
+000183 b988
+000184 9a2b
+000185 982b
+000186 910f
+000187 b907
+000188 910f
+000189 b908                            LATCH_DEBUG_LIGHTS						; [028 -16 =014]
                                  
                                        ; Finish up front porch
-00017d 0000
-00017e 0000
-00017f 0000
-000180 0000
-000181 0000
-000182 0000
-000183 0000
-000184 0000
-000185 0000
-000186 0000
-000187 0000
-000188 0000
-000189 0000
 00018a 0000
 00018b 0000
-00018c 0000                            _NOP16
+00018c 0000
 00018d 0000
 00018e 0000
 00018f 0000
-000190 0000                      	  _NOP4
-000191 0000
-000192 0000                      	  _NOP2
-000193 0000                      	  nop                                       ; [028 -23 =005]
+000190 0000
+000191 0000                            _NOP8										; [014 -08 =006]
+000192 0000
+000193 0000                            _NOP2                                     ; [006 -02 =004]
                                  
 000194 b10b
 000195 e810
 000196 2701
-000197 b90b                            IMMED_TOGGLE_SYNC_PIN                     ; [005 -05 =000]
-                                       ; Start of sync tip - 4.7uS - 90 cycles
+000197 b90b                            IMMED_TOGGLE_SYNC_PIN                     ; [004 -04 =000]
+                                       ; Start of sync tip - 4.7uS - 94 cycles
                                  
-000198 ff47                            sbrs rSTATBITS, STATBIT_DISP              ; [090 -03 =087]
-000199 c134                            rjmp non_display_line                     ;
+000198 ff47                            sbrs rSTATBITS, STATBIT_DISP              ; [094 -03 =091]
+000199 c13e                            rjmp non_display_line                     ;
                                  
                                  display_line:
-                                       ; 87 cycles of HSYNC left
-00019a 2ec3                            mov rYPOS, rLINECOUNTER                   ; [087 -01 =086]
-00019b 2f15                            mov rTEMP2, rCTRLBITS                     ; [086 -01 =085]
+                                       ; 91 cycles of HSYNC left
+00019a 2ec3                            mov rYPOS, rLINECOUNTER                   ; [091 -01 =090]
+00019b 2f15                            mov rTEMP2, rCTRLBITS                     ; [090 -01 =089]
                                  
                                        ; Increment rLINECOUNTER by one.
-00019c 9533                            inc rLINECOUNTER                          ; [085 -01 =084]
+00019c 9533                            inc rLINECOUNTER                          ; [089 -01 =088]
                                  
-00019d 3f30                            cpi rLINECOUNTER, 240                     ; [084 -01 =083]
+00019d 3f30                            cpi rLINECOUNTER, 240                     ; [088 -01 =087]
                                                                                  ; [     ==     ] [     !=     ]
-00019e f449                            brne skip_setup_vblank                    ; [083 -01 =082] [083 -02 =081]
+00019e f449                            brne skip_setup_vblank                    ; [087 -01 =086] [087 -02 =085]
                                  
                                  ;d888888b d8b   db d888888b d888888b   d8888b. db       .d8b.  d8b   db db   dD
                                  ;  `88'   888o  88   `88'   `~~88~~'   88  `8D 88      d8' `8b 888o  88 88 ,8P'
@@ -2286,20 +2291,20 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
                                  setup_vblank:
                                        ; If result is 240:
                                        ;   - reset rLINECOUNTER to 0
-00019f 2733                            eor rLINECOUNTER, rLINECOUNTER            ; [082 -01 =081]
+00019f 2733                            eor rLINECOUNTER, rLINECOUNTER            ; [086 -01 =085]
                                        ;   - clear rSTATBITS:DISP
-0001a0 774f                            andi rSTATBITS, NOT_STATBIT_DISP_MASK     ; [081 -01 =080]
+0001a0 774f                            andi rSTATBITS, NOT_STATBIT_DISP_MASK     ; [085 -01 =084]
                                        ;   - toggle rSTATBITS:EVENFRAME
-0001a1 e001                            ldi rTEMP, STATBIT_EVENFRAME_MASK         ; [080 -01 =079]
-0001a2 2740                            eor rSTATBITS, rTEMP                      ; [079 -01 =078]
+0001a1 e001                            ldi rTEMP, STATBIT_EVENFRAME_MASK         ; [084 -01 =083]
+0001a2 2740                            eor rSTATBITS, rTEMP                      ; [083 -01 =082]
                                        ;   - turn on ~VBLANK control line
-0001a3 7e5f                            VBLANK_ON                                 ; [078 -01 =077]
+0001a3 7e5f                            VBLANK_ON                                 ; [082 -01 =081]
                                        ;   - turn off ~VDRAW control line
-0001a4 6058                            VDRAW_OFF                                 ; [077 -01 =076]
+0001a4 6058                            VDRAW_OFF                                 ; [081 -01 =080]
                                        ;   - turn off OE/WE lines
 0001a5 9a2a
-0001a6 9a28                            OE_AND_WE_OFF                             ; [076 -01 =075]
-0001a7 c008                            rjmp after_setup_vblank                   ; [075 -02 =073]
+0001a6 9a28                            OE_AND_WE_OFF                             ; [080 -01 =079]
+0001a7 c00a                            rjmp after_setup_vblank                   ; [079 -02 =077]
                                  
                                  skip_setup_vblank:
 0001a8 0000
@@ -2309,16 +2314,16 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
 0001ac 0000
 0001ad 0000
 0001ae 0000
-0001af 0000                            _NOP8                                     ;                [081 -08 =073]
+0001af 0000                            _NOP8                                     ;                [087 -08 =079]
+0001b0 0000
+0001b1 0000                            _NOP2										;				 [079 -02 =077]
                                  
                                  after_setup_vblank:
                                  
-                                       ; 73 cycles of HSYNC left
+                                       ; 77 cycles of HSYNC left
                                  
                                        ; Finish the H-sync pulse here.
                                        ; This can be filled in with whatever calculations we care to do.
-0001b0 0000
-0001b1 0000
 0001b2 0000
 0001b3 0000
 0001b4 0000
@@ -2380,24 +2385,24 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
 0001ec 0000
 0001ed 0000
 0001ee 0000
-0001ef 0000                            _NOP64                                    ; [073 -068 =005]
+0001ef 0000
 0001f0 0000
-0001f1 0000
+0001f1 0000                            _NOP64                                    ; [077 -64 =013]
 0001f2 0000
-0001f3 0000                      	  _NOP4
-0001f4 b10b
-0001f5 e810
-0001f6 2701
-0001f7 b90b                            IMMED_TOGGLE_SYNC_PIN                     ; [005 -005 =000]
-                                 
-                                       ; Start of breezeway/colorburst/back porch = 4.7uS = 90 cycles
+0001f3 0000
+0001f4 0000
+0001f5 0000
+0001f6 0000
+0001f7 0000
 0001f8 0000
-0001f9 0000
-0001fa 0000
-0001fb 0000
-0001fc 0000
-0001fd 0000
-0001fe 0000
+0001f9 0000                            _NOP8										; [013 -08 =005]
+0001fa 0000                            nop										; [005 -01 =004]
+0001fb b10b
+0001fc e810
+0001fd 2701
+0001fe b90b                            IMMED_TOGGLE_SYNC_PIN                     ; [004 -04 =000]
+                                 
+                                       ; Start of breezeway/colorburst/back porch = 4.7uS = 94 cycles
 0001ff 0000
 000200 0000
 000201 0000
@@ -2454,14 +2459,14 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
 000234 0000
 000235 0000
 000236 0000
-000237 0000                            _NOP64
+000237 0000
 000238 0000
 000239 0000
 00023a 0000
 00023b 0000
 00023c 0000
 00023d 0000
-00023e 0000
+00023e 0000                            _NOP64									; [094 -64 =030]
 00023f 0000
 000240 0000
 000241 0000
@@ -2470,17 +2475,28 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
 000244 0000
 000245 0000
 000246 0000
-000247 0000                      	  _NOP16
+000247 0000
 000248 0000
 000249 0000
 00024a 0000
 00024b 0000
 00024c 0000
 00024d 0000
-00024e 0000
-00024f 0000                      	  _NOP8
+00024e 0000                            _NOP16									; [030 -16 =014]
+00024f 0000
 000250 0000
-000251 0000                      	  _NOP2
+000251 0000
+000252 0000
+000253 0000
+000254 0000
+000255 0000
+000256 0000                            _NOP8										; [014 -08 =006]
+000257 0000
+000258 0000
+000259 0000
+00025a 0000                            _NOP4										; [006 -04 =002]
+00025b 0000
+00025c 0000                            _NOP2										; [002 -02 =000]
                                  
                                        ; continue rendering here if a display line
                                  
@@ -2488,8 +2504,8 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
                                  ; ------------------------------------------------------
                                  
                                  ; check if this is a draw frame
-000252 fd13                            sbrc rTEMP2, VDRAWPIN
-000253 940c 02ab                       jmp compose_frame
+00025d fd53                            sbrc rCTRLBITS, VDRAWPIN
+00025e 940c 02b5                       jmp compose_frame
                                  
                                  ; .d88b.  db    db d888888b d8888b. db    db d888888b
                                  ;.8P  Y8. 88    88 `~~88~~' 88  `8D 88    88 `~~88~~'
@@ -2500,48 +2516,43 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
                                  
                                  output_frame:
                                        ; Load display mode from PPU register (7 cycles)
-000255 e0a0
-000256 e0b1
-000257 e000
-000258 0fa0
-000259 1db1
-00025a 900c                            LOAD_PPUREG   r0, PPUREG_MODE
+000260 e0a0
+000261 e0b1
+000262 e000
+000263 0fa0
+000264 1db1
+000265 900c                            LOAD_PPUREG   r0, PPUREG_MODE
                                  
                                        ; Ensure display mode only goes from 0 to 15 for now
-00025b e00f                            ldi rTEMP, 0x0F
-00025c 2200                            and r0, rTEMP
-                                 
-                                       ;_LDI r0, 1
+000266 e00f                            ldi rTEMP, 0x0F
+000267 2200                            and r0, rTEMP
                                  
                                        ; Load the jump address into Z but don't jump just yet
-00025d e6e2                            ldi ZL, LOW(output_mode_jumptable)
-00025e e0f2                            ldi ZH, HIGH(output_mode_jumptable)
-00025f 0de0                            add ZL, r0
-000260 1df1                            adc ZH, rZERO
-                                 
-                                       ; Wait a bit longer because...reasons???
-                                       ;_NOP 18
+000268 e6ed                            ldi ZL, LOW(output_mode_jumptable)
+000269 e0f2                            ldi ZH, HIGH(output_mode_jumptable)
+00026a 0de0                            add ZL, r0
+00026b 1df1                            adc ZH, rZERO
                                  
                                        ; Do the jump!
-000261 9409                            ijmp
+00026c 9409                            ijmp
                                  
                                  output_mode_jumptable:
-000262 c00f                            rjmp output_line_vram_direct_6      ; 0
-000263 c02a                            rjmp output_line_vram_direct_5      ; 1
-000264 c045                            rjmp output_line_dummy              ; 2
-000265 c044                            rjmp output_line_dummy              ; 3
-000266 c043                            rjmp output_line_dummy              ; 4
-000267 c042                            rjmp output_line_dummy              ; 5
-000268 c041                            rjmp output_line_dummy              ; 6
-000269 c040                            rjmp output_line_dummy              ; 7
-00026a c03f                            rjmp output_line_dummy              ; 8
-00026b c03e                            rjmp output_line_dummy              ; 9
-00026c c03d                            rjmp output_line_dummy              ; A
-00026d c03c                            rjmp output_line_dummy              ; B
-00026e c03b                            rjmp output_line_dummy              ; C
-00026f c03a                            rjmp output_line_dummy              ; D
-000270 c039                            rjmp output_line_dummy              ; E
-000271 c038                            rjmp output_line_dummy              ; F
+00026d c00f                            rjmp output_line_vram_direct_6      ; 0
+00026e c02a                            rjmp output_line_vram_direct_5      ; 1
+00026f c044                            rjmp output_line_dummy              ; 2
+000270 c043                            rjmp output_line_dummy              ; 3
+000271 c042                            rjmp output_line_dummy              ; 4
+000272 c041                            rjmp output_line_dummy              ; 5
+000273 c040                            rjmp output_line_dummy              ; 6
+000274 c03f                            rjmp output_line_dummy              ; 7
+000275 c03e                            rjmp output_line_dummy              ; 8
+000276 c03d                            rjmp output_line_dummy              ; 9
+000277 c03c                            rjmp output_line_dummy              ; A
+000278 c03b                            rjmp output_line_dummy              ; B
+000279 c03a                            rjmp output_line_dummy              ; C
+00027a c039                            rjmp output_line_dummy              ; D
+00027b c038                            rjmp output_line_dummy              ; E
+00027c c037                            rjmp output_line_dummy              ; F
                                  
                                  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                  ;                                                                               ;
@@ -2556,102 +2567,101 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
                                  
                                  output_line_vram_direct_6:
                                        ; Start Left Border
-000272 e000                            ldi rTEMP, 0x00
-000273 b908                            out DATAPORT, rTEMP
-000274 ef0f
-000275 b907                            SET_DATA_OUTPUT
+00027d e000                            ldi rTEMP, 0x00
+00027e b908                            out DATAPORT, rTEMP
+00027f ef0f
+000280 b907                            SET_DATA_OUTPUT
                                  
                                        ; Clear X position.
-000276 24ff                            eor rXPOS, rXPOS
+000281 24ff                            eor rXPOS, rXPOS
                                  
                                        ; Set HAL to Y position.
-000277 2c0c                            mov r0, rYPOS
-000278 940e 0055                       call set_hi_addr_latch
+000282 2c0c                            mov r0, rYPOS
+000283 940e 0055                       call set_hi_addr_latch
                                  
                                        ; Set address port to X position.
-00027a b8f2                            out ADDRPORT, rXPOS
+000285 b8f2                            out ADDRPORT, rXPOS
                                  
                                        ; Set max X position
-00027b e906
-00027c 2ed0                            _LDI rXMAX, 150
+000286 eb0c
+000287 2ed0                            _LDI rXMAX, 188
                                  
                                        ; End Left Border
                                        ;_NOP 3
-00027d e000
-00027e b907                            SET_DATA_INPUT
+000288 e000
+000289 b907                            SET_DATA_INPUT
                                  
                                        ; Set VRAM0 address enable.
-00027f 985a
-000280 9a59
-000281 9858                            ADDRESS_VRAM0
-000282 982a                            OE_ON
-000283 982c                            DAC_ENABLE
+00028a 985a
+00028b 9a59
+00028c 9858                            ADDRESS_VRAM0
+00028d 982a                            OE_ON
+00028e 982c                            DAC_ENABLE
                                  
                                  pixel_loop_6:
                                        ; Cyc/Pixel Num/Line
                                        ; ========= ========
-                                       ;         6      232
+                                       ;         6      188
                                        ;         5      270
                                        ;         4      340
-000284 b8f2                            out ADDRPORT, rXPOS
-000285 94f3                            inc rXPOS
-000286 14fd                            cp rXPOS, rXMAX
-000287 f7e1                            brne pixel_loop_6
+00028f b8f2                            out ADDRPORT, rXPOS       ; 1
+000290 94f3                            inc rXPOS                 ; 1
+000291 14fd                            cp rXPOS, rXMAX           ; 1
+000292 f7e1                            brne pixel_loop_6         ; 2
                                  
-000288 9a2c                            DAC_DISABLE
-000289 9a2a                            OE_OFF
-00028a 985a
-00028b 9859
-00028c 9858                            ADDRESS_VDU
+000293 9a2c                            DAC_DISABLE
+000294 9a2a                            OE_OFF
+000295 985a
+000296 9859
+000297 9858                            ADDRESS_VDU
                                  
-00028d c0be                            rjmp end_line
+000298 c0c2                            rjmp end_line
                                  
                                  output_line_vram_direct_5:
                                        ; Start Left Border
-00028e e000                            ldi rTEMP, 0x00
-00028f b908                            out DATAPORT, rTEMP
-000290 ef0f
-000291 b907                            SET_DATA_OUTPUT
-000292 982c                            DAC_ENABLE
+000299 e000                            ldi rTEMP, 0x00
+00029a b908                            out DATAPORT, rTEMP
+00029b ef0f
+00029c b907                            SET_DATA_OUTPUT
+00029d 982c                            DAC_ENABLE
                                  
                                        ; Clear X position.
-000293 24ff                            eor rXPOS, rXPOS
+00029e 24ff                            eor rXPOS, rXPOS
                                  
                                        ; Set HAL to Y position.
-000294 2c0c                            mov r0, rYPOS
-000295 940e 0055                       call set_hi_addr_latch
+00029f 2c0c                            mov r0, rYPOS
+0002a0 940e 0055                       call set_hi_addr_latch
                                  
                                        ; Set address port to X position.
-000297 b8f2                            out ADDRPORT, rXPOS
+0002a2 b8f2                            out ADDRPORT, rXPOS
                                  
                                        ; Set max X position
-000298 ef0f
-000299 2ed0                            _LDI rXMAX, 255
+0002a3 ee0c
+0002a4 2ef0                            _LDI rXPOS, 236
                                  
                                        ; End Left Border
                                        ;_NOP 40
-00029a e000
-00029b b907                            SET_DATA_INPUT
+0002a5 e000
+0002a6 b907                            SET_DATA_INPUT
                                  
                                        ; Set VRAM0 address enable.
-00029c 985a
-00029d 9a59
-00029e 9858                            ADDRESS_VRAM0
-00029f 982a                            OE_ON
+0002a7 985a
+0002a8 9a59
+0002a9 9858                            ADDRESS_VRAM0
+0002aa 982a                            OE_ON
                                  
                                  pixel_loop_5:
-0002a0 b8f2                            out ADDRPORT, rXPOS
-0002a1 94f3                            inc rXPOS
-0002a2 14fd                            cp rXPOS, rXMAX
-0002a3 f7e1                            brne pixel_loop_5
+0002ab 94fa                            dec rXPOS
+0002ac b8f2                            out ADDRPORT, rXPOS
+0002ad f7e9                            brne pixel_loop_5
                                  
-0002a4 9a2c                            DAC_DISABLE
-0002a5 9a2a                            OE_OFF
-0002a6 985a
-0002a7 9859
-0002a8 9858                            ADDRESS_VDU
+0002ae 9a2c                            DAC_DISABLE
+0002af 9a2a                            OE_OFF
+0002b0 985a
+0002b1 9859
+0002b2 9858                            ADDRESS_VDU
                                  
-0002a9 c0a2                            rjmp end_line
+0002b3 c0a7                            rjmp end_line
                                  
                                  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                  ;                                         ;
@@ -2665,7 +2675,7 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
                                  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                  
                                  output_line_dummy:
-0002aa c0a1                            rjmp end_line
+0002b4 c0a6                            rjmp end_line
                                  
                                  ;d8888b. d88888b d8b   db d8888b. d88888b d8888b. d888888b d8b   db  d888b
                                  ;88  `8D 88'     888o  88 88  `8D 88'     88  `8D   `88'   888o  88 88' Y8b
@@ -2675,56 +2685,56 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
                                  ;88   YD Y88888P VP   V8P Y8888D' Y88888P 88   YD Y888888P VP   V8P  Y888P
                                  
                                  compose_frame:
-0002ab c0a0                            rjmp end_line                             ; [2]
+0002b5 c0a5                            rjmp end_line                             ; [2]
                                  ; === Test Code ===============================================================
                                  
                                        ; Clear X position.
-0002ac e004
-0002ad 2ef0                            _LDI rXPOS, 4
+0002b6 e004
+0002b7 2ef0                            _LDI rXPOS, 4
                                        ;eor rXPOS, rXPOS
                                  
                                        ; Set high address latch to Y position.
-0002ae 2c0c                            mov r0, rYPOS
-0002af 940e 0055                       call set_hi_addr_latch
+0002b8 2c0c                            mov r0, rYPOS
+0002b9 940e 0055                       call set_hi_addr_latch
                                  
                                  copy_loop:
-0002b1 94fa                            dec rXPOS
+0002bb 94fa                            dec rXPOS
                                  
                                        ; Set address port to X position.
-0002b2 b8f2                            out ADDRPORT, rXPOS
+0002bc b8f2                            out ADDRPORT, rXPOS
                                  
                                        ; Copy VRAM value into FBRAM.
-0002b3 9a5a
-0002b4 9859
-0002b5 9858                            ADDRESS_VRAM1
-0002b6 e000
-0002b7 b907
-0002b8 982a
-0002b9 0000
-0002ba b108
-0002bb 9a2a                            READ_DATA_INTO rTEMP
-0002bc 985a
-0002bd 9a59
-0002be 9858                            ADDRESS_VRAM0
-0002bf ef0f
-0002c0 b907
-0002c1 b908
-0002c2 9828
+0002bd 9a5a
+0002be 9859
+0002bf 9858                            ADDRESS_VRAM1
+0002c0 e000
+0002c1 b907
+0002c2 982a
 0002c3 0000
-0002c4 9a28                            WRITE_DATA_FROM rTEMP
+0002c4 b108
+0002c5 9a2a                            READ_DATA_INTO rTEMP
+0002c6 985a
+0002c7 9a59
+0002c8 9858                            ADDRESS_VRAM0
+0002c9 ef0f
+0002ca b907
+0002cb b908
+0002cc 9828
+0002cd 0000
+0002ce 9a28                            WRITE_DATA_FROM rTEMP
                                  
-0002c5 2d0f
-0002c6 3000                            _CPI rXPOS, 0
-0002c7 f749                            brne copy_loop
+0002cf 2d0f
+0002d0 3000                            _CPI rXPOS, 0
+0002d1 f749                            brne copy_loop
                                  
-0002c8 985a
-0002c9 9859
-0002ca 9858                            ADDRESS_VDU
+0002d2 985a
+0002d3 9859
+0002d4 9858                            ADDRESS_VDU
                                  
                                  ; =============================================================================
-0002cb e000
-0002cc b907                            SET_DATA_INPUT
-0002cd c07e                            rjmp end_line                             ; [2]
+0002d5 e000
+0002d6 b907                            SET_DATA_INPUT
+0002d7 c083                            rjmp end_line                             ; [2]
                                  
                                  ;d8888b. db       .d8b.  d8b   db db   dD d888888b d8b   db  d888b
                                  ;88  `8D 88      d8' `8b 888o  88 88 ,8P'   `88'   888o  88 88' Y8b
@@ -2734,7 +2744,7 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
                                  ;Y8888P' Y88888P YP   YP VP   V8P YP   YD Y888888P VP   V8P  Y888P
                                  
                                  non_display_line:
-                                       ; 87 cycles of HSYNC left
+                                       ; 91 cycles of HSYNC left
                                  
                                        ; Of the 22 OR 23 non-display lines:
                                        ; 00-01: Bottom border lines
@@ -2744,51 +2754,49 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
                                        ; 22: Post-render blanking line on ODD frames only
                                  
                                        ; Load the jump address into Z but don't jump just yet
-0002ce e3e4                            ldi ZL, LOW(non_display_line_table)       ; [087 -01 =086]
-0002cf e0f3                            ldi ZH, HIGH(non_display_line_table)      ; [086 -01 =085]
-0002d0 0fe3                            add ZL, rLINECOUNTER                      ; [085 -01 =084]
-0002d1 1df1                            adc ZH, rZERO                             ; [084 -01 =083]
+0002d8 e4e3                            ldi ZL, LOW(non_display_line_table)       ; [091 -01 =090]
+0002d9 e0f3                            ldi ZH, HIGH(non_display_line_table)      ; [090 -01 =089]
+0002da 0fe3                            add ZL, rLINECOUNTER                      ; [089 -01 =088]
+0002db 1df1                            adc ZH, rZERO                             ; [088 -01 =087]
                                        ; TEMPORARY
                                  
                                        ; If this is line 04, toggle SYNC for the next line.
-0002d2 3034                            cpi rLINECOUNTER, 4                       ; [083 -01 =082]
+0002dc 3034                            cpi rLINECOUNTER, 4                       ; [087 -01 =086]
                                                                                  ; [     ==     ] [     !=     ]
-0002d3 f419                            brne skip_set_vsync                       ; [082 -01 =081] [082 -02 =080]
+0002dd f419                            brne skip_set_vsync                       ; [086 -01 =085] [086 -02 =084]
                                  set_vsync:
-0002d4 e800
-0002d5 2750                            TOGGLE_SYNC_BIT                           ; [081 -03 =078]
-0002d6 c004                            rjmp after_set_vsync                      ; [078 -02 =076]
+0002de e800
+0002df 2750                            TOGGLE_SYNC_BIT                           ; [085 -02 =083]
+0002e0 c003                            rjmp after_set_vsync                      ; [083 -02 =081]
                                  skip_set_vsync:
-0002d7 0000
-0002d8 0000
-0002d9 0000
-0002da 0000                            _NOP4                                     ;                [080 -04 =076]
+0002e1 0000
+0002e2 0000                            _NOP2                                     ;                [084 -02 =082]
+0002e3 0000                            nop										;				 [082 -01 =081]
                                  after_set_vsync:
                                  
                                        ; If this is line 07, toggle SYNC for the next line.
-0002db 3037                            cpi rLINECOUNTER, 7                       ; [076 -01 =075]
+0002e4 3037                            cpi rLINECOUNTER, 7                       ; [081 -01 =080]
                                                                                  ; [     ==     ] [     !=     ]
-0002dc f419                            brne skip_clear_vsync                     ; [075 -01 =074] [075 -02 =073]
+0002e5 f419                            brne skip_clear_vsync                     ; [080 -01 =079] [080 -02 =078]
                                  clear_vsync:
-0002dd e800
-0002de 2750                            TOGGLE_SYNC_BIT                           ; [074 -03 =071]
-0002df c004                            rjmp after_clear_vsync                    ; [071 -02 =069]
+0002e6 e800
+0002e7 2750                            TOGGLE_SYNC_BIT                           ; [079 -02 =077]
+0002e8 c003                            rjmp after_clear_vsync                    ; [077 -02 =075]
                                  skip_clear_vsync:
-0002e0 0000
-0002e1 0000
-0002e2 0000
-0002e3 0000                            _NOP4                                     ;                [073 -04 =069]
+0002e9 0000
+0002ea 0000                            _NOP2                                     ;                [078 -02 =076]
+0002eb 0000                            nop										;				 [076 -01 =075]
                                  after_clear_vsync:
                                  
                                        ; Increment rLINECOUNTER by one.
-0002e4 9533                            inc rLINECOUNTER                          ; [069 -01 =068]
+0002ec 9533                            inc rLINECOUNTER                          ; [075 -01 =074]
                                  
                                        ; Load 22 into the temp register.
-0002e5 e106                            ldi rTEMP, 22                             ; [068 -01 =067]
+0002ed e106                            ldi rTEMP, 22                             ; [074 -01 =073]
                                  
                                        ; If rSTATBITS:EVENFRAME is clear, add 1 to the temp register.
-0002e6 ff40                            sbrs rSTATBITS, STATBIT_EVENFRAME         ; [067 -02 =065]
-0002e7 9503                            inc rTEMP
+0002ee ff40                            sbrs rSTATBITS, STATBIT_EVENFRAME         ; [073 -02 =071]
+0002ef 9503                            inc rTEMP
                                  
                                        ; If line counter is equal to temp register:
                                        ;   - reset to 0
@@ -2798,9 +2806,9 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
                                        ;   - set ADDR/CTL2 lines to outputs
                                        ;   - clear ~OE, ~WE bits
                                        ;   - clear ~VDRAW control line if rSTATBITS:EVENFRAME is clear
-0002e8 1730                            cp rLINECOUNTER, rTEMP                    ; [065 -01 =064]
+0002f0 1730                            cp rLINECOUNTER, rTEMP                    ; [071 -01 =070]
                                                                                  ; [     ==     ] [     !=     ]
-0002e9 f451                            brne skip_setup_display                   ; [064 -01 =063] [064 -02 =062]
+0002f1 f451                            brne skip_setup_display                   ; [070 -01 =069] [070 -02 =068]
                                  
                                  ;d888888b d8b   db d888888b d888888b   d8888b. d888888b .d8888. d8888b.
                                  ;  `88'   888o  88   `88'   `~~88~~'   88  `8D   `88'   88'  YP 88  `8D
@@ -2810,39 +2818,31 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
                                  ;Y888888P VP   V8P Y888888P    YP      Y8888D' Y888888P `8888Y' 88
                                  
                                  setup_display:
-0002ea 2733                            eor rLINECOUNTER, rLINECOUNTER            ; [063 -01 =062]
-0002eb 6840                            ori rSTATBITS, STATBIT_DISP_MASK          ; [062 -01 =061]
-0002ec 6150                            ori rCTRLBITS, VBLANKBIT_MASK             ; [061 -01 =060]
-0002ed ef6f                            ldi rADDRDDR, ADDRBIT_DDR_OUTPUT          ; [060 -01 =059]
-0002ee e070                            ldi rDATADDR, DATABIT_DDR_INPUT           ; [059 -01 =058]
-0002ef 9a2a
-0002f0 9a28                            OE_AND_WE_OFF                             ; [058 -02 =056]
-0002f1 ff40                            sbrs rSTATBITS, STATBIT_EVENFRAME         ; [056 -02 =054]
-0002f2 7f57                            andi rCTRLBITS, NOT_VDRAWBIT_MASK
-0002f3 c00a                            rjmp after_setup_display                  ; [054 -02 =052]
+0002f2 2733                            eor rLINECOUNTER, rLINECOUNTER            ; [069 -01 =068]
+0002f3 6840                            ori rSTATBITS, STATBIT_DISP_MASK          ; [068 -01 =067]
+0002f4 6150                            ori rCTRLBITS, VBLANKBIT_MASK             ; [067 -01 =066]
+0002f5 ef6f                            ldi rADDRDDR, ADDRBIT_DDR_OUTPUT          ; [066 -01 =065]
+0002f6 e070                            ldi rDATADDR, DATABIT_DDR_INPUT           ; [065 -01 =064]
+0002f7 9a2a
+0002f8 9a28                            OE_AND_WE_OFF                             ; [064 -02 =062]
+0002f9 ff40                            sbrs rSTATBITS, STATBIT_EVENFRAME         ; [062 -02 =060]
+0002fa 7f57                            andi rCTRLBITS, NOT_VDRAWBIT_MASK
+0002fb c00a                            rjmp after_setup_display                  ; [060 -02 =058]
                                  skip_setup_display:
-0002f4 0000
-0002f5 0000
-0002f6 0000
-0002f7 0000
-0002f8 0000
-0002f9 0000
-0002fa 0000
-0002fb 0000                            _NOP8                                     ; [062 -10 =052]
 0002fc 0000
-0002fd 0000                      	  _NOP2
-                                 after_setup_display:
-                                 
-                                       ; Finish the H-sync pulse here.
-                                       ; This can be filled in with whatever calculations we care to do.
+0002fd 0000
 0002fe 0000
 0002ff 0000
 000300 0000
 000301 0000
 000302 0000
-000303 0000
+000303 0000                            _NOP8                                     ;                [068 -08 =060]
 000304 0000
-000305 0000
+000305 0000                            _NOP2                                     ;                [060 -02 =058]
+                                 after_setup_display:
+                                 
+                                       ; Finish the H-sync pulse here.
+                                       ; This can be filled in with whatever calculations we care to do.
 000306 0000
 000307 0000
 000308 0000
@@ -2866,7 +2866,7 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
 00031a 0000
 00031b 0000
 00031c 0000
-00031d 0000                      	  _NOP32									; [052 -47 =005]
+00031d 0000
 00031e 0000
 00031f 0000
 000320 0000
@@ -2874,50 +2874,65 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
 000322 0000
 000323 0000
 000324 0000
-000325 0000                      	  _NOP8
+000325 0000                            _NOP32									; [058 -32 =026]
 000326 0000
 000327 0000
 000328 0000
-000329 0000                      	  _NOP4
+000329 0000
 00032a 0000
-00032b 0000                      	  _NOP2
-00032c 0000                      	  nop
-00032d b10b
-00032e e810
-00032f 2701
-000330 b90b                            IMMED_TOGGLE_SYNC_PIN                     ; [005 -05 =000]
+00032b 0000
+00032c 0000
+00032d 0000
+00032e 0000
+00032f 0000
+000330 0000
+000331 0000
+000332 0000
+000333 0000
+000334 0000
+000335 0000                            _NOP16                                    ; [026 -16 =010]
+000336 0000
+000337 0000
+000338 0000
+000339 0000                            _NOP4                                     ; [010 -04 =006]
+00033a 0000
+00033b 0000                            _NOP2                                     ; [006 -02 =004]
+00033c b10b
+00033d e810
+00033e 2701
+00033f b90b                            IMMED_TOGGLE_SYNC_PIN                     ; [004 -04 =000]
                                  
                                        ; continue here if not a display line
-000331 c01a                            rjmp end_line ; -- TEMPORARY
-000332 0000                            nop
+000340 c01a                            rjmp end_line ; -- TEMPORARY
+000341 0000                            nop
                                  
                                        ; Jump based on exactly which line this is
-000333 9409                            ijmp                                      ; [2]
+000342 9409                            ijmp                                      ; [2]
                                  
                                  non_display_line_table:                         ; [2] for one of below jumps
-000334 c016                            rjmp bottom_border_line             ; 0
-000335 c015                            rjmp bottom_border_line             ; 1
-000336 c014                            rjmp pre_render_blanking_line       ; 2
-000337 c013                            rjmp pre_render_blanking_line       ; 3
-000338 c012                            rjmp pre_render_blanking_line       ; 4
-000339 c011                            rjmp vsync_line                     ; 5
-00033a c010                            rjmp vsync_line                     ; 6
-00033b c00f                            rjmp vsync_line                     ; 7
-00033c c00e                            rjmp post_render_blanking_line      ; 8
-00033d c00d                            rjmp post_render_blanking_line      ; 9
-00033e c00c                            rjmp post_render_blanking_line      ; 10
-00033f c00b                            rjmp post_render_blanking_line      ; 11
-000340 c00a                            rjmp post_render_blanking_line      ; 12
-000341 c009                            rjmp post_render_blanking_line      ; 13
-000342 c008                            rjmp post_render_blanking_line      ; 14
-000343 c007                            rjmp post_render_blanking_line      ; 15
-000344 c006                            rjmp post_render_blanking_line      ; 16
-000345 c005                            rjmp post_render_blanking_line      ; 17
-000346 c004                            rjmp post_render_blanking_line      ; 18
-000347 c003                            rjmp post_render_blanking_line      ; 19
-000348 c002                            rjmp post_render_blanking_line      ; 20
-000349 c001                            rjmp post_render_blanking_line      ; 21
-00034a c000                            rjmp post_render_blanking_line      ; 22 (for odd frames)
+000343 c016                            rjmp bottom_border_line             ; 0
+000344 c015                            rjmp bottom_border_line             ; 1
+000345 c014                            rjmp pre_render_blanking_line       ; 2
+000346 c013                            rjmp pre_render_blanking_line       ; 3
+000347 c012                            rjmp pre_render_blanking_line       ; 4
+000348 c011                            rjmp vsync_line                     ; 5
+000349 c010                            rjmp vsync_line                     ; 6
+00034a c00f                            rjmp vsync_line                     ; 7
+00034b c00e                            rjmp post_render_blanking_line      ; 8
+00034c c00d                            rjmp post_render_blanking_line      ; 9
+00034d c00c                            rjmp post_render_blanking_line      ; 10
+00034e c00b                            rjmp post_render_blanking_line      ; 11
+00034f c00a                            rjmp post_render_blanking_line      ; 12
+000350 c009                            rjmp post_render_blanking_line      ; 13
+000351 c008                            rjmp post_render_blanking_line      ; 14
+000352 c007                            rjmp post_render_blanking_line      ; 15
+000353 c006                            rjmp post_render_blanking_line      ; 16
+000354 c005                            rjmp post_render_blanking_line      ; 17
+000355 c004                            rjmp post_render_blanking_line      ; 18
+000356 c003                            rjmp post_render_blanking_line      ; 19
+000357 c002                            rjmp post_render_blanking_line      ; 20
+000358 c001                            rjmp post_render_blanking_line      ; 21
+000359 c000                            rjmp post_render_blanking_line      ; 22 (for odd frames)
                                  
                                        ; +4 cycles after HSYNC here (for whichever branch is taken)
                                  bottom_border_line:
@@ -2925,202 +2940,216 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(54): Including file 'C:\Use
                                  vsync_line:
                                  post_render_blanking_line:
                                  
-00034b c000                            rjmp end_line                       ; [2]
+00035a c000                            rjmp end_line                       ; [2]
                                  
                                  end_line:
                                        ; Turn off "interrupt triggered" light.
-00034c 940e 0109                       call clear_interrupt_debug_bit
-00034e 940e 0127                       call latch_debug_lights
+00035b 7b8f                            CLEAR_INT_DEBUG_BIT
+00035c b108
+00035d 930f
+00035e b107
+00035f 930f
+000360 ef0f
+000361 b907
+000362 b988
+000363 9a2b
+000364 982b
+000365 910f
+000366 b907
+000367 910f
+000368 b908                            LATCH_DEBUG_LIGHTS
                                  
-000350 9518                            reti
+000369 0000                            nop
+00036a 9518                            reti
                                  
                                  INT0_vect:
-000351 940e 0113                       call set_error_debug_bit
-000353 940e 0127                       call latch_debug_lights
-000355 940e 011d                       call clear_error_debug_bit
-000357 940e 0127                       call latch_debug_lights
+00036b 6880                            SET_ERROR_DEBUG_BIT
+00036c b108
+00036d 930f
+00036e b107
+00036f 930f
+000370 ef0f
+000371 b907
+000372 b988
+000373 9a2b
+000374 982b
+000375 910f
+000376 b907
+000377 910f
+000378 b908                            LATCH_DEBUG_LIGHTS
+000379 778f                            CLEAR_ERROR_DEBUG_BIT
+00037a b108
+00037b 930f
+00037c b107
+00037d 930f
+00037e ef0f
+00037f b907
+000380 b988
+000381 9a2b
+000382 982b
+000383 910f
+000384 b907
+000385 910f
+000386 b908                            LATCH_DEBUG_LIGHTS
                                        ;push rTEMP
                                        ;ldi rTEMP, 0
                                        ;sts _SFR_MEM_ADDR(EIMSK), rTEMP
                                        ;pop rTEMP
-000359 9518                            reti
+000387 9518                            reti
                                  
-00035a e001
-00035b 2e00                            _LDI r0, 1
-00035c c062                            rjmp finish_interrupt
+000388 e081                            ldi rDEBUGBITS, 1
+000389 c041                            rjmp finish_interrupt
                                  
                                  INT1_vect:
-00035d e002
-00035e 2e00                            _LDI r0, 2
-00035f c05f                            rjmp finish_interrupt
+00038a e082                            ldi rDEBUGBITS, 2
+00038b c03f                            rjmp finish_interrupt
                                  
                                  INT2_vect:
-000360 e003
-000361 2e00                            _LDI r0, 3
-000362 c05c                            rjmp finish_interrupt
+00038c e083                            ldi rDEBUGBITS, 3
+00038d c03d                            rjmp finish_interrupt
                                  
                                  PCINT0_vect:
-000363 e004
-000364 2e00                            _LDI r0, 4
-000365 c059                            rjmp finish_interrupt
+00038e e084                            ldi rDEBUGBITS, 4
+00038f c03b                            rjmp finish_interrupt
                                  
                                  PCINT1_vect:
-000366 e005
-000367 2e00                            _LDI r0, 5
-000368 c056                            rjmp finish_interrupt
+000390 e085                            ldi rDEBUGBITS, 5
+000391 c039                            rjmp finish_interrupt
                                  
                                  PCINT2_vect:
-000369 e006
-00036a 2e00                            _LDI r0, 6
-00036b c053                            rjmp finish_interrupt
+000392 e086                            ldi rDEBUGBITS, 6
+000393 c037                            rjmp finish_interrupt
                                  
                                  PCINT3_vect:
-00036c e007
-00036d 2e00                            _LDI r0, 7
-00036e c050                            rjmp finish_interrupt
+000394 e087                            ldi rDEBUGBITS, 7
+000395 c035                            rjmp finish_interrupt
                                  
                                  WDT_vect:
-00036f e008
-000370 2e00                            _LDI r0, 8
-000371 c04d                            rjmp finish_interrupt
+000396 e088                            ldi rDEBUGBITS, 8
+000397 c033                            rjmp finish_interrupt
                                  
                                  TIMER2_COMPA_vect:
-000372 e009
-000373 2e00                            _LDI r0, 9
-000374 c04a                            rjmp finish_interrupt
+000398 e089                            ldi rDEBUGBITS, 9
+000399 c031                            rjmp finish_interrupt
                                  
                                  TIMER2_COMPB_vect:
-000375 e00a
-000376 2e00                            _LDI r0, 10
-000377 c047                            rjmp finish_interrupt
+00039a e08a                            ldi rDEBUGBITS, 10
+00039b c02f                            rjmp finish_interrupt
                                  
                                  TIMER2_OVF_vect:
-000378 e00b
-000379 2e00                            _LDI r0, 11
-00037a c044                            rjmp finish_interrupt
+00039c e08b                            ldi rDEBUGBITS, 11
+00039d c02d                            rjmp finish_interrupt
                                  
                                  TIMER1_CAPT_vect:
-00037b e00c
-00037c 2e00                            _LDI r0, 12
-00037d c041                            rjmp finish_interrupt
+00039e e08c                            ldi rDEBUGBITS, 12
+00039f c02b                            rjmp finish_interrupt
                                  
                                  TIMER1_COMPB_vect:
-00037e e00e
-00037f 2e00                            _LDI r0, 14
-000380 c03e                            rjmp finish_interrupt
+0003a0 e08e                            ldi rDEBUGBITS, 14
+0003a1 c029                            rjmp finish_interrupt
                                  
                                  TIMER1_OVF_vect:
-000381 e00f
-000382 2e00                            _LDI r0, 15
-000383 c03b                            rjmp finish_interrupt
+0003a2 e08f                            ldi rDEBUGBITS, 15
+0003a3 c027                            rjmp finish_interrupt
                                  
                                  TIMER0_COMPA_vect:
-000384 e100
-000385 2e00                            _LDI r0, 16
-000386 c038                            rjmp finish_interrupt
+0003a4 e180                            ldi rDEBUGBITS, 16
+0003a5 c025                            rjmp finish_interrupt
                                  
                                  TIMER0_COMPB_vect:
-000387 e101
-000388 2e00                            _LDI r0, 17
-000389 c035                            rjmp finish_interrupt
+0003a6 e181                            ldi rDEBUGBITS, 17
+0003a7 c023                            rjmp finish_interrupt
                                  
                                  TIMER0_OVF_vect:
-00038a e102
-00038b 2e00                            _LDI r0, 18
-00038c c032                            rjmp finish_interrupt
+0003a8 e182                            ldi rDEBUGBITS, 18
+0003a9 c021                            rjmp finish_interrupt
                                  
                                  SPI_STC_vect:
-00038d e103
-00038e 2e00                            _LDI r0, 19
-00038f c02f                            rjmp finish_interrupt
+0003aa e183                            ldi rDEBUGBITS, 19
+0003ab c01f                            rjmp finish_interrupt
                                  
                                  USART0_RX_vect:
-000390 e104
-000391 2e00                            _LDI r0, 20
-000392 c02c                            rjmp finish_interrupt
+0003ac e184                            ldi rDEBUGBITS, 20
+0003ad c01d                            rjmp finish_interrupt
                                  
                                  USART0_UDRE_vect:
-000393 e105
-000394 2e00                            _LDI r0, 21
-000395 c029                            rjmp finish_interrupt
+0003ae e185                            ldi rDEBUGBITS, 21
+0003af c01b                            rjmp finish_interrupt
                                  
                                  USART0_TX_vect:
-000396 e106
-000397 2e00                            _LDI r0, 22
-000398 c026                            rjmp finish_interrupt
+0003b0 e186                            ldi rDEBUGBITS, 22
+0003b1 c019                            rjmp finish_interrupt
                                  
                                  ANALOG_COMP_vect:
-000399 e107
-00039a 2e00                            _LDI r0, 23
-00039b c023                            rjmp finish_interrupt
+0003b2 e187                            ldi rDEBUGBITS, 23
+0003b3 c017                            rjmp finish_interrupt
                                  
                                  ADC_vect:
-00039c e108
-00039d 2e00                            _LDI r0, 24
-00039e c020                            rjmp finish_interrupt
+0003b4 e188                            ldi rDEBUGBITS, 24
+0003b5 c015                            rjmp finish_interrupt
                                  
                                  EE_READY_vect:
-00039f e109
-0003a0 2e00                            _LDI r0, 25
-0003a1 c01d                            rjmp finish_interrupt
+0003b6 e189                            ldi rDEBUGBITS, 25
+0003b7 c013                            rjmp finish_interrupt
                                  
                                  TWI_vect:
-0003a2 e10a
-0003a3 2e00                            _LDI r0, 26
-0003a4 c01a                            rjmp finish_interrupt
+0003b8 e18a                            ldi rDEBUGBITS, 26
+0003b9 c011                            rjmp finish_interrupt
                                  
                                  SPM_READY_vect:
-0003a5 e10b
-0003a6 2e00                            _LDI r0, 27
-0003a7 c017                            rjmp finish_interrupt
+0003ba e18b                            ldi rDEBUGBITS, 27
+0003bb c00f                            rjmp finish_interrupt
                                  
                                  USART1_RX_vect:
-0003a8 e10c
-0003a9 2e00                            _LDI r0, 28
-0003aa c014                            rjmp finish_interrupt
+0003bc e18c                            ldi rDEBUGBITS, 28
+0003bd c00d                            rjmp finish_interrupt
                                  
                                  USART1_UDRE_vect:
-0003ab e10d
-0003ac 2e00                            _LDI r0, 29
-0003ad c011                            rjmp finish_interrupt
+0003be e18d                            ldi rDEBUGBITS, 29
+0003bf c00b                            rjmp finish_interrupt
                                  
                                  USART1_TX_vect:
-0003ae e10e
-0003af 2e00                            _LDI r0, 30
-0003b0 c00e                            rjmp finish_interrupt
+0003c0 e18e                            ldi rDEBUGBITS, 30
+0003c1 c009                            rjmp finish_interrupt
                                  
                                  TIMER3_CAPT_vect:
-0003b1 e10f
-0003b2 2e00                            _LDI r0, 31
-0003b3 c00b                            rjmp finish_interrupt
+0003c2 e18f                            ldi rDEBUGBITS, 31
+0003c3 c007                            rjmp finish_interrupt
                                  
                                  TIMER3_COMPA_vect:
-0003b4 e200
-0003b5 2e00                            _LDI r0, 32
-0003b6 c008                            rjmp finish_interrupt
+0003c4 e280                            ldi rDEBUGBITS, 32
+0003c5 c005                            rjmp finish_interrupt
                                  
                                  TIMER3_COMPB_vect:
-0003b7 e201
-0003b8 2e00                            _LDI r0, 33
-0003b9 c005                            rjmp finish_interrupt
+0003c6 e281                            ldi rDEBUGBITS, 33
+0003c7 c003                            rjmp finish_interrupt
                                  
                                  TIMER3_OVF_vect:
-0003ba e202
-0003bb 2e00                            _LDI r0, 34
-0003bc c002                            rjmp finish_interrupt
+0003c8 e282                            ldi rDEBUGBITS, 34
+0003c9 c001                            rjmp finish_interrupt
                                  
                                  __vector_default:
-0003bd e000
-0003be 2e00                            _LDI r0, 0
+0003ca e080                            ldi rDEBUGBITS, 0
                                  
                                  finish_interrupt:
-0003bf 940e 00f7                       call set_debug_lights
-0003c1 940e 0113                       call set_error_debug_bit
-0003c3 940e 0127                       call latch_debug_lights
+0003cb 6880                            SET_ERROR_DEBUG_BIT
+0003cc b108
+0003cd 930f
+0003ce b107
+0003cf 930f
+0003d0 ef0f
+0003d1 b907
+0003d2 b988
+0003d3 9a2b
+0003d4 982b
+0003d5 910f
+0003d6 b907
+0003d7 910f
+0003d8 b908                            LATCH_DEBUG_LIGHTS
                                  ;      reti
                                  
                                  endless:
-0003c5 cfff                            rjmp endless
+0003d9 cfff                            rjmp endless
                                  
                                  .DSEG
                                  
@@ -3144,12 +3173,12 @@ counted separately from r26..r31 here.
 .dseg memory usage only counts static data declared with .byte
 
 "ATmega1284P" register use summary:
-x  :  12 y  :   0 z  :   0 r0 :  60 r1 :   4 r2 :   0 r3 :   0 r4 :   0 
+x  :   2 y  :   0 z  :   0 r0 :  11 r1 :   4 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:  13 
-r13:   4 r14:   0 r15:  25 r16: 235 r17:  27 r18:   2 r19:  14 r20:   8 
-r21:  10 r22:   3 r23:   3 r24:   0 r25:   0 r26:  22 r27:  22 r28:   0 
+r13:   2 r14:   0 r15:  25 r16: 254 r17:  26 r18:   2 r19:  14 r20:   8 
+r21:  11 r22:   3 r23:   3 r24:  58 r25:   0 r26:   4 r27:   4 r28:   0 
 r29:   0 r30:   4 r31:   4 
-Registers used: 18 out of 35 (51.4%)
+Registers used: 19 out of 35 (54.3%)
 
 "ATmega1284P" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   4 add   :   4 adiw  :   0 and   :   1 
@@ -3157,19 +3186,19 @@ andi  :   7 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0
 brcc  :   0 brcs  :   0 break :   0 breq  :   0 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
 brne  :  15 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
-brvs  :   0 bset  :   0 bst   :   0 call  :  18 cbi   :  45 cbr   :   0 
+brvs  :   0 bset  :   0 bst   :   0 call  :   9 cbi   :  56 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   1 cln   :   0 clr   :   0 cls   :   0 
-clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   3 cpc   :   0 
-cpi   :  10 cpse  :   0 dec   :   9 elpm  :   0 eor   :  13 fmul  :   0 
-fmuls :   0 fmulsu:   0 icall :   0 ijmp  :   2 in    :   8 inc   :   5 
-jmp   :  37 ld    :   6 ldd   :   0 ldi   : 124 lds   :   0 lpm   :   0 
-lsl   :   1 lsr   :   3 mov   :  66 movw  :   0 mul   :   0 muls  :   0 
-mulsu :   0 neg   :   0 nop   : 274 or    :   1 ori   :   5 out   :  54 
-pop   :  15 push  :  15 rcall :  16 ret   :  15 reti  :   2 rjmp  :  86 
-rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 sbi   :  26 sbic  :   0 
+clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   2 cpc   :   0 
+cpi   :  10 cpse  :   0 dec   :  10 elpm  :   0 eor   :  13 fmul  :   0 
+fmuls :   0 fmulsu:   0 icall :   0 ijmp  :   2 in    :  30 inc   :   4 
+jmp   :  37 ld    :   1 ldd   :   0 ldi   : 123 lds   :   0 lpm   :   0 
+lsl   :   1 lsr   :   3 mov   :  25 movw  :   0 mul   :   0 muls  :   0 
+mulsu :   0 neg   :   0 nop   : 278 or    :   1 ori   :   6 out   :  98 
+pop   :  24 push  :  24 rcall :   4 ret   :   7 reti  :   2 rjmp  :  86 
+rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 sbi   :  37 sbic  :   0 
 sbis  :   0 sbiw  :   0 sbr   :   0 sbrc  :   1 sbrs  :   3 sec   :   0 
 seh   :   0 sei   :   2 sen   :   0 ser   :   0 ses   :   0 set   :   0 
-sev   :   0 sez   :   0 sleep :   0 spm   :   0 st    :   6 std   :   0 
+sev   :   0 sez   :   0 sleep :   0 spm   :   0 st    :   1 std   :   0 
 sts   :   4 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
 
 Instructions used: 37 out of 114 (32.5%)
@@ -3177,7 +3206,7 @@ Instructions used: 37 out of 114 (32.5%)
 "ATmega1284P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x00078c   1932      0   1932  131072   1.5%
+[.cseg] 0x000000 0x0007b4   1972      0   1972  131072   1.5%
 [.dseg] 0x000100 0x000200      0    256    256   16384   1.6%
 [.eseg] 0x000000 0x000000      0      0      0    4096   0.0%
 
