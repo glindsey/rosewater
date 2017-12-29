@@ -6,9 +6,9 @@
 .DEF rCTEMP		= r0
 .DEF rZERO		= r1
 
-.DEF rTEMP		= r16
-.DEF rTEMP2		= r17
-.DEF rTEMP3		= r18
+.DEF rTEMP3		= r23
+.DEF rTEMP		= r24
+.DEF rTEMP2		= r25
 
 ; Uses rTEMP to load an immediate into a low (r0-r15) register.
 ; @0 = register to load into

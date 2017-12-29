@@ -64,14 +64,29 @@ RESET_vect:
 
 ; Global macro definitions
 ; =========================================================
-.DEF rXMAX          = r14
+.DEF rTILEGRAFL = r2
+.DEF rTILEGRAFH = r3
 
-.DEF rLINECOUNTER	= r19
-.DEF rSTATBITS		= r20
-.DEF rCTRLBITS		= r21
-.DEF rADDRDDR		= r22
-.DEF rDATADDR		= r23
-.DEF rDEBUGBITS     = r24
+.DEF rTILEGRIDL = r4
+.DEF rTILEGRIDH = r5
+
+.DEF rREADBUFL = r6
+.DEF rREADBUFH = r7
+
+.DEF rWRITEBUFL = r8
+.DEF rWRITEBUFH = r9
+
+.DEF rTILEINDEX = r10
+.DEF rTILEBG = r11
+.DEF rTILEFG = r12
+.DEF rTILEOUT = r13
+
+.DEF rLINECOUNTER	= r17
+.DEF rSTATBITS		= r18
+.DEF rCTRLBITS		= r19
+.DEF rADDRDDR		= r20
+.DEF rDATADDR		= r21
+.DEF rDEBUGBITS     = r22
 
 ; === Timing Values =============================
       ; At 20MHz:
@@ -132,51 +147,6 @@ RESET_vect:
       ldi rTEMP2, SYNCBIT_MASK      ; [1]
       eor rTEMP, rTEMP2				; [1]
       out CTRLPORT, rTEMP			; [1]
-.ENDM
-
-.MACRO OUT_PIXEL
-    ld rTEMP, X+
-    out DATAPORT, rTEMP
-.ENDM
-
-.MACRO OUT_PIXEL2
-    OUT_PIXEL
-    OUT_PIXEL
-.ENDM
-
-.MACRO OUT_PIXEL4
-    OUT_PIXEL2
-    OUT_PIXEL2
-.ENDM
-
-.MACRO OUT_PIXEL8
-    OUT_PIXEL4
-    OUT_PIXEL4
-.ENDM
-
-.MACRO OUT_PIXEL16
-    OUT_PIXEL8
-    OUT_PIXEL8
-.ENDM
-
-.MACRO OUT_PIXEL32
-    OUT_PIXEL16
-    OUT_PIXEL16
-.ENDM
-
-.MACRO OUT_PIXEL64
-    OUT_PIXEL32
-    OUT_PIXEL32
-.ENDM
-
-.MACRO OUT_PIXEL128
-    OUT_PIXEL64
-    OUT_PIXEL64
-.ENDM
-
-.MACRO OUT_PIXEL256
-    OUT_PIXEL128
-    OUT_PIXEL128
 .ENDM
 
 ;.d8888. db    db d8888b. d8888b.  .d88b.  db    db d888888b d888888b d8b   db d88888b .d8888.
@@ -327,13 +297,89 @@ main:
     LATCH_DEBUG_LIGHTS
 
     ;call setup_palette
+
+temp_set_line_buffer_1:
     eor rTEMP, rTEMP
-    ldi XH, HIGH(line_buffer)
-    ldi XL, LOW(line_buffer)
-line_buffer_set_loop:
-    st X+, rTEMP
+    eor rTEMP2, rTEMP2
+    ldi rTEMP3, 0x0d
+    ldi XH, HIGH(line_buffer_1)
+    ldi XL, LOW(line_buffer_1)
+line_buffer_1_set_loop:
+    add rTEMP2, rTEMP3
+    st X+, rTEMP2
     inc rTEMP
-    brne line_buffer_set_loop
+    brne line_buffer_1_set_loop
+
+temp_set_line_buffer_2:
+    ldi rTEMP2, 0xff
+    ldi XH, HIGH(line_buffer_2)
+    ldi XL, LOW(line_buffer_2)
+line_buffer_2_set_loop:
+    st X+, rTEMP2
+    inc rTEMP
+    brne line_buffer_2_set_loop
+
+temp_set_tile_graphic_data:
+    ldi XH, HIGH(tile_graphic_data)
+    ldi XL, LOW(tile_graphic_data)
+    ldi rTEMP, 0
+    ldi rTEMP3, 0b01111100
+tile_graphic_data_set_loop_0:
+    st X+, rTEMP3
+    inc rTEMP
+    brne tile_graphic_data_set_loop_0
+    ldi rTEMP3, 0b10000010
+tile_graphic_data_set_loop_1:
+    st X+, rTEMP3
+    inc rTEMP
+    brne tile_graphic_data_set_loop_1
+    ldi rTEMP3, 0b10000010
+tile_graphic_data_set_loop_2:
+    st X+, rTEMP3
+    inc rTEMP
+    brne tile_graphic_data_set_loop_2
+    ldi rTEMP3, 0b10010010
+tile_graphic_data_set_loop_3:
+    st X+, rTEMP3
+    inc rTEMP
+    brne tile_graphic_data_set_loop_3
+    ldi rTEMP3, 0b10000010
+tile_graphic_data_set_loop_4:
+    st X+, rTEMP3
+    inc rTEMP
+    brne tile_graphic_data_set_loop_4
+    ldi rTEMP3, 0b10000010
+tile_graphic_data_set_loop_5:
+    st X+, rTEMP3
+    inc rTEMP
+    brne tile_graphic_data_set_loop_5
+    ldi rTEMP3, 0b01111100
+tile_graphic_data_set_loop_6:
+    st X+, rTEMP3
+    inc rTEMP
+    brne tile_graphic_data_set_loop_6
+    ldi rTEMP3, 0b00000000
+tile_graphic_data_set_loop_7:
+    st X+, rTEMP3
+    inc rTEMP
+    brne tile_graphic_data_set_loop_7
+
+temp_set_tile_grid:
+    ldi XH, HIGH(tile_grid)
+    ldi XL, LOW(tile_grid)
+    ldi rTEMP, 0
+    ldi rTEMP2, 0
+    ldi rTEMP3, 0xFF
+tile_grid_set_loop:
+    st X+, rTEMP
+    ldi rTEMP3, 0x00
+    st X+, rTEMP3
+    ldi rTEMP3, 0xFF
+    st X+, rTEMP3
+    adiw rTEMP2:rTEMP, 1
+    cpi rTEMP2, 0x04
+    brne tile_grid_set_loop
+
     ldi rDEBUGBITS, 0x0F
     LATCH_DEBUG_LIGHTS
 
@@ -345,6 +391,26 @@ line_buffer_set_loop:
     ; Set up registers for line tracking.
     eor rLINECOUNTER, rLINECOUNTER
     eor rSTATBITS, rSTATBITS
+
+    ; Load tile graphic address into r3:r2 registers.
+    ldi ZH, HIGH(tile_graphic_data) ; -1 = 28
+    ldi ZL, LOW(tile_graphic_data)  ; -1 = 27
+    mov rTILEGRAFH, ZH              ; -1 = 26
+    mov rTILEGRAFL, ZL              ; -1 = 25
+
+    ; Load tile grid address into r5:r4 registers.
+    ldi XH, HIGH(tile_grid)                 ; -1 = 24
+    ldi XL, LOW(tile_grid)                  ; -1 = 23
+    mov rTILEGRIDH, XH                      ; -1 = 22
+    mov rTILEGRIDL, XL                      ; -1 = 21
+
+    ; Set read buffer to point to line buffer 1.
+    _LDI rREADBUFH, HIGH(line_buffer_1)
+    _LDI rREADBUFL, LOW(line_buffer_1)
+
+    ; Set write buffer to point to line buffer 2.
+    _LDI rWRITEBUFH, HIGH(line_buffer_2)
+    _LDI rWRITEBUFL, LOW(line_buffer_2)
 
     ; Set up control bits register.
     ldi rCTRLBITS, CTRLBIT_PORT_INIT
@@ -381,11 +447,15 @@ TIMER1_COMPA_vect:
     ; Set control port lines as appropriate.
     out CTRLPORT, rCTRLBITS                 ; [030 -01 =029]
 
+    ; Load display mode from PPU register
+    LOAD_PPUREG   r0, PPUREG_MODE           ; [029 -07 =022]
+
+    ; Ensure display mode only goes from 0 to 15 for now 
+    ldi rTEMP, 0x0F                         ; [022 -01 =021]
+    and r0, rTEMP                           ; [021 -01 =020]
+
     ; Finish up front porch
-    _NOP16                                  ; [029 -16 =015]
-    _NOP8									; [015 -08 =007]
-    _NOP2                                   ; [007 -02 =005]
-    nop                                     ; [005 -01 =004]
+    _NOP16                                  ; [020 -16 =004]
 
     IMMED_TOGGLE_SYNC_PIN                   ; [004 -04 =000]
     ; Start of sync tip - 4.7uS - 94 cycles
@@ -437,27 +507,14 @@ after_setup_vblank:
 
     ; 77 cycles of HSYNC left
 
-    ; Finish the H-sync pulse here.
-
-    ; Load display mode from PPU register
-    LOAD_PPUREG   r0, PPUREG_MODE           ; [077 -07 =070]
-
-    ; Ensure display mode only goes from 0 to 15 for now 
-    ldi rTEMP, 0x0F                         ; [070 -01 =069]
-    and r0, rTEMP                           ; [069 -01 =068]
-
     ; Load the jump address into Z but don't jump just yet
-    ldi ZL, LOW(output_mode_jumptable)      ; [068 -01 =067]
-    ldi ZH, HIGH(output_mode_jumptable)     ; [067 -01 =066]
-    add ZL, r0                              ; [066 -01 =065]
-    adc ZH, rZERO                           ; [065 -01 =064]
-
-    ; ============================================================
-    ; Start of breezeway/colorburst/back porch = 4.7uS = 94 cycles
-    ; ============================================================
+    ldi ZL, LOW(output_mode_jumptable)      ; [077 -01 =076]
+    ldi ZH, HIGH(output_mode_jumptable)     ; [076 -01 =075]
+    add ZL, r0                              ; [075 -01 =074]
+    adc ZH, rZERO                           ; [074 -01 =073]
 
     ; Jump!
-    ijmp                                    ; [094 -02 =092]
+    ijmp                                    ; [073 -02 =071]
 
 output_mode_jumptable:
     rjmp output_line_vram_direct_6      ; 0
@@ -490,12 +547,11 @@ output_mode_jumptable:
 
 output_line_vram_direct_6:
 
-    ; 64 cycles left for sync pulse
+    ; 71 cycles left for sync pulse
     ; This can be filled in with whatever additional calculations we care to do.
-    _NOP32                                  ; [064 -32 =032]
-    _NOP16									; [032 -16 =016]
-    _NOP8									; [016 -08 =008]
-    _NOP4                                   ; [008 -04 =004]
+    _NOP64                                  ; [071 -64 =007]
+    _NOP2									; [007 -02 =005]
+    nop 									; [005 -01 =004]
 
     IMMED_TOGGLE_SYNC_PIN                   ; [004 -04 =000]
 
@@ -520,7 +576,7 @@ output_line_vram_direct_6:
     out ADDRPORT, rXPOS
 
     ; Set max X position
-    _LDI rXMAX, 188
+    ldi rTEMP2, 188
 
     ; End Left Border
     ;_NOP 3
@@ -538,7 +594,7 @@ pixel_loop_6:
     ;         4      236
     out ADDRPORT, rXPOS       ; 1
     inc rXPOS                 ; 1
-    cp rXPOS, rXMAX           ; 1
+    cp rXPOS, rTEMP2          ; 1
     brne pixel_loop_6         ; 2
 
     DAC_DISABLE
@@ -549,12 +605,11 @@ pixel_loop_6:
 
 output_line_vram_direct_5:
 
-    ; 64 cycles left for sync pulse
+    ; 71 cycles left for sync pulse
     ; This can be filled in with whatever additional calculations we care to do.
-    _NOP32                                  ; [064 -32 =032]
-    _NOP16									; [032 -16 =016]
-    _NOP8									; [016 -08 =008]
-    _NOP4                                   ; [008 -04 =004]
+    _NOP64                                  ; [071 -64 =007]
+    _NOP2									; [007 -02 =005]
+    nop 									; [005 -01 =004]
 
     IMMED_TOGGLE_SYNC_PIN                   ; [004 -04 =000]
 
@@ -603,129 +658,184 @@ pixel_loop_5:
 
 output_line_buffer:
 
-    ; 64 cycles left for sync pulse
-    ldi rTEMP, 0x00                 ; -1 = 63
-    out DATAPORT, rTEMP             ; -1 = 62
-    SET_DATA_OUTPUT                 ; -2 = 60
-
-    ; Load tile graphic address into r3:r2 registers.
-    .DEF rTILEGRAFL = r2
-    .DEF rTILEGRAFH = r3
-    ldi ZH, HIGH(tile_graphic_data) ; -1 = 59
-    ldi ZL, LOW(tile_graphic_data)  ; -1 = 58
-    mov rTILEGRAFH, ZH              ; -1 = 57
-    mov rTILEGRAFL, ZL              ; -1 = 56
-
-    ; The line won't change during the loop, so add the line number to ZH now.
-    mov rTEMP, rYPOS                ; -1 = 55
-    andi rTEMP, 0x07                ; -1 = 54
-    add ZH, rTEMP                   ; -1 = 53
-
-    ; Load tile grid address into r5:r4 registers.
-    .DEF rTILEGRIDL = r4
-    .DEF rTILEGRIDH = r5
-    ldi XH, HIGH(tile_grid)         ; -1 = 52
-    ldi XL, LOW(tile_grid)          ; -1 = 51
-    mov rTILEGRIDH, XH              ; -1 = 50
-    mov rTILEGRIDL, XL              ; -1 = 49
-
-    ; Load tile grid offset into Y register.
-    ldi XH, HIGH(tile_grid_offset)  ; -1 = 48
-    ldi XL, LOW(tile_grid_offset)   ; -1 = 47
-    ld YH, X+                       ; -2 = 45
-    ld YL, X+                       ; -2 = 43
-
-    ; Add tile grid address to tile grid offset to get actual address.
-    add YL, rTILEGRIDL              ; -1 = 42
-    adc YH, rTILEGRIDH              ; -1 = 41
-
-    ; Load line buffer address into X register.
-    ldi XH, HIGH(line_buffer)       ; -1 = 40
-    ldi XL, LOW(line_buffer)        ; -1 = 39
-
-    _NOP32                                  ; [039 -32 =007]
-    _NOP2 									; [007 -02 =005]
-    nop 									; [005 -01 =004]
-
-    IMMED_TOGGLE_SYNC_PIN                   ; [004 -04 =000]
-
-    ; 92 cycles of breezeway
-    
-    ; Start at tile 0.
-    .DEF rTILEINDEX = r7
-    .DEF rTILECOLOR = r8
-    .DEF rTILEFG = r9
-
-.MACRO LOAD_8_PIXELS    ; 42 cycles... ouch. 42 * 32 tiles = 1344 cycles, which is WAAAAAY too many
-    ; [YH:YL] points to the tile we want.
+; Inputs:
+;   [YH:YL] points to the tile we want.
+;   [ZH:rTILEGRAFL] points to the graphic data for this line.   
+; Outputs:
+;   rTILEBG is the tile's background color.
+;   rTILEFG is the tile's foreground color.
+;   rTEMP contains the 8 pixels making up the tile.
+; Effects:
+;   [YH:YL] is incremented by 3
+; Clobbers:
+;   rTILEINDEX, ZL
+; Cycles:
+;   10
+.MACRO READ_8_PIXELS
     ld rTILEINDEX, Y+               ; +2
-    ld rTILECOLOR, Y+               ; +2
+    ld rTILEBG, Y+                  ; +2
     ld rTILEFG, Y+                  ; +2
-    addiw YH:YL, 1                  ; +1
-    ; Graphic data is stored in RAM as: offset + 00000YYY`TTTTTTTT
-    ; This makes it faster to access during the loop.
     mov ZL, rTILEGRAFL              ; +1
     add ZL, rTILEINDEX              ; +1
     ; Load 8 pixels of data into rTEMP.
-    ld rTEMP, Z                     ; +1
-    sbrc rTEMP, 7                   ; +2
-    mov rTILECOLOR, rTILEFG         ; ...
-    st rTILECOLOR, X+               ; +2
-    sbrc rTEMP, 6                   ; +2
-    mov rTILECOLOR, rTILEFG         ; ...
-    st rTILECOLOR, X+               ; +2
-    sbrc rTEMP, 5                   ; +2
-    mov rTILECOLOR, rTILEFG         ; ...
-    st rTILECOLOR, X+               ; +2
-    sbrc rTEMP, 4                   ; +2
-    mov rTILECOLOR, rTILEFG         ; ...
-    st rTILECOLOR, X+               ; +2
-    sbrc rTEMP, 3                   ; +2
-    mov rTILECOLOR, rTILEFG         ; ...
-    st rTILECOLOR, X+               ; +2
-    sbrc rTEMP, 2                   ; +2
-    mov rTILECOLOR, rTILEFG         ; ...
-    st rTILECOLOR, X+               ; +2
-    sbrc rTEMP, 1                   ; +2
-    mov rTILECOLOR, rTILEFG         ; ...
-    st rTILECOLOR, X+               ; +2
-    sbrc rTEMP, 0                   ; +2
-    mov rTILECOLOR, rTILEFG         ; ...
-    st rTILECOLOR, X+               ; +2
+    ld rTEMP, Z                     ; +2
 .ENDM
 
+; Inputs:
+;   [XH:XL] points to the line buffer we're writing to.
+;   rTILEBG is the tile's background color.
+;   rTILEFG is the tile's foreground color.
+;   @0 is the bit we want to write.
+; Output:
+;   None
+; Effects:
+;   Byte is written to the line buffer pointed to by [XH:XL].
+;   [XH:XL] is incremented by 1.
+; Clobbers:
+;   rTILEOUT
+; Cycles:
+;   5
+.MACRO WRITE_PIXEL
+    mov rTILEOUT, rTILEBG           ; +1
+    sbrc rTEMP, @0                  ; +2
+    mov rTILEOUT, rTILEFG           ; ...
+    st X+, rTILEOUT                 ; +2    
+.ENDM
 
-    _NOP64              ; 67 - 64 =  3
-    _NOP2               ;  3 -  2 =  1
-    nop                 ;  1 -  1 =  0
+.MACRO LOAD_8_PIXELS    ; 50 cycles... ouch. WAAAAAY too many
+    READ_8_PIXELS
+    WRITE_PIXEL 7
+    WRITE_PIXEL 6
+    WRITE_PIXEL 5
+    WRITE_PIXEL 4
+    WRITE_PIXEL 3
+    WRITE_PIXEL 2
+    WRITE_PIXEL 1
+    WRITE_PIXEL 0
+.ENDM
 
-    ; 160 cycles of border to center pixels on screen.
-    _NOP128
-    _NOP32
+    ; 71 cycles left for sync pulse
+    ldi rTEMP, 0x00                 ; -1 = 70
+    out DATAPORT, rTEMP             ; -1 = 69
+    SET_DATA_OUTPUT                 ; -2 = 67
 
-    ; Output 256 pixels.
+    ; Calculate the line number and add to the tile graphic address.
+    mov ZH, rTILEGRAFH              ; -1 = 66
+    mov rTEMP, rYPOS                ; -1 = 65
+    andi rTEMP, 0x07                ; -1 = 64
+    add ZH, rTEMP                   ; -1 = 63
+
+    ; Load tile grid offset into Y register.
+    ldi XH, HIGH(tile_grid_offset)          ; -1 = 62
+    ldi XL, LOW(tile_grid_offset)           ; -1 = 61
+    ld YH, X+                               ; -2 = 59
+    ld YL, X+                               ; -2 = 57
+
+    ; Add tile grid address to tile grid offset to get actual address.
+    add YL, rTILEGRIDL                      ; -1 = 56
+    adc YH, rTILEGRIDH                      ; -1 = 55
+
+    ; Load read buffer address into X register.
+    mov XH, rREADBUFH                      ; -1 = 54
+    mov XL, rREADBUFL                      ; -1 = 53
+
+    LOAD_8_PIXELS                          ; -50 = 3
+
+    IMMED_TOGGLE_SYNC_PIN                   ; [003 -04 = whatever, close enough]
+
+    ; 92 cycles of breezeway
+    
+    ; At this point we have 92 cycles of breezeway + 108 cycles of border = 200 cycles (as far as I'm concerned)
+
+    LOAD_8_PIXELS       ; -50
+    LOAD_8_PIXELS       ; -50
+
     DAC_ENABLE
-    OUT_PIXEL256
+
+    LOAD_8_PIXELS       ; -50
+    LOAD_8_PIXELS       ; -50
+
+    ; Reload line buffer address into X register.
+    mov XH, rREADBUFH       ; -1
+    mov XL, rREADBUFL       ; -1
+
+    ; Typical pixel (4 clocks):
+    ; mov rOUT, rTILEBG
+    ; sbrc rDATA, bit
+    ; mov rOUT, rTILEFG
+    ; out DATAPORT, rOUT
+    ; Gives only 1 clock left over for other stuff. Yikes. Not... good.
+
+.MACRO OUT_PIXEL
+    nop                     ; [1]
+    nop                     ; [1]
+    ld rTEMP, X+            ; [2]
+    out DATAPORT, rTEMP     ; [1]
+.ENDM
+
+.MACRO OUT_PIXEL2
+    OUT_PIXEL
+    OUT_PIXEL
+.ENDM
+
+.MACRO OUT_PIXEL4
+    OUT_PIXEL2
+    OUT_PIXEL2
+.ENDM
+
+.MACRO OUT_PIXEL8
+    OUT_PIXEL4
+    OUT_PIXEL4
+.ENDM
+
+.MACRO OUT_PIXEL16
+    OUT_PIXEL8
+    OUT_PIXEL8
+.ENDM
+
+.MACRO OUT_PIXEL32
+    OUT_PIXEL16
+    OUT_PIXEL16
+.ENDM
+
+.MACRO OUT_PIXEL64
+    OUT_PIXEL32
+    OUT_PIXEL32
+.ENDM
+
+.MACRO OUT_PIXEL128
+    OUT_PIXEL64
+    OUT_PIXEL64
+.ENDM
+
+.MACRO OUT_PIXEL256
+    OUT_PIXEL128
+    OUT_PIXEL128
+.ENDM
+
+    ; Output 160 pixels.
+    OUT_PIXEL128
+    OUT_PIXEL32
     DAC_DISABLE
 
     ; Here we have 128 cycles to prepare the next line.
 
     ; Tiles are stored at tile_grid as a 32x32 grid -- so the location of one tile is at offset 000000YY YYYXXXXX.
-    mov YH, rLINECOUNTER            ; -1 = 127
-    ldi YL, 0                       ; -1 = 126
-    lsr YH                          ; -1 = 125  ; 0YYYYYYY 00000000
-    lsr YH                          ; -1 = 124  ; 00YYYYYY 00000000
-    lsr YH                          ; -1 = 123  ; 000YYYYY 00000000
-    lsr YH                          ; -1 = 122  
-    ror YL                          ; -1 = 121  ; 0000YYYY Y0000000
-    lsr YH                          ; -1 = 120  
-    ror YL                          ; -1 = 119  ; 00000YYY YY000000
-    lsr YH                          ; -1 = 118  
-    ror YL                          ; -1 = 117  ; 000000YY YYY00000
-    ldi XH, HIGH(tile_grid_offset)  ; -1 = 116
-    ldi XL, LOW(tile_grid_offset)   ; -1 = 115
-    st X+, YH                       ; -2 = 113
-    st X+, YL                       ; -2 = 111
+    ;mov YH, rLINECOUNTER            ; -1 = 127
+    ;ldi YL, 0                       ; -1 = 126
+    ;lsr YH                          ; -1 = 125  ; 0YYYYYYY 00000000
+    ;lsr YH                          ; -1 = 124  ; 00YYYYYY 00000000
+    ;lsr YH                          ; -1 = 123  ; 000YYYYY 00000000
+    ;lsr YH                          ; -1 = 122  
+    ;ror YL                          ; -1 = 121  ; 0000YYYY Y0000000
+    ;lsr YH                          ; -1 = 120  
+    ;ror YL                          ; -1 = 119  ; 00000YYY YY000000
+    ;lsr YH                          ; -1 = 118  
+    ;ror YL                          ; -1 = 117  ; 000000YY YYY00000
+    ;ldi XH, HIGH(tile_grid_offset)  ; -1 = 116
+    ;ldi XL, LOW(tile_grid_offset)   ; -1 = 115
+    ;st X+, YH                       ; -2 = 113
+    ;st X+, YL                       ; -2 = 111
 
     rjmp end_line
 
@@ -893,6 +1003,7 @@ after_setup_display:
 ;    rjmp end_line                       ; [2]
 
 end_line:
+    nop
     reti
 
 INT0_vect:
@@ -1053,11 +1164,15 @@ endless:
 
 ; PPU registers are in registers.inc = 256 bytes
 
-tile_graphic_data:      .BYTE 4096          ; Tile data storage area = 4K (format depends on mode chosen)
-tile_grid:              .BYTE 4096          ; Grid of 32x32 tiles = 32x32x32 bits = 4K maximum
-                                            ; For 2-color mode, the grid is stored as <TileNum> <BGColor> <FGColor> <Dummy>
-                                            ; For 4-color mode, the grid is stored as <TileNum> <Color1> <Color2> <Color3>
-line_buffer:            .BYTE 256           ; Line buffer (0200 to 02FF) = 256 bytes
+tile_graphic_data:          .BYTE 4096          ; Tile data storage area = 4K (format depends on mode chosen)
+                                                ; Graphic data is stored in RAM as: offset + 00000YYY`TTTTTTTT
+                                                ; This makes it faster to access during the loop.
+
+tile_grid:                  .BYTE 4096          ; Grid of 32x32 tiles = 32x32x32 bits maximum = 4K
+                                                ; For 2-color mode, the grid is stored as <TileNum> <BGColor> <FGColor>
+                                                ; For 4-color mode, the grid is stored as <TileNum> <Color1> <Color2> <Color3>
+line_buffer_1:              .BYTE 256           ; Line buffer 1 = 256 bytes
+line_buffer_2:              .BYTE 256           ; Line buffer 2 = 256 bytes
 
 ; Variables
-tile_grid_offset:       .BYTE 2
+tile_grid_offset:           .BYTE 2

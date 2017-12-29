@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.7  C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm Fri Dec 29 14:25:16 2017
+AVRASM ver. 2.2.7  C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm Fri Dec 29 17:25:27 2017
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\Atmel\ATmega_DFP\1.2.203\avrasm\inc\m1284pdef.inc'
 C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(53): Including file 'C:\Users\greg\Documents\GitHub\rosewater\vangogh/constants.inc'
@@ -1252,40 +1252,40 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                  .CSEG
                                  .ORG 0x0000
 000000 940c 0046                     jmp RESET_vect				; 0
-000002 940c 075d                     jmp INT0_vect				; 1
-000004 940c 077b                     jmp INT1_vect				; 2
-000006 940c 077d                     jmp INT2_vect				; 3
-000008 940c 077f                     jmp PCINT0_vect				; 4
-00000a 940c 0781                     jmp PCINT1_vect				; 5
-00000c 940c 0783                     jmp PCINT2_vect				; 6
-00000e 940c 0785                     jmp PCINT3_vect				; 7
-000010 940c 0787                     jmp WDT_vect				; 8
-000012 940c 0789                     jmp TIMER2_COMPA_vect		; 9
-000014 940c 078b                     jmp TIMER2_COMPB_vect		; 10
-000016 940c 078d                     jmp TIMER2_OVF_vect			; 11
-000018 940c 078f                     jmp TIMER1_CAPT_vect        ; 12
-00001a 940c 0191                     jmp TIMER1_COMPA_vect		; 13
-00001c 940c 0791                     jmp TIMER1_COMPB_vect		; 14
-00001e 940c 0793                     jmp TIMER1_OVF_vect			; 15
-000020 940c 0795                     jmp TIMER0_COMPA_vect		; 16
-000022 940c 0797                     jmp TIMER0_COMPB_vect		; 17
-000024 940c 0799                     jmp TIMER0_OVF_vect			; 18
-000026 940c 079b                     jmp SPI_STC_vect			; 19
-000028 940c 079d                     jmp USART0_RX_vect			; 20
-00002a 940c 079f                     jmp USART0_UDRE_vect		; 21
-00002c 940c 07a1                     jmp USART0_TX_vect			; 22
-00002e 940c 07a3                     jmp ANALOG_COMP_vect		; 23
-000030 940c 07a5                     jmp ADC_vect				; 24
-000032 940c 07a7                     jmp EE_READY_vect			; 25
-000034 940c 07a9                     jmp TWI_vect				; 26
-000036 940c 07ab                     jmp SPM_READY_vect			; 27
-000038 940c 07ad                     jmp USART1_RX_vect			; 28
-00003a 940c 07af                     jmp USART1_UDRE_vect		; 29
-00003c 940c 07b1                     jmp USART1_TX_vect			; 30
-00003e 940c 07b3                     jmp TIMER3_CAPT_vect		; 31
-000040 940c 07b5                     jmp TIMER3_COMPA_vect		; 32
-000042 940c 07b7                     jmp TIMER3_COMPB_vect		; 33
-000044 940c 07b9                     jmp TIMER3_OVF_vect			; 34
+000002 940c 07cd                     jmp INT0_vect				; 1
+000004 940c 07eb                     jmp INT1_vect				; 2
+000006 940c 07ed                     jmp INT2_vect				; 3
+000008 940c 07ef                     jmp PCINT0_vect				; 4
+00000a 940c 07f1                     jmp PCINT1_vect				; 5
+00000c 940c 07f3                     jmp PCINT2_vect				; 6
+00000e 940c 07f5                     jmp PCINT3_vect				; 7
+000010 940c 07f7                     jmp WDT_vect				; 8
+000012 940c 07f9                     jmp TIMER2_COMPA_vect		; 9
+000014 940c 07fb                     jmp TIMER2_COMPB_vect		; 10
+000016 940c 07fd                     jmp TIMER2_OVF_vect			; 11
+000018 940c 07ff                     jmp TIMER1_CAPT_vect        ; 12
+00001a 940c 01da                     jmp TIMER1_COMPA_vect		; 13
+00001c 940c 0801                     jmp TIMER1_COMPB_vect		; 14
+00001e 940c 0803                     jmp TIMER1_OVF_vect			; 15
+000020 940c 0805                     jmp TIMER0_COMPA_vect		; 16
+000022 940c 0807                     jmp TIMER0_COMPB_vect		; 17
+000024 940c 0809                     jmp TIMER0_OVF_vect			; 18
+000026 940c 080b                     jmp SPI_STC_vect			; 19
+000028 940c 080d                     jmp USART0_RX_vect			; 20
+00002a 940c 080f                     jmp USART0_UDRE_vect		; 21
+00002c 940c 0811                     jmp USART0_TX_vect			; 22
+00002e 940c 0813                     jmp ANALOG_COMP_vect		; 23
+000030 940c 0815                     jmp ADC_vect				; 24
+000032 940c 0817                     jmp EE_READY_vect			; 25
+000034 940c 0819                     jmp TWI_vect				; 26
+000036 940c 081b                     jmp SPM_READY_vect			; 27
+000038 940c 081d                     jmp USART1_RX_vect			; 28
+00003a 940c 081f                     jmp USART1_UDRE_vect		; 29
+00003c 940c 0821                     jmp USART1_TX_vect			; 30
+00003e 940c 0823                     jmp TIMER3_CAPT_vect		; 31
+000040 940c 0825                     jmp TIMER3_COMPA_vect		; 32
+000042 940c 0827                     jmp TIMER3_COMPB_vect		; 33
+000044 940c 0829                     jmp TIMER3_OVF_vect			; 34
                                  
                                  RESET_vect:
 000046 e400                          ldi r16, HIGH(RAMEND)
@@ -1458,11 +1458,11 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                  init_ppu_registers:
 00004d e0a0
 00004e e0b1
-00004f e000
-000050 e012
-000051 0fa0
+00004f e080
+000050 e092
+000051 0fa8
 000052 1db1
-000053 931c                              SAVE_PPUREG_IMM PPUREG_MODE, PPUREG_MODE_LINE_BUFFER
+000053 939c                              SAVE_PPUREG_IMM PPUREG_MODE, PPUREG_MODE_LINE_BUFFER
 000054 9508                              ret
                                  
                                  .DSEG
@@ -1489,9 +1489,9 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                  .DEF rCTEMP		= r0
                                  .DEF rZERO		= r1
                                  
-                                 .DEF rTEMP		= r16
-                                 .DEF rTEMP2		= r17
-                                 .DEF rTEMP3		= r18
+                                 .DEF rTEMP3		= r23
+                                 .DEF rTEMP		= r24
+                                 .DEF rTEMP2		= r25
                                  
                                  ; Uses rTEMP to load an immediate into a low (r0-r15) register.
                                  ; @0 = register to load into
@@ -1567,8 +1567,8 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                  
                                  #endif
                                  
-                                 .DEF rYPOS	= r12
-                                 .DEF rXPOS  = r13
+                                 .DEF rYPOS	= r14
+                                 .DEF rXPOS  = r15
                                  
                                  .CSEG
                                  
@@ -1673,8 +1673,8 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                        ; Right now palette RAM high address is forced to 00.
                                  
                                        ; Set data lines to outputs.
-000055 ef0f                            ldi rTEMP, DATABIT_DDR_OUTPUT
-000056 b907                            out DATADDR, rTEMP
+000055 ef8f                            ldi rTEMP, DATABIT_DDR_OUTPUT
+000056 b987                            out DATADDR, rTEMP
                                  
                                        ; Turn VDRAW off (by setting it high).
                                        ; It probably already is, but let's do it anyway.
@@ -1685,70 +1685,70 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 00005a 9858                            ADDRESS_PALRAM
                                  
                                        ; Set high address latch to 0x80 (for high bytes).
-00005b e800                            ldi rTEMP, 0x80
-00005c b107
-00005d b118
-00005e ef2f
-00005f b927
-000060 b908
+00005b e880                            ldi rTEMP, 0x80
+00005c b187
+00005d b198
+00005e ef7f
+00005f b977
+000060 b988
 000061 9a5e
 000062 985e
-000063 b918
-000064 b907                            SET_HAL rTEMP
+000063 b998
+000064 b987                            SET_HAL rTEMP
                                  
                                        ; Loop through low addresses and set data = address for now.
-000065 e000                            ldi rTEMP, 0
+000065 e080                            ldi rTEMP, 0
                                        ;ldi rTEMP2, 255
                                  
                                  palette_set_loop_low:
-000066 950a                            dec rTEMP
-000067 b902                            out ADDRPORT, rTEMP
-000068 2f10                            mov rTEMP2, rTEMP
-000069 b918                            out DATAPORT, rTEMP2
+000066 958a                            dec rTEMP
+000067 b982                            out ADDRPORT, rTEMP
+000068 2f98                            mov rTEMP2, rTEMP
+000069 b998                            out DATAPORT, rTEMP2
 00006a 9828                            WE_ON
 00006b 0000
 00006c 0000
 00006d 0000
 00006e 0000                            _NOP4
 00006f 9a28                            WE_OFF
-000070 3000                            cpi rTEMP, 0
+000070 3080                            cpi rTEMP, 0
 000071 f7a1                            brne palette_set_loop_low
                                  
                                        ; Set high address latch to 0x00 (for low bytes).
-000072 e000                            ldi rTEMP, 0x00
-000073 b107
-000074 b118
-000075 ef2f
-000076 b927
-000077 b908
+000072 e080                            ldi rTEMP, 0x00
+000073 b187
+000074 b198
+000075 ef7f
+000076 b977
+000077 b988
 000078 9a5e
 000079 985e
-00007a b918
-00007b b907                            SET_HAL rTEMP
+00007a b998
+00007b b987                            SET_HAL rTEMP
                                  
                                        ; Loop through low addresses and set data = address for now.
-00007c e000                            ldi rTEMP, 0
+00007c e080                            ldi rTEMP, 0
                                        ;ldi rTEMP2, 255
                                  
                                  palette_set_loop_high:
-00007d 950a                            dec rTEMP
-00007e b902                            out ADDRPORT, rTEMP
-00007f 2f10                            mov rTEMP2, rTEMP
-000080 b918                            out DATAPORT, rTEMP2
+00007d 958a                            dec rTEMP
+00007e b982                            out ADDRPORT, rTEMP
+00007f 2f98                            mov rTEMP2, rTEMP
+000080 b998                            out DATAPORT, rTEMP2
 000081 9828                            WE_ON
 000082 0000
 000083 0000
 000084 0000
 000085 0000                            _NOP4
 000086 9a28                            WE_OFF
-000087 3000                            cpi rTEMP, 0
+000087 3080                            cpi rTEMP, 0
 000088 f7a1                            brne palette_set_loop_high
                                  
                                        ; Reset data lines back to inputs with pullups enabled.
-000089 e000                            ldi rTEMP, DATABIT_DDR_INPUT
-00008a b907                            out DATADDR, rTEMP
-00008b ef0f                            ldi rTEMP, DATABIT_PORT_INIT
-00008c b908                            out DATAPORT, rTEMP
+000089 e080                            ldi rTEMP, DATABIT_DDR_INPUT
+00008a b987                            out DATADDR, rTEMP
+00008b ef8f                            ldi rTEMP, DATABIT_PORT_INIT
+00008c b988                            out DATAPORT, rTEMP
                                  
 00008d 985a
 00008e 9859
@@ -1759,68 +1759,68 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                  ; Sets up VRAM with a test tartan pattern.
                                  setup_vram:
                                        ; Set data lines to outputs.
-000091 ef0f                            ldi rTEMP, DATABIT_DDR_OUTPUT
-000092 b907                            out DATADDR, rTEMP
+000091 ef8f                            ldi rTEMP, DATABIT_DDR_OUTPUT
+000092 b987                            out DATADDR, rTEMP
                                  
 000093 985a
 000094 9a59
 000095 9858                            ADDRESS_VRAM0
                                  
                                        ; Loop through high addresses, 255 to 0.
-000096 e000
-000097 2ec0                            _LDI rYPOS, 0
+000096 e080
+000097 2ee8                            _LDI rYPOS, 0
                                  
                                  vram_set_loop_y:
-000098 94ca                            dec rYPOS
+000098 94ea                            dec rYPOS
                                  
                                        ; Set high address latch to Y position.
-000099 b107
-00009a b118
-00009b ef2f
-00009c b927
-00009d b8c8
+000099 b187
+00009a b198
+00009b ef7f
+00009c b977
+00009d b8e8
 00009e 9a5e
 00009f 985e
-0000a0 b918
-0000a1 b907                            SET_HAL rYPOS
+0000a0 b998
+0000a1 b987                            SET_HAL rYPOS
                                  
                                        ; Loop through low addresses and set data lines to make a tartan.
                                        ; = (xpos + ypos) >> 3 for now.
-0000a2 e000
-0000a3 2ed0                            _LDI rXPOS, 0
+0000a2 e080
+0000a3 2ef8                            _LDI rXPOS, 0
                                  
                                  vram_set_loop_x:
-0000a4 94da                            dec rXPOS
-0000a5 b8d2                            out ADDRPORT, rXPOS
-0000a6 2d0d                            mov rTEMP, rXPOS
-0000a7 0f00                            lsl rTEMP
-0000a8 7f08                            andi rTEMP, 0xF8
-0000a9 2d1c                            mov rTEMP2, rYPOS
-0000aa 9516                            lsr rTEMP2
-0000ab 9516                            lsr rTEMP2
-0000ac 9516                            lsr rTEMP2
-0000ad 7017                            andi rTEMP2, 0x07
-0000ae 2b10                            or rTEMP2, rTEMP
-0000af b918                            out DATAPORT, rTEMP2
+0000a4 94fa                            dec rXPOS
+0000a5 b8f2                            out ADDRPORT, rXPOS
+0000a6 2d8f                            mov rTEMP, rXPOS
+0000a7 0f88                            lsl rTEMP
+0000a8 7f88                            andi rTEMP, 0xF8
+0000a9 2d9e                            mov rTEMP2, rYPOS
+0000aa 9596                            lsr rTEMP2
+0000ab 9596                            lsr rTEMP2
+0000ac 9596                            lsr rTEMP2
+0000ad 7097                            andi rTEMP2, 0x07
+0000ae 2b98                            or rTEMP2, rTEMP
+0000af b998                            out DATAPORT, rTEMP2
 0000b0 9828                            WE_ON
 0000b1 0000
 0000b2 0000
 0000b3 0000
 0000b4 0000                            _NOP4
 0000b5 9a28                            WE_OFF
-0000b6 2d0d
-0000b7 3000                            _CPI rXPOS, 0
+0000b6 2d8f
+0000b7 3080                            _CPI rXPOS, 0
 0000b8 f759                            brne vram_set_loop_x
                                  
-0000b9 2d0c
-0000ba 3000                            _CPI rYPOS, 0
+0000b9 2d8e
+0000ba 3080                            _CPI rYPOS, 0
 0000bb f6e1                            brne vram_set_loop_y
                                  
                                        ; Reset data lines back to inputs with pullups enabled.
-0000bc e000                            ldi rTEMP, DATABIT_DDR_INPUT
-0000bd b907                            out DATADDR, rTEMP
-0000be ef0f                            ldi rTEMP, DATABIT_PORT_INIT
-0000bf b908                            out DATAPORT, rTEMP
+0000bc e080                            ldi rTEMP, DATABIT_DDR_INPUT
+0000bd b987                            out DATADDR, rTEMP
+0000be ef8f                            ldi rTEMP, DATABIT_PORT_INIT
+0000bf b988                            out DATAPORT, rTEMP
                                  
 0000c0 985a
 0000c1 9859
@@ -1832,8 +1832,8 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                  ; Zeroes out all VRAM -- both chips.
                                  clear_vram:
                                        ; Set data lines to outputs.
-0000c4 ef0f                            ldi rTEMP, DATABIT_DDR_OUTPUT
-0000c5 b907                            out DATADDR, rTEMP
+0000c4 ef8f                            ldi rTEMP, DATABIT_DDR_OUTPUT
+0000c5 b987                            out DATADDR, rTEMP
                                  
 0000c6 985a
 0000c7 9a59
@@ -1850,50 +1850,50 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                  zero_loop:
                                  
                                        ; Loop through high addresses, 255 to 0.
-0000cf e000
-0000d0 2ec0                            _LDI rYPOS, 0
+0000cf e080
+0000d0 2ee8                            _LDI rYPOS, 0
                                  
                                  clear_loop_y:
-0000d1 94ca                            dec rYPOS
+0000d1 94ea                            dec rYPOS
                                  
                                        ; Set high address latch to Y position.
-0000d2 b107
-0000d3 b118
-0000d4 ef2f
-0000d5 b927
-0000d6 b8c8
+0000d2 b187
+0000d3 b198
+0000d4 ef7f
+0000d5 b977
+0000d6 b8e8
 0000d7 9a5e
 0000d8 985e
-0000d9 b918
-0000da b907                            SET_HAL rYPOS
+0000d9 b998
+0000da b987                            SET_HAL rYPOS
                                  
-0000db e000
-0000dc 2ed0                            _LDI rXPOS, 0
+0000db e080
+0000dc 2ef8                            _LDI rXPOS, 0
                                  
                                  clear_loop_x:
-0000dd 94da                            dec rXPOS
-0000de b8d2                            out ADDRPORT, rXPOS
-0000df e010                            ldi rTEMP2, 0
-0000e0 b918                            out DATAPORT, rTEMP2
+0000dd 94fa                            dec rXPOS
+0000de b8f2                            out ADDRPORT, rXPOS
+0000df e090                            ldi rTEMP2, 0
+0000e0 b998                            out DATAPORT, rTEMP2
 0000e1 9828                            WE_ON
 0000e2 0000
 0000e3 0000
 0000e4 0000
 0000e5 0000                            _NOP4
 0000e6 9a28                            WE_OFF
-0000e7 2d0d
-0000e8 3000                            _CPI rXPOS, 0
+0000e7 2d8f
+0000e8 3080                            _CPI rXPOS, 0
 0000e9 f799                            brne clear_loop_x
                                  
-0000ea 2d0c
-0000eb 3000                            _CPI rYPOS, 0
+0000ea 2d8e
+0000eb 3080                            _CPI rYPOS, 0
 0000ec f721                            brne clear_loop_y
                                  
                                        ; Reset data lines back to inputs with pullups enabled.
-0000ed e000                            ldi rTEMP, DATABIT_DDR_INPUT
-0000ee b907                            out DATADDR, rTEMP
-0000ef ef0f                            ldi rTEMP, DATABIT_PORT_INIT
-0000f0 b908                            out DATAPORT, rTEMP
+0000ed e080                            ldi rTEMP, DATABIT_DDR_INPUT
+0000ee b987                            out DATADDR, rTEMP
+0000ef ef8f                            ldi rTEMP, DATABIT_PORT_INIT
+0000f0 b988                            out DATAPORT, rTEMP
                                  
 0000f1 985a
 0000f2 9859
@@ -1916,14 +1916,29 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                  
                                  ; Global macro definitions
                                  ; =========================================================
-                                 .DEF rXMAX          = r14
+                                 .DEF rTILEGRAFL = r2
+                                 .DEF rTILEGRAFH = r3
                                  
-                                 .DEF rLINECOUNTER	= r19
-                                 .DEF rSTATBITS		= r20
-                                 .DEF rCTRLBITS		= r21
-                                 .DEF rADDRDDR		= r22
-                                 .DEF rDATADDR		= r23
-                                 .DEF rDEBUGBITS     = r24
+                                 .DEF rTILEGRIDL = r4
+                                 .DEF rTILEGRIDH = r5
+                                 
+                                 .DEF rREADBUFL = r6
+                                 .DEF rREADBUFH = r7
+                                 
+                                 .DEF rWRITEBUFL = r8
+                                 .DEF rWRITEBUFH = r9
+                                 
+                                 .DEF rTILEINDEX = r10
+                                 .DEF rTILEBG = r11
+                                 .DEF rTILEFG = r12
+                                 .DEF rTILEOUT = r13
+                                 
+                                 .DEF rLINECOUNTER	= r17
+                                 .DEF rSTATBITS		= r18
+                                 .DEF rCTRLBITS		= r19
+                                 .DEF rADDRDDR		= r20
+                                 .DEF rDATADDR		= r21
+                                 .DEF rDEBUGBITS     = r22
                                  
                                  ; === Timing Values =============================
                                        ; At 20MHz:
@@ -1986,51 +2001,6 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                        out CTRLPORT, rTEMP			; [1]
                                  .ENDM
                                  
-                                 .MACRO OUT_PIXEL
-                                     ld rTEMP, X+
-                                     out DATAPORT, rTEMP
-                                 .ENDM
-                                 
-                                 .MACRO OUT_PIXEL2
-                                     OUT_PIXEL
-                                     OUT_PIXEL
-                                 .ENDM
-                                 
-                                 .MACRO OUT_PIXEL4
-                                     OUT_PIXEL2
-                                     OUT_PIXEL2
-                                 .ENDM
-                                 
-                                 .MACRO OUT_PIXEL8
-                                     OUT_PIXEL4
-                                     OUT_PIXEL4
-                                 .ENDM
-                                 
-                                 .MACRO OUT_PIXEL16
-                                     OUT_PIXEL8
-                                     OUT_PIXEL8
-                                 .ENDM
-                                 
-                                 .MACRO OUT_PIXEL32
-                                     OUT_PIXEL16
-                                     OUT_PIXEL16
-                                 .ENDM
-                                 
-                                 .MACRO OUT_PIXEL64
-                                     OUT_PIXEL32
-                                     OUT_PIXEL32
-                                 .ENDM
-                                 
-                                 .MACRO OUT_PIXEL128
-                                     OUT_PIXEL64
-                                     OUT_PIXEL64
-                                 .ENDM
-                                 
-                                 .MACRO OUT_PIXEL256
-                                     OUT_PIXEL128
-                                     OUT_PIXEL128
-                                 .ENDM
-                                 
                                  ;.d8888. db    db d8888b. d8888b.  .d88b.  db    db d888888b d888888b d8b   db d88888b .d8888.
                                  ;88'  YP 88    88 88  `8D 88  `8D .8P  Y8. 88    88 `~~88~~'   `88'   888o  88 88'     88'  YP
                                  ;`8bo.   88    88 88oooY' 88oobY' 88    88 88    88    88       88    88V8o 88 88ooooo `8bo.
@@ -2040,13 +2010,13 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                  
                                  boot_wait:
                                        ; A simple wait for RAM to stabilize before attempting writes.
-0000f5 e001                            ldi rTEMP, 1
+0000f5 e081                            ldi rTEMP, 1
                                  boot_wait_outer_loop:
-0000f6 e010                            ldi rTEMP2, 0
+0000f6 e090                            ldi rTEMP2, 0
                                  boot_wait_inner_loop:
-0000f7 951a                            dec rTEMP2
+0000f7 959a                            dec rTEMP2
 0000f8 f7f1                            brne boot_wait_inner_loop
-0000f9 950a                            dec rTEMP
+0000f9 958a                            dec rTEMP
 0000fa f7d9                            brne boot_wait_outer_loop
 0000fb 9508                            ret
                                  
@@ -2098,49 +2068,49 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 0000fc 94f8                          cli
                                  
                                      ; This should be unneeded but putting it here anyway: disable INT0 interrupt
-0000fd e000                          ldi rTEMP, 0
-0000fe 9300 001d                     sts EIMSK, rTEMP
+0000fd e080                          ldi rTEMP, 0
+0000fe 9380 001d                     sts EIMSK, rTEMP
                                  
                                      ; === I/O Ports ========================================================
                                  
                                      ; Set up address port pins.
-000100 ef6f                          ldi rADDRDDR, ADDRBIT_DDR_INIT
-000101 b961                          out ADDRDDR, rADDRDDR
-000102 ef0f                          ldi rTEMP, ADDRBIT_PORT_INIT
-000103 b902                          out ADDRPORT, rTEMP
+000100 ef4f                          ldi rADDRDDR, ADDRBIT_DDR_INIT
+000101 b941                          out ADDRDDR, rADDRDDR
+000102 ef8f                          ldi rTEMP, ADDRBIT_PORT_INIT
+000103 b982                          out ADDRPORT, rTEMP
                                  
                                      ; Set up data port pins.
-000104 e070                          ldi rDATADDR, DATABIT_DDR_INIT
-000105 b977                          out DATADDR, rDATADDR
-000106 ef0f                          ldi rTEMP, DATABIT_PORT_INIT
-000107 b908                          out DATAPORT, rTEMP
+000104 e050                          ldi rDATADDR, DATABIT_DDR_INIT
+000105 b957                          out DATADDR, rDATADDR
+000106 ef8f                          ldi rTEMP, DATABIT_PORT_INIT
+000107 b988                          out DATAPORT, rTEMP
                                  
                                      ; Set up control port 1 pins.
-000108 ef0f                          ldi rTEMP, CTRLBIT_DDR_INIT
-000109 b90a                          out CTRLDDR, rTEMP
-00010a e200                          ldi rTEMP, CTRLBIT_PORT_INIT
-00010b b90b                          out CTRLPORT, rTEMP
+000108 ef8f                          ldi rTEMP, CTRLBIT_DDR_INIT
+000109 b98a                          out CTRLDDR, rTEMP
+00010a e280                          ldi rTEMP, CTRLBIT_PORT_INIT
+00010b b98b                          out CTRLPORT, rTEMP
                                  
                                      ; Set up control port 2 pins.
-00010c e10f                          ldi rTEMP, CTL2BIT_DDR_INIT
-00010d b904                          out CTL2DDR, rTEMP
-00010e ef07                          ldi rTEMP, CTL2BIT_PORT_INIT
-00010f b905                          out CTL2PORT, rTEMP
+00010c e18f                          ldi rTEMP, CTL2BIT_DDR_INIT
+00010d b984                          out CTL2DDR, rTEMP
+00010e ef87                          ldi rTEMP, CTL2BIT_PORT_INIT
+00010f b985                          out CTL2PORT, rTEMP
                                  
-000110 e080                          ldi rDEBUGBITS, 0x00
-000111 b108
-000112 930f
-000113 b107
-000114 930f
-000115 ef0f
-000116 b907
-000117 b988
+000110 e060                          ldi rDEBUGBITS, 0x00
+000111 b188
+000112 938f
+000113 b187
+000114 938f
+000115 ef8f
+000116 b987
+000117 b968
 000118 9a2b
 000119 982b
-00011a 910f
-00011b b907
-00011c 910f
-00011d b908                          LATCH_DEBUG_LIGHTS
+00011a 918f
+00011b b987
+00011c 918f
+00011d b988                          LATCH_DEBUG_LIGHTS
                                  
 00011e dfd6                          rcall boot_wait
                                  
@@ -2159,8 +2129,8 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                      ;sts _SFR_MEM_ADDR(TCCR0B), rTEMP
                                  
                                      ; Set Timer 1 to clkIO and to clear on timer match.
-00011f e009                          ldi rTEMP, (1 << WGM02) | (1 << CS10)
-000120 9300 0081                     sts TCCR1B, rTEMP
+00011f e089                          ldi rTEMP, (1 << WGM02) | (1 << CS10)
+000120 9380 0081                     sts TCCR1B, rTEMP
                                  
                                      ; Set output compare value for OC0A
                                      ; 0x00 outputs a clock at half the AVR's frequency
@@ -2168,136 +2138,236 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                      ;sts _SFR_MEM_ADDR(OCR0A), rTEMP
                                  
                                      ; Set output compare value for OC1A
-000122 e004                          ldi rTEMP, HSYNC_VALUE_HI
-000123 9300 0089                     sts OCR1AH, rTEMP
-000125 ef06                          ldi rTEMP, HSYNC_VALUE_LO
-000126 9300 0088                     sts OCR1AL, rTEMP
+000122 e084                          ldi rTEMP, HSYNC_VALUE_HI
+000123 9380 0089                     sts OCR1AH, rTEMP
+000125 ef86                          ldi rTEMP, HSYNC_VALUE_LO
+000126 9380 0088                     sts OCR1AL, rTEMP
                                  
                                      ; Set interrupt on OC1A compare
-000128 e002                          ldi rTEMP, (1 << OCIE1A)
-000129 9300 006f                     sts TIMSK1, rTEMP
+000128 e082                          ldi rTEMP, (1 << OCIE1A)
+000129 9380 006f                     sts TIMSK1, rTEMP
                                  
-00012b e081                          ldi rDEBUGBITS, 0x01
-00012c b108
-00012d 930f
-00012e b107
-00012f 930f
-000130 ef0f
-000131 b907
-000132 b988
+00012b e061                          ldi rDEBUGBITS, 0x01
+00012c b188
+00012d 938f
+00012e b187
+00012f 938f
+000130 ef8f
+000131 b987
+000132 b968
 000133 9a2b
 000134 982b
-000135 910f
-000136 b907
-000137 910f
-000138 b908                          LATCH_DEBUG_LIGHTS
+000135 918f
+000136 b987
+000137 918f
+000138 b988                          LATCH_DEBUG_LIGHTS
                                  
                                      ; === RAM configuration ================================================
                                  
 000139 dfbb                          rcall boot_wait
-00013a e083                          ldi rDEBUGBITS, 0x03
-00013b b108
-00013c 930f
-00013d b107
-00013e 930f
-00013f ef0f
-000140 b907
-000141 b988
+00013a e063                          ldi rDEBUGBITS, 0x03
+00013b b188
+00013c 938f
+00013d b187
+00013e 938f
+00013f ef8f
+000140 b987
+000141 b968
 000142 9a2b
 000143 982b
-000144 910f
-000145 b907
-000146 910f
-000147 b908                          LATCH_DEBUG_LIGHTS
+000144 918f
+000145 b987
+000146 918f
+000147 b988                          LATCH_DEBUG_LIGHTS
                                  
 000148 940e 004d                     call init_ppu_registers
-00014a e087                          ldi rDEBUGBITS, 0x07
-00014b b108
-00014c 930f
-00014d b107
-00014e 930f
-00014f ef0f
-000150 b907
-000151 b988
+00014a e067                          ldi rDEBUGBITS, 0x07
+00014b b188
+00014c 938f
+00014d b187
+00014e 938f
+00014f ef8f
+000150 b987
+000151 b968
 000152 9a2b
 000153 982b
-000154 910f
-000155 b907
-000156 910f
-000157 b908                          LATCH_DEBUG_LIGHTS
+000154 918f
+000155 b987
+000156 918f
+000157 b988                          LATCH_DEBUG_LIGHTS
                                  
                                      ;call setup_palette
-000158 2700                          eor rTEMP, rTEMP
-000159 e2b2                          ldi XH, HIGH(line_buffer)
-00015a e0a0                          ldi XL, LOW(line_buffer)
-                                 line_buffer_set_loop:
-00015b 930d                          st X+, rTEMP
-00015c 9503                          inc rTEMP
-00015d f7e9                          brne line_buffer_set_loop
-00015e e08f                          ldi rDEBUGBITS, 0x0F
-00015f b108
-000160 930f
-000161 b107
-000162 930f
-000163 ef0f
-000164 b907
-000165 b988
-000166 9a2b
-000167 982b
-000168 910f
-000169 b907
-00016a 910f
-00016b b908                          LATCH_DEBUG_LIGHTS
                                  
-00016c 940e 0091                     call setup_vram
-00016e e18f                          ldi rDEBUGBITS, 0x1F
-00016f b108
-000170 930f
-000171 b107
-000172 930f
-000173 ef0f
-000174 b907
-000175 b988
-000176 9a2b
-000177 982b
-000178 910f
-000179 b907
-00017a 910f
-00017b b908                          LATCH_DEBUG_LIGHTS
+                                 temp_set_line_buffer_1:
+000158 2788                          eor rTEMP, rTEMP
+000159 2799                          eor rTEMP2, rTEMP2
+00015a e07d                          ldi rTEMP3, 0x0d
+00015b e2b2                          ldi XH, HIGH(line_buffer_1)
+00015c e0a0                          ldi XL, LOW(line_buffer_1)
+                                 line_buffer_1_set_loop:
+00015d 0f97                          add rTEMP2, rTEMP3
+00015e 939d                          st X+, rTEMP2
+00015f 9583                          inc rTEMP
+000160 f7e1                          brne line_buffer_1_set_loop
+                                 
+                                 temp_set_line_buffer_2:
+000161 ef9f                          ldi rTEMP2, 0xff
+000162 e2b3                          ldi XH, HIGH(line_buffer_2)
+000163 e0a0                          ldi XL, LOW(line_buffer_2)
+                                 line_buffer_2_set_loop:
+000164 939d                          st X+, rTEMP2
+000165 9583                          inc rTEMP
+000166 f7e9                          brne line_buffer_2_set_loop
+                                 
+                                 temp_set_tile_graphic_data:
+000167 e0b2                          ldi XH, HIGH(tile_graphic_data)
+000168 e0a0                          ldi XL, LOW(tile_graphic_data)
+000169 e080                          ldi rTEMP, 0
+00016a e77c                          ldi rTEMP3, 0b01111100
+                                 tile_graphic_data_set_loop_0:
+00016b 937d                          st X+, rTEMP3
+00016c 9583                          inc rTEMP
+00016d f7e9                          brne tile_graphic_data_set_loop_0
+00016e e872                          ldi rTEMP3, 0b10000010
+                                 tile_graphic_data_set_loop_1:
+00016f 937d                          st X+, rTEMP3
+000170 9583                          inc rTEMP
+000171 f7e9                          brne tile_graphic_data_set_loop_1
+000172 e872                          ldi rTEMP3, 0b10000010
+                                 tile_graphic_data_set_loop_2:
+000173 937d                          st X+, rTEMP3
+000174 9583                          inc rTEMP
+000175 f7e9                          brne tile_graphic_data_set_loop_2
+000176 e972                          ldi rTEMP3, 0b10010010
+                                 tile_graphic_data_set_loop_3:
+000177 937d                          st X+, rTEMP3
+000178 9583                          inc rTEMP
+000179 f7e9                          brne tile_graphic_data_set_loop_3
+00017a e872                          ldi rTEMP3, 0b10000010
+                                 tile_graphic_data_set_loop_4:
+00017b 937d                          st X+, rTEMP3
+00017c 9583                          inc rTEMP
+00017d f7e9                          brne tile_graphic_data_set_loop_4
+00017e e872                          ldi rTEMP3, 0b10000010
+                                 tile_graphic_data_set_loop_5:
+00017f 937d                          st X+, rTEMP3
+000180 9583                          inc rTEMP
+000181 f7e9                          brne tile_graphic_data_set_loop_5
+000182 e77c                          ldi rTEMP3, 0b01111100
+                                 tile_graphic_data_set_loop_6:
+000183 937d                          st X+, rTEMP3
+000184 9583                          inc rTEMP
+000185 f7e9                          brne tile_graphic_data_set_loop_6
+000186 e070                          ldi rTEMP3, 0b00000000
+                                 tile_graphic_data_set_loop_7:
+000187 937d                          st X+, rTEMP3
+000188 9583                          inc rTEMP
+000189 f7e9                          brne tile_graphic_data_set_loop_7
+                                 
+                                 temp_set_tile_grid:
+00018a e1b2                          ldi XH, HIGH(tile_grid)
+00018b e0a0                          ldi XL, LOW(tile_grid)
+00018c e080                          ldi rTEMP, 0
+00018d e090                          ldi rTEMP2, 0
+00018e ef7f                          ldi rTEMP3, 0xFF
+                                 tile_grid_set_loop:
+00018f 938d                          st X+, rTEMP
+000190 e070                          ldi rTEMP3, 0x00
+000191 937d                          st X+, rTEMP3
+000192 ef7f                          ldi rTEMP3, 0xFF
+000193 937d                          st X+, rTEMP3
+000194 9601                          adiw rTEMP2:rTEMP, 1
+000195 3094                          cpi rTEMP2, 0x04
+000196 f7c1                          brne tile_grid_set_loop
+                                 
+000197 e06f                          ldi rDEBUGBITS, 0x0F
+000198 b188
+000199 938f
+00019a b187
+00019b 938f
+00019c ef8f
+00019d b987
+00019e b968
+00019f 9a2b
+0001a0 982b
+0001a1 918f
+0001a2 b987
+0001a3 918f
+0001a4 b988                          LATCH_DEBUG_LIGHTS
+                                 
+0001a5 940e 0091                     call setup_vram
+0001a7 e16f                          ldi rDEBUGBITS, 0x1F
+0001a8 b188
+0001a9 938f
+0001aa b187
+0001ab 938f
+0001ac ef8f
+0001ad b987
+0001ae b968
+0001af 9a2b
+0001b0 982b
+0001b1 918f
+0001b2 b987
+0001b3 918f
+0001b4 b988                          LATCH_DEBUG_LIGHTS
                                  
                                      ; === Registers ========================================================
                                      ; Set up registers for line tracking.
-00017c 2733                          eor rLINECOUNTER, rLINECOUNTER
-00017d 2744                          eor rSTATBITS, rSTATBITS
+0001b5 2711                          eor rLINECOUNTER, rLINECOUNTER
+0001b6 2722                          eor rSTATBITS, rSTATBITS
+                                 
+                                     ; Load tile graphic address into r3:r2 registers.
+0001b7 e0f2                          ldi ZH, HIGH(tile_graphic_data) ; -1 = 28
+0001b8 e0e0                          ldi ZL, LOW(tile_graphic_data)  ; -1 = 27
+0001b9 2e3f                          mov rTILEGRAFH, ZH              ; -1 = 26
+0001ba 2e2e                          mov rTILEGRAFL, ZL              ; -1 = 25
+                                 
+                                     ; Load tile grid address into r5:r4 registers.
+0001bb e1b2                          ldi XH, HIGH(tile_grid)                 ; -1 = 24
+0001bc e0a0                          ldi XL, LOW(tile_grid)                  ; -1 = 23
+0001bd 2e5b                          mov rTILEGRIDH, XH                      ; -1 = 22
+0001be 2e4a                          mov rTILEGRIDL, XL                      ; -1 = 21
+                                 
+                                     ; Set read buffer to point to line buffer 1.
+0001bf e282
+0001c0 2e78                          _LDI rREADBUFH, HIGH(line_buffer_1)
+0001c1 e080
+0001c2 2e68                          _LDI rREADBUFL, LOW(line_buffer_1)
+                                 
+                                     ; Set write buffer to point to line buffer 2.
+0001c3 e283
+0001c4 2e98                          _LDI rWRITEBUFH, HIGH(line_buffer_2)
+0001c5 e080
+0001c6 2e88                          _LDI rWRITEBUFL, LOW(line_buffer_2)
                                  
                                      ; Set up control bits register.
-00017e e250                          ldi rCTRLBITS, CTRLBIT_PORT_INIT
+0001c7 e230                          ldi rCTRLBITS, CTRLBIT_PORT_INIT
                                  
                                      ; EOR control bits register with SYNC bit, as the first thing the
                                      ; interrupt line should do is pull SYNC low.
-00017f e800                          ldi rTEMP, SYNCBIT_MASK
-000180 2750                          eor rCTRLBITS, rTEMP
+0001c8 e880                          ldi rTEMP, SYNCBIT_MASK
+0001c9 2738                          eor rCTRLBITS, rTEMP
                                  
-000181 e38f                          ldi rDEBUGBITS, 0x3F
-000182 b108
-000183 930f
-000184 b107
-000185 930f
-000186 ef0f
-000187 b907
-000188 b988
-000189 9a2b
-00018a 982b
-00018b 910f
-00018c b907
-00018d 910f
-00018e b908                          LATCH_DEBUG_LIGHTS
+0001ca e36f                          ldi rDEBUGBITS, 0x3F
+0001cb b188
+0001cc 938f
+0001cd b187
+0001ce 938f
+0001cf ef8f
+0001d0 b987
+0001d1 b968
+0001d2 9a2b
+0001d3 982b
+0001d4 918f
+0001d5 b987
+0001d6 918f
+0001d7 b988                          LATCH_DEBUG_LIGHTS
                                  
                                      ; Enable interrupts.
-00018f 9478                          sei
+0001d8 9478                          sei
                                  
                                  loop:
-000190 cfff                          rjmp loop
+0001d9 cfff                          rjmp loop
                                  
                                  ;db   db .d8888. db    db d8b   db  .o88b.   d888888b .d8888. d8888b.
                                  ;88   88 88'  YP `8b  d8' 888o  88 d8P  Y8     `88'   88'  YP 88  `8D
@@ -2308,88 +2378,89 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                  
                                  TIMER1_COMPA_vect:
                                  
-000191 6480                          SET_INT_DEBUG_BIT
-000192 b108
-000193 930f
-000194 b107
-000195 930f
-000196 ef0f
-000197 b907
-000198 b988
-000199 9a2b
-00019a 982b
-00019b 910f
-00019c b907
-00019d 910f
-00019e b908                          LATCH_DEBUG_LIGHTS
-00019f 7b8f                          CLEAR_INT_DEBUG_BIT
-0001a0 b108
-0001a1 930f
-0001a2 b107
-0001a3 930f
-0001a4 ef0f
-0001a5 b907
-0001a6 b988
-0001a7 9a2b
-0001a8 982b
-0001a9 910f
-0001aa b907
-0001ab 910f
-0001ac b908                          LATCH_DEBUG_LIGHTS
+0001da 6460                          SET_INT_DEBUG_BIT
+0001db b188
+0001dc 938f
+0001dd b187
+0001de 938f
+0001df ef8f
+0001e0 b987
+0001e1 b968
+0001e2 9a2b
+0001e3 982b
+0001e4 918f
+0001e5 b987
+0001e6 918f
+0001e7 b988                          LATCH_DEBUG_LIGHTS
+0001e8 7b6f                          CLEAR_INT_DEBUG_BIT
+0001e9 b188
+0001ea 938f
+0001eb b187
+0001ec 938f
+0001ed ef8f
+0001ee b987
+0001ef b968
+0001f0 9a2b
+0001f1 982b
+0001f2 918f
+0001f3 b987
+0001f4 918f
+0001f5 b988                          LATCH_DEBUG_LIGHTS
                                  
                                      ; Start of front porch - 1.5 uS - 30 cycles
                                      ; Set control port lines as appropriate.
-0001ad b95b                          out CTRLPORT, rCTRLBITS                 ; [030 -01 =029]
+0001f6 b93b                          out CTRLPORT, rCTRLBITS                 ; [030 -01 =029]
+                                 
+                                     ; Load display mode from PPU register
+0001f7 e0a0
+0001f8 e0b1
+0001f9 e080
+0001fa 0fa8
+0001fb 1db1
+0001fc 900c                          LOAD_PPUREG   r0, PPUREG_MODE           ; [029 -07 =022]
+                                 
+                                     ; Ensure display mode only goes from 0 to 15 for now 
+0001fd e08f                          ldi rTEMP, 0x0F                         ; [022 -01 =021]
+0001fe 2208                          and r0, rTEMP                           ; [021 -01 =020]
                                  
                                      ; Finish up front porch
-0001ae 0000
-0001af 0000
-0001b0 0000
-0001b1 0000
-0001b2 0000
-0001b3 0000
-0001b4 0000
-0001b5 0000
-0001b6 0000
-0001b7 0000
-0001b8 0000
-0001b9 0000
-0001ba 0000
-0001bb 0000
-0001bc 0000
-0001bd 0000                          _NOP16                                  ; [029 -16 =015]
-0001be 0000
-0001bf 0000
-0001c0 0000
-0001c1 0000
-0001c2 0000
-0001c3 0000
-0001c4 0000
-0001c5 0000                          _NOP8									; [015 -08 =007]
-0001c6 0000
-0001c7 0000                          _NOP2                                   ; [007 -02 =005]
-0001c8 0000                          nop                                     ; [005 -01 =004]
+0001ff 0000
+000200 0000
+000201 0000
+000202 0000
+000203 0000
+000204 0000
+000205 0000
+000206 0000
+000207 0000
+000208 0000
+000209 0000
+00020a 0000
+00020b 0000
+00020c 0000
+00020d 0000
+00020e 0000                          _NOP16                                  ; [020 -16 =004]
                                  
-0001c9 b10b
-0001ca e810
-0001cb 2701
-0001cc b90b                          IMMED_TOGGLE_SYNC_PIN                   ; [004 -04 =000]
+00020f b18b
+000210 e890
+000211 2789
+000212 b98b                          IMMED_TOGGLE_SYNC_PIN                   ; [004 -04 =000]
                                      ; Start of sync tip - 4.7uS - 94 cycles
                                  
-0001cd ff47                          sbrs rSTATBITS, STATBIT_DISP            ; [094 -03 =091]
-0001ce c524                          rjmp non_display_line                 
+000213 ff27                          sbrs rSTATBITS, STATBIT_DISP            ; [094 -03 =091]
+000214 c54d                          rjmp non_display_line                 
                                  
                                  display_line:
                                      ; 91 cycles of HSYNC left
-0001cf 2ec3                          mov rYPOS, rLINECOUNTER                 ; [091 -01 =090]
-0001d0 2f15                          mov rTEMP2, rCTRLBITS                   ; [090 -01 =089]
+000215 2ee1                          mov rYPOS, rLINECOUNTER                 ; [091 -01 =090]
+000216 2f93                          mov rTEMP2, rCTRLBITS                   ; [090 -01 =089]
                                  
                                      ; Increment rLINECOUNTER by one.
-0001d1 9533                          inc rLINECOUNTER                        ; [089 -01 =088]
+000217 9513                          inc rLINECOUNTER                        ; [089 -01 =088]
                                  
-0001d2 3f30                          cpi rLINECOUNTER, 240                   ; [088 -01 =087]
+000218 3f10                          cpi rLINECOUNTER, 240                   ; [088 -01 =087]
                                                                              ; [     ==     ] [     !=     ]
-0001d3 f449                          brne skip_setup_vblank                  ; [087 -01 =086] [087 -02 =085]
+000219 f449                          brne skip_setup_vblank                  ; [087 -01 =086] [087 -02 =085]
                                  
                                  ;d888888b d8b   db d888888b d888888b   d8888b. db       .d8b.  d8b   db db   dD
                                  ;  `88'   888o  88   `88'   `~~88~~'   88  `8D 88      d8' `8b 888o  88 88 ,8P'
@@ -2401,81 +2472,63 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                  setup_vblank:
                                      ; If result is 240:
                                      ;   - reset rLINECOUNTER to 0
-0001d4 2733                          eor rLINECOUNTER, rLINECOUNTER          ; [086 -01 =085]
+00021a 2711                          eor rLINECOUNTER, rLINECOUNTER          ; [086 -01 =085]
                                      ;   - clear rSTATBITS:DISP
-0001d5 774f                          andi rSTATBITS, NOT_STATBIT_DISP_MASK   ; [085 -01 =084]
+00021b 772f                          andi rSTATBITS, NOT_STATBIT_DISP_MASK   ; [085 -01 =084]
                                      ;   - toggle rSTATBITS:EVENFRAME
-0001d6 e001                          ldi rTEMP, STATBIT_EVENFRAME_MASK       ; [084 -01 =083]
-0001d7 2740                          eor rSTATBITS, rTEMP                    ; [083 -01 =082]
+00021c e081                          ldi rTEMP, STATBIT_EVENFRAME_MASK       ; [084 -01 =083]
+00021d 2728                          eor rSTATBITS, rTEMP                    ; [083 -01 =082]
                                      ;   - turn on ~VBLANK control line
-0001d8 7e5f                          VBLANK_ON                               ; [082 -01 =081]
+00021e 7e3f                          VBLANK_ON                               ; [082 -01 =081]
                                      ;   - turn off ~VDRAW control line
-0001d9 6058                          VDRAW_OFF                               ; [081 -01 =080]
+00021f 6038                          VDRAW_OFF                               ; [081 -01 =080]
                                      ;   - turn off OE/WE lines
-0001da 9a2a
-0001db 9a28                          OE_AND_WE_OFF                           ; [080 -01 =079]
-0001dc c00a                          rjmp after_setup_vblank                 ; [079 -02 =077]
+000220 9a2a
+000221 9a28                          OE_AND_WE_OFF                           ; [080 -01 =079]
+000222 c00a                          rjmp after_setup_vblank                 ; [079 -02 =077]
                                  
                                  skip_setup_vblank:
-0001dd 0000
-0001de 0000
-0001df 0000
-0001e0 0000
-0001e1 0000
-0001e2 0000
-0001e3 0000
-0001e4 0000                          _NOP8                                   ;                [087 -08 =079]
-0001e5 0000
-0001e6 0000                          _NOP2									;				 [079 -02 =077]
+000223 0000
+000224 0000
+000225 0000
+000226 0000
+000227 0000
+000228 0000
+000229 0000
+00022a 0000                          _NOP8                                   ;                [087 -08 =079]
+00022b 0000
+00022c 0000                          _NOP2									;				 [079 -02 =077]
                                  
                                  after_setup_vblank:
                                  
                                      ; 77 cycles of HSYNC left
                                  
-                                     ; Finish the H-sync pulse here.
-                                 
-                                     ; Load display mode from PPU register
-0001e7 e0a0
-0001e8 e0b1
-0001e9 e000
-0001ea 0fa0
-0001eb 1db1
-0001ec 900c                          LOAD_PPUREG   r0, PPUREG_MODE           ; [077 -07 =070]
-                                 
-                                     ; Ensure display mode only goes from 0 to 15 for now 
-0001ed e00f                          ldi rTEMP, 0x0F                         ; [070 -01 =069]
-0001ee 2200                          and r0, rTEMP                           ; [069 -01 =068]
-                                 
                                      ; Load the jump address into Z but don't jump just yet
-0001ef efe4                          ldi ZL, LOW(output_mode_jumptable)      ; [068 -01 =067]
-0001f0 e0f1                          ldi ZH, HIGH(output_mode_jumptable)     ; [067 -01 =066]
-0001f1 0de0                          add ZL, r0                              ; [066 -01 =065]
-0001f2 1df1                          adc ZH, rZERO                           ; [065 -01 =064]
-                                 
-                                     ; ============================================================
-                                     ; Start of breezeway/colorburst/back porch = 4.7uS = 94 cycles
-                                     ; ============================================================
+00022d e3e2                          ldi ZL, LOW(output_mode_jumptable)      ; [077 -01 =076]
+00022e e0f2                          ldi ZH, HIGH(output_mode_jumptable)     ; [076 -01 =075]
+00022f 0de0                          add ZL, r0                              ; [075 -01 =074]
+000230 1df1                          adc ZH, rZERO                           ; [074 -01 =073]
                                  
                                      ; Jump!
-0001f3 9409                          ijmp                                    ; [094 -02 =092]
+000231 9409                          ijmp                                    ; [073 -02 =071]
                                  
                                  output_mode_jumptable:
-0001f4 c00f                          rjmp output_line_vram_direct_6      ; 0
-0001f5 c0cc                          rjmp output_line_vram_direct_5      ; 1
-0001f6 c188                          rjmp output_line_buffer             ; 2
-0001f7 c4ba                          rjmp output_line_dummy              ; 3
-0001f8 c4b9                          rjmp output_line_dummy              ; 4
-0001f9 c4b8                          rjmp output_line_dummy              ; 5
-0001fa c4b7                          rjmp output_line_dummy              ; 6
-0001fb c4b6                          rjmp output_line_dummy              ; 7
-0001fc c4b5                          rjmp output_line_dummy              ; 8
-0001fd c4b4                          rjmp output_line_dummy              ; 9
-0001fe c4b3                          rjmp output_line_dummy              ; A
-0001ff c4b2                          rjmp output_line_dummy              ; B
-000200 c4b1                          rjmp output_line_dummy              ; C
-000201 c4b0                          rjmp output_line_dummy              ; D
-000202 c4af                          rjmp output_line_dummy              ; E
-000203 c4ae                          rjmp output_line_dummy              ; F
+000232 c00f                          rjmp output_line_vram_direct_6      ; 0
+000233 c0d2                          rjmp output_line_vram_direct_5      ; 1
+000234 c195                          rjmp output_line_buffer             ; 2
+000235 c4eb                          rjmp output_line_dummy              ; 3
+000236 c4ea                          rjmp output_line_dummy              ; 4
+000237 c4e9                          rjmp output_line_dummy              ; 5
+000238 c4e8                          rjmp output_line_dummy              ; 6
+000239 c4e7                          rjmp output_line_dummy              ; 7
+00023a c4e6                          rjmp output_line_dummy              ; 8
+00023b c4e5                          rjmp output_line_dummy              ; 9
+00023c c4e4                          rjmp output_line_dummy              ; A
+00023d c4e3                          rjmp output_line_dummy              ; B
+00023e c4e2                          rjmp output_line_dummy              ; C
+00023f c4e1                          rjmp output_line_dummy              ; D
+000240 c4e0                          rjmp output_line_dummy              ; E
+000241 c4df                          rjmp output_line_dummy              ; F
                                  
                                  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                  ;                                                                               ;
@@ -2490,75 +2543,10 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                  
                                  output_line_vram_direct_6:
                                  
-                                     ; 64 cycles left for sync pulse
+                                     ; 71 cycles left for sync pulse
                                      ; This can be filled in with whatever additional calculations we care to do.
-000204 0000
-000205 0000
-000206 0000
-000207 0000
-000208 0000
-000209 0000
-00020a 0000
-00020b 0000
-00020c 0000
-00020d 0000
-00020e 0000
-00020f 0000
-000210 0000
-000211 0000
-000212 0000
-000213 0000
-000214 0000
-000215 0000
-000216 0000
-000217 0000
-000218 0000
-000219 0000
-00021a 0000
-00021b 0000
-00021c 0000
-00021d 0000
-00021e 0000
-00021f 0000
-000220 0000
-000221 0000
-000222 0000
-000223 0000                          _NOP32                                  ; [064 -32 =032]
-000224 0000
-000225 0000
-000226 0000
-000227 0000
-000228 0000
-000229 0000
-00022a 0000
-00022b 0000
-00022c 0000
-00022d 0000
-00022e 0000
-00022f 0000
-000230 0000
-000231 0000
-000232 0000
-000233 0000                          _NOP16									; [032 -16 =016]
-000234 0000
-000235 0000
-000236 0000
-000237 0000
-000238 0000
-000239 0000
-00023a 0000
-00023b 0000                          _NOP8									; [016 -08 =008]
-00023c 0000
-00023d 0000
-00023e 0000
-00023f 0000                          _NOP4                                   ; [008 -04 =004]
-                                 
-000240 b10b
-000241 e810
-000242 2701
-000243 b90b                          IMMED_TOGGLE_SYNC_PIN                   ; [004 -04 =000]
-                                 
-                                     ; 92 cycles of breezeway
+000242 0000
+000243 0000
 000244 0000
 000245 0000
 000246 0000
@@ -2620,14 +2608,17 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 00027e 0000
 00027f 0000
 000280 0000
-000281 0000
+000281 0000                          _NOP64                                  ; [071 -64 =007]
 000282 0000
-000283 0000                          _NOP64      ; 92 - 64 = 28
-000284 0000
-000285 0000
-000286 0000
-000287 0000
-000288 0000
+000283 0000                          _NOP2									; [007 -02 =005]
+000284 0000                          nop 									; [005 -01 =004]
+                                 
+000285 b18b
+000286 e890
+000287 2789
+000288 b98b                          IMMED_TOGGLE_SYNC_PIN                   ; [004 -04 =000]
+                                 
+                                     ; 92 cycles of breezeway
 000289 0000
 00028a 0000
 00028b 0000
@@ -2638,7 +2629,7 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 000290 0000
 000291 0000
 000292 0000
-000293 0000                          _NOP16      ; 28 - 16 = 12
+000293 0000
 000294 0000
 000295 0000
 000296 0000
@@ -2646,80 +2637,52 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 000298 0000
 000299 0000
 00029a 0000
-00029b 0000                          _NOP8       ; 12 -  8 =  4
+00029b 0000
 00029c 0000
 00029d 0000
 00029e 0000
-00029f 0000                          _NOP4       ;  4 -  4 =  0
-                                 
-                                     ; Start Left Border
-0002a0 e000                          ldi rTEMP, 0x00
-0002a1 b908                          out DATAPORT, rTEMP
-0002a2 ef0f
-0002a3 b907                          SET_DATA_OUTPUT
-                                 
-                                     ; Clear X position.
-0002a4 24dd                          eor rXPOS, rXPOS
-                                 
-                                     ; Set HAL to Y position.
-0002a5 b107
-0002a6 b118
-0002a7 ef2f
-0002a8 b927
-0002a9 b8c8
-0002aa 9a5e
-0002ab 985e
-0002ac b918
-0002ad b907                          SET_HAL rYPOS
-                                 
-                                     ; Set address port to X position.
-0002ae b8d2                          out ADDRPORT, rXPOS
-                                 
-                                     ; Set max X position
-0002af eb0c
-0002b0 2ee0                          _LDI rXMAX, 188
-                                 
-                                     ; End Left Border
-                                     ;_NOP 3
-0002b1 e000
-0002b2 b907                          SET_DATA_INPUT
-                                 
-                                     ; Set VRAM0 address enable.
-0002b3 985a
-0002b4 9a59
-0002b5 9858                          ADDRESS_VRAM0
-0002b6 982a                          OE_ON
-0002b7 982c                          DAC_ENABLE
-                                 
-                                 pixel_loop_6:
-                                     ; Cyc/Pixel Num/Line
-                                     ; ========= ========
-                                     ;         5      188
-                                     ;         4      236
-0002b8 b8d2                          out ADDRPORT, rXPOS       ; 1
-0002b9 94d3                          inc rXPOS                 ; 1
-0002ba 14de                          cp rXPOS, rXMAX           ; 1
-0002bb f7e1                          brne pixel_loop_6         ; 2
-                                 
-0002bc 9a2c                          DAC_DISABLE
-0002bd 9a2a                          OE_OFF
-0002be 985a
-0002bf 9859
-0002c0 9858                          ADDRESS_VDU
-                                 
-0002c1 c49a                          rjmp end_line
-                                 
-                                 output_line_vram_direct_5:
-                                 
-                                     ; 64 cycles left for sync pulse
-                                     ; This can be filled in with whatever additional calculations we care to do.
+00029f 0000
+0002a0 0000
+0002a1 0000
+0002a2 0000
+0002a3 0000
+0002a4 0000
+0002a5 0000
+0002a6 0000
+0002a7 0000
+0002a8 0000
+0002a9 0000
+0002aa 0000
+0002ab 0000
+0002ac 0000
+0002ad 0000
+0002ae 0000
+0002af 0000
+0002b0 0000
+0002b1 0000
+0002b2 0000
+0002b3 0000
+0002b4 0000
+0002b5 0000
+0002b6 0000
+0002b7 0000
+0002b8 0000
+0002b9 0000
+0002ba 0000
+0002bb 0000
+0002bc 0000
+0002bd 0000
+0002be 0000
+0002bf 0000
+0002c0 0000
+0002c1 0000
 0002c2 0000
 0002c3 0000
 0002c4 0000
 0002c5 0000
 0002c6 0000
 0002c7 0000
-0002c8 0000
+0002c8 0000                          _NOP64      ; 92 - 64 = 28
 0002c9 0000
 0002ca 0000
 0002cb 0000
@@ -2735,7 +2698,7 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 0002d5 0000
 0002d6 0000
 0002d7 0000
-0002d8 0000
+0002d8 0000                          _NOP16      ; 28 - 16 = 12
 0002d9 0000
 0002da 0000
 0002db 0000
@@ -2743,47 +2706,72 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 0002dd 0000
 0002de 0000
 0002df 0000
-0002e0 0000
-0002e1 0000                          _NOP32                                  ; [064 -32 =032]
+0002e0 0000                          _NOP8       ; 12 -  8 =  4
+0002e1 0000
 0002e2 0000
 0002e3 0000
-0002e4 0000
-0002e5 0000
-0002e6 0000
-0002e7 0000
-0002e8 0000
-0002e9 0000
-0002ea 0000
-0002eb 0000
-0002ec 0000
-0002ed 0000
-0002ee 0000
-0002ef 0000
-0002f0 0000
-0002f1 0000                          _NOP16									; [032 -16 =016]
-0002f2 0000
-0002f3 0000
-0002f4 0000
-0002f5 0000
-0002f6 0000
-0002f7 0000
-0002f8 0000
-0002f9 0000                          _NOP8									; [016 -08 =008]
-0002fa 0000
-0002fb 0000
-0002fc 0000
-0002fd 0000                          _NOP4                                   ; [008 -04 =004]
+0002e4 0000                          _NOP4       ;  4 -  4 =  0
                                  
-0002fe b10b
-0002ff e810
-000300 2701
-000301 b90b                          IMMED_TOGGLE_SYNC_PIN                   ; [004 -04 =000]
+                                     ; Start Left Border
+0002e5 e080                          ldi rTEMP, 0x00
+0002e6 b988                          out DATAPORT, rTEMP
+0002e7 ef8f
+0002e8 b987                          SET_DATA_OUTPUT
                                  
-                                     ; 92 cycles of breezeway
-000302 0000
-000303 0000
-000304 0000
-000305 0000
+                                     ; Clear X position.
+0002e9 24ff                          eor rXPOS, rXPOS
+                                 
+                                     ; Set HAL to Y position.
+0002ea b187
+0002eb b198
+0002ec ef7f
+0002ed b977
+0002ee b8e8
+0002ef 9a5e
+0002f0 985e
+0002f1 b998
+0002f2 b987                          SET_HAL rYPOS
+                                 
+                                     ; Set address port to X position.
+0002f3 b8f2                          out ADDRPORT, rXPOS
+                                 
+                                     ; Set max X position
+0002f4 eb9c                          ldi rTEMP2, 188
+                                 
+                                     ; End Left Border
+                                     ;_NOP 3
+0002f5 e080
+0002f6 b987                          SET_DATA_INPUT
+                                 
+                                     ; Set VRAM0 address enable.
+0002f7 985a
+0002f8 9a59
+0002f9 9858                          ADDRESS_VRAM0
+0002fa 982a                          OE_ON
+0002fb 982c                          DAC_ENABLE
+                                 
+                                 pixel_loop_6:
+                                     ; Cyc/Pixel Num/Line
+                                     ; ========= ========
+                                     ;         5      188
+                                     ;         4      236
+0002fc b8f2                          out ADDRPORT, rXPOS       ; 1
+0002fd 94f3                          inc rXPOS                 ; 1
+0002fe 16f9                          cp rXPOS, rTEMP2          ; 1
+0002ff f7e1                          brne pixel_loop_6         ; 2
+                                 
+000300 9a2c                          DAC_DISABLE
+000301 9a2a                          OE_OFF
+000302 985a
+000303 9859
+000304 9858                          ADDRESS_VDU
+                                 
+000305 c4c5                          rjmp end_line
+                                 
+                                 output_line_vram_direct_5:
+                                 
+                                     ; 71 cycles left for sync pulse
+                                     ; This can be filled in with whatever additional calculations we care to do.
 000306 0000
 000307 0000
 000308 0000
@@ -2843,23 +2831,26 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 00033e 0000
 00033f 0000
 000340 0000
-000341 0000                          _NOP64      ; 92 - 64 = 28
+000341 0000
 000342 0000
 000343 0000
 000344 0000
-000345 0000
+000345 0000                          _NOP64                                  ; [071 -64 =007]
 000346 0000
-000347 0000
-000348 0000
-000349 0000
-00034a 0000
-00034b 0000
-00034c 0000
+000347 0000                          _NOP2									; [007 -02 =005]
+000348 0000                          nop 									; [005 -01 =004]
+                                 
+000349 b18b
+00034a e890
+00034b 2789
+00034c b98b                          IMMED_TOGGLE_SYNC_PIN                   ; [004 -04 =000]
+                                 
+                                     ; 92 cycles of breezeway
 00034d 0000
 00034e 0000
 00034f 0000
 000350 0000
-000351 0000                          _NOP16      ; 28 - 16 = 12
+000351 0000
 000352 0000
 000353 0000
 000354 0000
@@ -2867,114 +2858,74 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 000356 0000
 000357 0000
 000358 0000
-000359 0000                          _NOP8       ; 12 -  8 =  4
+000359 0000
 00035a 0000
 00035b 0000
 00035c 0000
-00035d 0000                          _NOP4       ;  4 -  4 =  0
-                                 
-                                     ; Start Left Border
-00035e e000                          ldi rTEMP, 0x00
-00035f b908                          out DATAPORT, rTEMP
-000360 ef0f
-000361 b907                          SET_DATA_OUTPUT
-000362 982c                          DAC_ENABLE
-                                 
-                                     ; Clear X position.
-000363 24dd                          eor rXPOS, rXPOS
-                                 
-                                     ; Set HAL to Y position.
-000364 b107
-000365 b118
-000366 ef2f
-000367 b927
-000368 b8c8
-000369 9a5e
-00036a 985e
-00036b b918
-00036c b907                          SET_HAL rYPOS
-                                 
-                                     ; Set address port to X position.
-00036d b8d2                          out ADDRPORT, rXPOS
-                                 
-                                     ; Set max X position
-00036e ee0c
-00036f 2ed0                          _LDI rXPOS, 236
-                                 
-                                     ; End Left Border
-                                     ;_NOP 40
-000370 e000
-000371 b907                          SET_DATA_INPUT
-                                 
-                                     ; Set VRAM0 address enable.
-000372 985a
-000373 9a59
-000374 9858                          ADDRESS_VRAM0
-000375 982a                          OE_ON
-                                 
-                                 pixel_loop_5:
-000376 94da                          dec rXPOS
-000377 b8d2                          out ADDRPORT, rXPOS
-000378 f7e9                          brne pixel_loop_5
-                                 
-000379 9a2c                          DAC_DISABLE
-00037a 9a2a                          OE_OFF
-00037b 985a
-00037c 9859
-00037d 9858                          ADDRESS_VDU
-                                 
-00037e c3dd                          rjmp end_line
-                                 
-                                 output_line_buffer:
-                                 
-                                     ; 64 cycles left for sync pulse
-00037f e000                          ldi rTEMP, 0x00                 ; -1 = 63
-000380 b908                          out DATAPORT, rTEMP             ; -1 = 62
-000381 ef0f
-000382 b907                          SET_DATA_OUTPUT                 ; -2 = 60
-                                 
-                                     ; Load tile graphic address into r3:r2 registers.
-                                     .DEF rTILEGRAFL = r2
-                                     .DEF rTILEGRAFH = r3
-000383 e0f2                          ldi ZH, HIGH(tile_graphic_data) ; -1 = 59
-000384 e0e0                          ldi ZL, LOW(tile_graphic_data)  ; -1 = 58
-000385 2e3f                          mov rTILEGRAFH, ZH              ; -1 = 57
-000386 2e2e                          mov rTILEGRAFL, ZL              ; -1 = 56
-                                 
-                                     ; The line won't change during the loop, so add the line number to ZH now.
-000387 2d0c                          mov rTEMP, rYPOS                ; -1 = 55
-000388 7007                          andi rTEMP, 0x07                ; -1 = 54
-000389 0ff0                          add ZH, rTEMP                   ; -1 = 53
-                                 
-                                     ; Load tile grid address into r5:r4 registers.
-                                     .DEF rTILEGRIDL = r4
-                                     .DEF rTILEGRIDH = r5
-00038a e1b2                          ldi XH, HIGH(tile_grid)         ; -1 = 52
-00038b e0a0                          ldi XL, LOW(tile_grid)          ; -1 = 51
-00038c 2e5b                          mov rTILEGRIDH, XH              ; -1 = 50
-00038d 2e4a                          mov rTILEGRIDL, XL              ; -1 = 49
-                                 
-                                     ; Load tile grid offset into Y register.
-00038e e2b3                          ldi XH, HIGH(tile_grid_offset)  ; -1 = 48
-00038f e0a0                          ldi XL, LOW(tile_grid_offset)   ; -1 = 47
-000390 91dd                          ld YH, X+                       ; -2 = 45
-000391 91cd                          ld YL, X+                       ; -2 = 43
-                                 
-                                     ; Add tile grid address to tile grid offset to get actual address.
-000392 0dc4                          add YL, rTILEGRIDL              ; -1 = 42
-000393 1dd5                          adc YH, rTILEGRIDH              ; -1 = 41
-                                 
-                                     ; Load line buffer address into X register.
-000394 e2b2                          ldi XH, HIGH(line_buffer)       ; -1 = 40
-000395 e0a0                          ldi XL, LOW(line_buffer)        ; -1 = 39
-                                 
+00035d 0000
+00035e 0000
+00035f 0000
+000360 0000
+000361 0000
+000362 0000
+000363 0000
+000364 0000
+000365 0000
+000366 0000
+000367 0000
+000368 0000
+000369 0000
+00036a 0000
+00036b 0000
+00036c 0000
+00036d 0000
+00036e 0000
+00036f 0000
+000370 0000
+000371 0000
+000372 0000
+000373 0000
+000374 0000
+000375 0000
+000376 0000
+000377 0000
+000378 0000
+000379 0000
+00037a 0000
+00037b 0000
+00037c 0000
+00037d 0000
+00037e 0000
+00037f 0000
+000380 0000
+000381 0000
+000382 0000
+000383 0000
+000384 0000
+000385 0000
+000386 0000
+000387 0000
+000388 0000
+000389 0000
+00038a 0000
+00038b 0000
+00038c 0000                          _NOP64      ; 92 - 64 = 28
+00038d 0000
+00038e 0000
+00038f 0000
+000390 0000
+000391 0000
+000392 0000
+000393 0000
+000394 0000
+000395 0000
 000396 0000
 000397 0000
 000398 0000
 000399 0000
 00039a 0000
 00039b 0000
-00039c 0000
+00039c 0000                          _NOP16      ; 28 - 16 = 12
 00039d 0000
 00039e 0000
 00039f 0000
@@ -2982,845 +2933,1073 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 0003a1 0000
 0003a2 0000
 0003a3 0000
-0003a4 0000
+0003a4 0000                          _NOP8       ; 12 -  8 =  4
 0003a5 0000
 0003a6 0000
 0003a7 0000
-0003a8 0000
-0003a9 0000
-0003aa 0000
-0003ab 0000
-0003ac 0000
-0003ad 0000
-0003ae 0000
-0003af 0000
-0003b0 0000
-0003b1 0000
-0003b2 0000
-0003b3 0000
-0003b4 0000
-0003b5 0000                          _NOP32                                  ; [039 -32 =007]
-0003b6 0000
-0003b7 0000                          _NOP2 									; [007 -02 =005]
-0003b8 0000                          nop 									; [005 -01 =004]
+0003a8 0000                          _NOP4       ;  4 -  4 =  0
                                  
-0003b9 b10b
-0003ba e810
-0003bb 2701
-0003bc b90b                          IMMED_TOGGLE_SYNC_PIN                   ; [004 -04 =000]
+                                     ; Start Left Border
+0003a9 e080                          ldi rTEMP, 0x00
+0003aa b988                          out DATAPORT, rTEMP
+0003ab ef8f
+0003ac b987                          SET_DATA_OUTPUT
+0003ad 982c                          DAC_ENABLE
                                  
-                                     ; 92 cycles of breezeway
-                                     
-                                     ; Start at tile 0.
-                                     .DEF rTILEINDEX = r7
-                                     .DEF rTILECOLOR = r8
-                                     .DEF rTILEFG = r9
+                                     ; Clear X position.
+0003ae 24ff                          eor rXPOS, rXPOS
                                  
-                                 .MACRO LOAD_8_PIXELS    ; 42 cycles... ouch.
-                                     ; [YH:YL] points to the tile we want.
+                                     ; Set HAL to Y position.
+0003af b187
+0003b0 b198
+0003b1 ef7f
+0003b2 b977
+0003b3 b8e8
+0003b4 9a5e
+0003b5 985e
+0003b6 b998
+0003b7 b987                          SET_HAL rYPOS
+                                 
+                                     ; Set address port to X position.
+0003b8 b8f2                          out ADDRPORT, rXPOS
+                                 
+                                     ; Set max X position
+0003b9 ee8c
+0003ba 2ef8                          _LDI rXPOS, 236
+                                 
+                                     ; End Left Border
+                                     ;_NOP 40
+0003bb e080
+0003bc b987                          SET_DATA_INPUT
+                                 
+                                     ; Set VRAM0 address enable.
+0003bd 985a
+0003be 9a59
+0003bf 9858                          ADDRESS_VRAM0
+0003c0 982a                          OE_ON
+                                 
+                                 pixel_loop_5:
+0003c1 94fa                          dec rXPOS
+0003c2 b8f2                          out ADDRPORT, rXPOS
+0003c3 f7e9                          brne pixel_loop_5
+                                 
+0003c4 9a2c                          DAC_DISABLE
+0003c5 9a2a                          OE_OFF
+0003c6 985a
+0003c7 9859
+0003c8 9858                          ADDRESS_VDU
+                                 
+0003c9 c401                          rjmp end_line
+                                 
+                                 output_line_buffer:
+                                 
+                                 ; Inputs:
+                                 ;   [YH:YL] points to the tile we want.
+                                 ;   [ZH:rTILEGRAFL] points to the graphic data for this line.   
+                                 ; Outputs:
+                                 ;   rTILEBG is the tile's background color.
+                                 ;   rTILEFG is the tile's foreground color.
+                                 ;   rTEMP contains the 8 pixels making up the tile.
+                                 ; Effects:
+                                 ;   [YH:YL] is incremented by 3
+                                 ; Clobbers:
+                                 ;   rTILEINDEX, ZL
+                                 ; Cycles:
+                                 ;   10
+                                 .MACRO READ_8_PIXELS
                                      ld rTILEINDEX, Y+               ; +2
-                                     ld rTILECOLOR, Y+               ; +2
+                                     ld rTILEBG, Y+                  ; +2
                                      ld rTILEFG, Y+                  ; +2
-                                     addiw YH:YL, 1                  ; +1
-                                     ; Graphic data is stored in RAM as: offset + 00000YYY`TTTTTTTT
-                                     ; This makes it faster to access during the loop.
                                      mov ZL, rTILEGRAFL              ; +1
                                      add ZL, rTILEINDEX              ; +1
                                      ; Load 8 pixels of data into rTEMP.
-                                     ld rTEMP, Z                     ; +1
-                                     sbrc rTEMP, 7                   ; +2
-                                     mov rTILECOLOR, rTILEFG         ; ...
-                                     st rTILECOLOR, X+               ; +2
-                                     sbrc rTEMP, 6                   ; +2
-                                     mov rTILECOLOR, rTILEFG         ; ...
-                                     st rTILECOLOR, X+               ; +2
-                                     sbrc rTEMP, 5                   ; +2
-                                     mov rTILECOLOR, rTILEFG         ; ...
-                                     st rTILECOLOR, X+               ; +2
-                                     sbrc rTEMP, 4                   ; +2
-                                     mov rTILECOLOR, rTILEFG         ; ...
-                                     st rTILECOLOR, X+               ; +2
-                                     sbrc rTEMP, 3                   ; +2
-                                     mov rTILECOLOR, rTILEFG         ; ...
-                                     st rTILECOLOR, X+               ; +2
-                                     sbrc rTEMP, 2                   ; +2
-                                     mov rTILECOLOR, rTILEFG         ; ...
-                                     st rTILECOLOR, X+               ; +2
-                                     sbrc rTEMP, 1                   ; +2
-                                     mov rTILECOLOR, rTILEFG         ; ...
-                                     st rTILECOLOR, X+               ; +2
-                                     sbrc rTEMP, 0                   ; +2
-                                     mov rTILECOLOR, rTILEFG         ; ...
-                                     st rTILECOLOR, X+               ; +2
+                                     ld rTEMP, Z                     ; +2
                                  .ENDM
                                  
+                                 ; Inputs:
+                                 ;   [XH:XL] points to the line buffer we're writing to.
+                                 ;   rTILEBG is the tile's background color.
+                                 ;   rTILEFG is the tile's foreground color.
+                                 ;   @0 is the bit we want to write.
+                                 ; Output:
+                                 ;   None
+                                 ; Effects:
+                                 ;   Byte is written to the line buffer pointed to by [XH:XL].
+                                 ;   [XH:XL] is incremented by 1.
+                                 ; Clobbers:
+                                 ;   rTILEOUT
+                                 ; Cycles:
+                                 ;   5
+                                 .MACRO WRITE_PIXEL
+                                     mov rTILEOUT, rTILEBG           ; +1
+                                     sbrc rTEMP, @0                  ; +2
+                                     mov rTILEOUT, rTILEFG           ; ...
+                                     st X+, rTILEOUT                 ; +2    
+                                 .ENDM
                                  
-0003bd 0000
-0003be 0000
-0003bf 0000
-0003c0 0000
-0003c1 0000
-0003c2 0000
-0003c3 0000
-0003c4 0000
-0003c5 0000
-0003c6 0000
-0003c7 0000
-0003c8 0000
-0003c9 0000
-0003ca 0000
-0003cb 0000
-0003cc 0000
-0003cd 0000
-0003ce 0000
-0003cf 0000
-0003d0 0000
-0003d1 0000
-0003d2 0000
-0003d3 0000
-0003d4 0000
-0003d5 0000
-0003d6 0000
-0003d7 0000
-0003d8 0000
-0003d9 0000
-0003da 0000
-0003db 0000
-0003dc 0000
-0003dd 0000
-0003de 0000
-0003df 0000
-0003e0 0000
-0003e1 0000
-0003e2 0000
-0003e3 0000
-0003e4 0000
-0003e5 0000
-0003e6 0000
-0003e7 0000
-0003e8 0000
-0003e9 0000
-0003ea 0000
-0003eb 0000
-0003ec 0000
-0003ed 0000
-0003ee 0000
-0003ef 0000
-0003f0 0000
-0003f1 0000
-0003f2 0000
-0003f3 0000
-0003f4 0000
-0003f5 0000
-0003f6 0000
-0003f7 0000
-0003f8 0000
-0003f9 0000
-0003fa 0000
-0003fb 0000
-0003fc 0000                          _NOP64              ; 67 - 64 =  3
-0003fd 0000
-0003fe 0000                          _NOP2               ;  3 -  2 =  1
-0003ff 0000                          nop                 ;  1 -  1 =  0
+                                 .MACRO LOAD_8_PIXELS    ; 50 cycles... ouch. WAAAAAY too many
+                                     READ_8_PIXELS
+                                     WRITE_PIXEL 7
+                                     WRITE_PIXEL 6
+                                     WRITE_PIXEL 5
+                                     WRITE_PIXEL 4
+                                     WRITE_PIXEL 3
+                                     WRITE_PIXEL 2
+                                     WRITE_PIXEL 1
+                                     WRITE_PIXEL 0
+                                 .ENDM
                                  
-                                     ; 160 cycles of border to center pixels on screen.
-000400 0000
-000401 0000
-000402 0000
-000403 0000
-000404 0000
-000405 0000
-000406 0000
-000407 0000
-000408 0000
-000409 0000
-00040a 0000
-00040b 0000
-00040c 0000
-00040d 0000
-00040e 0000
-00040f 0000
-000410 0000
-000411 0000
-000412 0000
-000413 0000
-000414 0000
-000415 0000
-000416 0000
-000417 0000
-000418 0000
-000419 0000
-00041a 0000
-00041b 0000
-00041c 0000
-00041d 0000
-00041e 0000
-00041f 0000
-000420 0000
-000421 0000
-000422 0000
-000423 0000
-000424 0000
-000425 0000
-000426 0000
-000427 0000
-000428 0000
-000429 0000
-00042a 0000
-00042b 0000
-00042c 0000
-00042d 0000
-00042e 0000
-00042f 0000
-000430 0000
-000431 0000
-000432 0000
-000433 0000
-000434 0000
-000435 0000
-000436 0000
-000437 0000
-000438 0000
-000439 0000
-00043a 0000
-00043b 0000
-00043c 0000
-00043d 0000
-00043e 0000
-00043f 0000
-000440 0000
-000441 0000
-000442 0000
-000443 0000
-000444 0000
-000445 0000
-000446 0000
-000447 0000
-000448 0000
-000449 0000
-00044a 0000
-00044b 0000
-00044c 0000
-00044d 0000
-00044e 0000
-00044f 0000
-000450 0000
-000451 0000
-000452 0000
-000453 0000
-000454 0000
-000455 0000
-000456 0000
-000457 0000
-000458 0000
-000459 0000
-00045a 0000
-00045b 0000
-00045c 0000
-00045d 0000
-00045e 0000
-00045f 0000
-000460 0000
-000461 0000
-000462 0000
-000463 0000
-000464 0000
-000465 0000
-000466 0000
-000467 0000
-000468 0000
-000469 0000
-00046a 0000
-00046b 0000
-00046c 0000
-00046d 0000
-00046e 0000
-00046f 0000
-000470 0000
-000471 0000
-000472 0000
-000473 0000
-000474 0000
-000475 0000
-000476 0000
-000477 0000
-000478 0000
-000479 0000
-00047a 0000
-00047b 0000
-00047c 0000
-00047d 0000
-00047e 0000
-00047f 0000                          _NOP128
-000480 0000
-000481 0000
-000482 0000
-000483 0000
-000484 0000
-000485 0000
-000486 0000
-000487 0000
-000488 0000
-000489 0000
-00048a 0000
-00048b 0000
-00048c 0000
-00048d 0000
-00048e 0000
-00048f 0000
-000490 0000
-000491 0000
-000492 0000
-000493 0000
-000494 0000
-000495 0000
-000496 0000
-000497 0000
-000498 0000
-000499 0000
-00049a 0000
-00049b 0000
-00049c 0000
-00049d 0000
-00049e 0000
-00049f 0000                          _NOP32
+                                     ; 71 cycles left for sync pulse
+0003ca e080                          ldi rTEMP, 0x00                 ; -1 = 70
+0003cb b988                          out DATAPORT, rTEMP             ; -1 = 69
+0003cc ef8f
+0003cd b987                          SET_DATA_OUTPUT                 ; -2 = 67
                                  
-                                     ; Output 256 pixels.
-0004a0 982c                          DAC_ENABLE
-0004a1 910d
-0004a2 b908
-0004a3 910d
-0004a4 b908
-0004a5 910d
-0004a6 b908
-0004a7 910d
-0004a8 b908
-0004a9 910d
-0004aa b908
-0004ab 910d
-0004ac b908
-0004ad 910d
-0004ae b908
-0004af 910d
-0004b0 b908
-0004b1 910d
-0004b2 b908
-0004b3 910d
-0004b4 b908
-0004b5 910d
-0004b6 b908
-0004b7 910d
-0004b8 b908
-0004b9 910d
-0004ba b908
-0004bb 910d
-0004bc b908
-0004bd 910d
-0004be b908
-0004bf 910d
-0004c0 b908
-0004c1 910d
-0004c2 b908
-0004c3 910d
-0004c4 b908
-0004c5 910d
-0004c6 b908
-0004c7 910d
-0004c8 b908
-0004c9 910d
-0004ca b908
-0004cb 910d
-0004cc b908
-0004cd 910d
-0004ce b908
-0004cf 910d
-0004d0 b908
-0004d1 910d
-0004d2 b908
-0004d3 910d
-0004d4 b908
-0004d5 910d
-0004d6 b908
-0004d7 910d
-0004d8 b908
-0004d9 910d
-0004da b908
-0004db 910d
-0004dc b908
-0004dd 910d
-0004de b908
-0004df 910d
-0004e0 b908
-0004e1 910d
-0004e2 b908
-0004e3 910d
-0004e4 b908
-0004e5 910d
-0004e6 b908
-0004e7 910d
-0004e8 b908
-0004e9 910d
-0004ea b908
-0004eb 910d
-0004ec b908
-0004ed 910d
-0004ee b908
-0004ef 910d
-0004f0 b908
-0004f1 910d
-0004f2 b908
-0004f3 910d
-0004f4 b908
-0004f5 910d
-0004f6 b908
-0004f7 910d
-0004f8 b908
-0004f9 910d
-0004fa b908
-0004fb 910d
-0004fc b908
-0004fd 910d
-0004fe b908
-0004ff 910d
-000500 b908
-000501 910d
-000502 b908
-000503 910d
-000504 b908
-000505 910d
-000506 b908
-000507 910d
-000508 b908
-000509 910d
-00050a b908
-00050b 910d
-00050c b908
-00050d 910d
-00050e b908
-00050f 910d
-000510 b908
-000511 910d
-000512 b908
-000513 910d
-000514 b908
-000515 910d
-000516 b908
-000517 910d
-000518 b908
-000519 910d
-00051a b908
-00051b 910d
-00051c b908
-00051d 910d
-00051e b908
-00051f 910d
-000520 b908
-000521 910d
-000522 b908
-000523 910d
-000524 b908
-000525 910d
-000526 b908
-000527 910d
-000528 b908
-000529 910d
-00052a b908
-00052b 910d
-00052c b908
-00052d 910d
-00052e b908
-00052f 910d
-000530 b908
-000531 910d
-000532 b908
-000533 910d
-000534 b908
-000535 910d
-000536 b908
-000537 910d
-000538 b908
-000539 910d
-00053a b908
-00053b 910d
-00053c b908
-00053d 910d
-00053e b908
-00053f 910d
-000540 b908
-000541 910d
-000542 b908
-000543 910d
-000544 b908
-000545 910d
-000546 b908
-000547 910d
-000548 b908
-000549 910d
-00054a b908
-00054b 910d
-00054c b908
-00054d 910d
-00054e b908
-00054f 910d
-000550 b908
-000551 910d
-000552 b908
-000553 910d
-000554 b908
-000555 910d
-000556 b908
-000557 910d
-000558 b908
-000559 910d
-00055a b908
-00055b 910d
-00055c b908
-00055d 910d
-00055e b908
-00055f 910d
-000560 b908
-000561 910d
-000562 b908
-000563 910d
-000564 b908
-000565 910d
-000566 b908
-000567 910d
-000568 b908
-000569 910d
-00056a b908
-00056b 910d
-00056c b908
-00056d 910d
-00056e b908
-00056f 910d
-000570 b908
-000571 910d
-000572 b908
-000573 910d
-000574 b908
-000575 910d
-000576 b908
-000577 910d
-000578 b908
-000579 910d
-00057a b908
-00057b 910d
-00057c b908
-00057d 910d
-00057e b908
-00057f 910d
-000580 b908
-000581 910d
-000582 b908
-000583 910d
-000584 b908
-000585 910d
-000586 b908
-000587 910d
-000588 b908
-000589 910d
-00058a b908
-00058b 910d
-00058c b908
-00058d 910d
-00058e b908
-00058f 910d
-000590 b908
-000591 910d
-000592 b908
-000593 910d
-000594 b908
-000595 910d
-000596 b908
-000597 910d
-000598 b908
-000599 910d
-00059a b908
-00059b 910d
-00059c b908
-00059d 910d
-00059e b908
-00059f 910d
-0005a0 b908
-0005a1 910d
-0005a2 b908
-0005a3 910d
-0005a4 b908
-0005a5 910d
-0005a6 b908
-0005a7 910d
-0005a8 b908
-0005a9 910d
-0005aa b908
-0005ab 910d
-0005ac b908
-0005ad 910d
-0005ae b908
-0005af 910d
-0005b0 b908
-0005b1 910d
-0005b2 b908
-0005b3 910d
-0005b4 b908
-0005b5 910d
-0005b6 b908
-0005b7 910d
-0005b8 b908
-0005b9 910d
-0005ba b908
-0005bb 910d
-0005bc b908
-0005bd 910d
-0005be b908
-0005bf 910d
-0005c0 b908
-0005c1 910d
-0005c2 b908
-0005c3 910d
-0005c4 b908
-0005c5 910d
-0005c6 b908
-0005c7 910d
-0005c8 b908
-0005c9 910d
-0005ca b908
-0005cb 910d
-0005cc b908
-0005cd 910d
-0005ce b908
-0005cf 910d
-0005d0 b908
-0005d1 910d
-0005d2 b908
-0005d3 910d
-0005d4 b908
-0005d5 910d
-0005d6 b908
-0005d7 910d
-0005d8 b908
-0005d9 910d
-0005da b908
-0005db 910d
-0005dc b908
-0005dd 910d
-0005de b908
-0005df 910d
-0005e0 b908
-0005e1 910d
-0005e2 b908
-0005e3 910d
-0005e4 b908
-0005e5 910d
-0005e6 b908
-0005e7 910d
-0005e8 b908
-0005e9 910d
-0005ea b908
-0005eb 910d
-0005ec b908
-0005ed 910d
-0005ee b908
-0005ef 910d
-0005f0 b908
-0005f1 910d
-0005f2 b908
-0005f3 910d
-0005f4 b908
-0005f5 910d
-0005f6 b908
-0005f7 910d
-0005f8 b908
-0005f9 910d
-0005fa b908
-0005fb 910d
-0005fc b908
-0005fd 910d
-0005fe b908
-0005ff 910d
-000600 b908
-000601 910d
-000602 b908
-000603 910d
-000604 b908
-000605 910d
-000606 b908
-000607 910d
-000608 b908
-000609 910d
-00060a b908
-00060b 910d
-00060c b908
-00060d 910d
-00060e b908
-00060f 910d
-000610 b908
-000611 910d
-000612 b908
-000613 910d
-000614 b908
-000615 910d
-000616 b908
-000617 910d
-000618 b908
-000619 910d
-00061a b908
-00061b 910d
-00061c b908
-00061d 910d
-00061e b908
-00061f 910d
-000620 b908
-000621 910d
-000622 b908
-000623 910d
-000624 b908
-000625 910d
-000626 b908
-000627 910d
-000628 b908
-000629 910d
-00062a b908
-00062b 910d
-00062c b908
-00062d 910d
-00062e b908
-00062f 910d
-000630 b908
-000631 910d
-000632 b908
-000633 910d
-000634 b908
-000635 910d
-000636 b908
-000637 910d
-000638 b908
-000639 910d
-00063a b908
-00063b 910d
-00063c b908
-00063d 910d
-00063e b908
-00063f 910d
-000640 b908
-000641 910d
-000642 b908
-000643 910d
-000644 b908
-000645 910d
-000646 b908
-000647 910d
-000648 b908
-000649 910d
-00064a b908
-00064b 910d
-00064c b908
-00064d 910d
-00064e b908
-00064f 910d
-000650 b908
-000651 910d
-000652 b908
-000653 910d
-000654 b908
-000655 910d
-000656 b908
-000657 910d
-000658 b908
-000659 910d
-00065a b908
-00065b 910d
-00065c b908
-00065d 910d
-00065e b908
-00065f 910d
-000660 b908
-000661 910d
-000662 b908
-000663 910d
-000664 b908
-000665 910d
-000666 b908
-000667 910d
-000668 b908
-000669 910d
-00066a b908
-00066b 910d
-00066c b908
-00066d 910d
-00066e b908
-00066f 910d
-000670 b908
-000671 910d
-000672 b908
-000673 910d
-000674 b908
-000675 910d
-000676 b908
-000677 910d
-000678 b908
-000679 910d
-00067a b908
-00067b 910d
-00067c b908
-00067d 910d
-00067e b908
-00067f 910d
-000680 b908
-000681 910d
-000682 b908
-000683 910d
-000684 b908
-000685 910d
-000686 b908
-000687 910d
-000688 b908
-000689 910d
-00068a b908
-00068b 910d
-00068c b908
-00068d 910d
-00068e b908
-00068f 910d
-000690 b908
-000691 910d
-000692 b908
-000693 910d
-000694 b908
-000695 910d
-000696 b908
-000697 910d
-000698 b908
-000699 910d
-00069a b908
-00069b 910d
-00069c b908
-00069d 910d
-00069e b908
-00069f 910d
-0006a0 b908                          OUT_PIXEL256
-0006a1 9a2c                          DAC_DISABLE
+                                     ; Calculate the line number and add to the tile graphic address.
+0003ce 2df3                          mov ZH, rTILEGRAFH              ; -1 = 66
+0003cf 2d8e                          mov rTEMP, rYPOS                ; -1 = 65
+0003d0 7087                          andi rTEMP, 0x07                ; -1 = 64
+0003d1 0ff8                          add ZH, rTEMP                   ; -1 = 63
+                                 
+                                     ; Load tile grid offset into Y register.
+0003d2 e2b4                          ldi XH, HIGH(tile_grid_offset)          ; -1 = 62
+0003d3 e0a0                          ldi XL, LOW(tile_grid_offset)           ; -1 = 61
+0003d4 91dd                          ld YH, X+                               ; -2 = 59
+0003d5 91cd                          ld YL, X+                               ; -2 = 57
+                                 
+                                     ; Add tile grid address to tile grid offset to get actual address.
+0003d6 0dc4                          add YL, rTILEGRIDL                      ; -1 = 56
+0003d7 1dd5                          adc YH, rTILEGRIDH                      ; -1 = 55
+                                 
+                                     ; Load read buffer address into X register.
+0003d8 2db7                          mov XH, rREADBUFH                      ; -1 = 54
+0003d9 2da6                          mov XL, rREADBUFL                      ; -1 = 53
+                                 
+0003da 90a9
+0003db 90b9
+0003dc 90c9
+0003dd 2de2
+0003de 0dea
+0003df 8180
+0003e0 2cdb
+0003e1 fd87
+0003e2 2cdc
+0003e3 92dd
+0003e4 2cdb
+0003e5 fd86
+0003e6 2cdc
+0003e7 92dd
+0003e8 2cdb
+0003e9 fd85
+0003ea 2cdc
+0003eb 92dd
+0003ec 2cdb
+0003ed fd84
+0003ee 2cdc
+0003ef 92dd
+0003f0 2cdb
+0003f1 fd83
+0003f2 2cdc
+0003f3 92dd
+0003f4 2cdb
+0003f5 fd82
+0003f6 2cdc
+0003f7 92dd
+0003f8 2cdb
+0003f9 fd81
+0003fa 2cdc
+0003fb 92dd
+0003fc 2cdb
+0003fd fd80
+0003fe 2cdc
+0003ff 92dd                          LOAD_8_PIXELS                          ; -50 = 3
+                                 
+000400 b18b
+000401 e890
+000402 2789
+000403 b98b                          IMMED_TOGGLE_SYNC_PIN                   ; [003 -04 = whatever, close enough]
+                                 
+                                     ; 92 cycles of breezeway
+                                     
+                                     ; At this point we have 92 cycles of breezeway + 108 cycles of border = 200 cycles (as far as I'm concerned)
+                                 
+000404 90a9
+000405 90b9
+000406 90c9
+000407 2de2
+000408 0dea
+000409 8180
+00040a 2cdb
+00040b fd87
+00040c 2cdc
+00040d 92dd
+00040e 2cdb
+00040f fd86
+000410 2cdc
+000411 92dd
+000412 2cdb
+000413 fd85
+000414 2cdc
+000415 92dd
+000416 2cdb
+000417 fd84
+000418 2cdc
+000419 92dd
+00041a 2cdb
+00041b fd83
+00041c 2cdc
+00041d 92dd
+00041e 2cdb
+00041f fd82
+000420 2cdc
+000421 92dd
+000422 2cdb
+000423 fd81
+000424 2cdc
+000425 92dd
+000426 2cdb
+000427 fd80
+000428 2cdc
+000429 92dd                          LOAD_8_PIXELS       ; -50
+00042a 90a9
+00042b 90b9
+00042c 90c9
+00042d 2de2
+00042e 0dea
+00042f 8180
+000430 2cdb
+000431 fd87
+000432 2cdc
+000433 92dd
+000434 2cdb
+000435 fd86
+000436 2cdc
+000437 92dd
+000438 2cdb
+000439 fd85
+00043a 2cdc
+00043b 92dd
+00043c 2cdb
+00043d fd84
+00043e 2cdc
+00043f 92dd
+000440 2cdb
+000441 fd83
+000442 2cdc
+000443 92dd
+000444 2cdb
+000445 fd82
+000446 2cdc
+000447 92dd
+000448 2cdb
+000449 fd81
+00044a 2cdc
+00044b 92dd
+00044c 2cdb
+00044d fd80
+00044e 2cdc
+00044f 92dd                          LOAD_8_PIXELS       ; -50
+                                 
+000450 982c                          DAC_ENABLE
+                                 
+000451 90a9
+000452 90b9
+000453 90c9
+000454 2de2
+000455 0dea
+000456 8180
+000457 2cdb
+000458 fd87
+000459 2cdc
+00045a 92dd
+00045b 2cdb
+00045c fd86
+00045d 2cdc
+00045e 92dd
+00045f 2cdb
+000460 fd85
+000461 2cdc
+000462 92dd
+000463 2cdb
+000464 fd84
+000465 2cdc
+000466 92dd
+000467 2cdb
+000468 fd83
+000469 2cdc
+00046a 92dd
+00046b 2cdb
+00046c fd82
+00046d 2cdc
+00046e 92dd
+00046f 2cdb
+000470 fd81
+000471 2cdc
+000472 92dd
+000473 2cdb
+000474 fd80
+000475 2cdc
+000476 92dd                          LOAD_8_PIXELS       ; -50
+000477 90a9
+000478 90b9
+000479 90c9
+00047a 2de2
+00047b 0dea
+00047c 8180
+00047d 2cdb
+00047e fd87
+00047f 2cdc
+000480 92dd
+000481 2cdb
+000482 fd86
+000483 2cdc
+000484 92dd
+000485 2cdb
+000486 fd85
+000487 2cdc
+000488 92dd
+000489 2cdb
+00048a fd84
+00048b 2cdc
+00048c 92dd
+00048d 2cdb
+00048e fd83
+00048f 2cdc
+000490 92dd
+000491 2cdb
+000492 fd82
+000493 2cdc
+000494 92dd
+000495 2cdb
+000496 fd81
+000497 2cdc
+000498 92dd
+000499 2cdb
+00049a fd80
+00049b 2cdc
+00049c 92dd                          LOAD_8_PIXELS       ; -50
+                                 
+                                     ; Reload line buffer address into X register.
+00049d 2db7                          mov XH, rREADBUFH       ; -1
+00049e 2da6                          mov XL, rREADBUFL       ; -1
+                                 
+                                     ; Typical pixel (4 clocks):
+                                     ; mov rOUT, rTILEBG
+                                     ; sbrc rDATA, bit
+                                     ; mov rOUT, rTILEFG
+                                     ; out DATAPORT, rOUT
+                                     ; Gives only 1 clock left over for other stuff. Yikes. Not... good.
+                                 
+                                 .MACRO OUT_PIXEL
+                                     nop                     ; [1]
+                                     nop                     ; [1]
+                                     ld rTEMP, X+            ; [2]
+                                     out DATAPORT, rTEMP     ; [1]
+                                 .ENDM
+                                 
+                                 .MACRO OUT_PIXEL2
+                                     OUT_PIXEL
+                                     OUT_PIXEL
+                                 .ENDM
+                                 
+                                 .MACRO OUT_PIXEL4
+                                     OUT_PIXEL2
+                                     OUT_PIXEL2
+                                 .ENDM
+                                 
+                                 .MACRO OUT_PIXEL8
+                                     OUT_PIXEL4
+                                     OUT_PIXEL4
+                                 .ENDM
+                                 
+                                 .MACRO OUT_PIXEL16
+                                     OUT_PIXEL8
+                                     OUT_PIXEL8
+                                 .ENDM
+                                 
+                                 .MACRO OUT_PIXEL32
+                                     OUT_PIXEL16
+                                     OUT_PIXEL16
+                                 .ENDM
+                                 
+                                 .MACRO OUT_PIXEL64
+                                     OUT_PIXEL32
+                                     OUT_PIXEL32
+                                 .ENDM
+                                 
+                                 .MACRO OUT_PIXEL128
+                                     OUT_PIXEL64
+                                     OUT_PIXEL64
+                                 .ENDM
+                                 
+                                 .MACRO OUT_PIXEL256
+                                     OUT_PIXEL128
+                                     OUT_PIXEL128
+                                 .ENDM
+                                 
+                                     ; Output 160 pixels.
+00049f 0000
+0004a0 0000
+0004a1 918d
+0004a2 b988
+0004a3 0000
+0004a4 0000
+0004a5 918d
+0004a6 b988
+0004a7 0000
+0004a8 0000
+0004a9 918d
+0004aa b988
+0004ab 0000
+0004ac 0000
+0004ad 918d
+0004ae b988
+0004af 0000
+0004b0 0000
+0004b1 918d
+0004b2 b988
+0004b3 0000
+0004b4 0000
+0004b5 918d
+0004b6 b988
+0004b7 0000
+0004b8 0000
+0004b9 918d
+0004ba b988
+0004bb 0000
+0004bc 0000
+0004bd 918d
+0004be b988
+0004bf 0000
+0004c0 0000
+0004c1 918d
+0004c2 b988
+0004c3 0000
+0004c4 0000
+0004c5 918d
+0004c6 b988
+0004c7 0000
+0004c8 0000
+0004c9 918d
+0004ca b988
+0004cb 0000
+0004cc 0000
+0004cd 918d
+0004ce b988
+0004cf 0000
+0004d0 0000
+0004d1 918d
+0004d2 b988
+0004d3 0000
+0004d4 0000
+0004d5 918d
+0004d6 b988
+0004d7 0000
+0004d8 0000
+0004d9 918d
+0004da b988
+0004db 0000
+0004dc 0000
+0004dd 918d
+0004de b988
+0004df 0000
+0004e0 0000
+0004e1 918d
+0004e2 b988
+0004e3 0000
+0004e4 0000
+0004e5 918d
+0004e6 b988
+0004e7 0000
+0004e8 0000
+0004e9 918d
+0004ea b988
+0004eb 0000
+0004ec 0000
+0004ed 918d
+0004ee b988
+0004ef 0000
+0004f0 0000
+0004f1 918d
+0004f2 b988
+0004f3 0000
+0004f4 0000
+0004f5 918d
+0004f6 b988
+0004f7 0000
+0004f8 0000
+0004f9 918d
+0004fa b988
+0004fb 0000
+0004fc 0000
+0004fd 918d
+0004fe b988
+0004ff 0000
+000500 0000
+000501 918d
+000502 b988
+000503 0000
+000504 0000
+000505 918d
+000506 b988
+000507 0000
+000508 0000
+000509 918d
+00050a b988
+00050b 0000
+00050c 0000
+00050d 918d
+00050e b988
+00050f 0000
+000510 0000
+000511 918d
+000512 b988
+000513 0000
+000514 0000
+000515 918d
+000516 b988
+000517 0000
+000518 0000
+000519 918d
+00051a b988
+00051b 0000
+00051c 0000
+00051d 918d
+00051e b988
+00051f 0000
+000520 0000
+000521 918d
+000522 b988
+000523 0000
+000524 0000
+000525 918d
+000526 b988
+000527 0000
+000528 0000
+000529 918d
+00052a b988
+00052b 0000
+00052c 0000
+00052d 918d
+00052e b988
+00052f 0000
+000530 0000
+000531 918d
+000532 b988
+000533 0000
+000534 0000
+000535 918d
+000536 b988
+000537 0000
+000538 0000
+000539 918d
+00053a b988
+00053b 0000
+00053c 0000
+00053d 918d
+00053e b988
+00053f 0000
+000540 0000
+000541 918d
+000542 b988
+000543 0000
+000544 0000
+000545 918d
+000546 b988
+000547 0000
+000548 0000
+000549 918d
+00054a b988
+00054b 0000
+00054c 0000
+00054d 918d
+00054e b988
+00054f 0000
+000550 0000
+000551 918d
+000552 b988
+000553 0000
+000554 0000
+000555 918d
+000556 b988
+000557 0000
+000558 0000
+000559 918d
+00055a b988
+00055b 0000
+00055c 0000
+00055d 918d
+00055e b988
+00055f 0000
+000560 0000
+000561 918d
+000562 b988
+000563 0000
+000564 0000
+000565 918d
+000566 b988
+000567 0000
+000568 0000
+000569 918d
+00056a b988
+00056b 0000
+00056c 0000
+00056d 918d
+00056e b988
+00056f 0000
+000570 0000
+000571 918d
+000572 b988
+000573 0000
+000574 0000
+000575 918d
+000576 b988
+000577 0000
+000578 0000
+000579 918d
+00057a b988
+00057b 0000
+00057c 0000
+00057d 918d
+00057e b988
+00057f 0000
+000580 0000
+000581 918d
+000582 b988
+000583 0000
+000584 0000
+000585 918d
+000586 b988
+000587 0000
+000588 0000
+000589 918d
+00058a b988
+00058b 0000
+00058c 0000
+00058d 918d
+00058e b988
+00058f 0000
+000590 0000
+000591 918d
+000592 b988
+000593 0000
+000594 0000
+000595 918d
+000596 b988
+000597 0000
+000598 0000
+000599 918d
+00059a b988
+00059b 0000
+00059c 0000
+00059d 918d
+00059e b988
+00059f 0000
+0005a0 0000
+0005a1 918d
+0005a2 b988
+0005a3 0000
+0005a4 0000
+0005a5 918d
+0005a6 b988
+0005a7 0000
+0005a8 0000
+0005a9 918d
+0005aa b988
+0005ab 0000
+0005ac 0000
+0005ad 918d
+0005ae b988
+0005af 0000
+0005b0 0000
+0005b1 918d
+0005b2 b988
+0005b3 0000
+0005b4 0000
+0005b5 918d
+0005b6 b988
+0005b7 0000
+0005b8 0000
+0005b9 918d
+0005ba b988
+0005bb 0000
+0005bc 0000
+0005bd 918d
+0005be b988
+0005bf 0000
+0005c0 0000
+0005c1 918d
+0005c2 b988
+0005c3 0000
+0005c4 0000
+0005c5 918d
+0005c6 b988
+0005c7 0000
+0005c8 0000
+0005c9 918d
+0005ca b988
+0005cb 0000
+0005cc 0000
+0005cd 918d
+0005ce b988
+0005cf 0000
+0005d0 0000
+0005d1 918d
+0005d2 b988
+0005d3 0000
+0005d4 0000
+0005d5 918d
+0005d6 b988
+0005d7 0000
+0005d8 0000
+0005d9 918d
+0005da b988
+0005db 0000
+0005dc 0000
+0005dd 918d
+0005de b988
+0005df 0000
+0005e0 0000
+0005e1 918d
+0005e2 b988
+0005e3 0000
+0005e4 0000
+0005e5 918d
+0005e6 b988
+0005e7 0000
+0005e8 0000
+0005e9 918d
+0005ea b988
+0005eb 0000
+0005ec 0000
+0005ed 918d
+0005ee b988
+0005ef 0000
+0005f0 0000
+0005f1 918d
+0005f2 b988
+0005f3 0000
+0005f4 0000
+0005f5 918d
+0005f6 b988
+0005f7 0000
+0005f8 0000
+0005f9 918d
+0005fa b988
+0005fb 0000
+0005fc 0000
+0005fd 918d
+0005fe b988
+0005ff 0000
+000600 0000
+000601 918d
+000602 b988
+000603 0000
+000604 0000
+000605 918d
+000606 b988
+000607 0000
+000608 0000
+000609 918d
+00060a b988
+00060b 0000
+00060c 0000
+00060d 918d
+00060e b988
+00060f 0000
+000610 0000
+000611 918d
+000612 b988
+000613 0000
+000614 0000
+000615 918d
+000616 b988
+000617 0000
+000618 0000
+000619 918d
+00061a b988
+00061b 0000
+00061c 0000
+00061d 918d
+00061e b988
+00061f 0000
+000620 0000
+000621 918d
+000622 b988
+000623 0000
+000624 0000
+000625 918d
+000626 b988
+000627 0000
+000628 0000
+000629 918d
+00062a b988
+00062b 0000
+00062c 0000
+00062d 918d
+00062e b988
+00062f 0000
+000630 0000
+000631 918d
+000632 b988
+000633 0000
+000634 0000
+000635 918d
+000636 b988
+000637 0000
+000638 0000
+000639 918d
+00063a b988
+00063b 0000
+00063c 0000
+00063d 918d
+00063e b988
+00063f 0000
+000640 0000
+000641 918d
+000642 b988
+000643 0000
+000644 0000
+000645 918d
+000646 b988
+000647 0000
+000648 0000
+000649 918d
+00064a b988
+00064b 0000
+00064c 0000
+00064d 918d
+00064e b988
+00064f 0000
+000650 0000
+000651 918d
+000652 b988
+000653 0000
+000654 0000
+000655 918d
+000656 b988
+000657 0000
+000658 0000
+000659 918d
+00065a b988
+00065b 0000
+00065c 0000
+00065d 918d
+00065e b988
+00065f 0000
+000660 0000
+000661 918d
+000662 b988
+000663 0000
+000664 0000
+000665 918d
+000666 b988
+000667 0000
+000668 0000
+000669 918d
+00066a b988
+00066b 0000
+00066c 0000
+00066d 918d
+00066e b988
+00066f 0000
+000670 0000
+000671 918d
+000672 b988
+000673 0000
+000674 0000
+000675 918d
+000676 b988
+000677 0000
+000678 0000
+000679 918d
+00067a b988
+00067b 0000
+00067c 0000
+00067d 918d
+00067e b988
+00067f 0000
+000680 0000
+000681 918d
+000682 b988
+000683 0000
+000684 0000
+000685 918d
+000686 b988
+000687 0000
+000688 0000
+000689 918d
+00068a b988
+00068b 0000
+00068c 0000
+00068d 918d
+00068e b988
+00068f 0000
+000690 0000
+000691 918d
+000692 b988
+000693 0000
+000694 0000
+000695 918d
+000696 b988
+000697 0000
+000698 0000
+000699 918d
+00069a b988
+00069b 0000
+00069c 0000
+00069d 918d
+00069e b988                          OUT_PIXEL128
+00069f 0000
+0006a0 0000
+0006a1 918d
+0006a2 b988
+0006a3 0000
+0006a4 0000
+0006a5 918d
+0006a6 b988
+0006a7 0000
+0006a8 0000
+0006a9 918d
+0006aa b988
+0006ab 0000
+0006ac 0000
+0006ad 918d
+0006ae b988
+0006af 0000
+0006b0 0000
+0006b1 918d
+0006b2 b988
+0006b3 0000
+0006b4 0000
+0006b5 918d
+0006b6 b988
+0006b7 0000
+0006b8 0000
+0006b9 918d
+0006ba b988
+0006bb 0000
+0006bc 0000
+0006bd 918d
+0006be b988
+0006bf 0000
+0006c0 0000
+0006c1 918d
+0006c2 b988
+0006c3 0000
+0006c4 0000
+0006c5 918d
+0006c6 b988
+0006c7 0000
+0006c8 0000
+0006c9 918d
+0006ca b988
+0006cb 0000
+0006cc 0000
+0006cd 918d
+0006ce b988
+0006cf 0000
+0006d0 0000
+0006d1 918d
+0006d2 b988
+0006d3 0000
+0006d4 0000
+0006d5 918d
+0006d6 b988
+0006d7 0000
+0006d8 0000
+0006d9 918d
+0006da b988
+0006db 0000
+0006dc 0000
+0006dd 918d
+0006de b988
+0006df 0000
+0006e0 0000
+0006e1 918d
+0006e2 b988
+0006e3 0000
+0006e4 0000
+0006e5 918d
+0006e6 b988
+0006e7 0000
+0006e8 0000
+0006e9 918d
+0006ea b988
+0006eb 0000
+0006ec 0000
+0006ed 918d
+0006ee b988
+0006ef 0000
+0006f0 0000
+0006f1 918d
+0006f2 b988
+0006f3 0000
+0006f4 0000
+0006f5 918d
+0006f6 b988
+0006f7 0000
+0006f8 0000
+0006f9 918d
+0006fa b988
+0006fb 0000
+0006fc 0000
+0006fd 918d
+0006fe b988
+0006ff 0000
+000700 0000
+000701 918d
+000702 b988
+000703 0000
+000704 0000
+000705 918d
+000706 b988
+000707 0000
+000708 0000
+000709 918d
+00070a b988
+00070b 0000
+00070c 0000
+00070d 918d
+00070e b988
+00070f 0000
+000710 0000
+000711 918d
+000712 b988
+000713 0000
+000714 0000
+000715 918d
+000716 b988
+000717 0000
+000718 0000
+000719 918d
+00071a b988
+00071b 0000
+00071c 0000
+00071d 918d
+00071e b988                          OUT_PIXEL32
+00071f 9a2c                          DAC_DISABLE
                                  
                                      ; Here we have 128 cycles to prepare the next line.
                                  
                                      ; Tiles are stored at tile_grid as a 32x32 grid -- so the location of one tile is at offset 000000YY YYYXXXXX.
-0006a2 2fd3                          mov YH, rLINECOUNTER            ; -1 = 127
-0006a3 e0c0                          ldi YL, 0                       ; -1 = 126
-0006a4 95d6                          lsr YH                          ; -1 = 125  ; 0YYYYYYY 00000000
-0006a5 95d6                          lsr YH                          ; -1 = 124  ; 00YYYYYY 00000000
-0006a6 95d6                          lsr YH                          ; -1 = 123  ; 000YYYYY 00000000
-0006a7 95d6                          lsr YH                          ; -1 = 122  
-0006a8 95c7                          ror YL                          ; -1 = 121  ; 0000YYYY Y0000000
-0006a9 95d6                          lsr YH                          ; -1 = 120  
-0006aa 95c7                          ror YL                          ; -1 = 119  ; 00000YYY YY000000
-0006ab 95d6                          lsr YH                          ; -1 = 118  
-0006ac 95c7                          ror YL                          ; -1 = 117  ; 000000YY YYY00000
-0006ad e2b3                          ldi XH, HIGH(tile_grid_offset)  ; -1 = 116
-0006ae e0a0                          ldi XL, LOW(tile_grid_offset)   ; -1 = 115
-0006af 93dd                          st X+, YH                       ; -2 = 113
-0006b0 93cd                          st X+, YL                       ; -2 = 111
+                                     ;mov YH, rLINECOUNTER            ; -1 = 127
+                                     ;ldi YL, 0                       ; -1 = 126
+                                     ;lsr YH                          ; -1 = 125  ; 0YYYYYYY 00000000
+                                     ;lsr YH                          ; -1 = 124  ; 00YYYYYY 00000000
+                                     ;lsr YH                          ; -1 = 123  ; 000YYYYY 00000000
+                                     ;lsr YH                          ; -1 = 122  
+                                     ;ror YL                          ; -1 = 121  ; 0000YYYY Y0000000
+                                     ;lsr YH                          ; -1 = 120  
+                                     ;ror YL                          ; -1 = 119  ; 00000YYY YY000000
+                                     ;lsr YH                          ; -1 = 118  
+                                     ;ror YL                          ; -1 = 117  ; 000000YY YYY00000
+                                     ;ldi XH, HIGH(tile_grid_offset)  ; -1 = 116
+                                     ;ldi XL, LOW(tile_grid_offset)   ; -1 = 115
+                                     ;st X+, YH                       ; -2 = 113
+                                     ;st X+, YL                       ; -2 = 111
                                  
-0006b1 c0aa                          rjmp end_line
+000720 c0aa                          rjmp end_line
                                  
                                  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                  ;                                         ;
@@ -3837,184 +4016,6 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                  
                                      ; 64 cycles left for sync pulse
                                      ; This can be filled in with whatever additional calculations we care to do.
-0006b2 0000
-0006b3 0000
-0006b4 0000
-0006b5 0000
-0006b6 0000
-0006b7 0000
-0006b8 0000
-0006b9 0000
-0006ba 0000
-0006bb 0000
-0006bc 0000
-0006bd 0000
-0006be 0000
-0006bf 0000
-0006c0 0000
-0006c1 0000
-0006c2 0000
-0006c3 0000
-0006c4 0000
-0006c5 0000
-0006c6 0000
-0006c7 0000
-0006c8 0000
-0006c9 0000
-0006ca 0000
-0006cb 0000
-0006cc 0000
-0006cd 0000
-0006ce 0000
-0006cf 0000
-0006d0 0000
-0006d1 0000                          _NOP32                                  ; [064 -32 =032]
-0006d2 0000
-0006d3 0000
-0006d4 0000
-0006d5 0000
-0006d6 0000
-0006d7 0000
-0006d8 0000
-0006d9 0000
-0006da 0000
-0006db 0000
-0006dc 0000
-0006dd 0000
-0006de 0000
-0006df 0000
-0006e0 0000
-0006e1 0000                          _NOP16									; [032 -16 =016]
-0006e2 0000
-0006e3 0000
-0006e4 0000
-0006e5 0000
-0006e6 0000
-0006e7 0000
-0006e8 0000
-0006e9 0000                          _NOP8									; [016 -08 =008]
-0006ea 0000
-0006eb 0000
-0006ec 0000
-0006ed 0000                          _NOP4                                   ; [008 -04 =004]
-                                 
-0006ee b10b
-0006ef e810
-0006f0 2701
-0006f1 b90b                          IMMED_TOGGLE_SYNC_PIN                   ; [004 -04 =000]
-                                 
-0006f2 c069                          rjmp end_line
-                                 
-                                 ;d8888b. db       .d8b.  d8b   db db   dD d888888b d8b   db  d888b
-                                 ;88  `8D 88      d8' `8b 888o  88 88 ,8P'   `88'   888o  88 88' Y8b
-                                 ;88oooY' 88      88ooo88 88V8o 88 88,8P      88    88V8o 88 88
-                                 ;88~~~b. 88      88~~~88 88 V8o88 88`8b      88    88 V8o88 88  ooo
-                                 ;88   8D 88booo. 88   88 88  V888 88 `88.   .88.   88  V888 88. ~8~
-                                 ;Y8888P' Y88888P YP   YP VP   V8P YP   YD Y888888P VP   V8P  Y888P
-                                 
-                                 non_display_line:
-                                     ; 91 cycles of HSYNC left
-                                 
-                                     ; Of the 22 OR 23 non-display lines:
-                                     ; 00-01: Bottom border lines
-                                     ; 02-04: Pre-render blanking lines
-                                     ; 05-07: VSYNC lines
-                                     ; 08-21: Post-render blanking lines
-                                     ; 22: Post-render blanking line on ODD frames only
-                                 
-                                     ; Load the jump address into Z but don't jump just yet
-                                 ;    ldi ZL, LOW(non_display_line_table)       ; [091 -01 =090]
-                                 ;    ldi ZH, HIGH(non_display_line_table)      ; [090 -01 =089]
-                                 ;    add ZL, rLINECOUNTER                      ; [089 -01 =088]
-                                 ;    adc ZH, rZERO                             ; [088 -01 =087]
-0006f3 0000
-0006f4 0000
-0006f5 0000
-0006f6 0000                          _NOP4 ; TEMPORARY
-                                 
-                                     ; If this is line 04, toggle SYNC for the next line.
-0006f7 3034                          cpi rLINECOUNTER, 4                       ; [087 -01 =086]
-                                                                             ; [     ==     ] [     !=     ]
-0006f8 f419                          brne skip_set_vsync                       ; [086 -01 =085] [086 -02 =084]
-                                 set_vsync:
-0006f9 e800
-0006fa 2750                          TOGGLE_SYNC_BIT                           ; [085 -02 =083]
-0006fb c003                          rjmp after_set_vsync                      ; [083 -02 =081]
-                                 skip_set_vsync:
-0006fc 0000
-0006fd 0000                          _NOP2                                     ;                [084 -02 =082]
-0006fe 0000                          nop										;				 [082 -01 =081]
-                                 after_set_vsync:
-                                 
-                                     ; If this is line 07, toggle SYNC for the next line.
-0006ff 3037                          cpi rLINECOUNTER, 7                       ; [081 -01 =080]
-                                                                             ; [     ==     ] [     !=     ]
-000700 f419                          brne skip_clear_vsync                     ; [080 -01 =079] [080 -02 =078]
-                                 clear_vsync:
-000701 e800
-000702 2750                          TOGGLE_SYNC_BIT                           ; [079 -02 =077]
-000703 c003                          rjmp after_clear_vsync                    ; [077 -02 =075]
-                                 skip_clear_vsync:
-000704 0000
-000705 0000                          _NOP2                                     ;                [078 -02 =076]
-000706 0000                          nop										;				 [076 -01 =075]
-                                 after_clear_vsync:
-                                 
-                                     ; Increment rLINECOUNTER by one.
-000707 9533                          inc rLINECOUNTER                          ; [075 -01 =074]
-                                 
-                                     ; Load 22 into the temp register.
-000708 e106                          ldi rTEMP, 22                             ; [074 -01 =073]
-                                 
-                                     ; If rSTATBITS:EVENFRAME is clear, add 1 to the temp register.
-000709 ff40                          sbrs rSTATBITS, STATBIT_EVENFRAME         ; [073 -02 =071]
-00070a 9503                          inc rTEMP
-                                 
-                                     ; If line counter is equal to temp register:
-                                     ;   - reset to 0
-                                     ;   - set rSTATBITS:DISP for next line
-                                     ;   - set ~VBLANK control line
-                                     ;   - set DATA lines to input (we ONLY do output when writing)
-                                     ;   - set ADDR/CTL2 lines to outputs
-                                     ;   - clear ~OE, ~WE bits
-                                     ;   - clear ~VDRAW control line if rSTATBITS:EVENFRAME is clear
-00070b 1730                          cp rLINECOUNTER, rTEMP                    ; [071 -01 =070]
-                                                                             ; [     ==     ] [     !=     ]
-00070c f451                          brne skip_setup_display                   ; [070 -01 =069] [070 -02 =068]
-                                 
-                                 ;d888888b d8b   db d888888b d888888b   d8888b. d888888b .d8888. d8888b.
-                                 ;  `88'   888o  88   `88'   `~~88~~'   88  `8D   `88'   88'  YP 88  `8D
-                                 ;   88    88V8o 88    88       88      88   88    88    `8bo.   88oodD'
-                                 ;   88    88 V8o88    88       88      88   88    88      `Y8b. 88~~~
-                                 ;  .88.   88  V888   .88.      88      88  .8D   .88.   db   8D 88
-                                 ;Y888888P VP   V8P Y888888P    YP      Y8888D' Y888888P `8888Y' 88
-                                 
-                                 setup_display:
-00070d 2733                          eor rLINECOUNTER, rLINECOUNTER            ; [069 -01 =068]
-00070e 6840                          ori rSTATBITS, STATBIT_DISP_MASK          ; [068 -01 =067]
-00070f 6150                          ori rCTRLBITS, VBLANKBIT_MASK             ; [067 -01 =066]
-000710 ef6f                          ldi rADDRDDR, ADDRBIT_DDR_OUTPUT          ; [066 -01 =065]
-000711 e070                          ldi rDATADDR, DATABIT_DDR_INPUT           ; [065 -01 =064]
-000712 9a2a
-000713 9a28                          OE_AND_WE_OFF                             ; [064 -02 =062]
-000714 ff40                          sbrs rSTATBITS, STATBIT_EVENFRAME         ; [062 -02 =060]
-000715 7f57                          andi rCTRLBITS, NOT_VDRAWBIT_MASK
-000716 c00a                          rjmp after_setup_display                  ; [060 -02 =058]
-                                 skip_setup_display:
-000717 0000
-000718 0000
-000719 0000
-00071a 0000
-00071b 0000
-00071c 0000
-00071d 0000
-00071e 0000                          _NOP8                                     ;                [068 -08 =060]
-00071f 0000
-000720 0000                          _NOP2                                     ;                [060 -02 =058]
-                                 after_setup_display:
-                                 
-                                     ; Finish the H-sync pulse here.
-                                     ; This can be filled in with whatever calculations we care to do.
 000721 0000
 000722 0000
 000723 0000
@@ -4046,7 +4047,7 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 00073d 0000
 00073e 0000
 00073f 0000
-000740 0000                          _NOP32									; [058 -32 =026]
+000740 0000                          _NOP32                                  ; [064 -32 =032]
 000741 0000
 000742 0000
 000743 0000
@@ -4062,20 +4063,198 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
 00074d 0000
 00074e 0000
 00074f 0000
-000750 0000                          _NOP16                                    ; [026 -16 =010]
+000750 0000                          _NOP16									; [032 -16 =016]
 000751 0000
 000752 0000
 000753 0000
-000754 0000                          _NOP4                                     ; [010 -04 =006]
+000754 0000
 000755 0000
-000756 0000                          _NOP2                                     ; [006 -02 =004]
-000757 b10b
-000758 e810
-000759 2701
-00075a b90b                          IMMED_TOGGLE_SYNC_PIN                     ; [004 -04 =000]
+000756 0000
+000757 0000
+000758 0000                          _NOP8									; [016 -08 =008]
+000759 0000
+00075a 0000
+00075b 0000
+00075c 0000                          _NOP4                                   ; [008 -04 =004]
+                                 
+00075d b18b
+00075e e890
+00075f 2789
+000760 b98b                          IMMED_TOGGLE_SYNC_PIN                   ; [004 -04 =000]
+                                 
+000761 c069                          rjmp end_line
+                                 
+                                 ;d8888b. db       .d8b.  d8b   db db   dD d888888b d8b   db  d888b
+                                 ;88  `8D 88      d8' `8b 888o  88 88 ,8P'   `88'   888o  88 88' Y8b
+                                 ;88oooY' 88      88ooo88 88V8o 88 88,8P      88    88V8o 88 88
+                                 ;88~~~b. 88      88~~~88 88 V8o88 88`8b      88    88 V8o88 88  ooo
+                                 ;88   8D 88booo. 88   88 88  V888 88 `88.   .88.   88  V888 88. ~8~
+                                 ;Y8888P' Y88888P YP   YP VP   V8P YP   YD Y888888P VP   V8P  Y888P
+                                 
+                                 non_display_line:
+                                     ; 91 cycles of HSYNC left
+                                 
+                                     ; Of the 22 OR 23 non-display lines:
+                                     ; 00-01: Bottom border lines
+                                     ; 02-04: Pre-render blanking lines
+                                     ; 05-07: VSYNC lines
+                                     ; 08-21: Post-render blanking lines
+                                     ; 22: Post-render blanking line on ODD frames only
+                                 
+                                     ; Load the jump address into Z but don't jump just yet
+                                 ;    ldi ZL, LOW(non_display_line_table)       ; [091 -01 =090]
+                                 ;    ldi ZH, HIGH(non_display_line_table)      ; [090 -01 =089]
+                                 ;    add ZL, rLINECOUNTER                      ; [089 -01 =088]
+                                 ;    adc ZH, rZERO                             ; [088 -01 =087]
+000762 0000
+000763 0000
+000764 0000
+000765 0000                          _NOP4 ; TEMPORARY
+                                 
+                                     ; If this is line 04, toggle SYNC for the next line.
+000766 3014                          cpi rLINECOUNTER, 4                       ; [087 -01 =086]
+                                                                             ; [     ==     ] [     !=     ]
+000767 f419                          brne skip_set_vsync                       ; [086 -01 =085] [086 -02 =084]
+                                 set_vsync:
+000768 e880
+000769 2738                          TOGGLE_SYNC_BIT                           ; [085 -02 =083]
+00076a c003                          rjmp after_set_vsync                      ; [083 -02 =081]
+                                 skip_set_vsync:
+00076b 0000
+00076c 0000                          _NOP2                                     ;                [084 -02 =082]
+00076d 0000                          nop										;				 [082 -01 =081]
+                                 after_set_vsync:
+                                 
+                                     ; If this is line 07, toggle SYNC for the next line.
+00076e 3017                          cpi rLINECOUNTER, 7                       ; [081 -01 =080]
+                                                                             ; [     ==     ] [     !=     ]
+00076f f419                          brne skip_clear_vsync                     ; [080 -01 =079] [080 -02 =078]
+                                 clear_vsync:
+000770 e880
+000771 2738                          TOGGLE_SYNC_BIT                           ; [079 -02 =077]
+000772 c003                          rjmp after_clear_vsync                    ; [077 -02 =075]
+                                 skip_clear_vsync:
+000773 0000
+000774 0000                          _NOP2                                     ;                [078 -02 =076]
+000775 0000                          nop										;				 [076 -01 =075]
+                                 after_clear_vsync:
+                                 
+                                     ; Increment rLINECOUNTER by one.
+000776 9513                          inc rLINECOUNTER                          ; [075 -01 =074]
+                                 
+                                     ; Load 22 into the temp register.
+000777 e186                          ldi rTEMP, 22                             ; [074 -01 =073]
+                                 
+                                     ; If rSTATBITS:EVENFRAME is clear, add 1 to the temp register.
+000778 ff20                          sbrs rSTATBITS, STATBIT_EVENFRAME         ; [073 -02 =071]
+000779 9583                          inc rTEMP
+                                 
+                                     ; If line counter is equal to temp register:
+                                     ;   - reset to 0
+                                     ;   - set rSTATBITS:DISP for next line
+                                     ;   - set ~VBLANK control line
+                                     ;   - set DATA lines to input (we ONLY do output when writing)
+                                     ;   - set ADDR/CTL2 lines to outputs
+                                     ;   - clear ~OE, ~WE bits
+                                     ;   - clear ~VDRAW control line if rSTATBITS:EVENFRAME is clear
+00077a 1718                          cp rLINECOUNTER, rTEMP                    ; [071 -01 =070]
+                                                                             ; [     ==     ] [     !=     ]
+00077b f451                          brne skip_setup_display                   ; [070 -01 =069] [070 -02 =068]
+                                 
+                                 ;d888888b d8b   db d888888b d888888b   d8888b. d888888b .d8888. d8888b.
+                                 ;  `88'   888o  88   `88'   `~~88~~'   88  `8D   `88'   88'  YP 88  `8D
+                                 ;   88    88V8o 88    88       88      88   88    88    `8bo.   88oodD'
+                                 ;   88    88 V8o88    88       88      88   88    88      `Y8b. 88~~~
+                                 ;  .88.   88  V888   .88.      88      88  .8D   .88.   db   8D 88
+                                 ;Y888888P VP   V8P Y888888P    YP      Y8888D' Y888888P `8888Y' 88
+                                 
+                                 setup_display:
+00077c 2711                          eor rLINECOUNTER, rLINECOUNTER            ; [069 -01 =068]
+00077d 6820                          ori rSTATBITS, STATBIT_DISP_MASK          ; [068 -01 =067]
+00077e 6130                          ori rCTRLBITS, VBLANKBIT_MASK             ; [067 -01 =066]
+00077f ef4f                          ldi rADDRDDR, ADDRBIT_DDR_OUTPUT          ; [066 -01 =065]
+000780 e050                          ldi rDATADDR, DATABIT_DDR_INPUT           ; [065 -01 =064]
+000781 9a2a
+000782 9a28                          OE_AND_WE_OFF                             ; [064 -02 =062]
+000783 ff20                          sbrs rSTATBITS, STATBIT_EVENFRAME         ; [062 -02 =060]
+000784 7f37                          andi rCTRLBITS, NOT_VDRAWBIT_MASK
+000785 c00a                          rjmp after_setup_display                  ; [060 -02 =058]
+                                 skip_setup_display:
+000786 0000
+000787 0000
+000788 0000
+000789 0000
+00078a 0000
+00078b 0000
+00078c 0000
+00078d 0000                          _NOP8                                     ;                [068 -08 =060]
+00078e 0000
+00078f 0000                          _NOP2                                     ;                [060 -02 =058]
+                                 after_setup_display:
+                                 
+                                     ; Finish the H-sync pulse here.
+                                     ; This can be filled in with whatever calculations we care to do.
+000790 0000
+000791 0000
+000792 0000
+000793 0000
+000794 0000
+000795 0000
+000796 0000
+000797 0000
+000798 0000
+000799 0000
+00079a 0000
+00079b 0000
+00079c 0000
+00079d 0000
+00079e 0000
+00079f 0000
+0007a0 0000
+0007a1 0000
+0007a2 0000
+0007a3 0000
+0007a4 0000
+0007a5 0000
+0007a6 0000
+0007a7 0000
+0007a8 0000
+0007a9 0000
+0007aa 0000
+0007ab 0000
+0007ac 0000
+0007ad 0000
+0007ae 0000
+0007af 0000                          _NOP32									; [058 -32 =026]
+0007b0 0000
+0007b1 0000
+0007b2 0000
+0007b3 0000
+0007b4 0000
+0007b5 0000
+0007b6 0000
+0007b7 0000
+0007b8 0000
+0007b9 0000
+0007ba 0000
+0007bb 0000
+0007bc 0000
+0007bd 0000
+0007be 0000
+0007bf 0000                          _NOP16                                    ; [026 -16 =010]
+0007c0 0000
+0007c1 0000
+0007c2 0000
+0007c3 0000                          _NOP4                                     ; [010 -04 =006]
+0007c4 0000
+0007c5 0000                          _NOP2                                     ; [006 -02 =004]
+0007c6 b18b
+0007c7 e890
+0007c8 2789
+0007c9 b98b                          IMMED_TOGGLE_SYNC_PIN                     ; [004 -04 =000]
                                  
                                      ; continue here if not a display line
-00075b c000                          rjmp end_line ; -- TEMPORARY
+0007ca c000                          rjmp end_line ; -- TEMPORARY
                                  
                                  ;    ; Jump based on exactly which line this is
                                  ;    ijmp                                      ; [2]
@@ -4114,37 +4293,38 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                  ;    rjmp end_line                       ; [2]
                                  
                                  end_line:
-00075c 9518                          reti
+0007cb 0000                          nop
+0007cc 9518                          reti
                                  
                                  INT0_vect:
-00075d 6880                            SET_ERROR_DEBUG_BIT
-00075e b108
-00075f 930f
-000760 b107
-000761 930f
-000762 ef0f
-000763 b907
-000764 b988
-000765 9a2b
-000766 982b
-000767 910f
-000768 b907
-000769 910f
-00076a b908                            LATCH_DEBUG_LIGHTS
-00076b 778f                            CLEAR_ERROR_DEBUG_BIT
-00076c b108
-00076d 930f
-00076e b107
-00076f 930f
-000770 ef0f
-000771 b907
-000772 b988
-000773 9a2b
-000774 982b
-000775 910f
-000776 b907
-000777 910f
-000778 b908                            LATCH_DEBUG_LIGHTS
+0007cd 6860                            SET_ERROR_DEBUG_BIT
+0007ce b188
+0007cf 938f
+0007d0 b187
+0007d1 938f
+0007d2 ef8f
+0007d3 b987
+0007d4 b968
+0007d5 9a2b
+0007d6 982b
+0007d7 918f
+0007d8 b987
+0007d9 918f
+0007da b988                            LATCH_DEBUG_LIGHTS
+0007db 776f                            CLEAR_ERROR_DEBUG_BIT
+0007dc b188
+0007dd 938f
+0007de b187
+0007df 938f
+0007e0 ef8f
+0007e1 b987
+0007e2 b968
+0007e3 9a2b
+0007e4 982b
+0007e5 918f
+0007e6 b987
+0007e7 918f
+0007e8 b988                            LATCH_DEBUG_LIGHTS
                                  ;      push rTEMP
                                  ;      ldi rTEMP, 0
                                  ;      sts EIMSK, rTEMP
@@ -4152,171 +4332,176 @@ C:\Users\greg\Documents\GitHub\rosewater\vangogh.asm(56): Including file 'C:\Use
                                  ;      jmp RESET_vect
                                  ;      reti
                                  
-000779 e081                            ldi rDEBUGBITS, 1
-00077a c041                            rjmp finish_interrupt
+0007e9 e061                            ldi rDEBUGBITS, 1
+0007ea c041                            rjmp finish_interrupt
                                  
                                  INT1_vect:
-00077b e082                            ldi rDEBUGBITS, 2
-00077c c03f                            rjmp finish_interrupt
+0007eb e062                            ldi rDEBUGBITS, 2
+0007ec c03f                            rjmp finish_interrupt
                                  
                                  INT2_vect:
-00077d e083                            ldi rDEBUGBITS, 3
-00077e c03d                            rjmp finish_interrupt
+0007ed e063                            ldi rDEBUGBITS, 3
+0007ee c03d                            rjmp finish_interrupt
                                  
                                  PCINT0_vect:
-00077f e084                            ldi rDEBUGBITS, 4
-000780 c03b                            rjmp finish_interrupt
+0007ef e064                            ldi rDEBUGBITS, 4
+0007f0 c03b                            rjmp finish_interrupt
                                  
                                  PCINT1_vect:
-000781 e085                            ldi rDEBUGBITS, 5
-000782 c039                            rjmp finish_interrupt
+0007f1 e065                            ldi rDEBUGBITS, 5
+0007f2 c039                            rjmp finish_interrupt
                                  
                                  PCINT2_vect:
-000783 e086                            ldi rDEBUGBITS, 6
-000784 c037                            rjmp finish_interrupt
+0007f3 e066                            ldi rDEBUGBITS, 6
+0007f4 c037                            rjmp finish_interrupt
                                  
                                  PCINT3_vect:
-000785 e087                            ldi rDEBUGBITS, 7
-000786 c035                            rjmp finish_interrupt
+0007f5 e067                            ldi rDEBUGBITS, 7
+0007f6 c035                            rjmp finish_interrupt
                                  
                                  WDT_vect:
-000787 e088                            ldi rDEBUGBITS, 8
-000788 c033                            rjmp finish_interrupt
+0007f7 e068                            ldi rDEBUGBITS, 8
+0007f8 c033                            rjmp finish_interrupt
                                  
                                  TIMER2_COMPA_vect:
-000789 e089                            ldi rDEBUGBITS, 9
-00078a c031                            rjmp finish_interrupt
+0007f9 e069                            ldi rDEBUGBITS, 9
+0007fa c031                            rjmp finish_interrupt
                                  
                                  TIMER2_COMPB_vect:
-00078b e08a                            ldi rDEBUGBITS, 10
-00078c c02f                            rjmp finish_interrupt
+0007fb e06a                            ldi rDEBUGBITS, 10
+0007fc c02f                            rjmp finish_interrupt
                                  
                                  TIMER2_OVF_vect:
-00078d e08b                            ldi rDEBUGBITS, 11
-00078e c02d                            rjmp finish_interrupt
+0007fd e06b                            ldi rDEBUGBITS, 11
+0007fe c02d                            rjmp finish_interrupt
                                  
                                  TIMER1_CAPT_vect:
-00078f e08c                            ldi rDEBUGBITS, 12
-000790 c02b                            rjmp finish_interrupt
+0007ff e06c                            ldi rDEBUGBITS, 12
+000800 c02b                            rjmp finish_interrupt
                                  
                                  TIMER1_COMPB_vect:
-000791 e08e                            ldi rDEBUGBITS, 14
-000792 c029                            rjmp finish_interrupt
+000801 e06e                            ldi rDEBUGBITS, 14
+000802 c029                            rjmp finish_interrupt
                                  
                                  TIMER1_OVF_vect:
-000793 e08f                            ldi rDEBUGBITS, 15
-000794 c027                            rjmp finish_interrupt
+000803 e06f                            ldi rDEBUGBITS, 15
+000804 c027                            rjmp finish_interrupt
                                  
                                  TIMER0_COMPA_vect:
-000795 e180                            ldi rDEBUGBITS, 16
-000796 c025                            rjmp finish_interrupt
+000805 e160                            ldi rDEBUGBITS, 16
+000806 c025                            rjmp finish_interrupt
                                  
                                  TIMER0_COMPB_vect:
-000797 e181                            ldi rDEBUGBITS, 17
-000798 c023                            rjmp finish_interrupt
+000807 e161                            ldi rDEBUGBITS, 17
+000808 c023                            rjmp finish_interrupt
                                  
                                  TIMER0_OVF_vect:
-000799 e182                            ldi rDEBUGBITS, 18
-00079a c021                            rjmp finish_interrupt
+000809 e162                            ldi rDEBUGBITS, 18
+00080a c021                            rjmp finish_interrupt
                                  
                                  SPI_STC_vect:
-00079b e183                            ldi rDEBUGBITS, 19
-00079c c01f                            rjmp finish_interrupt
+00080b e163                            ldi rDEBUGBITS, 19
+00080c c01f                            rjmp finish_interrupt
                                  
                                  USART0_RX_vect:
-00079d e184                            ldi rDEBUGBITS, 20
-00079e c01d                            rjmp finish_interrupt
+00080d e164                            ldi rDEBUGBITS, 20
+00080e c01d                            rjmp finish_interrupt
                                  
                                  USART0_UDRE_vect:
-00079f e185                            ldi rDEBUGBITS, 21
-0007a0 c01b                            rjmp finish_interrupt
+00080f e165                            ldi rDEBUGBITS, 21
+000810 c01b                            rjmp finish_interrupt
                                  
                                  USART0_TX_vect:
-0007a1 e186                            ldi rDEBUGBITS, 22
-0007a2 c019                            rjmp finish_interrupt
+000811 e166                            ldi rDEBUGBITS, 22
+000812 c019                            rjmp finish_interrupt
                                  
                                  ANALOG_COMP_vect:
-0007a3 e187                            ldi rDEBUGBITS, 23
-0007a4 c017                            rjmp finish_interrupt
+000813 e167                            ldi rDEBUGBITS, 23
+000814 c017                            rjmp finish_interrupt
                                  
                                  ADC_vect:
-0007a5 e188                            ldi rDEBUGBITS, 24
-0007a6 c015                            rjmp finish_interrupt
+000815 e168                            ldi rDEBUGBITS, 24
+000816 c015                            rjmp finish_interrupt
                                  
                                  EE_READY_vect:
-0007a7 e189                            ldi rDEBUGBITS, 25
-0007a8 c013                            rjmp finish_interrupt
+000817 e169                            ldi rDEBUGBITS, 25
+000818 c013                            rjmp finish_interrupt
                                  
                                  TWI_vect:
-0007a9 e18a                            ldi rDEBUGBITS, 26
-0007aa c011                            rjmp finish_interrupt
+000819 e16a                            ldi rDEBUGBITS, 26
+00081a c011                            rjmp finish_interrupt
                                  
                                  SPM_READY_vect:
-0007ab e18b                            ldi rDEBUGBITS, 27
-0007ac c00f                            rjmp finish_interrupt
+00081b e16b                            ldi rDEBUGBITS, 27
+00081c c00f                            rjmp finish_interrupt
                                  
                                  USART1_RX_vect:
-0007ad e18c                            ldi rDEBUGBITS, 28
-0007ae c00d                            rjmp finish_interrupt
+00081d e16c                            ldi rDEBUGBITS, 28
+00081e c00d                            rjmp finish_interrupt
                                  
                                  USART1_UDRE_vect:
-0007af e18d                            ldi rDEBUGBITS, 29
-0007b0 c00b                            rjmp finish_interrupt
+00081f e16d                            ldi rDEBUGBITS, 29
+000820 c00b                            rjmp finish_interrupt
                                  
                                  USART1_TX_vect:
-0007b1 e18e                            ldi rDEBUGBITS, 30
-0007b2 c009                            rjmp finish_interrupt
+000821 e16e                            ldi rDEBUGBITS, 30
+000822 c009                            rjmp finish_interrupt
                                  
                                  TIMER3_CAPT_vect:
-0007b3 e18f                            ldi rDEBUGBITS, 31
-0007b4 c007                            rjmp finish_interrupt
+000823 e16f                            ldi rDEBUGBITS, 31
+000824 c007                            rjmp finish_interrupt
                                  
                                  TIMER3_COMPA_vect:
-0007b5 e280                            ldi rDEBUGBITS, 32
-0007b6 c005                            rjmp finish_interrupt
+000825 e260                            ldi rDEBUGBITS, 32
+000826 c005                            rjmp finish_interrupt
                                  
                                  TIMER3_COMPB_vect:
-0007b7 e281                            ldi rDEBUGBITS, 33
-0007b8 c003                            rjmp finish_interrupt
+000827 e261                            ldi rDEBUGBITS, 33
+000828 c003                            rjmp finish_interrupt
                                  
                                  TIMER3_OVF_vect:
-0007b9 e282                            ldi rDEBUGBITS, 34
-0007ba c001                            rjmp finish_interrupt
+000829 e262                            ldi rDEBUGBITS, 34
+00082a c001                            rjmp finish_interrupt
                                  
                                  __vector_default:
-0007bb e080                            ldi rDEBUGBITS, 0
+00082b e060                            ldi rDEBUGBITS, 0
                                  
                                  finish_interrupt:
-0007bc 6880                            SET_ERROR_DEBUG_BIT
-0007bd b108
-0007be 930f
-0007bf b107
-0007c0 930f
-0007c1 ef0f
-0007c2 b907
-0007c3 b988
-0007c4 9a2b
-0007c5 982b
-0007c6 910f
-0007c7 b907
-0007c8 910f
-0007c9 b908                            LATCH_DEBUG_LIGHTS
+00082c 6860                            SET_ERROR_DEBUG_BIT
+00082d b188
+00082e 938f
+00082f b187
+000830 938f
+000831 ef8f
+000832 b987
+000833 b968
+000834 9a2b
+000835 982b
+000836 918f
+000837 b987
+000838 918f
+000839 b988                            LATCH_DEBUG_LIGHTS
                                  ;      reti
                                  
                                  endless:
-0007ca cfff                            rjmp endless
+00083a cfff                            rjmp endless
                                  
                                  .DSEG
                                  
                                  ; PPU registers are in registers.inc = 256 bytes
                                  
-000200                           tile_graphic_data:      .BYTE 4096          ; Tile data storage area = 4K (format depends on mode chosen)
-001200                           tile_grid:              .BYTE 4096          ; Grid of 32x32 tiles = 32x32x32 bits = 4K maximum
-                                                                             ; For 2-color mode, the grid is stored as <TileNum> <BGColor> <FGColor> <Dummy>
-                                                                             ; For 4-color mode, the grid is stored as <TileNum> <Color1> <Color2> <Color3>
-002200                           line_buffer:            .BYTE 256           ; Line buffer (0200 to 02FF) = 256 bytes
+000200                           tile_graphic_data:          .BYTE 4096          ; Tile data storage area = 4K (format depends on mode chosen)
+                                                                                 ; Graphic data is stored in RAM as: offset + 00000YYY`TTTTTTTT
+                                                                                 ; This makes it faster to access during the loop.
+                                 
+001200                           tile_grid:                  .BYTE 4096          ; Grid of 32x32 tiles = 32x32x32 bits maximum = 4K
+                                                                                 ; For 2-color mode, the grid is stored as <TileNum> <BGColor> <FGColor>
+                                                                                 ; For 4-color mode, the grid is stored as <TileNum> <Color1> <Color2> <Color3>
+002200                           line_buffer_1:              .BYTE 256           ; Line buffer 1 = 256 bytes
+002300                           line_buffer_2:              .BYTE 256           ; Line buffer 2 = 256 bytes
                                  
                                  ; Variables
+002400                           tile_grid_offset:           .BYTE 2
 
 
 RESOURCE USE INFORMATION
@@ -4334,41 +4519,41 @@ counted separately from r26..r31 here.
 .dseg memory usage only counts static data declared with .byte
 
 "ATmega1284P" register use summary:
-x  : 263 y  :   0 z  :   0 r0 :   3 r1 :   5 r2 :   1 r3 :   1 r4 :   2 
-r5 :   2 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:  13 
-r13:  21 r14:   2 r15:   0 r16: 786 r17:  42 r18:  12 r19:  14 r20:   8 
-r21:  10 r22:   3 r23:   3 r24:  58 r25:   0 r26:  10 r27:  10 r28:   7 
-r29:  10 r30:   4 r31:   5 
-Registers used: 25 out of 35 (71.4%)
+x  : 217 y  :  15 z  :   5 r0 :   3 r1 :   5 r2 :   6 r3 :   2 r4 :   2 
+r5 :   2 r6 :   3 r7 :   3 r8 :   1 r9 :   1 r10:  10 r11:  45 r12:  45 
+r13: 120 r14:  13 r15:  21 r16:   4 r17:  13 r18:   8 r19:  10 r20:   3 
+r21:   3 r22:  58 r23:  35 r24: 653 r25:  53 r26:  13 r27:  13 r28:   2 
+r29:   2 r30:  14 r31:   6 
+Registers used: 35 out of 35 (100.0%)
 
 "ATmega1284P" instruction use summary:
-.lds  :   0 .sts  :   0 adc   :   4 add   :   5 adiw  :   0 and   :   1 
+.lds  :   0 .sts  :   0 adc   :   4 add   :  11 adiw  :   1 and   :   1 
 andi  :   8 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   0 break :   0 breq  :   0 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
-brne  :  15 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
+brne  :  25 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
 brvs  :   0 bset  :   0 bst   :   0 call  :   2 cbi   :  53 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   1 cln   :   0 clr   :   0 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   2 cpc   :   0 
-cpi   :   9 cpse  :   0 dec   :   9 elpm  :   0 eor   :  18 fmul  :   0 
-fmuls :   0 fmulsu:   0 icall :   0 ijmp  :   1 in    :  42 inc   :   5 
-jmp   :  36 ld    : 259 ldd   :   0 ldi   : 141 lds   :   0 lpm   :   0 
-lsl   :   1 lsr   :   9 mov   :  22 movw  :   0 mul   :   0 muls  :   0 
-mulsu :   0 neg   :   0 nop   : 753 or    :   1 ori   :   6 out   : 374 
+cpi   :  10 cpse  :   0 dec   :   9 elpm  :   0 eor   :  19 fmul  :   0 
+fmuls :   0 fmulsu:   0 icall :   0 ijmp  :   1 in    :  42 inc   :  14 
+jmp   :  36 ld    : 183 ldd   :   0 ldi   : 162 lds   :   0 lpm   :   0 
+lsl   :   1 lsr   :   3 mov   : 114 movw  :   0 mul   :   0 muls  :   0 
+mulsu :   0 neg   :   0 nop   : 815 or    :   1 ori   :   6 out   : 278 
 pop   :  24 push  :  24 rcall :   4 ret   :   6 reti  :   1 rjmp  :  61 
-rol   :   0 ror   :   3 sbc   :   0 sbci  :   0 sbi   :  39 sbic  :   0 
-sbis  :   0 sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   3 sec   :   0 
+rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 sbi   :  39 sbic  :   0 
+sbis  :   0 sbiw  :   0 sbr   :   0 sbrc  :  40 sbrs  :   3 sec   :   0 
 seh   :   0 sei   :   1 sen   :   0 ser   :   0 ses   :   0 set   :   0 
-sev   :   0 sez   :   0 sleep :   0 spm   :   0 st    :   4 std   :   0 
+sev   :   0 sez   :   0 sleep :   0 spm   :   0 st    :  54 std   :   0 
 sts   :   5 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
 
-Instructions used: 37 out of 114 (32.5%)
+Instructions used: 38 out of 114 (33.3%)
 
 "ATmega1284P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000f96   3990      0   3990  131072   3.0%
-[.dseg] 0x000100 0x002302      0   8706   8706   16384  53.1%
+[.cseg] 0x000000 0x001076   4214      0   4214  131072   3.2%
+[.dseg] 0x000100 0x002402      0   8962   8962   16384  54.7%
 [.eseg] 0x000000 0x000000      0      0      0    4096   0.0%
 
 Assembly complete, 0 errors, 0 warnings

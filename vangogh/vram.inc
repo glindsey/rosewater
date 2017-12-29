@@ -5,8 +5,8 @@
 #include "constants.inc"
 #include "shared/utilities.inc"
 
-.DEF rYPOS	= r12
-.DEF rXPOS  = r13
+.DEF rYPOS	= r14
+.DEF rXPOS  = r15
 
 .CSEG
 
